@@ -13,8 +13,9 @@ public class ArmController : MonoBehaviour
     public GameObject scoreFeedback;
     public Transform slamPosition;
     public ScoreManager scoreManager;
-    public GameObject upgradeMenu;
+    public GameObject pauseMenu;
     public bool canSlam = true;
+    public List<TrailRenderer> trails = new List<TrailRenderer>();
 
     private bool canMove = true;
     private bool checkResolution = true;
@@ -81,7 +82,11 @@ public class ArmController : MonoBehaviour
                 animator.SetFloat("SlamSpeedMult", slamSpeedMultiplier);
                 animator.SetTrigger("Slam");
                 isSlamming = true;
-                canMove = false;
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].enabled = true;
+                }
+                //canMove = false;
                 //if (!true)
                 //{
                 //    ChatGPT (unused)
@@ -98,6 +103,10 @@ public class ArmController : MonoBehaviour
                 animator.ResetTrigger("Slam");
                 isSlamming = false;
                 canMove = true;
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].enabled = false;
+                }
             }
         }
 
@@ -112,9 +121,13 @@ public class ArmController : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, mousePosition, armSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
         {
-            upgradeMenu.SetActive(!upgradeMenu.activeSelf);
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            canMove = !pauseMenu.activeSelf;
+            Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
+            SongManager.Instance.OnApplicationPause(pauseMenu.activeSelf);
+            UpdateSafeZone();
         }
     }
 
@@ -171,13 +184,13 @@ public class ArmController : MonoBehaviour
     public void PickUpItem(GameObject other)
     {
         Debug.Log("Item");
-        if (other.TryGetComponent<ItemController>(out var item))
+        if (other.TryGetComponent<CircleGemController>(out var gem))
         {
             // Debug.Log("Scored: " + item.currentCollectionBonus);
-            scoreManager.IncreaseEnergyFloat(item.currentCollectionBonus);
-            item.OnPickup();
-            GameObject scoreFeedbackInstance = Instantiate(scoreFeedback, item.transform.position, Quaternion.identity);
-            scoreFeedbackInstance.GetComponent<ScoreFeedbackManager>().scoreValue = Mathf.CeilToInt(item.currentCollectionBonus);
+            scoreManager.Hit();
+            gem.OnPickup();
+            //GameObject scoreFeedbackInstance = Instantiate(scoreFeedback, item.transform.position, Quaternion.identity);
+            //scoreFeedbackInstance.GetComponent<ScoreFeedbackManager>().scoreValue = Mathf.CeilToInt(item.currentCollectionBonus);
         }
     }
 
