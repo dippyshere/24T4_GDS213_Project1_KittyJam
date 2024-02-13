@@ -14,12 +14,13 @@ public class SongManager : MonoBehaviour
     public NoteManager noteManager;
     public float songDelayInSeconds;
     public double marginOfError; // in seconds
+    public float noteTime;
 
     public int inputDelayInMilliseconds;
     
 
     public string fileLocation;
-    public float noteTime;
+    public float noteEarlySpawnTime;
     public float noteSpawnY;
     public float noteTapY;
 

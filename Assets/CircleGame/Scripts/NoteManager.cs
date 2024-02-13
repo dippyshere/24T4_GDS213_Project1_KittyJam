@@ -30,7 +30,7 @@ public class NoteManager : MonoBehaviour
             if (note.NoteName == noteRestriction)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
-                timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
+                timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f - SongManager.Instance.noteEarlySpawnTime);
             }
         }
     }
@@ -89,5 +89,14 @@ public class NoteManager : MonoBehaviour
     private void Miss()
     {
         scoreManager.Miss();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
     }
 }
