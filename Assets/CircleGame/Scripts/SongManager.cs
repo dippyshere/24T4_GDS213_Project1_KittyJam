@@ -12,8 +12,10 @@ public class SongManager : MonoBehaviour
     public static SongManager Instance;
     public AudioSource audioSource;
     public NoteManager noteManager;
+    public GameObject noteFeedbackPrefab;
     public float songDelayInSeconds;
-    public double marginOfError; // in seconds
+    public float perfectRange;
+    public float goodRange;
     public float noteTime;
 
     public int inputDelayInMilliseconds;
