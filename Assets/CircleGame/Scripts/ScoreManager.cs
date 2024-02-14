@@ -15,8 +15,13 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI comboText;
 
     int comboScore;
-    int score;
+    long score;
     int multiplier;
+    int perfectBonus;
+    long displayedScore;
+    int hitCount;
+    int perfectCount;
+    int missCount;
 
     void Start()
     {
@@ -26,30 +31,86 @@ public class ScoreManager : MonoBehaviour
         multiplier = 1;
     }
 
-    public void Hit()
+    private void FixedUpdate()
+    {
+        displayedScore = (long)Mathf.Ceil(Mathf.Lerp(displayedScore, score, 0.06f));
+        UpdateScoreText();
+    }
+
+    public void Hit(float hitTime, Vector3 position)
+    {
+        Debug.Log("Hit time: " + hitTime);
+        if (hitTime >= -SongManager.Instance.perfectRange && hitTime <= SongManager.Instance.perfectRange)
+        {
+            ShowNoteFeedback(NoteFeedback.Perfect, position);
+            HitPerfect();
+            return;
+        }
+        else if (hitTime >= -SongManager.Instance.goodRange && hitTime <= SongManager.Instance.goodRange)
+        {
+            ShowNoteFeedback(NoteFeedback.Good, position);
+            HitGood();
+            return;
+        }
+        else if (hitTime > SongManager.Instance.goodRange)
+        {
+            Miss(position, NoteFeedback.TooEarly);
+            return;
+        }
+        else
+        {
+            Miss(position);
+            return;
+        }
+    }
+
+    public void Miss(Vector3 position, NoteFeedback noteFeedback = NoteFeedback.Miss)
+    {
+        ShowNoteFeedback(noteFeedback, position);
+        comboScore = 0;
+        multiplier = 1;
+        missCount++;
+        UpdateScoreText();
+        Instance.missSFX.Play();
+    }
+
+    private void HitGood()
     {
         comboScore += 1;
         score += comboScore * multiplier;
+        hitCount++;
         if (comboScore % 3 == 0 && comboScore < 8)
         {
             multiplier += 1;
         }
-        UpdateScoreText();
         Instance.hitSFX.Play();
+        UpdateScoreText();
     }
 
-    public void Miss()
+    private void HitPerfect()
     {
-        comboScore = 0;
-        multiplier = 1;
+        comboScore += 1;
+        score += comboScore * multiplier * perfectBonus;
+        perfectCount++;
+        if (comboScore % 3 == 0 && comboScore < 8)
+        {
+            multiplier += 1;
+        }
+        Instance.hitSFX.Play();
         UpdateScoreText();
-        Instance.missSFX.Play();
+    }
+
+    public void ShowNoteFeedback(NoteFeedback feedback, Vector3 position)
+    {
+        GameObject feedbackObject = Instantiate(SongManager.Instance.noteFeedbackPrefab, position, Quaternion.identity);
+        feedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+        Debug.Log("Feedback: " + feedback);
     }
 
     private void UpdateScoreText()
     {
         multiplierText.text = "Multiplier: x" + multiplier.ToString();
-        scoreText.text = "Score: " + score.ToString("N0", CultureInfo.InvariantCulture);
+        scoreText.text = "Score: " + displayedScore.ToString("N0", CultureInfo.InvariantCulture);
         comboText.text = "Combo: " + comboScore.ToString("N0", CultureInfo.InvariantCulture);
     }
 }

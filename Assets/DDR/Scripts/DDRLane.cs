@@ -40,7 +40,7 @@ public class DDRLane : MonoBehaviour
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<DDRNote>());
-                note.GetComponent<Note>().assignedTime = (float)timeStamps[spawnIndex];
+                note.GetComponent<DDRNote>().assignedTime = (float)timeStamps[spawnIndex];
                 spawnIndex++;
             }
         }

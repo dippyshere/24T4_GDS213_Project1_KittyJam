@@ -10,19 +10,13 @@ public class NoteManager : MonoBehaviour
     public KeyCode input;
     public GameObject notePrefab;
     public ScoreManager scoreManager;
-    List<Note> notes = new List<Note>();
+    List<CircleGemController> notes = new List<CircleGemController>();
     public List<double> timeStamps = new List<double>();
     public Vector3 spawnAreaTopLeft;
     public Vector3 spawnAreaBottomRight;
 
     int spawnIndex = 0;
-    int inputIndex = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -34,6 +28,7 @@ public class NoteManager : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -47,48 +42,12 @@ public class NoteManager : MonoBehaviour
                     spawnAreaTopLeft.z
                 );
                 var note = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-                notes.Add(note.GetComponent<Note>());
-                note.GetComponent<CircleGemController>().assignedTime = (float)timeStamps[spawnIndex];
+                notes.Add(note.GetComponent<CircleGemController>());
+                notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
                 spawnIndex++;
             }
         }
-
-        if (inputIndex < timeStamps.Count)
-        {
-            double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
-            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-
-            //if (Input.GetKeyDown(input))
-            //{
-            //    if (Math.Abs(audioTime - timeStamp) < marginOfError)
-            //    {
-            //        Hit();
-            //        print($"Hit on {inputIndex} note");
-            //        Destroy(notes[inputIndex].gameObject);
-            //        inputIndex++;
-            //    }
-            //    else
-            //    {
-            //        print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
-            //    }
-            //}
-            //if (timeStamp + marginOfError <= audioTime)
-            //{
-            //    Miss();
-            //    print($"Missed {inputIndex} note");
-            //    inputIndex++;
-            //}
-        }       
-    
-    }
-    private void Hit()
-    {
-        scoreManager.Hit();
-    }
-    private void Miss()
-    {
-        scoreManager.Miss();
+           
     }
 
     private void OnDrawGizmos()

@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public VolumeProfile defaultPostProcess;
     public VolumeProfile upgradePostProcess;
 
-    //public GameManager gameManager;
     public ArmController armController;
 
     // Start is called before the first frame update
@@ -21,7 +20,6 @@ public class PauseMenu : MonoBehaviour
         cursorController.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
-        //gameManager.isPaused = true;
         armController.canSlam = false;
     }
 
@@ -30,13 +28,7 @@ public class PauseMenu : MonoBehaviour
         cursorController.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
-        //gameManager.isPaused = true;
         armController.canSlam = false;
-    }
-
-    public void CloseUpgradeMenu()
-    {
-        gameObject.SetActive(false);
     }
 
     private void OnDisable()
@@ -44,7 +36,6 @@ public class PauseMenu : MonoBehaviour
         cursorController.LockCursor();
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;
-        //gameManager.isPaused = false;
         armController.canSlam = true;
     }
 }

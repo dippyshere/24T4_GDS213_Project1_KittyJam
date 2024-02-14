@@ -277,8 +277,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 749397748}
   noteManager: {fileID: 865718500}
+  noteFeedbackPrefab: {fileID: 7560494966999846534, guid: 379912816ac332e46ac7aa1dea41b48d,
+    type: 3}
   songDelayInSeconds: 0
-  marginOfError: 0.1
+  perfectRange: 0.1
+  goodRange: 0.2
   noteTime: 1
   inputDelayInMilliseconds: 0
   fileLocation: kitty jam test.mid
