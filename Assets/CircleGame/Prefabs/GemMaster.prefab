@@ -207,7 +207,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -255,6 +255,7 @@ Transform:
   - {fileID: 4245778687937728409}
   - {fileID: 7941881656882725982}
   - {fileID: 7466812379725833072}
+  - {fileID: 7671278380564576832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3566038188802540686
@@ -302,10 +303,6 @@ MonoBehaviour:
   - {fileID: 5377198005148692351}
   - {fileID: 6318228639101085222}
   assignedTime: 0
-  ringAsset: {fileID: 9197481963319205126, guid: 6ff8cbdc276ac084fbc450ffb16f0f47,
-    type: 3}
-  uiTexture: {fileID: 0}
-  panelSettings: {fileID: 11400000, guid: 36cae0298aef03f4fb32c7b956db09e9, type: 2}
 --- !u!95 &3432308339547685497
 Animator:
   serializedVersion: 5
@@ -514,3 +511,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 1
   m_SpriteSortPoint: 0
+--- !u!1 &8188219505240085712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7671278380564576832}
+  - component: {fileID: 7219167412875096930}
+  m_Layer: 0
+  m_Name: ProgressRing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7671278380564576832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188219505240085712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5107175654717379027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7219167412875096930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188219505240085712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 029de5b478034ce4a9b5054afac516fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelWidth: 128
+  _panelHeight: 128
+  _panelScale: 1
+  _pixelsPerUnit: 32
+  _visualTreeAsset: {fileID: 9197481963319205126, guid: 6ff8cbdc276ac084fbc450ffb16f0f47,
+    type: 3}
+  _panelSettingsPrefab: {fileID: 11400000, guid: 36cae0298aef03f4fb32c7b956db09e9,
+    type: 2}
+  _renderTexturePrefab: {fileID: 8400000, guid: bf3ff784014f0ec478a2928a956b0f65,
+    type: 2}
+  material: {fileID: 2100000, guid: 2036d55278e90d240a9eabad1c95a88f, type: 2}

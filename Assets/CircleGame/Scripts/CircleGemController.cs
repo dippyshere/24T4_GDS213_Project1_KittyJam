@@ -10,10 +10,6 @@ public class CircleGemController : MonoBehaviour
     public SpriteRenderer[] spriteRenderers;
     double timeInstantiated;
     public float assignedTime;
-    public VisualTreeAsset ringAsset;
-    private UIDocument uiDocument;
-    public RenderTexture uiTexture;
-    public PanelSettings panelSettings;
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +20,8 @@ public class CircleGemController : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[spriteIndex];
         }
-        uiDocument = transform.Find("Triangle").AddComponent<UIDocument>();
-        uiDocument.visualTreeAsset = ringAsset;
-        uiDocument.panelSettings = panelSettings;
-        uiTexture = new RenderTexture(100, 100, 24);
-        uiDocument.panelSettings.targetTexture = uiTexture;
+        GetComponent<Animator>().speed = 1 / SongManager.Instance.noteTime;
+        Invoke("OnMiss", (float)(SongManager.Instance.noteTime * 1.117));
     }
 
     public void OnPickup()
@@ -37,7 +30,14 @@ public class CircleGemController : MonoBehaviour
         float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
         double marginOfError = SongManager.Instance.marginOfError;
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-        Debug.Log("Time since instantiated: " + (Mathf.Abs((float)audioTime - assignedTime) - SongManager.Instance.noteEarlySpawnTime));
+        Debug.Log("Time since instantiated: " + (Mathf.Abs((float)audioTime - assignedTime)));
+        ScoreManager.Instance.Hit();
+        Destroy(gameObject);
+    }
+
+    public void OnMiss()
+    {
+        ScoreManager.Instance.Miss();
         Destroy(gameObject);
     }
 }

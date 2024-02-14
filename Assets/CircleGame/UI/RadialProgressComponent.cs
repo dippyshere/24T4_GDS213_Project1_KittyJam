@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using MyUILibrary;
 
-[RequireComponent(typeof(UIDocument))]
 public class RadialProgressComponent : MonoBehaviour
 {
 
@@ -14,15 +13,7 @@ public class RadialProgressComponent : MonoBehaviour
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
-        m_RadialProgress = new RadialProgress()
-        {
-            style = {
-                position = Position.Absolute,
-                left = 20, top = 20, width = 200, height = 200
-            }
-        };
-
-        root.Add(m_RadialProgress);
+        m_RadialProgress = root.hierarchy[root.hierarchy.childCount - 1] as RadialProgress;
     }
 
     void Update()
