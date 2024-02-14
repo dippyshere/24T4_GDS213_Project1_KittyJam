@@ -14,12 +14,12 @@ public class SongManager : MonoBehaviour
     public NoteManager noteManager;
     public float songDelayInSeconds;
     public double marginOfError; // in seconds
+    public float noteTime;
 
     public int inputDelayInMilliseconds;
     
 
     public string fileLocation;
-    public float noteTime;
     public float noteSpawnY;
     public float noteTapY;
 
@@ -106,6 +106,10 @@ public class SongManager : MonoBehaviour
 
     public static double GetAudioSourceTime()
     {
+        if (Instance == null || Instance.audioSource == null)
+        {
+            return 0;
+        }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 

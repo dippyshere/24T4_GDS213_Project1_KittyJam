@@ -187,7 +187,6 @@ public class ArmController : MonoBehaviour
         if (other.TryGetComponent<CircleGemController>(out var gem))
         {
             // Debug.Log("Scored: " + item.currentCollectionBonus);
-            scoreManager.Hit();
             gem.OnPickup();
             //GameObject scoreFeedbackInstance = Instantiate(scoreFeedback, item.transform.position, Quaternion.identity);
             //scoreFeedbackInstance.GetComponent<ScoreFeedbackManager>().scoreValue = Mathf.CeilToInt(item.currentCollectionBonus);
