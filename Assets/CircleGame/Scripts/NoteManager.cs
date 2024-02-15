@@ -7,12 +7,11 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
-    public KeyCode input;
     public GameObject notePrefab;
     public ScoreManager scoreManager;
-    public List<CircleGemController> notes = new List<CircleGemController>();
-    List<Vector3> spawnLocations = new List<Vector3>();
-    public List<double> timeStamps = new List<double>();
+    List<CircleGemController> notes = new List<CircleGemController>();
+    public List<Vector3> spawnLocations = new List<Vector3>();
+    List<double> timeStamps = new List<double>();
     public Vector3 spawnAreaTopLeft;
     public Vector3 spawnAreaBottomRight;
 
@@ -106,6 +105,19 @@ public class NoteManager : MonoBehaviour
         else
         {
             return spawnLocations[spawnIndex];
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        // draw a sphere at each spawn location if it is not 0, 0, 0
+        foreach (var location in spawnLocations)
+        {
+            if (location != new Vector3(0, 0, 0))
+            {
+                Gizmos.DrawSphere(location, 0.5f);
+            }
         }
     }
 }
