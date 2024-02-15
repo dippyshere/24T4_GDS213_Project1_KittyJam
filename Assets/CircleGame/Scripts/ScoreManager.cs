@@ -17,7 +17,7 @@ public class ScoreManager : MonoBehaviour
     int comboScore;
     long score;
     int multiplier;
-    int perfectBonus;
+    public float perfectBonus;
     long displayedScore;
     int hitCount;
     int perfectCount;
@@ -67,7 +67,7 @@ public class ScoreManager : MonoBehaviour
     public void Miss(Vector3 position, NoteFeedback noteFeedback = NoteFeedback.Miss)
     {
         ShowNoteFeedback(noteFeedback, position);
-        comboScore = 0;
+        comboScore = 1;
         multiplier = 1;
         missCount++;
         UpdateScoreText();
@@ -90,7 +90,7 @@ public class ScoreManager : MonoBehaviour
     private void HitPerfect()
     {
         comboScore += 1;
-        score += comboScore * multiplier * perfectBonus;
+        score += (long)Mathf.Ceil(comboScore * multiplier * (long)perfectBonus);
         perfectCount++;
         if (comboScore % 3 == 0 && comboScore < 8)
         {

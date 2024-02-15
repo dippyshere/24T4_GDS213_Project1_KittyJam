@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 using MyUILibrary;
+using System.Collections;
 
 namespace UnityEngine.UIElements
 {
@@ -96,6 +97,7 @@ namespace UnityEngine.UIElements
                 RebuildPanel();
             m_RadialProgress = UIWidget as RadialProgress;
             timeInstantiated = SongManager.GetAudioSourceTime();
+            StartCoroutine(UpdateSilhouette());
         }
 
         private void Update()
@@ -104,12 +106,6 @@ namespace UnityEngine.UIElements
             double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
             float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
             m_RadialProgress.progress = Mathf.Clamp(t * 200, 0, 100);
-            Texture2D texture2D = new Texture2D(_renderTexture.width, _renderTexture.height);
-            RenderTexture.active = _renderTexture;
-            texture2D.ReadPixels(new Rect(0, 0, _renderTexture.width, _renderTexture.height), 0, 0);
-            texture2D.Apply();
-            RenderTexture.active = null;
-            _spriteRenderer.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), _pixelsPerUnit);
             if (t > 0.5)
             {
                 _material.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Lerp(1, 0, (t - 0.5f) / 0.0585f));
@@ -119,6 +115,26 @@ namespace UnityEngine.UIElements
             {
                 _material.color = new Color(1.0f, 1.0f, 1.0f, Mathf.Clamp01(t * 2));
                 _spriteRenderer.color = new Color(0.0745098039f, 0.0745098039f, 0.0745098039f, Mathf.Clamp01(t * 2) * 0.235294118f);
+            }
+        }
+
+        private IEnumerator UpdateSilhouette()
+        {
+            while (true)
+            {
+                yield return null;
+                Texture2D texture2D = new Texture2D(_renderTexture.width, _renderTexture.height);
+                RenderTexture.active = _renderTexture;
+                texture2D.ReadPixels(new Rect(0, 0, _renderTexture.width, _renderTexture.height), 0, 0);
+                texture2D.Apply();
+                RenderTexture.active = null;
+                _spriteRenderer.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), _pixelsPerUnit);
+                yield return null;
+                yield return null;
+                yield return null;
+                yield return null;
+                yield return null;
+                yield return null;
             }
         }
 
@@ -199,6 +215,7 @@ namespace UnityEngine.UIElements
 
         void OnDestroy()
         {
+            StopAllCoroutines();
             DestroyGeneratedAssets();
         }
 

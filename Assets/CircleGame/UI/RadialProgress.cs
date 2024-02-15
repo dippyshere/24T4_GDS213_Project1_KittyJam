@@ -38,7 +38,7 @@ namespace MyUILibrary
         EllipseMesh m_ProgressMesh;
 
         // This is the number of outer vertices to generate the circle.
-        const int k_NumSteps = 200;
+        const int k_NumSteps = 100;
 
         // This is the number that the Label displays as a percentage.
         float m_Progress;
