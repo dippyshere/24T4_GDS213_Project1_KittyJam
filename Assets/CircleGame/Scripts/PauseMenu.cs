@@ -38,4 +38,22 @@ public class PauseMenu : MonoBehaviour
         postProcessVolume.profile = defaultPostProcess;
         armController.canSlam = true;
     }
+
+    public void PauseAction(bool pause)
+    {
+        if (pause)
+        {
+            cursorController.UnlockCursor();
+            Time.timeScale = 0f;
+            postProcessVolume.profile = upgradePostProcess;
+            armController.canSlam = false;
+        }
+        else
+        {
+            cursorController.LockCursor();
+            Time.timeScale = 1f;
+            postProcessVolume.profile = defaultPostProcess;
+            armController.canSlam = true;
+        }
+    }
 }
