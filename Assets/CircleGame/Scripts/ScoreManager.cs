@@ -15,13 +15,13 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI comboText;
 
     int comboScore;
-    long score;
+    public long score;
     int multiplier;
     public float perfectBonus;
     long displayedScore;
-    int hitCount;
-    int perfectCount;
-    int missCount;
+    public int hitCount;
+    public int perfectCount;
+    public int missCount;
 
     void Start()
     {

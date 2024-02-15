@@ -26,6 +26,7 @@ public class MenuManager : MonoBehaviour
     {
         circleTransitionAnimator.SetTrigger("Start");
         logoTransitionAnimator.SetTrigger("Start");
+        Time.timeScale = 1;
         Invoke("LoadMainMenu", 1.05f);
     }
 
@@ -43,6 +44,11 @@ public class MenuManager : MonoBehaviour
 
     private void LoadMainMenu()
     {
+        Time.timeScale = 1;
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.PlayMusic();
+        }
         UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }

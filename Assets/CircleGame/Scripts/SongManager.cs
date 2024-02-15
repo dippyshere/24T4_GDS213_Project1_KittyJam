@@ -6,6 +6,7 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 using System;
+using TMPro;
 
 public class SongManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class SongManager : MonoBehaviour
     public AudioSource audioSource;
     public NoteManager noteManager;
     public GameObject noteFeedbackPrefab;
+    public GameObject winScreen;
+    public TextMeshProUGUI winScore;
+    public TextMeshProUGUI tallyScore;
+    public PauseMenu pauseMenu;
     public float songDelayInSeconds;
     public float perfectRange;
     public float goodRange;
@@ -77,6 +82,7 @@ public class SongManager : MonoBehaviour
         noteManager.SetTimeStamps(array);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
+        Invoke(nameof(EndSong), (float)midiFile.GetDuration<MetricTimeSpan>().TotalSeconds + songDelayInSeconds);
     }
 
     public void StartSong()
@@ -105,8 +111,12 @@ public class SongManager : MonoBehaviour
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
-    void Update()
+    public void EndSong()
     {
-        
+        winScreen.SetActive(true);
+        pauseMenu.PauseAction(true);
+        OnApplicationPause(true);
+        winScore.text = "Final Score: " + ScoreManager.Instance.score;
+        tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount + "\nGood: " + ScoreManager.Instance.hitCount + "\nMiss: " + ScoreManager.Instance.missCount;
     }
 }
