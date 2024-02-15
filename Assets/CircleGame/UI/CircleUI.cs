@@ -122,13 +122,13 @@ namespace UnityEngine.UIElements
         {
             while (true)
             {
-                yield return null;
                 Texture2D texture2D = new Texture2D(_renderTexture.width, _renderTexture.height);
                 RenderTexture.active = _renderTexture;
                 texture2D.ReadPixels(new Rect(0, 0, _renderTexture.width, _renderTexture.height), 0, 0);
                 texture2D.Apply();
                 RenderTexture.active = null;
                 _spriteRenderer.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), _pixelsPerUnit);
+                yield return null;
                 yield return null;
                 yield return null;
                 yield return null;
