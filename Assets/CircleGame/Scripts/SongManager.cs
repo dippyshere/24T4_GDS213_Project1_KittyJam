@@ -7,11 +7,15 @@ using System.IO;
 using UnityEngine.Networking;
 using System;
 using TMPro;
+using UnityEngine.UI;
 
 public class SongManager : MonoBehaviour
 {
     public static SongManager Instance;
     public AudioSource audioSource;
+    public TextMeshProUGUI songNameText;
+    public TextMeshProUGUI artistNameText;
+    public Image albumnArtImage;
     public NoteManager noteManager;
     public GameObject noteFeedbackPrefab;
     public GameObject winScreen;
@@ -29,6 +33,10 @@ public class SongManager : MonoBehaviour
     public string fileLocation;
 
     public static MidiFile midiFile;
+    public AudioClip song;
+    public string songName;
+    public string artistName;
+    public Sprite albumnArt;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +50,9 @@ public class SongManager : MonoBehaviour
         {
             ReadFromFile();
         }
+        songNameText.text = songName;
+        artistNameText.text = artistName;
+        albumnArtImage.sprite = albumnArt;
     }
 
     // Used for WebGL and Android, as streaming assets on those platforms are URLs instead of file paths
@@ -87,6 +98,7 @@ public class SongManager : MonoBehaviour
 
     public void StartSong()
     {
+        audioSource.clip = song;
         audioSource.Play();
     }
 
