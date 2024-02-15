@@ -22,14 +22,27 @@ public class MenuManager : MonoBehaviour
         Invoke("LoadGameScene", 1.05f);
     }
 
+    public void StartMenu()
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        Invoke("LoadMainMenu", 1.05f);
+    }
+
     private void LoadGameScene()
     {
         Time.timeScale = 1;
+        AudioManager.instance.StopMusic();
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameType2");
     }
 
     private void LoadOnboarding()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Game2Onboarding");
+    }
+
+    private void LoadMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 }
