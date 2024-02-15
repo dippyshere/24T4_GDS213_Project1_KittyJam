@@ -93,7 +93,7 @@ public class SongManager : MonoBehaviour
         noteManager.SetTimeStamps(array);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
-        Invoke(nameof(EndSong), (float)midiFile.GetDuration<MetricTimeSpan>().TotalSeconds + songDelayInSeconds);
+        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
     }
 
     public void StartSong()
