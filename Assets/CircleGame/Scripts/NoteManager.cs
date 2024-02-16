@@ -7,22 +7,16 @@ using UnityEngine;
 public class NoteManager : MonoBehaviour
 {
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
-    public KeyCode input;
     public GameObject notePrefab;
     public ScoreManager scoreManager;
-    List<Note> notes = new List<Note>();
-    public List<double> timeStamps = new List<double>();
+    List<CircleGemController> notes = new List<CircleGemController>();
+    public List<Vector3> spawnLocations = new List<Vector3>();
+    List<double> timeStamps = new List<double>();
     public Vector3 spawnAreaTopLeft;
     public Vector3 spawnAreaBottomRight;
 
     int spawnIndex = 0;
-    int inputIndex = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -34,6 +28,7 @@ public class NoteManager : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -41,53 +36,88 @@ public class NoteManager : MonoBehaviour
         {
             if (SongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
-                Vector3 spawnPosition = new Vector3(
-                    UnityEngine.Random.Range(spawnAreaTopLeft.x, spawnAreaBottomRight.x),
-                    UnityEngine.Random.Range(spawnAreaTopLeft.y, spawnAreaBottomRight.y),
-                    spawnAreaTopLeft.z
-                );
-                var note = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
-                notes.Add(note.GetComponent<Note>());
-                note.GetComponent<CircleGemController>().assignedTime = (float)timeStamps[spawnIndex];
+                var note = Instantiate(notePrefab, SpawnLocation(), Quaternion.identity);
+                notes.Add(note.GetComponent<CircleGemController>());
+                notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
                 spawnIndex++;
             }
         }
+           
+    }
 
-        if (inputIndex < timeStamps.Count)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+    }
+
+    private Vector3 SpawnLocation()
+    {
+        // return the vector3 of the spawn location in the spawnLocations list if it is not 0, 0, 0
+        // if it is 0, 0, 0, get the location of all notes that currently exist, and pick a random location that is not within a certain distance of any of the existing notes, within the spawn area
+
+        if (spawnLocations.Count - 1 < spawnIndex || spawnLocations[spawnIndex] == new Vector3(0, 0, 0))
         {
-            double timeStamp = timeStamps[inputIndex];
-            double marginOfError = SongManager.Instance.marginOfError;
-            double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            List<Vector3> existingNoteLocations = new List<Vector3>();
+            foreach (var note in notes)
+            {
+                if (note != null)
+                {
+                    existingNoteLocations.Add(note.transform.position);
+                }
+            }
+            Vector3 newLocation = new Vector3(
+                UnityEngine.Random.Range(spawnAreaTopLeft.x, spawnAreaBottomRight.x),
+                UnityEngine.Random.Range(spawnAreaTopLeft.y, spawnAreaBottomRight.y),
+                spawnAreaTopLeft.z
+            );
+            int attempts = 0;
+            while (true)
+            {
+                attempts++;
+                bool tooClose = false;
+                foreach (var location in existingNoteLocations)
+                {
+                    if (Vector3.Distance(location, newLocation) < 6)
+                    {
+                        tooClose = true;
+                        break;
+                    }
+                }
+                if (tooClose && attempts < 100)
+                {
+                    newLocation = new Vector3(
+                        UnityEngine.Random.Range(spawnAreaTopLeft.x, spawnAreaBottomRight.x),
+                        UnityEngine.Random.Range(spawnAreaTopLeft.y, spawnAreaBottomRight.y),
+                        spawnAreaTopLeft.z
+                    );
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return newLocation;
+        }
+        else
+        {
+            return spawnLocations[spawnIndex];
+        }
+    }
 
-            //if (Input.GetKeyDown(input))
-            //{
-            //    if (Math.Abs(audioTime - timeStamp) < marginOfError)
-            //    {
-            //        Hit();
-            //        print($"Hit on {inputIndex} note");
-            //        Destroy(notes[inputIndex].gameObject);
-            //        inputIndex++;
-            //    }
-            //    else
-            //    {
-            //        print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
-            //    }
-            //}
-            //if (timeStamp + marginOfError <= audioTime)
-            //{
-            //    Miss();
-            //    print($"Missed {inputIndex} note");
-            //    inputIndex++;
-            //}
-        }       
-    
-    }
-    private void Hit()
+    private void OnDrawGizmosSelected()
     {
-        scoreManager.Hit();
-    }
-    private void Miss()
-    {
-        scoreManager.Miss();
+        Gizmos.color = Color.red;
+        // draw a sphere at each spawn location if it is not 0, 0, 0
+        foreach (var location in spawnLocations)
+        {
+            if (location != new Vector3(0, 0, 0))
+            {
+                Gizmos.DrawSphere(location, 0.5f);
+            }
+        }
     }
 }

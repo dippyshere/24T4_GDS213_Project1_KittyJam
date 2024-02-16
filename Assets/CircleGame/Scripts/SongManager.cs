@@ -6,32 +6,37 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 using System;
+using TMPro;
+using UnityEngine.UI;
 
 public class SongManager : MonoBehaviour
 {
     public static SongManager Instance;
     public AudioSource audioSource;
+    public TextMeshProUGUI songNameText;
+    public TextMeshProUGUI artistNameText;
+    public Image albumnArtImage;
     public NoteManager noteManager;
+    public GameObject noteFeedbackPrefab;
+    public GameObject winScreen;
+    public TextMeshProUGUI winScore;
+    public TextMeshProUGUI tallyScore;
+    public PauseMenu pauseMenu;
     public float songDelayInSeconds;
-    public double marginOfError; // in seconds
+    public float perfectRange;
+    public float goodRange;
+    public float noteTime;
 
     public int inputDelayInMilliseconds;
     
 
     public string fileLocation;
-    public float noteTime;
-    public float noteSpawnY;
-    public float noteTapY;
-
-    public float noteDespawnY
-    {
-        get
-        {
-            return noteTapY - (noteSpawnY - noteTapY);
-        }
-    }
 
     public static MidiFile midiFile;
+    public AudioClip song;
+    public string songName;
+    public string artistName;
+    public Sprite albumnArt;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +50,9 @@ public class SongManager : MonoBehaviour
         {
             ReadFromFile();
         }
+        songNameText.text = songName;
+        artistNameText.text = artistName;
+        albumnArtImage.sprite = albumnArt;
     }
 
     // Used for WebGL and Android, as streaming assets on those platforms are URLs instead of file paths
@@ -85,10 +93,12 @@ public class SongManager : MonoBehaviour
         noteManager.SetTimeStamps(array);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
+        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
     }
 
     public void StartSong()
     {
+        audioSource.clip = song;
         audioSource.Play();
     }
 
@@ -106,11 +116,19 @@ public class SongManager : MonoBehaviour
 
     public static double GetAudioSourceTime()
     {
+        if (Instance == null || Instance.audioSource == null)
+        {
+            return 0;
+        }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
     }
 
-    void Update()
+    public void EndSong()
     {
-        
+        winScreen.SetActive(true);
+        pauseMenu.PauseAction(true);
+        OnApplicationPause(true);
+        winScore.text = "Final Score: " + ScoreManager.Instance.score;
+        tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount + "\nGood: " + ScoreManager.Instance.hitCount + "\nMiss: " + ScoreManager.Instance.missCount;
     }
 }

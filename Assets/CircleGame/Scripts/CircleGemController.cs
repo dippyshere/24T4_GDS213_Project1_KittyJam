@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CircleGemController : MonoBehaviour
 {
@@ -18,15 +20,23 @@ public class CircleGemController : MonoBehaviour
         {
             spriteRenderer.sprite = sprites[spriteIndex];
         }
+        GetComponent<Animator>().speed = 1 / SongManager.Instance.noteTime;
+        Invoke("OnMiss", (float)(SongManager.Instance.noteTime * 1.15));
     }
 
     public void OnPickup()
     {
         double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
         float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
-        double marginOfError = SongManager.Instance.marginOfError;
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-        Debug.Log("Time since instantiated: " + Mathf.Abs((float)audioTime - assignedTime));
+        ScoreManager.Instance.Hit(Mathf.Abs((float)audioTime - assignedTime), transform.position);
+        CancelInvoke();
+        Destroy(gameObject);
+    }
+
+    public void OnMiss()
+    {
+        ScoreManager.Instance.Miss(transform.position);
         Destroy(gameObject);
     }
 }
