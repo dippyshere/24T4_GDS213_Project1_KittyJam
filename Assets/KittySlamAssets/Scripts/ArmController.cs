@@ -25,8 +25,8 @@ public class ArmController : MonoBehaviour
     [Tooltip("The maximum X position of the safe zone")] private float maxX;
     [Tooltip("The minimum Y position of the safe zone")] private float minY;
     [Tooltip("The maximum Y position of the safe zone")] private float maxY;
-
     [Tooltip("The offset of the camera to account for when controlling arm position")] Vector3 cameraOffset;
+    [Tooltip("If a note has already been hit since the last slam")] private bool noteHit = false;
 
     private void Start()
     {
@@ -201,6 +201,14 @@ public class ArmController : MonoBehaviour
     }
 
     /// <summary>
+    /// Called when the slam animation ends to reset the note hit flag
+    /// </summary>
+    public void OnSlamEnd()
+    {
+        noteHit = false;
+    }
+
+    /// <summary>
     /// Spawns the slam effect at the slam position
     /// </summary>
     /// <returns>The IEnumerator for the coroutine</returns>
@@ -217,11 +225,38 @@ public class ArmController : MonoBehaviour
     /// <param name="other">The game object that was picked up</param>
     public void PickUpItem(GameObject other)
     {
-        Debug.Log("Item");
-        if (other.TryGetComponent<CircleGemController>(out var gem))
+        // get the circle gem controller on all of the objects that are in the capsule collider on the parent of the slam position object
+        CapsuleCollider capsuleCollider = slamPosition.GetComponentInParent<CapsuleCollider>();
+        Collider[] colliders = Physics.OverlapCapsule(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        // run the pickup function on the circle gem controller with the lowest assigned time
+        float lowestAssignedTime = float.MaxValue;
+        CircleGemController lowestAssignedTimeController = null;
+        foreach (Collider collider in colliders)
         {
-            gem.OnPickup();
+            CircleGemController circleGemController = collider.GetComponent<CircleGemController>();
+            if (circleGemController != null && circleGemController.assignedTime < lowestAssignedTime)
+            {
+                lowestAssignedTime = circleGemController.assignedTime;
+                lowestAssignedTimeController = circleGemController;
+            }
         }
+        if (lowestAssignedTimeController != null && !noteHit)
+        {
+            lowestAssignedTimeController.OnPickup();
+            noteHit = true;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // draw the capsule collider check as gizmos
+        CapsuleCollider capsuleCollider = slamPosition.GetComponentInParent<CapsuleCollider>();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        Gizmos.DrawWireSphere(capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        Gizmos.DrawLine(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)) + new Vector3(capsuleCollider.radius / 1.65f, 0, 0), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)) + new Vector3(capsuleCollider.radius / 1.65f, 0, 0));
+        Gizmos.DrawLine(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)) - new Vector3(capsuleCollider.radius / 1.65f, 0, 0), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)) - new Vector3(capsuleCollider.radius / 1.65f, 0, 0));
+
     }
 
 }

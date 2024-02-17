@@ -132,7 +132,6 @@ public class ScoreManager : MonoBehaviour
     {
         GameObject feedbackObject = Instantiate(SongManager.Instance.noteFeedbackPrefab, position, Quaternion.identity);
         feedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
-        Debug.Log("Feedback: " + feedback);
     }
 
     /// <summary>

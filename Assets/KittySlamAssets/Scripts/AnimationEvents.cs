@@ -16,4 +16,12 @@ public class AnimationEvents : MonoBehaviour
     {
         armController.OnSlam();
     }
+
+    /// <summary>
+    /// Trigger resetting note hit flags when the slam ends
+    /// </summary>
+    public void triggerEndSlam()
+    {
+        armController.OnSlamEnd();
+    }
 }
