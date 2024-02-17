@@ -1255,11 +1255,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SongManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4475988346741073303, guid: 26639e29866b601419676d3e8a1f8457,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
         type: 3}
       propertyPath: winScore

@@ -1,8 +1,7 @@
 .radial-progress {
     min-width: 26px;
     min-height: 20px;
-    --track-color: rgb(130, 130, 130);
-    --progress-color: rgb(46, 132, 24);
+    --progress-color: rgb(255, 255, 255);
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 5px;

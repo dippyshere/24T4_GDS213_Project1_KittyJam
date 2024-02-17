@@ -49,7 +49,8 @@ public class ScoreManager : MonoBehaviour
     /// <param name="position">The position of the note that was hit, to display feedback at</param>
     public void Hit(float hitTime, Vector3 position)
     {
-        Debug.Log("Hit time: " + hitTime);
+        // Debug.Log("Hit time: " + hitTime);
+        hitTime *= -1;
         if (hitTime >= -SongManager.Instance.perfectRange && hitTime <= SongManager.Instance.perfectRange)
         {
             ShowNoteFeedback(NoteFeedback.Perfect, position);

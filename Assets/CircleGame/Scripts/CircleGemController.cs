@@ -33,10 +33,8 @@ public class CircleGemController : MonoBehaviour
     /// </summary>
     public void OnPickup()
     {
-        double timeSinceInstantiated = SongManager.GetAudioSourceTime() - timeInstantiated;
-        float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-        ScoreManager.Instance.Hit(Mathf.Abs((float)audioTime - assignedTime), transform.position);
+        ScoreManager.Instance.Hit((float)audioTime - assignedTime, transform.position);
         CancelInvoke();
         Destroy(gameObject);
     }

@@ -21,7 +21,7 @@ public class SongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
     [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
-    [SerializeField, Tooltip("A delay to add before the song begins to play. Leave at 0 for now.")] private float songDelayInSeconds;
+    [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
     [Tooltip("How many seconds a note appears for before it needs to be hit")] public float noteTime;
