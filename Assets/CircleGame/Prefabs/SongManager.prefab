@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1985685805724964026
 Transform:
@@ -55,13 +55,13 @@ MonoBehaviour:
   winScore: {fileID: 0}
   tallyScore: {fileID: 0}
   pauseMenu: {fileID: 0}
-  songDelayInSeconds: 0
+  songDelayInSeconds: 0.5
   perfectRange: 0.1
   goodRange: 0.25
   noteTime: 1
-  inputDelayInMilliseconds: 0
+  inputDelayInMilliseconds: 15
   fileLocation: kittyjam nothingsalright.mid
   song: {fileID: 8300000, guid: 94f65ab04a9cc2f4b852872442534207, type: 3}
   songName: Nothing's Alright
-  artistName: witchgang
+  artistName: WitchGang
   albumnArt: {fileID: 21300000, guid: 22f94b00fa1861d46825cbc866afdaf7, type: 3}

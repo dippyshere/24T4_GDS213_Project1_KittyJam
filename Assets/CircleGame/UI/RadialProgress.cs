@@ -59,6 +59,16 @@ namespace MyUILibrary
             }
         }
 
+        public Color ProgressColor
+        {
+            get => m_ProgressMesh.color;
+            set
+            {
+                m_ProgressMesh.color = value;
+                MarkDirtyRepaint();
+            }
+        }
+
         // This default constructor is RadialProgress's only constructor.
         public RadialProgress()
         {
