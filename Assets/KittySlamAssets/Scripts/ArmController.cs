@@ -194,9 +194,19 @@ public class ArmController : MonoBehaviour
     /// <summary>
     /// Called when the slam animation hits to trigger the screen shake
     /// </summary>
-    public void onSlam()
+    public void OnSlam()
     {
         cameraController.StartCoroutine(cameraController.ShakeCamera(0.3f, 0.4f));
+        StartCoroutine(SpawnSlamEffect());
+    }
+
+    /// <summary>
+    /// Spawns the slam effect at the slam position
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
+    private IEnumerator SpawnSlamEffect()
+    {
+        yield return new WaitForEndOfFrame();
         isSlamming = false;
         Instantiate(slamEffect, slamPosition.position, Quaternion.identity);
     }
