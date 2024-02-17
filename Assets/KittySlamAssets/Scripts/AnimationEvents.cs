@@ -14,6 +14,6 @@ public class AnimationEvents : MonoBehaviour
     /// </summary>
     public void triggerSlam()
     {
-        armController.onSlam();
+        armController.OnSlam();
     }
 }

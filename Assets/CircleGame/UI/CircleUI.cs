@@ -128,13 +128,7 @@ namespace UnityEngine.UIElements
                 texture2D.Apply();
                 RenderTexture.active = null;
                 _spriteRenderer.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), _pixelsPerUnit);
-                yield return null;
-                yield return null;
-                yield return null;
-                yield return null;
-                yield return null;
-                yield return null;
-                yield return null;
+                yield return new WaitForSeconds(0.05f);
             }
         }
 

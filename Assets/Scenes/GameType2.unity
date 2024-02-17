@@ -143,16 +143,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 532045657543119611, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816228681974406682, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4816228682861894171, guid: 18c050638c1519145a9579d74cdb8318,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,11 +200,6 @@ PrefabInstance:
       objectReference: {fileID: 1799152733}
     - target: {fileID: 4816228682861894172, guid: 18c050638c1519145a9579d74cdb8318,
         type: 3}
-      propertyPath: scoreManager
-      value: 
-      objectReference: {fileID: 1206010939}
-    - target: {fileID: 4816228682861894172, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
       propertyPath: cameraController
       value: 
       objectReference: {fileID: 330585548}
@@ -222,21 +207,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerArm
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816228683151687139, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816228683798850872, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816228683840563567, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1540,6 +1510,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2709801848611923776, guid: 2f82767b8b7680b45bedb20070908324,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -106.670044
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709801848611923776, guid: 2f82767b8b7680b45bedb20070908324,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -85.69995
+      objectReference: {fileID: 0}
     - target: {fileID: 7380183960327395356, guid: 2f82767b8b7680b45bedb20070908324,
         type: 3}
       propertyPath: m_Camera
@@ -1774,6 +1754,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 782172335876821627, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_Name
+      value: RestartButton
+      objectReference: {fileID: 0}
     - target: {fileID: 1175751585687703563, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
       propertyPath: logoTransitionAnimator
@@ -1888,6 +1873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3935615248031611919, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_Name
+      value: MenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 8852647906561128829, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
