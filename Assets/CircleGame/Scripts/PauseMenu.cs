@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+/// <summary>
+/// Manages the pause menu
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    public CursorController cursorController;
-
-    public Volume postProcessVolume;
-    public VolumeProfile defaultPostProcess;
-    public VolumeProfile upgradePostProcess;
-
-    public ArmController armController;
+    [SerializeField, Tooltip("Reference to the cursor controller object to control the cursor when pausing/unpausing")] private CursorController cursorController;
+    [SerializeField, Tooltip("Reference to the global post processing volume")] private Volume postProcessVolume;
+    [SerializeField, Tooltip("The post processing profile to use when unpaused")] private VolumeProfile defaultPostProcess;
+    [SerializeField, Tooltip("The post processing profile to use when paused (To enable effects like DOF blur when paused)")] private VolumeProfile upgradePostProcess;
+    [SerializeField, Tooltip("Reference to the player/arm controller to disable movement while paused")] private ArmController armController;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,9 @@ public class PauseMenu : MonoBehaviour
         armController.canSlam = false;
     }
 
+    /// <summary>
+    /// When the pause menu is enabled, unlock the cursor and pause the game
+    /// </summary>
     private void OnEnable()
     {
         cursorController.UnlockCursor();
@@ -31,6 +35,9 @@ public class PauseMenu : MonoBehaviour
         armController.canSlam = false;
     }
 
+    /// <summary>
+    /// When the pause menu is disabled, lock the cursor and unpause the game
+    /// </summary>
     private void OnDisable()
     {
         cursorController.LockCursor();
@@ -39,6 +46,10 @@ public class PauseMenu : MonoBehaviour
         armController.canSlam = true;
     }
 
+    /// <summary>
+    /// Pause or unpause the game
+    /// </summary>
+    /// <param name="pause">True to pause the game, false to unpause the game</param>
     public void PauseAction(bool pause)
     {
         if (pause)

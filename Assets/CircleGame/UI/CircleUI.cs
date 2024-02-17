@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 using MyUILibrary;
 using System.Collections;
 
+// Adapted from https://gist.github.com/AdPetrou/31ee05e6df40791c638004a42901af91
 namespace UnityEngine.UIElements
 {
     public class CircleUI : MonoBehaviour

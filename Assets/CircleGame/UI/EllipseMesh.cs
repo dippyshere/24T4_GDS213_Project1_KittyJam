@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// From https://docs.unity3d.com/Manual/UIE-radial-progress.html
 namespace MyUILibrary
 {
     public class EllipseMesh

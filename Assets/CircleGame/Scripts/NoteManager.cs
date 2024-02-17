@@ -4,19 +4,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the spawning of notes based on the MIDI file
+/// </summary>
 public class NoteManager : MonoBehaviour
 {
-    public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
-    public GameObject notePrefab;
-    public ScoreManager scoreManager;
-    List<CircleGemController> notes = new List<CircleGemController>();
-    public List<Vector3> spawnLocations = new List<Vector3>();
-    List<double> timeStamps = new List<double>();
-    public Vector3 spawnAreaTopLeft;
-    public Vector3 spawnAreaBottomRight;
+    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
+    [SerializeField, Tooltip("Reference to the score manager")] private ScoreManager scoreManager;
+    [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
+    [SerializeField, Tooltip("List of locations to manually place a specific note (Leave at 0,0,0 for random; Ensure Z is always at 4.89)")] private List<Vector3> spawnLocations = new List<Vector3>();
+    [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
+    [SerializeField, Tooltip("Top left position of the random spawn area")] private Vector3 spawnAreaTopLeft;
+    [SerializeField, Tooltip("Bottom right position of the random spawn area")] private Vector3 spawnAreaBottomRight;
 
-    int spawnIndex = 0;
+    [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
 
+    /// <summary>
+    /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
+    /// </summary>
+    /// <param name="array">The array of notes from the MIDI file</param>
     public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
     {
         foreach (var note in array)
@@ -45,20 +52,12 @@ public class NoteManager : MonoBehaviour
            
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
-        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
-        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
-        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
-    }
-
+    /// <summary>
+    /// Determine the location to spawn the note at (Either pre-determined or random, trying to avoid overlapping notes)
+    /// </summary>
+    /// <returns>A Vector3 representing the location to spawn the note at</returns>
     private Vector3 SpawnLocation()
     {
-        // return the vector3 of the spawn location in the spawnLocations list if it is not 0, 0, 0
-        // if it is 0, 0, 0, get the location of all notes that currently exist, and pick a random location that is not within a certain distance of any of the existing notes, within the spawn area
-
         if (spawnLocations.Count - 1 < spawnIndex || spawnLocations[spawnIndex] == new Vector3(0, 0, 0))
         {
             List<Vector3> existingNoteLocations = new List<Vector3>();
@@ -74,6 +73,7 @@ public class NoteManager : MonoBehaviour
                 UnityEngine.Random.Range(spawnAreaTopLeft.y, spawnAreaBottomRight.y),
                 spawnAreaTopLeft.z
             );
+            // Attempt to find a location that doesn't overlap with any existing notes, up to 100 attempts to avoid infinite loop
             int attempts = 0;
             while (true)
             {
@@ -108,10 +108,20 @@ public class NoteManager : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        // Draws the spawn area
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
+        Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+    }
+
     private void OnDrawGizmosSelected()
     {
+        // Draws the spawn locations when the object is selected
         Gizmos.color = Color.red;
-        // draw a sphere at each spawn location if it is not 0, 0, 0
         foreach (var location in spawnLocations)
         {
             if (location != new Vector3(0, 0, 0))
