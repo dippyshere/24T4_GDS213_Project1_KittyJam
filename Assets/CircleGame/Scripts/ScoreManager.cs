@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     [Tooltip("The current combo")] private int comboScore;
     [HideInInspector, Tooltip("The current score")] public long score;
     [Tooltip("The current combo multiplier")] private int multiplier;
-    [Tooltip("The current perfect hit bonus multipler")] private float perfectBonus;
+    [SerializeField, Tooltip("The current perfect hit bonus multipler")] private float perfectBonus = 1;
     [Tooltip("The currently displayed score. This is used to gradually change the score over time")] private long displayedScore;
     [HideInInspector, Tooltip("The count of good hits")] public int hitCount;
     [HideInInspector, Tooltip("The count of perfect hits")] public int perfectCount;
@@ -69,7 +69,9 @@ public class ScoreManager : MonoBehaviour
         }
         else
         {
-            Miss(position);
+            // Fall back to a good hit
+            ShowNoteFeedback(NoteFeedback.Good, position);
+            HitGood();
             return;
         }
     }
@@ -94,9 +96,10 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private void HitGood()
     {
-        score += 1 * multiplier;
+        score += 50 * multiplier;
         hitCount++;
-        if (comboScore % 3 == 0 && comboScore < 8)
+        comboScore++;
+        if (comboScore % 3 == 0 && comboScore < 20)
         {
             multiplier += 1;
         }
@@ -109,9 +112,10 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     private void HitPerfect()
     {
-        score += (long)Mathf.Ceil(1 + multiplier * (long)perfectBonus);
+        score += Mathf.CeilToInt(50 * multiplier * perfectBonus);
         perfectCount++;
-        if (comboScore % 3 == 0 && comboScore < 8)
+        comboScore++;
+        if (comboScore % 3 == 0 && comboScore < 20)
         {
             multiplier += 1;
         }
