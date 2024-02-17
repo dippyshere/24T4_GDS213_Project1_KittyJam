@@ -25,13 +25,13 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Starts the game and transitions to the game scene
     /// </summary>
-    public void StartGameType2()
+    public void StartGameType1()
     {
         circleTransitionAnimator.SetTrigger("Start");
         logoTransitionAnimator.SetTrigger("Start");
         // Unpause the game to allow the scene transition to occur
         Time.timeScale = 1;
-        Invoke("LoadGameScene", 1.05f);
+        Invoke("LoadGameScene1", 1.05f);
     }
 
     /// <summary>
@@ -48,14 +48,14 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Loads the game scene
     /// </summary>
-    private void LoadGameScene()
+    private void LoadGameScene1()
     {
         Time.timeScale = 1;
         if (AudioManager.instance != null)
         {
             AudioManager.instance.StopMusic();
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameType2");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameType1CircleGame");
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void LoadOnboarding()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Game2Onboarding");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameType1Onboarding");
     }
 
     /// <summary>
