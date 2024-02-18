@@ -13,8 +13,7 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
-        circleTransitionAnimator.SetTrigger("End");
-        logoTransitionAnimator.SetTrigger("End");
+        StartCoroutine(EndLoadScreen());
     }
 
     /// <summary>
@@ -62,7 +61,7 @@ public class MenuManager : MonoBehaviour
         {
             AudioManager.instance.StopMusic();
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameType1CircleGame");
+        SceneManager.LoadScene("GameType1CircleGame");
     }
 
     /// <summary>
@@ -70,7 +69,7 @@ public class MenuManager : MonoBehaviour
     /// </summary>
     private void LoadOnboarding()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameType1Onboarding");
+        SceneManager.LoadScene("GameType1Onboarding");
     }
 
     /// <summary>
@@ -83,6 +82,19 @@ public class MenuManager : MonoBehaviour
         {
             AudioManager.instance.PlayMusic();
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Menu");
+    }
+
+    /// <summary>
+    /// Ends the load screen transition
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
+    private IEnumerator EndLoadScreen()
+    {
+        yield return null;
+        yield return null;
+        yield return new WaitForEndOfFrame();
+        circleTransitionAnimator.SetTrigger("End");
+        logoTransitionAnimator.SetTrigger("End");
     }
 }

@@ -100,7 +100,7 @@ public class ScoreManager : MonoBehaviour
         score += 50 * multiplier;
         hitCount++;
         comboScore++;
-        if (comboScore % 3 == 0 && comboScore < 20)
+        if (comboScore % 3 == 0 && comboScore <= 21)
         {
             multiplier += 1;
         }
@@ -116,7 +116,7 @@ public class ScoreManager : MonoBehaviour
         score += Mathf.CeilToInt(50 * multiplier * perfectBonus);
         perfectCount++;
         comboScore++;
-        if (comboScore % 3 == 0 && comboScore < 20)
+        if (comboScore % 3 == 0 && comboScore <= 21)
         {
             multiplier += 1;
         }

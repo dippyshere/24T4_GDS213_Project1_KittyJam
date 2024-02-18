@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
+using System.Globalization;
 
 public class SongManager : MonoBehaviour
 {
@@ -113,6 +114,10 @@ public class SongManager : MonoBehaviour
 
     public void PauseMusic(bool pause)
     {
+        if (audioSource == null)
+        {
+            return;
+        }
         if (pause)
         {
             audioSource.Pause();
@@ -144,7 +149,7 @@ public class SongManager : MonoBehaviour
         winScreen.SetActive(true);
         pauseMenu.PauseAction(true);
         PauseMusic(true);
-        winScore.text = "Final Score: " + ScoreManager.Instance.score;
-        tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount + "\nGood: " + ScoreManager.Instance.hitCount + "\nMiss: " + ScoreManager.Instance.missCount;
+        winScore.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
+        tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }
 }
