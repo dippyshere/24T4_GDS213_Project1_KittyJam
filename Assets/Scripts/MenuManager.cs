@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Manages the transitions between scenes
@@ -9,6 +10,12 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField, Tooltip("The animator that controls the circle wipe")] private Animator circleTransitionAnimator;
     [SerializeField, Tooltip("The animator that controls the logo")] private Animator logoTransitionAnimator;
+
+    private void Start()
+    {
+        circleTransitionAnimator.SetTrigger("End");
+        logoTransitionAnimator.SetTrigger("End");
+    }
 
     /// <summary>
     /// Starts the game and transitions to the onboarding scene

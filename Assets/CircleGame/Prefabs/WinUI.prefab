@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1175751585687703563}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: StartGameType1
         m_Mode: 1
@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 2144382742682162252}
   - component: {fileID: 884835312999839218}
   - component: {fileID: 8852647906561128829}
-  - component: {fileID: 1175751585687703563}
   m_Layer: 5
   m_Name: WinUI
   m_TagString: Untagged
@@ -527,20 +526,6 @@ MonoBehaviour:
   defaultPostProcess: {fileID: 11400000, guid: 367e3fae08ba35443be1bc91c9becf8f, type: 2}
   upgradePostProcess: {fileID: 11400000, guid: 065032fff630e43408469446a9c659f1, type: 2}
   armController: {fileID: 0}
---- !u!114 &1175751585687703563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1183267784409601269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98e56368b1d4e04f9ed6fefb638b7f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circleTransitionAnimator: {fileID: 0}
-  logoTransitionAnimator: {fileID: 0}
 --- !u!1 &3926693804020139342
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,7 +782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1175751585687703563}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: StartMenu
         m_Mode: 1
