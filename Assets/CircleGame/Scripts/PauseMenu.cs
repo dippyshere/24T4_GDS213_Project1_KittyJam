@@ -33,6 +33,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
         armController.canSlam = false;
+        armController.canMove = false;
+        if (SongManager.Instance != null)
+        {
+            SongManager.Instance.PauseMusic(true);
+        }
     }
 
     /// <summary>
@@ -44,6 +49,11 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;
         armController.canSlam = true;
+        armController.canMove = true;
+        if (SongManager.Instance != null)
+        {
+            SongManager.Instance.PauseMusic(false);
+        }
     }
 
     /// <summary>
@@ -58,6 +68,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0f;
             postProcessVolume.profile = upgradePostProcess;
             armController.canSlam = false;
+            armController.canMove = false;
         }
         else
         {
@@ -65,6 +76,7 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1f;
             postProcessVolume.profile = defaultPostProcess;
             armController.canSlam = true;
+            armController.canMove = true;
         }
     }
 }

@@ -111,7 +111,7 @@ public class SongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void OnApplicationPause(bool pause)
+    public void PauseMusic(bool pause)
     {
         if (pause)
         {
@@ -119,7 +119,6 @@ public class SongManager : MonoBehaviour
         }
         else
         {
-            // TODO: Don't unpause if in the pause menu
             audioSource.UnPause();
         }
     }
@@ -144,7 +143,7 @@ public class SongManager : MonoBehaviour
     {
         winScreen.SetActive(true);
         pauseMenu.PauseAction(true);
-        OnApplicationPause(true);
+        PauseMusic(true);
         winScore.text = "Final Score: " + ScoreManager.Instance.score;
         tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount + "\nGood: " + ScoreManager.Instance.hitCount + "\nMiss: " + ScoreManager.Instance.missCount;
     }

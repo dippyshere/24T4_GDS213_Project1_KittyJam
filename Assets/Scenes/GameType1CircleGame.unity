@@ -136,6 +136,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &69884407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5310793283472600754, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
+    type: 3}
+  m_PrefabInstance: {fileID: 1143890027}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98e56368b1d4e04f9ed6fefb638b7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &92704580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,12 +887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1360212640 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 23328144652267665, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
-    type: 3}
-  m_PrefabInstance: {fileID: 1143890027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1524558461 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1183267784409601269, guid: fc717395e28400e4e81eaa7b396b55da,
@@ -1015,12 +1021,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1720083035 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6530040986964341429, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
-    type: 3}
-  m_PrefabInstance: {fileID: 1143890027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1762240865 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4338191402115209750, guid: 2f82767b8b7680b45bedb20070908324,
@@ -1393,11 +1393,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5538376349447218413, guid: ab403a5ea2bb0284a848ece157027232,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1516,16 +1511,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2709801848611923776, guid: 2f82767b8b7680b45bedb20070908324,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -106.66992
-      objectReference: {fileID: 0}
-    - target: {fileID: 2709801848611923776, guid: 2f82767b8b7680b45bedb20070908324,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -85.69995
-      objectReference: {fileID: 0}
     - target: {fileID: 7380183960327395356, guid: 2f82767b8b7680b45bedb20070908324,
         type: 3}
       propertyPath: m_Camera
@@ -1604,11 +1589,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoteManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7974877567743600957, guid: 3f60e9594d94d9f4c95b6ba37ee15d17,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1627,6 +1607,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause
       objectReference: {fileID: 0}
+    - target: {fileID: 4686988112093603996, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 69884407}
     - target: {fileID: 6048192734255498861, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
         type: 3}
       propertyPath: armController
@@ -1642,6 +1627,11 @@ PrefabInstance:
       propertyPath: postProcessVolume
       value: 
       objectReference: {fileID: 1920050464}
+    - target: {fileID: 7535162117693882948, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 69884407}
     - target: {fileID: 7815499184689258039, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1742,16 +1732,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9080331677902862207, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
-        type: 3}
-      propertyPath: logoTransitionAnimator
-      value: 
-      objectReference: {fileID: 1720083035}
-    - target: {fileID: 9080331677902862207, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
-        type: 3}
-      propertyPath: circleTransitionAnimator
-      value: 
-      objectReference: {fileID: 1360212640}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1765,21 +1745,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1175751585687703563, guid: fc717395e28400e4e81eaa7b396b55da,
-        type: 3}
-      propertyPath: logoTransitionAnimator
-      value: 
-      objectReference: {fileID: 1720083035}
-    - target: {fileID: 1175751585687703563, guid: fc717395e28400e4e81eaa7b396b55da,
-        type: 3}
-      propertyPath: circleTransitionAnimator
-      value: 
-      objectReference: {fileID: 1360212640}
     - target: {fileID: 1183267784409601269, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
       propertyPath: m_Name
       value: WinUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1524319781039048210, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 69884407}
     - target: {fileID: 3331199631618960534, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1880,6 +1855,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3395732918343648338, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 69884407}
     - target: {fileID: 8852647906561128829, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
       propertyPath: armController
