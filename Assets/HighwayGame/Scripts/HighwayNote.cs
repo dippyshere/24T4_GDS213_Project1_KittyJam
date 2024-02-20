@@ -28,7 +28,6 @@ public class HighwayNote : MonoBehaviour
         {
             //transform.localPosition = Vector3.Lerp(Vector3.forward * HighwaySongManager.Instance.noteSpawnY, Vector3.forward * HighwaySongManager.Instance.noteDespawnY, t);
             transform.Translate(Vector3.forward * (HighwaySongManager.Instance.noteDespawnY - HighwaySongManager.Instance.noteSpawnY) * Time.deltaTime / (HighwaySongManager.Instance.noteTime * 2));
-            GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }

@@ -9,6 +9,7 @@ public class HighwayLane : MonoBehaviour
     public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
     public KeyCode input;
     public GameObject notePrefab;
+    public GameObject hitPrefab;
     List<HighwayNote> notes = new List<HighwayNote>();
     public List<double> timeStamps = new List<double>();
 
@@ -56,6 +57,7 @@ public class HighwayLane : MonoBehaviour
                 if (Math.Abs(audioTime - timeStamp) < marginOfError)
                 {
                     Hit();
+                    Instantiate(hitPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z - 5), Quaternion.identity);
                     print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
