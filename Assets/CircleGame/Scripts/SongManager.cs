@@ -71,11 +71,9 @@ public class SongManager : MonoBehaviour
         {
             // Otherwise, read the MIDI file from the downloaded data
             byte[] results = www.downloadHandler.data;
-            using (var stream = new MemoryStream(results))
-            {
-                midiFile = MidiFile.Read(stream);
-                GetDataFromMidi();
-            }
+            using var stream = new MemoryStream(results);
+            midiFile = MidiFile.Read(stream);
+            GetDataFromMidi();
         }
     }
 
@@ -94,7 +92,7 @@ public class SongManager : MonoBehaviour
     public void GetDataFromMidi()
     {
         var notes = midiFile.GetNotes();
-        var array = new Melanchall.DryWetMidi.Interaction.Note[notes.Count];
+        var array = new Note[notes.Count];
         notes.CopyTo(array, 0);
 
         noteManager.SetTimeStamps(array);

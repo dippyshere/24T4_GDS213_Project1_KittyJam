@@ -45,12 +45,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  lanes:
+  songNameText: {fileID: 0}
+  artistNameText: {fileID: 0}
+  albumnArtImage: {fileID: 0}
+  highwayLanes:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  goodHitPrefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
+  perfectHitPrefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
+  winScreen: {fileID: 0}
+  winScore: {fileID: 0}
+  tallyScore: {fileID: 0}
+  pauseMenu: {fileID: 0}
   songDelayInSeconds: 0
-  marginOfError: 0.2
+  perfectRange: 0.1
+  goodRange: 0.25
+  trackSpeed: 1
+  noteSpawnZ: 10
+  noteTapZ: -5
   inputDelayInMilliseconds: 0
-  fileLocation: kittyjam nothingsalright.mid
+  fileLocation: kitty jam test.mid
+  bpm: 89
+  song: {fileID: 8300000, guid: 94f65ab04a9cc2f4b852872442534207, type: 3}
+  songName: Nothing's Alright
+  artistName: WitchGang
+  albumnArt: {fileID: 21300000, guid: 22f94b00fa1861d46825cbc866afdaf7, type: 3}
   noteTime: 2
-  noteSpawnY: 0
-  noteTapY: 0

@@ -90,6 +90,14 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Loads the game scene
     /// </summary>
+    private void LoadTempGameSelect()
+    {
+        SceneManager.LoadScene("TempGameSelect");
+    }
+
+    /// <summary>
+    /// Loads the game scene
+    /// </summary>
     private void LoadGameScene1()
     {
         Time.timeScale = 1;

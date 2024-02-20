@@ -46,4 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSFX: {fileID: 0}
   missSFX: {fileID: 0}
+  multiplierText: {fileID: 0}
   scoreText: {fileID: 0}
+  comboText: {fileID: 0}
+  score: 0
+  perfectBonus: 1.5
+  hitCount: 0
+  perfectCount: 0
+  missCount: 0

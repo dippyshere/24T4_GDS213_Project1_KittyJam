@@ -6,22 +6,19 @@ using UnityEngine;
 
 public class HighwayLane : MonoBehaviour
 {
-    public Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
-    public KeyCode input;
-    public GameObject notePrefab;
-    public GameObject hitPrefab;
-    List<HighwayNote> notes = new List<HighwayNote>();
-    public List<double> timeStamps = new List<double>();
+    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [Tooltip("The keybind to activate the lane")] public KeyCode input;
+    [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
+    [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
+    [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
+    [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
+    [Tooltip("The index of the currently pending input")] private int inputIndex = 0;
 
-    int spawnIndex = 0;
-    int inputIndex = 0;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
+    /// <summary>
+    /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
+    /// </summary>
+    /// <param name="array">The array of notes from the MIDI file</param>
+    public void SetTimeStamps(Note[] array)
     {
         foreach (var note in array)
         {
@@ -32,6 +29,7 @@ public class HighwayLane : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -49,39 +47,26 @@ public class HighwayLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double marginOfError = HighwaySongManager.Instance.marginOfError;
             double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
             if (Input.GetKeyDown(input))
             {
-                if (Math.Abs(audioTime - timeStamp) < marginOfError)
+                NoteFeedback result = HighwayScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+                Debug.Log(result);
+                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
                 {
-                    Hit();
-                    Instantiate(hitPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z - 5), Quaternion.identity);
-                    print($"Hit on {inputIndex} note");
                     Destroy(notes[inputIndex].gameObject);
                     inputIndex++;
                 }
-                else
+                if (result == NoteFeedback.Miss)
                 {
-                    print($"Hit inaccurate on {inputIndex} note with {Math.Abs(audioTime - timeStamp)} delay");
+                    inputIndex++;
                 }
             }
-            if (timeStamp + marginOfError <= audioTime)
+            if (timeStamp + HighwaySongManager.Instance.goodRange <= audioTime)
             {
-                Miss();
-                print($"Missed {inputIndex} note");
                 inputIndex++;
             }
-        }       
-    
-    }
-    private void Hit()
-    {
-        HighwayScoreManager.Hit();
-    }
-    private void Miss()
-    {
-        HighwayScoreManager.Miss();
+        }
     }
 }

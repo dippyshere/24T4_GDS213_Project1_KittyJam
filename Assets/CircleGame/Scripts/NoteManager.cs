@@ -24,7 +24,7 @@ public class NoteManager : MonoBehaviour
     /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
     /// </summary>
     /// <param name="array">The array of notes from the MIDI file</param>
-    public void SetTimeStamps(Melanchall.DryWetMidi.Interaction.Note[] array)
+    public void SetTimeStamps(Note[] array)
     {
         foreach (var note in array)
         {

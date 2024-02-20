@@ -9,7 +9,7 @@ public class CircleGemController : MonoBehaviour
 {
     [SerializeField, Tooltip("List of potential sprites for the gem")] private Sprite[] sprites;
     [SerializeField, Tooltip("The sprite renderers for the gem")] private SpriteRenderer[] spriteRenderers;
-    [Tooltip("Time in the song that the gem was instantiated")] double timeInstantiated;
+    [HideInInspector, Tooltip("Time in the song that the gem was instantiated")] public double timeInstantiated;
     [HideInInspector, Tooltip("Time in the song the gem is assigned to")] public float assignedTime;
 
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class CircleGemController : MonoBehaviour
     public void OnPickup()
     {
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
-        ScoreManager.Instance.Hit((float)audioTime - assignedTime, transform.position);
+        ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
         Destroy(gameObject);
     }
