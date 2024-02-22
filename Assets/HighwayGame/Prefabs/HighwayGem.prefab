@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1679635116095923822}
   - component: {fileID: -3859333966556258667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HighwayGem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5868988344343292475}
   - component: {fileID: 2231683826541623487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5334659315039138196}
   - component: {fileID: 8314031979908958401}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

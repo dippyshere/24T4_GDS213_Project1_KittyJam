@@ -14,12 +14,18 @@ public class HighwaySongManager : MonoBehaviour
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static HighwaySongManager Instance;
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
-    [SerializeField, Tooltip("Refernce to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
+    [SerializeField, Tooltip("Reference to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
     [SerializeField, Tooltip("Reference to the image object that displays the albumn art")] private Image albumnArtImage;
     [SerializeField, Tooltip("Reference to the note manager")] private HighwayLane[] highwayLanes;
     [Tooltip("The prefab to spawn when hitting a note with good timing")] public GameObject goodHitPrefab;
     [Tooltip("The prefab to spawn when hitting a note with perfect timing")] public GameObject perfectHitPrefab;
-    [SerializeField, Tooltip("Refernece to the win screen game object")] private GameObject winScreen;
+    [SerializeField, Tooltip("The prefab to use on up beat markers")] private GameObject upBeatPrefab;
+    [SerializeField, Tooltip("The prefab to use on down beat markers")] private GameObject downBeatPrefab;
+    [Tooltip("Timestamps for up beat markers")] private List<float> upBeatTimestamps = new List<float>();
+    [Tooltip("Timestamps for down beat markers")] private List<float> downBeatTimestamps = new List<float>();
+    [Tooltip("The current index of the up beat marker")] private int upBeatIndex = 0;
+    [Tooltip("The current index of the down beat marker")] private int downBeatIndex = 0;
+    [SerializeField, Tooltip("Reference to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
     [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
@@ -111,8 +117,49 @@ public class HighwaySongManager : MonoBehaviour
 
         foreach (var lane in highwayLanes) lane.SetTimeStamps(array);
 
+        float beatTime = 60f / bpm;
+        float time = songDelayInSeconds;
+        while (time < midiFile.GetDuration<MetricTimeSpan>().TotalSeconds)
+        {
+            upBeatTimestamps.Add(time);
+            time += beatTime;
+            for (int i = 0; i < 3; i++)
+            {
+                downBeatTimestamps.Add(time);
+                time += beatTime;
+            }
+        }
+        upBeatTimestamps.RemoveRange(0, 2);
+        downBeatTimestamps.RemoveRange(0, 6);
+
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
+    }
+
+    private void Update()
+    {
+        if (upBeatIndex < upBeatTimestamps.Count)
+        {
+            if (GetAudioSourceTime() >= upBeatTimestamps[upBeatIndex] - noteTime)
+            {
+                Instantiate(upBeatPrefab, transform);
+                upBeatIndex++;
+            }
+        }
+
+        if (downBeatIndex < downBeatTimestamps.Count)
+        {
+            if (GetAudioSourceTime() >= downBeatTimestamps[downBeatIndex] - noteTime)
+            {
+                Instantiate(downBeatPrefab, transform);
+                downBeatIndex++;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
+        {
+            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
+        }
     }
 
     /// <summary>
@@ -161,7 +208,7 @@ public class HighwaySongManager : MonoBehaviour
         winScreen.SetActive(true);
         pauseMenu.PauseAction(true);
         PauseMusic(true);
-        winScore.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
-        tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
+        winScore.text = "Final Score: " + HighwayScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
+        tallyScore.text = "Perfect: " + HighwayScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + HighwayScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + HighwayScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }
 }

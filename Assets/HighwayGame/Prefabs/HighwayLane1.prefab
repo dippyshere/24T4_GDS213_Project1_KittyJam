@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379951634262797926}
   - component: {fileID: 21523265326193804}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: turbo pounce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5208183817420050822}
   - component: {fileID: 1587038473196695214}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HighwayLane1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,9 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632d4f52be24e44f9ced2a3b066be53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 0
+  noteRestriction: 5
   input: 100
   notePrefab: {fileID: 1679635116095923819, guid: 13a22231298e1c34db54f39b014dc210,
     type: 3}
-  hitPrefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
-  timeStamps: []

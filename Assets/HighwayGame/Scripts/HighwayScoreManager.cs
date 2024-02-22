@@ -132,10 +132,20 @@ public class HighwayScoreManager : MonoBehaviour
         switch (feedback)
         {
             case NoteFeedback.Good:
-                Instantiate(HighwaySongManager.Instance.goodHitPrefab, position, Quaternion.identity);
+                GameObject feedbackObject = Instantiate(HighwaySongManager.Instance.goodHitPrefab, position, Quaternion.identity);
+                feedbackObject.layer = 7;
+                foreach (Transform child in feedbackObject.transform)
+                {
+                    child.gameObject.layer = 7;
+                }
                 break;
             case NoteFeedback.Perfect:
-                Instantiate(HighwaySongManager.Instance.goodHitPrefab, position, Quaternion.identity);
+                feedbackObject = Instantiate(HighwaySongManager.Instance.perfectHitPrefab, position, Quaternion.identity);
+                feedbackObject.layer = 7;
+                foreach (Transform child in feedbackObject.transform)
+                {
+                    child.gameObject.layer = 7;
+                }
                 break;
         }
     }

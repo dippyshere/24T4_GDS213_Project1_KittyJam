@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2931111176987468618}
   - component: {fileID: 6476581313077730306}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SongManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,6 +55,10 @@ MonoBehaviour:
   - {fileID: 0}
   goodHitPrefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
   perfectHitPrefab: {fileID: 100008, guid: 1ca16f2a31fb6a548ad8954bed1d321f, type: 3}
+  upBeatPrefab: {fileID: 7986151604820468146, guid: c94d01221355dd14e96dd63d37d1cd49,
+    type: 3}
+  downBeatPrefab: {fileID: 6297570770583343079, guid: 9ddf4f6433174e044b0e1cb5cb1e5eb1,
+    type: 3}
   winScreen: {fileID: 0}
   winScore: {fileID: 0}
   tallyScore: {fileID: 0}
@@ -66,7 +70,7 @@ MonoBehaviour:
   noteSpawnZ: 10
   noteTapZ: -5
   inputDelayInMilliseconds: 0
-  fileLocation: kitty jam test.mid
+  fileLocation: kittyjam nothingsalright.mid
   bpm: 89
   song: {fileID: 8300000, guid: 94f65ab04a9cc2f4b852872442534207, type: 3}
   songName: Nothing's Alright
