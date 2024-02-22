@@ -25,7 +25,31 @@ public class MenuManager : MonoBehaviour
         circleTransitionAnimator.SetTrigger("Start");
         logoTransitionAnimator.SetTrigger("Start");
         // Load the onboarding scene after the transition animation finishes
-        Invoke("LoadOnboarding", 1.05f);
+        Invoke("LoadTempGameSelect", 1.05f);
+    }
+
+    /// <summary>
+    /// Starts the game and transitions to the onboarding scene
+    /// </summary>
+    public void StartGameType1Onboarding()
+    {
+        // Start the circle and logo transition animations
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        // Load the onboarding scene after the transition animation finishes
+        Invoke("LoadOnboarding1", 1.05f);
+    }
+
+    /// <summary>
+    /// Starts the game and transitions to the onboarding scene
+    /// </summary>
+    public void StartGameType2Onboarding()
+    {
+        // Start the circle and logo transition animations
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        // Load the onboarding scene after the transition animation finishes
+        Invoke("LoadOnboarding2", 1.05f);
     }
 
     /// <summary>
@@ -38,6 +62,18 @@ public class MenuManager : MonoBehaviour
         // Unpause the game to allow the scene transition to occur
         Time.timeScale = 1;
         Invoke("LoadGameScene1", 1.05f);
+    }
+
+    /// <summary>
+    /// Starts the game and transitions to the game scene
+    /// </summary>
+    public void StartGameType2()
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        // Unpause the game to allow the scene transition to occur
+        Time.timeScale = 1;
+        Invoke("LoadGameScene2", 1.05f);
     }
 
     /// <summary>
@@ -54,6 +90,14 @@ public class MenuManager : MonoBehaviour
     /// <summary>
     /// Loads the game scene
     /// </summary>
+    private void LoadTempGameSelect()
+    {
+        SceneManager.LoadScene("TempGameSelect");
+    }
+
+    /// <summary>
+    /// Loads the game scene
+    /// </summary>
     private void LoadGameScene1()
     {
         Time.timeScale = 1;
@@ -65,11 +109,32 @@ public class MenuManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Loads the game scene
+    /// </summary>
+    private void LoadGameScene2()
+    {
+        Time.timeScale = 1;
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.StopMusic();
+        }
+        SceneManager.LoadScene("GameType2HighwayGame");
+    }
+
+    /// <summary>
     /// Loads the onboarding scene
     /// </summary>
-    private void LoadOnboarding()
+    private void LoadOnboarding1()
     {
         SceneManager.LoadScene("GameType1Onboarding");
+    }
+
+    /// <summary>
+    /// Loads the onboarding scene
+    /// </summary>
+    private void LoadOnboarding2()
+    {
+        SceneManager.LoadScene("GameType2Onboarding");
     }
 
     /// <summary>

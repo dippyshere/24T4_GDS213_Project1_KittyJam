@@ -63,14 +63,7 @@ public class ArmController : MonoBehaviour
 
         if (canMove && Cursor.lockState == CursorLockMode.Locked)
         {
-            if (Application.platform == RuntimePlatform.WebGLPlayer)
-            {
-                mousePosition += new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0) * armSensitivityMultiplier * 0.5f;
-            }
-            else
-            {
-                mousePosition += new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0) * armSensitivityMultiplier;
-            }
+            mousePosition += new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0) * armSensitivityMultiplier;
             mousePosition.x = Mathf.Clamp(mousePosition.x, -8 * 1.3f, 8 * 1.3f);
             mousePosition.y = Mathf.Clamp(mousePosition.y, -4 * 1.3f, 4 * 1.3f);
             transform.position = Vector3.Lerp(transform.position, mousePosition, armSpeed * Time.deltaTime);

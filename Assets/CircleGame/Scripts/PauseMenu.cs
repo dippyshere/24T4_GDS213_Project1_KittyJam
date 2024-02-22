@@ -21,7 +21,11 @@ public class PauseMenu : MonoBehaviour
         cursorController.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
-        armController.canSlam = false;
+        if (armController != null)
+        {
+            armController.canSlam = false;
+            armController.canMove = false;
+        }
     }
 
     /// <summary>
@@ -32,11 +36,18 @@ public class PauseMenu : MonoBehaviour
         cursorController.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
-        armController.canSlam = false;
-        armController.canMove = false;
+        if (armController != null)
+        {
+            armController.canSlam = false;
+            armController.canMove = false;
+        }
         if (SongManager.Instance != null)
         {
             SongManager.Instance.PauseMusic(true);
+        }
+        if (HighwaySongManager.Instance != null)
+        {
+            HighwaySongManager.Instance.PauseMusic(true);
         }
     }
 
@@ -48,11 +59,18 @@ public class PauseMenu : MonoBehaviour
         cursorController.LockCursor();
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;
-        armController.canSlam = true;
-        armController.canMove = true;
+        if (armController != null)
+        {
+            armController.canSlam = true;
+            armController.canMove = true;
+        }
         if (SongManager.Instance != null)
         {
             SongManager.Instance.PauseMusic(false);
+        }
+        if (HighwaySongManager.Instance != null)
+        {
+            HighwaySongManager.Instance.PauseMusic(false);
         }
     }
 
@@ -67,16 +85,22 @@ public class PauseMenu : MonoBehaviour
             cursorController.UnlockCursor();
             Time.timeScale = 0f;
             postProcessVolume.profile = upgradePostProcess;
-            armController.canSlam = false;
-            armController.canMove = false;
+            if (armController != null)
+            {
+                armController.canSlam = false;
+                armController.canMove = false;
+            }
         }
         else
         {
             cursorController.LockCursor();
             Time.timeScale = 1f;
             postProcessVolume.profile = defaultPostProcess;
-            armController.canSlam = true;
-            armController.canMove = true;
+            if (armController != null)
+            {
+                armController.canSlam = true;
+                armController.canMove = true;
+            }
         }
     }
 }

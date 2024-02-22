@@ -47,7 +47,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="hitTime">The time the note was hit. The closer to 0, the better</param>
     /// <param name="position">The position of the note that was hit, to display feedback at</param>
-    public void Hit(float hitTime, Vector3 position)
+    public void Hit(double hitTime, Vector3 position)
     {
         // Debug.Log("Hit time: " + hitTime);
         hitTime *= -1;
