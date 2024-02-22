@@ -16,7 +16,7 @@ public class CameraDirector : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(10);
             int newAnimation = Random.Range(1, 6);
             while (newAnimation == previousAnimation)
             {

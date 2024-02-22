@@ -6,6 +6,7 @@ public class HighwayNote : MonoBehaviour
 {
     double timeInstantiated;
     public float assignedTime;
+    [SerializeField] private SpriteRenderer visualSprite;
 
     void Start()
     {
@@ -33,5 +34,6 @@ public class HighwayNote : MonoBehaviour
     public void OnMiss()
     {
         HighwayScoreManager.Instance.Miss(transform.position);
+        visualSprite.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
     }
 }
