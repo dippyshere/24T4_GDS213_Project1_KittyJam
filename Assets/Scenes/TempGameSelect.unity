@@ -649,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play CircleGame
+  m_text: Paw Percussion
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -784,7 +784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play HighwayGame
+  m_text: Feline Fretboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1070,14 +1070,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 707681386}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartGameType1Onboarding
-        m_Mode: 1
+        m_MethodName: StartLoadingSceneMusicContinue
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: GameType1Onboarding
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &790228892
@@ -1203,14 +1203,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 707681386}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartGameType2
-        m_Mode: 1
+        m_MethodName: StartLoadingSceneMusicStop
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: GameType2HighwayGame
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1045446797

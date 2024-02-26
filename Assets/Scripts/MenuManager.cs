@@ -11,155 +11,74 @@ public class MenuManager : MonoBehaviour
     [SerializeField, Tooltip("The animator that controls the circle wipe")] private Animator circleTransitionAnimator;
     [SerializeField, Tooltip("The animator that controls the logo")] private Animator logoTransitionAnimator;
 
-    private void Start()
-    {
-        StartCoroutine(EndLoadScreen());
-    }
-
-    /// <summary>
-    /// Starts the game and transitions to the onboarding scene
-    /// </summary>
-    public void StartGame()
-    {
-        // Start the circle and logo transition animations
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        // Load the onboarding scene after the transition animation finishes
-        Invoke("LoadTempGameSelect", 1.05f);
-    }
-
-    /// <summary>
-    /// Starts the game and transitions to the onboarding scene
-    /// </summary>
-    public void StartGameType1Onboarding()
-    {
-        // Start the circle and logo transition animations
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        // Load the onboarding scene after the transition animation finishes
-        Invoke("LoadOnboarding1", 1.05f);
-    }
-
-    /// <summary>
-    /// Starts the game and transitions to the onboarding scene
-    /// </summary>
-    public void StartGameType2Onboarding()
-    {
-        // Start the circle and logo transition animations
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        // Load the onboarding scene after the transition animation finishes
-        Invoke("LoadOnboarding2", 1.05f);
-    }
-
-    /// <summary>
-    /// Starts the game and transitions to the game scene
-    /// </summary>
-    public void StartGameType1()
-    {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        // Unpause the game to allow the scene transition to occur
-        Time.timeScale = 1;
-        Invoke("LoadGameScene1", 1.05f);
-    }
-
-    /// <summary>
-    /// Starts the game and transitions to the game scene
-    /// </summary>
-    public void StartGameType2()
-    {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        // Unpause the game to allow the scene transition to occur
-        Time.timeScale = 1;
-        Invoke("LoadGameScene2", 1.05f);
-    }
-
-    /// <summary>
-    /// Transitions to the main menu scene
-    /// </summary>
-    public void StartMenu()
-    {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        Time.timeScale = 1;
-        Invoke("LoadMainMenu", 1.05f);
-    }
-
-    /// <summary>
-    /// Loads the game scene
-    /// </summary>
-    private void LoadTempGameSelect()
-    {
-        SceneManager.LoadScene("TempGameSelect");
-    }
-
-    /// <summary>
-    /// Loads the game scene
-    /// </summary>
-    private void LoadGameScene1()
-    {
-        Time.timeScale = 1;
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.StopMusic();
-        }
-        SceneManager.LoadScene("GameType1CircleGame");
-    }
-
-    /// <summary>
-    /// Loads the game scene
-    /// </summary>
-    private void LoadGameScene2()
-    {
-        Time.timeScale = 1;
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.StopMusic();
-        }
-        SceneManager.LoadScene("GameType2HighwayGame");
-    }
-
-    /// <summary>
-    /// Loads the onboarding scene
-    /// </summary>
-    private void LoadOnboarding1()
-    {
-        SceneManager.LoadScene("GameType1Onboarding");
-    }
-
-    /// <summary>
-    /// Loads the onboarding scene
-    /// </summary>
-    private void LoadOnboarding2()
-    {
-        SceneManager.LoadScene("GameType2Onboarding");
-    }
-
-    /// <summary>
-    /// Loads the main menu scene
-    /// </summary>
-    private void LoadMainMenu()
-    {
-        Time.timeScale = 1;
-        if (AudioManager.instance != null)
-        {
-            AudioManager.instance.PlayMusic();
-        }
-        SceneManager.LoadScene("Menu");
-    }
-
-    /// <summary>
-    /// Ends the load screen transition
-    /// </summary>
-    /// <returns>The IEnumerator for the coroutine</returns>
-    private IEnumerator EndLoadScreen()
+    private IEnumerator Start()
     {
         yield return null;
         yield return null;
         yield return new WaitForEndOfFrame();
         circleTransitionAnimator.SetTrigger("End");
         logoTransitionAnimator.SetTrigger("End");
+    }
+
+    /// <summary>
+    /// Transitions to a scene, without playing/stopping music
+    /// </summary>
+    /// <param name="sceneToLoad">The scene to load</param>
+    public void StartLoadingSceneMusicContinue(string sceneToLoad)
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 0));
+    }
+
+    /// <summary>
+    /// Transitions to a scene, starting the music
+    /// </summary>
+    /// <param name="sceneToLoad">The scene to load</param>
+    public void StartLoadingSceneMusicStart(string sceneToLoad)
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 1));
+    }
+
+    /// <summary>
+    /// Transitions to a scene, stopping the music
+    /// </summary>
+    /// <param name="sceneToLoad">The scene to load</param>
+    public void StartLoadingSceneMusicStop(string sceneToLoad)
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 2));
+    }
+
+    /// <summary>
+    /// Loads the scene with the desired music behaviour
+    /// </summary>
+    /// <param name="sceneToLoad">The scene to load</param>
+    /// <param name="musicBehaviour">Continue, start, or stop the music</param>
+    /// <returns>The IEnumerator for the coroutine</returns>
+    private IEnumerator LoadSceneCoroutine(string sceneToLoad, int musicBehaviour)
+    {
+        if (AudioManager.instance != null)
+        {
+            switch (musicBehaviour)
+            {
+                case 0:
+                    yield return new WaitForSecondsRealtime(1.05f);
+                    break;
+                case 1:
+                    AudioManager.instance.PlayMusic();
+                    yield return new WaitForSecondsRealtime(1.05f);
+                    break;
+                case 2:
+                    yield return new WaitForSecondsRealtime(1.05f);
+                    AudioManager.instance.StopMusic();
+                    break;
+            }
+        }
+        Time.timeScale = 1;
+        SceneManager.LoadScene(sceneToLoad);
     }
 }
