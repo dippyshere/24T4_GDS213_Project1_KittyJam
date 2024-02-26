@@ -34,7 +34,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 2800000, guid: c03536bece55f4144981fa6cfde689fe, type: 3}
-        m_Scale: {x: 2, y: 10}
+        m_Scale: {x: 3, y: 15}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 2800000, guid: 2a0033af4d4825f448b2500de98138ff, type: 3}
@@ -58,7 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: c03536bece55f4144981fa6cfde689fe, type: 3}
-        m_Scale: {x: 2, y: 10}
+        m_Scale: {x: 3, y: 15}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
         m_Texture: {fileID: 0}
@@ -125,7 +125,7 @@ Material:
     - _ReceiveShadows: 0
     - _SampleGI: 0
     - _Shininess: 0
-    - _Smoothness: 0.5
+    - _Smoothness: 0.429
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _SpecSource: 0
@@ -141,7 +141,7 @@ Material:
     - _EmissionColor: {r: 0.116970696, g: 0.057805434, b: 0.5209957, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.19999993, g: 0.19999993, b: 0.19999993, a: 0.5}
+    - _SpecColor: {r: 0.19999894, g: 0.19999894, b: 0.19999894, a: 0.429}
   m_BuildTextureStacks: []
 --- !u!114 &8167889668648964788
 MonoBehaviour:
