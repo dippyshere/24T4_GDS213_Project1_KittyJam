@@ -11741,6 +11741,7 @@ GameObject:
   - component: {fileID: 954738212}
   - component: {fileID: 954738211}
   - component: {fileID: 954738213}
+  - component: {fileID: 954738214}
   m_Layer: 5
   m_Name: HighwayRender
   m_TagString: Untagged
@@ -11814,6 +11815,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c550539740e294687724c6b848b8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &954738214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954738209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a28455319a41d446a2f0ecac2939de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveSpeed: 1
 --- !u!114 &1038713256 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5199116679072573677, guid: 2f82767b8b7680b45bedb20070908324,
@@ -13925,6 +13939,11 @@ PrefabInstance:
       propertyPath: artistNameText
       value: 
       objectReference: {fileID: 1038713256}
+    - target: {fileID: 6476581313077730306, guid: 9f2d9f2778972674ca00dc440094adb3,
+        type: 3}
+      propertyPath: highwayDissolve
+      value: 
+      objectReference: {fileID: 954738214}
     - target: {fileID: 6476581313077730306, guid: 9f2d9f2778972674ca00dc440094adb3,
         type: 3}
       propertyPath: perfectHitPrefab

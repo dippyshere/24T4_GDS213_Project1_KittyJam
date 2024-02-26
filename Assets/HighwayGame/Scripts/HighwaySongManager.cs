@@ -29,6 +29,7 @@ public class HighwaySongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
     [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
+    [SerializeField, Tooltip("Reference to the highway dissolve manager")] private HighwayDissolve highwayDissolve;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
@@ -133,7 +134,9 @@ public class HighwaySongManager : MonoBehaviour
         downBeatTimestamps.RemoveRange(0, 6);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
-        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
+        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds - 1f);
+        Invoke(nameof(HighwayAppear), songDelayInSeconds + 2f);
+        Invoke(nameof(HighwayDissolve), audioSource.clip.length + songDelayInSeconds - 2f);
     }
 
     private void Update()
@@ -198,6 +201,22 @@ public class HighwaySongManager : MonoBehaviour
             return 0;
         }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+
+    /// <summary>
+    /// Make the highway appear
+    /// </summary>
+    private void HighwayAppear()
+    {
+        highwayDissolve.Appear();
+    }
+
+    /// <summary>
+    /// Make the highway disappear
+    /// </summary>
+    private void HighwayDissolve()
+    {
+        highwayDissolve.Dissolve();
     }
 
     /// <summary>
