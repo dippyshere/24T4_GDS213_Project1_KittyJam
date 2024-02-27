@@ -15,6 +15,7 @@ public class HighwayDissolve : MonoBehaviour
     void Start()
     {
         _material = GetComponent<RawImage>().material;
+        _material.SetFloat(_dissolveAmmount, 1.1f);
     }
 
     /// <summary>
