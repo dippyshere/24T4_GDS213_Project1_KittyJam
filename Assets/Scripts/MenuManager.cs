@@ -78,6 +78,10 @@ public class MenuManager : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            yield return new WaitForSecondsRealtime(1.05f);
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(sceneToLoad);
     }
