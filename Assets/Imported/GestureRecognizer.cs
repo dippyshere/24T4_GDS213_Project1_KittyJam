@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine.Networking;
 
 //******************************************* Gesture Recognizer *********************************************//
 //
@@ -228,10 +229,35 @@ public class GestureRecognizer : MonoBehaviour
     {
         templates = new GestureTemplates();
         string filePath = Path.Combine(Application.streamingAssetsPath, gestureFileName);
-        if (File.Exists(filePath))
+        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
-            string data = File.ReadAllText(filePath);
-            templates = JsonUtility.FromJson<GestureTemplates>(data);
+            StartCoroutine(LoadTemplateWebGL());
+        }
+        else
+        {
+            if (File.Exists(filePath))
+            {
+                string data = File.ReadAllText(filePath);
+                templates = JsonUtility.FromJson<GestureTemplates>(data);
+            }
+        }
+    }
+
+    private IEnumerator LoadTemplateWebGL()
+    {
+        using UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + gestureFileName);
+        yield return www.SendWebRequest();
+
+        // If there was an error, log it
+        if (UnityWebRequest.Result.ConnectionError.Equals(www.result) || UnityWebRequest.Result.ProtocolError.Equals(www.result))
+        {
+            Debug.LogError(www.error);
+        }
+        else
+        {
+            byte[] results = www.downloadHandler.data;
+            string json = System.Text.Encoding.Default.GetString(results);
+            templates = JsonUtility.FromJson<GestureTemplates>(json);
         }
     }
 
