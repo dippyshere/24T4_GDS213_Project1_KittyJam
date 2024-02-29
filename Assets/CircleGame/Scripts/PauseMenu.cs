@@ -49,6 +49,10 @@ public class PauseMenu : MonoBehaviour
         {
             HighwaySongManager.Instance.PauseMusic(true);
         }
+        if (MarchingSongManager.Instance != null)
+        {
+            MarchingSongManager.Instance.PauseMusic(true);
+        }
     }
 
     /// <summary>
@@ -71,6 +75,10 @@ public class PauseMenu : MonoBehaviour
         if (HighwaySongManager.Instance != null)
         {
             HighwaySongManager.Instance.PauseMusic(false);
+        }
+        if (MarchingSongManager.Instance != null)
+        {
+            MarchingSongManager.Instance.PauseMusic(false);
         }
     }
 
