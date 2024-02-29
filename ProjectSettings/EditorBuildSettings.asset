@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameType2Onboarding.unity
     guid: 58e428e018dc3304186ced05c795d06f
   - enabled: 1
+    path: Assets/Scenes/GameType3Onboarding.unity
+    guid: c062c22520ce21e458b59b858b86dd26
+  - enabled: 1
     path: Assets/Scenes/GameType1CircleGame.unity
     guid: b9a4d74ff15baff4193725543b5a5703
   - enabled: 1

@@ -26,8 +26,11 @@ public class CursorController : MonoBehaviour
     /// </summary>
     public void LockCursor()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        if (lockCursorOnStart)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     /// <summary>
