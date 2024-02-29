@@ -969,7 +969,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 707681386}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartLoadingSceneMusicStop
+        m_MethodName: StartLoadingSceneMusicContinue
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
