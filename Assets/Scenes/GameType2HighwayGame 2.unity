@@ -14043,6 +14043,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 69884407}
+    - target: {fileID: 7535162117693882948, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameType2HighwayGame 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7815499184689258039, guid: 40b1b8b725759ae4283ce2a8b7ffc828,
         type: 3}
       propertyPath: m_Pivot.x
@@ -14166,6 +14171,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 69884407}
+    - target: {fileID: 1524319781039048210, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameType2HighwayGame 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3331199631618960534, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
       propertyPath: m_Pivot.x
