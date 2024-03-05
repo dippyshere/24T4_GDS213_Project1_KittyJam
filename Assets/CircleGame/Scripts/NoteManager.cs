@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages the spawning of notes based on the MIDI file
+/// Manages the spawning of notes based on the MIDI file for Game Type 1 (CircleGame)
 /// </summary>
 public class NoteManager : MonoBehaviour
 {
-    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
     [SerializeField, Tooltip("Reference to the score manager")] private ScoreManager scoreManager;
     [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
@@ -28,7 +28,7 @@ public class NoteManager : MonoBehaviour
     {
         foreach (var note in array)
         {
-            if (note.NoteName == noteRestriction)
+            if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
