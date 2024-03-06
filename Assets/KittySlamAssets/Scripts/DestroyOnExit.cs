@@ -1,11 +1,14 @@
-// Jacob wrote this for our last project
+// Jacob wrote this for our last project in 23T2 Project 2
 
 using UnityEngine;
 
+/// <summary>
+/// Destroys the parent GameObject of the animator when the animation is complete
+/// </summary>
 public class DestroyOnExit : StateMachineBehaviour
 {
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Destroy(animator.gameObject.transform.parent.gameObject, stateInfo.length * stateInfo.speed); // Destroys GameObject after animation is complete
+        Destroy(animator.gameObject.transform.parent.gameObject, stateInfo.length * stateInfo.speed);
     }
 }

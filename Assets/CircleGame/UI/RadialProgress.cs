@@ -2,6 +2,7 @@ using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// From https://docs.unity3d.com/Manual/UIE-radial-progress.html
 namespace MyUILibrary
 {
 
@@ -54,6 +55,16 @@ namespace MyUILibrary
                 // Whenever the progress property changes, MarkDirtyRepaint() is named. This causes a call to the
                 // generateVisualContents callback.
                 m_Progress = value;
+                MarkDirtyRepaint();
+            }
+        }
+
+        public Color ProgressColor
+        {
+            get => m_ProgressMesh.color;
+            set
+            {
+                m_ProgressMesh.color = value;
                 MarkDirtyRepaint();
             }
         }

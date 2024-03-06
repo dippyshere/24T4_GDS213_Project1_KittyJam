@@ -2,18 +2,22 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Manages the menu music for the game
+/// </summary>
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager instance;
+    [HideInInspector, Tooltip("Singleton reference to the audio manager")] public static AudioManager instance;
 
-    public AudioClip backgroundMusic;
-    private AudioSource audioSource;
-    private float fadeDuration = 1.5f; // Duration for fading in/out in seconds
-
-    private bool isFading = false;
+    [SerializeField, Tooltip("The background music to play on loop")] private AudioClip backgroundMusic;
+    [SerializeField, Tooltip("The audio source to play music from")] private AudioSource audioSource;
+    [SerializeField, Tooltip("How long to fade in/out the music (in seconds)")] private float fadeDuration = 1.5f;
+    
+    [Tooltip("Boolean for whether the music is already fading in/out")] private bool isFading = false;
 
     void Awake()
     {
+        // Ensure that only one instance of the audio manager exists
         if (instance == null)
         {
             instance = this;
@@ -27,24 +31,35 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        // Play the background music on loop
         audioSource = GetComponent<AudioSource>();
         audioSource.loop = true;
         audioSource.clip = backgroundMusic;
         audioSource.Play();
     }
 
+    /// <summary>
+    /// Stops the background music and fades it out
+    /// </summary>
     public void StopMusic()
     {
         if (!isFading)
             StartCoroutine(FadeOutMusic());
     }
 
+    /// <summary>
+    /// Plays the background music and fades it in
+    /// </summary>
     public void PlayMusic()
     {
         if (!isFading)
             StartCoroutine(FadeInMusic());
     }
 
+    /// <summary>
+    /// Fades out the music
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator FadeOutMusic()
     {
         isFading = true;
@@ -61,6 +76,10 @@ public class AudioManager : MonoBehaviour
         isFading = false;
     }
 
+    /// <summary>
+    /// Fades in the music
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator FadeInMusic()
     {
         isFading = true;
