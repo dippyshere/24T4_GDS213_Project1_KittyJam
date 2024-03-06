@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1632d4f52be24e44f9ced2a3b066be53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 0
+  noteNumber: 64
   input: 0
   notePrefab: {fileID: 1679635116095923819, guid: 13a22231298e1c34db54f39b014dc210,
     type: 3}

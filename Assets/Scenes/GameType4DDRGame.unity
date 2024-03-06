@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e14d6414030f54c8c1c6667d220fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 4
+  noteNumber: 74
   primaryInput: 275
   secondaryInput: 100
   notePrefab: {fileID: 8174793528865477026, guid: 8d81c2622075fbd4585555b967b2939b,
@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e14d6414030f54c8c1c6667d220fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 1
+  noteNumber: 73
   primaryInput: 276
   secondaryInput: 97
   notePrefab: {fileID: 1459414490617159286, guid: f9c39c81088bd5b46a0ee88a26208efb,
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e14d6414030f54c8c1c6667d220fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 2
+  noteNumber: 72
   primaryInput: 274
   secondaryInput: 115
   notePrefab: {fileID: 6188052130523673439, guid: eb57dff6cf56f6840a178b9a8ee7ae59,
@@ -1784,7 +1784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e14d6414030f54c8c1c6667d220fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 3
+  noteNumber: 71
   primaryInput: 273
   secondaryInput: 119
   notePrefab: {fileID: 5778320482935785967, guid: d7829634b3d618041840a6b77710ab42,

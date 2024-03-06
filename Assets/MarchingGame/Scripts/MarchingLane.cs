@@ -4,9 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the spawning of marhcing directional arrows for Game Type 3 (MarchingGame)
+/// </summary>
 public class MarchingLane : MonoBehaviour
 {
-    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [SerializeField, Tooltip("The type of gesture to listen for")] private string gestureType;
@@ -23,7 +26,7 @@ public class MarchingLane : MonoBehaviour
     {
         foreach (var note in array)
         {
-            if (note.NoteName == noteRestriction)
+            if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, MarchingSongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);

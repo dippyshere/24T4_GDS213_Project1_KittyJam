@@ -4,9 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the spawning of notes based on the MIDI file for Game Type 2 (HighwayGame)
+/// </summary>
 public class HighwayLane : MonoBehaviour
 {
-    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
@@ -22,7 +25,7 @@ public class HighwayLane : MonoBehaviour
     {
         foreach (var note in array)
         {
-            if (note.NoteName == noteRestriction)
+            if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, HighwaySongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);

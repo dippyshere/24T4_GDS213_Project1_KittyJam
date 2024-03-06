@@ -1,12 +1,16 @@
-﻿using Melanchall.DryWetMidi.Interaction;
+﻿using Melanchall.DryWetMidi.Common;
+using Melanchall.DryWetMidi.Interaction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Lane manager for Game Type 4 (DDR)
+/// </summary>
 public class DDRLane : MonoBehaviour
 {
-    [SerializeField, Tooltip("Notes in the MIDI that will be used to spawn gems")] private Melanchall.DryWetMidi.MusicTheory.NoteName noteRestriction;
+    [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [Tooltip("The keybind to activate the lane")] public KeyCode primaryInput;
     [Tooltip("The secondary keybind to activate the lane")] public KeyCode secondaryInput;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
@@ -24,7 +28,7 @@ public class DDRLane : MonoBehaviour
     {
         foreach (var note in array)
         {
-            if (note.NoteName == noteRestriction)
+            if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, DDRSongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);

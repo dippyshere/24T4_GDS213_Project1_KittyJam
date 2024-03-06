@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 6
+  noteNumber: 66
   input: 274
   notePrefab: {fileID: 1097044977690763303, guid: 5a139301cdec4b04d84d32cae4c29d17,
     type: 3}
@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 5
+  noteNumber: 65
   input: 273
   notePrefab: {fileID: 8807274919893894966, guid: f1b91f65a76cd6946a21cd6b3fae3823,
     type: 3}
@@ -1264,7 +1264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 7
+  noteNumber: 67
   input: 276
   notePrefab: {fileID: 1755864175436183743, guid: edaaab8b3a46b4848a751d8c759cc81f,
     type: 3}
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 9
+  noteNumber: 69
   input: 266
   notePrefab: {fileID: 5573152485111838686, guid: 966248cf839803a4c87f699e2c83f2cb,
     type: 3}
@@ -1976,7 +1976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 10
+  noteNumber: 70
   input: 256
   notePrefab: {fileID: 3444169953697192526, guid: 67e661b5c5e8b3c4ebbdbaf0845d24c7,
     type: 3}
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464f8c34708a2094f850355813cc4b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noteRestriction: 8
+  noteNumber: 68
   input: 275
   notePrefab: {fileID: 8811456527133699852, guid: ebfb9814802842d448a73281ff87711a,
     type: 3}
