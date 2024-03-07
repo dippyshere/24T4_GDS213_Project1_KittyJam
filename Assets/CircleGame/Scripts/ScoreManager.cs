@@ -141,7 +141,7 @@ public class ScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         multiplierText.text = "Multiplier: x" + multiplier.ToString();
-        scoreText.text = " " + displayedScore.ToString("N0", CultureInfo.InvariantCulture);
+        scoreText.text = "" + displayedScore.ToString("N0", CultureInfo.InvariantCulture);
         comboText.text = "x" + comboScore.ToString("N0", CultureInfo.InvariantCulture);
     }
 }
