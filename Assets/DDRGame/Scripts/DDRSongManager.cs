@@ -17,6 +17,7 @@ public class DDRSongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
     [SerializeField, Tooltip("Reference to the image object that displays the albumn art")] private Image albumnArtImage;
     [SerializeField, Tooltip("Reference to the lane managers")] private DDRLane[] DDRLanes;
+    [SerializeField, Tooltip("The animator for the bongo cat")] private Animator bongoCatAnimator;
     [Tooltip("The prefab to spawn when hitting a note with good timing")] public GameObject goodHitPrefab;
     [Tooltip("The prefab to spawn when hitting a note with perfect timing")] public GameObject perfectHitPrefab;
     [SerializeField, Tooltip("The prefab to use on up beat markers")] private GameObject upBeatPrefab;
@@ -33,7 +34,7 @@ public class DDRSongManager : MonoBehaviour
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
-    [Tooltip("The Y coordinate that notes spawn at")] public float noteSpawnY = 10f;
+    [Tooltip("The Y coordinate that notes spawn at")] public float noteSpawnZ = 10f;
     [Tooltip("The Y coordinate that notes should be tapped at")] public float noteTapY = -5f;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
     [SerializeField, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
@@ -45,16 +46,16 @@ public class DDRSongManager : MonoBehaviour
     [SerializeField, Tooltip("The albumn art to display")] private Sprite albumnArt;
     [HideInInspector, Tooltip("The calculated speed for the notes")] public float noteTime;
     [HideInInspector, Tooltip("The calculated Y coordinate notes despawn at")]
-    public float noteDespawnY
+    public float noteDespawnZ
     {
         get
         {
-            return noteTapY - (noteSpawnY - noteTapY);
+            return noteTapY - (noteSpawnZ - noteTapY);
         }
     }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
         Instance = this;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
@@ -71,6 +72,10 @@ public class DDRSongManager : MonoBehaviour
         artistNameText.text = artistName;
         albumnArtImage.sprite = albumnArt;
         noteTime = 60f / bpm * 4 * trackSpeed;
+        float bopSpeed = bpm / 60f;
+        bongoCatAnimator.SetFloat("BPMMultiplier", bopSpeed);
+        yield return new WaitForSecondsRealtime(60f / bpm);
+        bongoCatAnimator.SetTrigger("StartBop");
     }
 
     /// <summary>
