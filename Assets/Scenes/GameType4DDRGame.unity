@@ -2584,11 +2584,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6710387579624015831, guid: dabb42adb99af554f8656d9aada7637b,
         type: 3}
-      propertyPath: noteNumber
-      value: 62
-      objectReference: {fileID: 0}
-    - target: {fileID: 6710387579624015831, guid: dabb42adb99af554f8656d9aada7637b,
-        type: 3}
       propertyPath: catController
       value: 
       objectReference: {fileID: 1251335521}
@@ -2730,9 +2725,9 @@ MonoBehaviour:
   tallyScore: {fileID: 1823665373}
   pauseMenu: {fileID: 1939833910}
   songDelayInSeconds: 0
-  perfectRange: 0.1
-  goodRange: 0.25
-  trackSpeed: 0.5
+  perfectRange: 0.08
+  goodRange: 0.2
+  trackSpeed: 1
   noteSpawnZ: 10
   noteTapY: 0
   inputDelayInMilliseconds: 0
