@@ -29,6 +29,7 @@ public class HighwaySongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
     [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
+    [SerializeField, Tooltip("Reference to the highway dissolve manager")] private HighwayDissolve highwayDissolve;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
@@ -132,8 +133,28 @@ public class HighwaySongManager : MonoBehaviour
         upBeatTimestamps.RemoveRange(0, 2);
         downBeatTimestamps.RemoveRange(0, 6);
 
+        float firstNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f < firstNoteTime)
+            {
+                firstNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
+        float lastNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f > lastNoteTime)
+            {
+                lastNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
         Invoke(nameof(StartSong), songDelayInSeconds);
-        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
+        Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
+        Invoke(nameof(HighwayAppear), Mathf.Clamp(songDelayInSeconds + firstNoteTime - 0.5f, 0, float.MaxValue));
+        Invoke(nameof(HighwayDissolve), songDelayInSeconds + lastNoteTime + 0.5f);
     }
 
     private void Update()
@@ -198,6 +219,22 @@ public class HighwaySongManager : MonoBehaviour
             return 0;
         }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+
+    /// <summary>
+    /// Make the highway appear
+    /// </summary>
+    private void HighwayAppear()
+    {
+        highwayDissolve.Appear();
+    }
+
+    /// <summary>
+    /// Make the highway disappear
+    /// </summary>
+    private void HighwayDissolve()
+    {
+        highwayDissolve.Dissolve();
     }
 
     /// <summary>

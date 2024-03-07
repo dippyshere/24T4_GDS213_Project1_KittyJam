@@ -304,6 +304,7 @@ MonoBehaviour:
   spriteRenderers:
   - {fileID: 5377198005148692351}
   - {fileID: 6318228639101085222}
+  timeInstantiated: 0
   assignedTime: 0
 --- !u!95 &3432308339547685497
 Animator:
