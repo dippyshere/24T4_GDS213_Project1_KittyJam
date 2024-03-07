@@ -20,7 +20,7 @@ public class DDRNote : MonoBehaviour
         double timeSinceInstantiated = DDRSongManager.GetAudioSourceTime() - timeInstantiated;
         float t = (float)(timeSinceInstantiated / (DDRSongManager.Instance.noteTime * 2));
 
-        if (t > 1)
+        if (t > 0.5 + DDRSongManager.Instance.goodRange)
         {
             Destroy(gameObject);
         }
