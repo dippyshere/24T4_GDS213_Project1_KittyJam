@@ -14,6 +14,8 @@ public class DDRLane : MonoBehaviour
     [Tooltip("The keybind to activate the lane")] public KeyCode primaryInput;
     [Tooltip("The secondary keybind to activate the lane")] public KeyCode secondaryInput;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
+    [SerializeField, Tooltip("The cat arm to enable when the lane is active")] private BongoCatArm catArm;
+    [SerializeField, Tooltip("Reference to the cat controller")] private BongoCatController catController;
     [Tooltip("List of previous + current notes that have been spawned")] private List<DDRNote> notes = new List<DDRNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
@@ -74,6 +76,13 @@ public class DDRLane : MonoBehaviour
                 inputIndex++;
             }
         }       
-    
+        if (Input.GetKeyDown(primaryInput) || Input.GetKeyDown(secondaryInput))
+        {
+        catController.EnableArm(catArm);
+        }
+        if (Input.GetKeyUp(primaryInput) || Input.GetKeyUp(secondaryInput))
+        {
+            catController.DisableArm(catArm);
+        }
     }
 }
