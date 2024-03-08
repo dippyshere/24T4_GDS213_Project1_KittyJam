@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Randomises the rotation of the slam object
+/// </summary>
 public class SlamRandomiser : MonoBehaviour
 {
     // Start is called before the first frame update

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5966183760884174236}
+  - component: {fileID: 5310793283472600754}
   m_Layer: 0
   m_Name: Transition
   m_TagString: Untagged
@@ -32,6 +33,20 @@ Transform:
   - {fileID: 4839364083031536234}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5310793283472600754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491435772696659025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98e56368b1d4e04f9ed6fefb638b7f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleTransitionAnimator: {fileID: 23328144652267665}
+  logoTransitionAnimator: {fileID: 6530040986964341429}
 --- !u!1 &3129954370567146272
 GameObject:
   m_ObjectHideFlags: 0

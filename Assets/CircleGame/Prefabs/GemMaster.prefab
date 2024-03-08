@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5107175654717379027}
-  - component: {fileID: 3566038188802540686}
+  - component: {fileID: 5578449370433274469}
   - component: {fileID: 7977193770660167000}
   - component: {fileID: 3432308339547685497}
   m_Layer: 3
@@ -258,8 +258,8 @@ Transform:
   - {fileID: 7671278380564576832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3566038188802540686
-BoxCollider:
+--- !u!136 &5578449370433274469
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -276,9 +276,11 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2, y: 2.2, z: 0.28844514}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 3
+  m_Height: 0
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 2}
 --- !u!114 &7977193770660167000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,6 +304,7 @@ MonoBehaviour:
   spriteRenderers:
   - {fileID: 5377198005148692351}
   - {fileID: 6318228639101085222}
+  timeInstantiated: 0
   assignedTime: 0
 --- !u!95 &3432308339547685497
 Animator:

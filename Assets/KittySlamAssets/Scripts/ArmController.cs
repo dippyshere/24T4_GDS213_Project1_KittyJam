@@ -2,75 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The player arm controller
+/// </summary>
 public class ArmController : MonoBehaviour
 {
-    public float armSpeed = 5f;
-    public float slamSpeedMultiplier = 1f;
-    public LayerMask itemLayer;
-    public CameraController cameraController;
-    public Animator animator;
-    public GameObject slamEffect;
-    public GameObject scoreFeedback;
-    public Transform slamPosition;
-    public ScoreManager scoreManager;
-    public GameObject pauseMenu;
-    public bool canSlam = true;
-    public List<TrailRenderer> trails = new List<TrailRenderer>();
-
-    private bool canMove = true;
-    private bool checkResolution = true;
-    private bool isSlamming = false;
-
-    private float minX;
-    private float maxX;
-    private float minY;
-    private float maxY;
-
-    private Vector3 cameraOffset;
-
-    private void Start()
-    {
-        UpdateSafeZone();
-        StartCoroutine(CheckForResize());
-        Camera camera = Camera.main;
-        cameraOffset = camera.transform.forward * 10f;
-    }
-
-    private void UpdateSafeZone()
-    {
-        float widthScale = (float)Screen.width / 1920;
-        float heightScale = (float)Screen.height / 1080;
-        minX = -(100 * widthScale);
-        maxX = Screen.width + (100 * widthScale);
-        minY = -(100 * heightScale);
-        maxY = Screen.height + (100 * heightScale);
-        Debug.Log("minX: " + minX + " maxX: " + maxX + " minY: " + minY + " maxY: " + maxY);
-        Debug.Log("Screen.width: " + Screen.width + " Screen.height: " + Screen.height);
-        Debug.Log("widthScale: " + widthScale + " heightScale: " + heightScale);
-    }
-
-    IEnumerator CheckForResize()
-    {
-        int lastWidth = Screen.width;
-        int lastHeight = Screen.height;
-
-        while (checkResolution)
-        {
-            if (lastWidth != Screen.width || lastHeight != Screen.height)
-            {
-                UpdateSafeZone();
-                lastWidth = Screen.width;
-                lastHeight = Screen.height;
-            }
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    void OnDestroy()
-    {
-        checkResolution = false;
-    }
-
+    [SerializeField, Tooltip("The arm speed upgrade level")] private float armSpeed = 5f;
+    [SerializeField, Tooltip("Adjusts the arm sensitivity multiplier")] private float armSensitivityMultiplier = 1f;
+    [SerializeField, Tooltip("The slam speed upgrade level")] private float slamSpeedMultiplier = 1f;
+    // [SerializeField, Tooltip("The layer that items exist on")] private LayerMask itemLayer;
+    [SerializeField, Tooltip("Reference to the camera controller")] private CameraController cameraController;
+    [SerializeField, Tooltip("Reference to the arm animator")] private Animator animator;
+    [SerializeField, Tooltip("Game object that is spawned when slamming occurs")] private GameObject slamEffect;
+    [SerializeField, Tooltip("Transform that the slam effect occurs at")] private Transform slamPosition;
+    [SerializeField, Tooltip("Reference to the pause menu")] private GameObject pauseMenu;
+    [HideInInspector, Tooltip("Whether the player is allowed to slam")] public bool canSlam = true;
+    [HideInInspector, Tooltip("Whether the player is allowed to move")] public bool canMove = true;
+    [SerializeField, Tooltip("List of trail renderers to enable/disable while slamming")] private List<TrailRenderer> trails = new List<TrailRenderer>();
+    [Tooltip("Whether the player is currently slamming")] private bool isSlamming = false;
+    [Tooltip("If a note has already been hit since the last slam")] private bool noteHit = false;
+    [Tooltip("The position of the mouse")] private Vector3 mousePosition;
 
     private void Update()
     {
@@ -110,87 +61,87 @@ public class ArmController : MonoBehaviour
             }
         }
 
-        if (canMove)
+        if (canMove && Cursor.lockState == CursorLockMode.Locked)
         {
-            // ChatGPT
-            // Get the remapped mouse position within the safe zone
-            Vector3 remappedMousePosition = GetRemappedMousePosition();
-            // Move the arm with the mouse
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(remappedMousePosition + cameraOffset);
-            mousePosition.z = 0f;
+            mousePosition += new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0) * armSensitivityMultiplier;
+            mousePosition.x = Mathf.Clamp(mousePosition.x, -8 * 1.3f, 8 * 1.3f);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, -4 * 1.3f, 4 * 1.3f);
             transform.position = Vector3.Lerp(transform.position, mousePosition, armSpeed * Time.deltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
         {
+            // Toggle the pause menu
             pauseMenu.SetActive(!pauseMenu.activeSelf);
-            canMove = !pauseMenu.activeSelf;
-            Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
-            SongManager.Instance.OnApplicationPause(pauseMenu.activeSelf);
-            UpdateSafeZone();
         }
     }
 
-    // ChatGPT
-    private Vector3 GetRemappedMousePosition()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-
-        float clampedX = Mathf.Clamp(mousePosition.x, minX, maxX);
-        float clampedY = Mathf.Clamp(mousePosition.y, minY, maxY);
-
-        // Remap the mouse position values within the safe zone boundaries
-        float remappedX = Remap(clampedX, minX, maxX, 0f, Screen.width);
-        float remappedY = Remap(clampedY, minY, maxY, 0f, Screen.height);
-
-        return new Vector3(remappedX, remappedY, 0f);
-    }
-
-    // ChatGPT
-    private float Remap(float value, float fromMin, float fromMax, float toMin, float toMax)
-    {
-        return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
-    }
-
-    // ChatGPT
-    private void OnDrawGizmos()
-    {
-        // Get the camera component
-        Camera camera = Camera.main;
-        if (camera == null)
-            return;
-
-        // Calculate the world coordinates of the safe zone corners
-        Vector3 bottomLeft = camera.ScreenToWorldPoint(new Vector3(minX, minY, 10));
-        Vector3 bottomRight = camera.ScreenToWorldPoint(new Vector3(maxX, minY, 10));
-        Vector3 topLeft = camera.ScreenToWorldPoint(new Vector3(minX, maxY, 10));
-        Vector3 topRight = camera.ScreenToWorldPoint(new Vector3(maxX, maxY, 10));
-
-        // Draw the safe zone boundaries as a gizmo
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(bottomLeft, bottomRight);
-        Gizmos.DrawLine(bottomRight, topRight);
-        Gizmos.DrawLine(topRight, topLeft);
-        Gizmos.DrawLine(topLeft, bottomLeft);
-    }
-
-    public void onSlam()
+    /// <summary>
+    /// Called when the slam animation hits to trigger the screen shake
+    /// </summary>
+    public void OnSlam()
     {
         cameraController.StartCoroutine(cameraController.ShakeCamera(0.3f, 0.4f));
+        StartCoroutine(SpawnSlamEffect());
+    }
+
+    /// <summary>
+    /// Called when the slam animation ends to reset the note hit flag
+    /// </summary>
+    public void OnSlamEnd()
+    {
+        noteHit = false;
+    }
+
+    /// <summary>
+    /// Spawns the slam effect at the slam position
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
+    private IEnumerator SpawnSlamEffect()
+    {
+        yield return new WaitForEndOfFrame();
         isSlamming = false;
         Instantiate(slamEffect, slamPosition.position, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Plays a note
+    /// </summary>
+    /// <param name="other">The game object that was picked up</param>
     public void PickUpItem(GameObject other)
     {
-        Debug.Log("Item");
-        if (other.TryGetComponent<CircleGemController>(out var gem))
+        // get the circle gem controller on all of the objects that are in the capsule collider on the parent of the slam position object
+        CapsuleCollider capsuleCollider = slamPosition.GetComponentInParent<CapsuleCollider>();
+        Collider[] colliders = Physics.OverlapCapsule(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        // run the pickup function on the circle gem controller with the lowest assigned time
+        float lowestAssignedTime = float.MaxValue;
+        CircleGemController lowestAssignedTimeController = null;
+        foreach (Collider collider in colliders)
         {
-            // Debug.Log("Scored: " + item.currentCollectionBonus);
-            gem.OnPickup();
-            //GameObject scoreFeedbackInstance = Instantiate(scoreFeedback, item.transform.position, Quaternion.identity);
-            //scoreFeedbackInstance.GetComponent<ScoreFeedbackManager>().scoreValue = Mathf.CeilToInt(item.currentCollectionBonus);
+            CircleGemController circleGemController = collider.GetComponent<CircleGemController>();
+            if (circleGemController != null && circleGemController.assignedTime < lowestAssignedTime)
+            {
+                lowestAssignedTime = circleGemController.assignedTime;
+                lowestAssignedTimeController = circleGemController;
+            }
         }
+        if (lowestAssignedTimeController != null && !noteHit)
+        {
+            lowestAssignedTimeController.OnPickup();
+            noteHit = true;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // draw the capsule collider check as gizmos
+        CapsuleCollider capsuleCollider = slamPosition.GetComponentInParent<CapsuleCollider>();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        Gizmos.DrawWireSphere(capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)), capsuleCollider.radius / 1.65f);
+        Gizmos.DrawLine(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)) + new Vector3(capsuleCollider.radius / 1.65f, 0, 0), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)) + new Vector3(capsuleCollider.radius / 1.65f, 0, 0));
+        Gizmos.DrawLine(capsuleCollider.transform.TransformPoint(capsuleCollider.center + new Vector3(0, capsuleCollider.height / 2, 0)) - new Vector3(capsuleCollider.radius / 1.65f, 0, 0), capsuleCollider.transform.TransformPoint(capsuleCollider.center - new Vector3(0, capsuleCollider.height / 2, 0)) - new Vector3(capsuleCollider.radius / 1.65f, 0, 0));
+
     }
 
 }
