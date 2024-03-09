@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// The player arm controller
 /// </summary>
 public class ArmController : MonoBehaviour
 {
-    [SerializeField, Tooltip("The arm speed upgrade level")] private float armSpeed = 5f;
     [SerializeField, Tooltip("Adjusts the arm sensitivity multiplier")] private float armSensitivityMultiplier = 1f;
     [SerializeField, Tooltip("The slam speed upgrade level")] private float slamSpeedMultiplier = 1f;
     // [SerializeField, Tooltip("The layer that items exist on")] private LayerMask itemLayer;
@@ -23,12 +23,31 @@ public class ArmController : MonoBehaviour
     [Tooltip("If a note has already been hit since the last slam")] private bool noteHit = false;
     [Tooltip("The position of the mouse")] private Vector3 mousePosition;
 
-    private void Update()
+    /// <summary>
+    /// Moves the arm
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void MoveArm(InputAction.CallbackContext context)
+    {
+        if (canMove && Cursor.lockState == CursorLockMode.Locked)
+        {
+            mousePosition += new Vector3(context.ReadValue<Vector2>().x * 0.5f * 0.1f, context.ReadValue<Vector2>().y * 0.5f * 0.1f, 0) * armSensitivityMultiplier;
+            mousePosition.x = Mathf.Clamp(mousePosition.x, -8 * 1.3f, 8 * 1.3f);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, -4 * 1.3f, 4 * 1.3f);
+            transform.position = mousePosition;
+        }
+    }
+
+    /// <summary>
+    /// Slams the arm down
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void SlamArm(InputAction.CallbackContext context)
     {
         if (canSlam)
         {
             // Check for player input
-            if (Input.GetMouseButtonDown(0))
+            if (context.started)
             {
                 animator.SetFloat("SlamSpeedMult", slamSpeedMultiplier);
                 animator.SetTrigger("Slam");
@@ -37,19 +56,9 @@ public class ArmController : MonoBehaviour
                 {
                     trails[i].enabled = true;
                 }
-                //canMove = false;
-                //if (!true)
-                //{
-                //    ChatGPT (unused)
-                //    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, itemLayer);
-                //    if (hit.collider != null)
-                //    {
-                //        targetPosition = hit.collider.transform.position;
-                //    }
-                //}
             }
             // 2nd condition is a bug workaround
-            else if (!isSlamming && !Input.GetMouseButton(0) || animator.GetBool("Slam") && !Input.GetMouseButton(0) && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            else if (!isSlamming && !context.performed || animator.GetBool("Slam") && !context.performed && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
             {
                 animator.ResetTrigger("Slam");
                 isSlamming = false;
@@ -59,20 +68,6 @@ public class ArmController : MonoBehaviour
                     trails[i].enabled = false;
                 }
             }
-        }
-
-        if (canMove && Cursor.lockState == CursorLockMode.Locked)
-        {
-            mousePosition += new Vector3(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"), 0) * armSensitivityMultiplier;
-            mousePosition.x = Mathf.Clamp(mousePosition.x, -8 * 1.3f, 8 * 1.3f);
-            mousePosition.y = Mathf.Clamp(mousePosition.y, -4 * 1.3f, 4 * 1.3f);
-            transform.position = Vector3.Lerp(transform.position, mousePosition, armSpeed * Time.deltaTime);
-        }
-
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            // Toggle the pause menu
-            pauseMenu.SetActive(!pauseMenu.activeSelf);
         }
     }
 

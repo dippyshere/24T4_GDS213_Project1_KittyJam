@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
+using UnityEngine.InputSystem;
 
 public class HighwaySongManager : MonoBehaviour
 {
@@ -176,11 +177,6 @@ public class HighwaySongManager : MonoBehaviour
                 downBeatIndex++;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-        }
     }
 
     /// <summary>
@@ -235,6 +231,66 @@ public class HighwaySongManager : MonoBehaviour
     private void HighwayDissolve()
     {
         highwayDissolve.Dissolve();
+    }
+
+    /// <summary>
+    /// Hit the first lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane1(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[0].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the second lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[1].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the third lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane3(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[2].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the fourth lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane4(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[3].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the optional fifth lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane5(InputAction.CallbackContext context)
+    {
+        if (context.started && highwayLanes.Length > 4)
+        {
+            highwayLanes[4].Hit();
+        }
     }
 
     /// <summary>

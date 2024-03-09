@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
+using UnityEngine.InputSystem;
 
 public class MarchingSongManager : MonoBehaviour
 {
@@ -146,14 +147,6 @@ public class MarchingSongManager : MonoBehaviour
         Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds - 1f);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-        }
-    }
-
     /// <summary>
     /// Start playing the song
     /// </summary>
@@ -190,6 +183,30 @@ public class MarchingSongManager : MonoBehaviour
             return 0;
         }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+
+    /// <summary>
+    /// Hit the up beat lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane1(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            marchingBeats[0].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the down beat lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            marchingBeats[1].Hit();
+        }
     }
 
     /// <summary>

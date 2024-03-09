@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
+using UnityEngine.InputSystem;
 
 public class DDRSongManager : MonoBehaviour
 {
@@ -178,11 +179,6 @@ public class DDRSongManager : MonoBehaviour
                 downBeatIndex++;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-        }
     }
 
     /// <summary>
@@ -221,6 +217,74 @@ public class DDRSongManager : MonoBehaviour
             return 0;
         }
         return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+    }
+
+    /// <summary>
+    /// Hit the first lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane1(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DDRLanes[0].Hit();
+            DDRLanes[0].ArmDown();
+        }
+        else if (context.canceled)
+        {
+            DDRLanes[0].ArmUp();
+        }
+    }
+
+    /// <summary>
+    /// Hit the second lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DDRLanes[1].Hit();
+            DDRLanes[1].ArmDown();
+        }
+        else if (context.canceled)
+        {
+            DDRLanes[1].ArmUp();
+        }
+    }
+
+    /// <summary>
+    /// Hit the third lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane3(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DDRLanes[2].Hit();
+            DDRLanes[2].ArmDown();
+        }
+        else if (context.canceled)
+        {
+            DDRLanes[2].ArmUp();
+        }
+    }
+
+    /// <summary>
+    /// Hit the fourth lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane4(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            DDRLanes[3].Hit();
+            DDRLanes[3].ArmDown();
+        }
+        else if (context.canceled)
+        {
+            DDRLanes[3].ArmUp();
+        }
     }
 
     /// <summary>
