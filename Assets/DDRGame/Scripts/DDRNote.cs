@@ -6,12 +6,11 @@ public class DDRNote : MonoBehaviour
 {
     double timeInstantiated;
     public float assignedTime;
-    private RectTransform rectTransform => GetComponent<RectTransform>();
 
     void Start()
     {
         timeInstantiated = DDRSongManager.GetAudioSourceTime();
-        rectTransform.localPosition = Vector3.down * DDRSongManager.Instance.noteSpawnY;
+        transform.localPosition += Vector3.back * DDRSongManager.Instance.noteSpawnZ;
         Invoke(nameof(OnMiss), (float)(DDRSongManager.Instance.noteTime + DDRSongManager.Instance.goodRange));
     }
 
@@ -21,13 +20,13 @@ public class DDRNote : MonoBehaviour
         double timeSinceInstantiated = DDRSongManager.GetAudioSourceTime() - timeInstantiated;
         float t = (float)(timeSinceInstantiated / (DDRSongManager.Instance.noteTime * 2));
 
-        if (t > 1)
+        if (t > 0.5 + DDRSongManager.Instance.goodRange)
         {
             Destroy(gameObject);
         }
         else
         {
-            rectTransform.localPosition += Vector3.down * (DDRSongManager.Instance.noteDespawnY - DDRSongManager.Instance.noteSpawnY) * Time.deltaTime / (DDRSongManager.Instance.noteTime * 2);
+            transform.Translate(Vector3.back * (DDRSongManager.Instance.noteDespawnZ - DDRSongManager.Instance.noteSpawnZ) * Time.deltaTime / (DDRSongManager.Instance.noteTime * 2));
         }
     }
 

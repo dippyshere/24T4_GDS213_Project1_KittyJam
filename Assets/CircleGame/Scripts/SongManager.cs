@@ -97,8 +97,26 @@ public class SongManager : MonoBehaviour
 
         noteManager.SetTimeStamps(array);
 
+        float firstNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f < firstNoteTime)
+            {
+                firstNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
+        float lastNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f > lastNoteTime)
+            {
+                lastNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
         Invoke(nameof(StartSong), songDelayInSeconds);
-        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
+        Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
     }
 
     /// <summary>
