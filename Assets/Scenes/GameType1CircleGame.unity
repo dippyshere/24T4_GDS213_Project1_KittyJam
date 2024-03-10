@@ -226,6 +226,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18c050638c1519145a9579d74cdb8318, type: 3}
+--- !u!1 &228190756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 228190757}
+  m_Layer: 0
+  m_Name: New Game Object
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &228190757
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228190756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1309,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
         type: 3}
+      propertyPath: songData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d3eed37a3942be48bd02cd875c3657e,
+        type: 2}
+    - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
+        type: 3}
       propertyPath: winScore
       value: 
       objectReference: {fileID: 1212804345}
@@ -1875,3 +1912,4 @@ SceneRoots:
   - {fileID: 2035362702}
   - {fileID: 1143890027}
   - {fileID: 510848754}
+  - {fileID: 228190757}

@@ -11,6 +11,7 @@ using System.Globalization;
 
 public class SongManager : MonoBehaviour
 {
+    [Header("Game Configuration")]
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
@@ -27,17 +28,24 @@ public class SongManager : MonoBehaviour
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
     [Tooltip("How many seconds a note appears for before it needs to be hit")] public float noteTime;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
-    [SerializeField, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
+    [Header("Song Configuration")]
+    [SerializeField, Tooltip("The song data to use")] private SongData songData;
+    [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
-    [SerializeField, Tooltip("The song to play")] private AudioClip song;
-    [SerializeField, Tooltip("The name of the song to display")] private string songName;
-    [SerializeField, Tooltip("The name of the artist to display")] private string artistName;
-    [SerializeField, Tooltip("The albumn art to display")] private Sprite albumnArt;
+    [HideInInspector, Tooltip("The song to play")] private AudioClip song;
+    [HideInInspector, Tooltip("The name of the song to display")] private string songName;
+    [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
+    [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
 
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+        fileLocation = songData.MidiName;
+        song = songData.SongAudio;
+        songName = songData.SongName;
+        artistName = songData.ArtistName;
+        albumnArt = songData.AlbumCover;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {

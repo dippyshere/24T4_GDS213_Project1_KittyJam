@@ -1391,6 +1391,12 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 85f16081e7c47b84fbe037050314c151, type: 3}
     - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
         type: 3}
+      propertyPath: songData
+      value: 
+      objectReference: {fileID: 11400000, guid: f6305ede37d69784d94b83fb68dc590a,
+        type: 2}
+    - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
+        type: 3}
       propertyPath: songName
       value: The Spark
       objectReference: {fileID: 0}
