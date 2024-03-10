@@ -1632,7 +1632,7 @@ PrefabInstance:
     - target: {fileID: 6529157057436570752, guid: 188b09c0ca916294db27aa60a702f000,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartLoadingSceneMusicStop
+      value: StartLoadingSceneMusicContinue
       objectReference: {fileID: 0}
     - target: {fileID: 8288304601773604440, guid: 188b09c0ca916294db27aa60a702f000,
         type: 3}
