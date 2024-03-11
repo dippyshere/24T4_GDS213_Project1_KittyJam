@@ -18,7 +18,7 @@ MonoBehaviour:
   genre: 0
   year: 2014
   songLength: 151
-  usageLicense: 2
+  usageLicense: 1
   midiName: kittyjam marchtovictory.mid
   songAudio: {fileID: 8300000, guid: fcac3fd9f54f67a4cbd446541089129e, type: 3}
   albumCover: {fileID: 21300000, guid: 512d8adad054f3544977962dcdcaa6d2, type: 3}
