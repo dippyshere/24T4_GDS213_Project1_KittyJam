@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CreateAssetBundles
 {
-	[MenuItem("Assets/Build AssetBundles")]
+#if UNITY_EDITOR
+    [MenuItem("Assets/Build AssetBundles")]
 	static void BuildAllAssetBundles()
 	{
   	    string assetBundleDirectory = "Assets/StreamingAssets";
@@ -14,4 +15,5 @@ public class CreateAssetBundles
   	    }
   	    BuildPipeline.BuildAssetBundles(assetBundleDirectory, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
 	}
+#endif
 }

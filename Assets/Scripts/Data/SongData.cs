@@ -20,7 +20,7 @@ public class SongData : ScriptableObject
     [SerializeField, Tooltip("The length of the song (in seconds)")] private float songLength;
     [SerializeField, Tooltip("The usage rights for the song")] private UsageLicense usageLicense;
     [Header("Song Data")]
-    [SerializeField, Tooltip("The name of the song's MIDI file")] private DefaultAsset midiName;
+    [SerializeField, Tooltip("The name of the song's MIDI file")] private string midiName;
     [SerializeField, Tooltip("The audio file associated with the song")] private AudioClip songAudio;
     [SerializeField, Tooltip("The albumn cover associated with the song")] private Sprite albumCover;
     [SerializeField, Tooltip("The BPM of the song")] private float bpm;
@@ -38,7 +38,7 @@ public class SongData : ScriptableObject
     public string Year { get => year; }
     public float SongLength { get => songLength; }
     public UsageLicense UsageLicense { get => usageLicense; }
-    public string MidiName { get => midiName.name + ".mid"; }
+    public string MidiName { get => midiName; }
     public AudioClip SongAudio { get => songAudio; }
     public Sprite AlbumCover { get => albumCover; }
     public float Bpm { get => bpm; }
@@ -46,7 +46,7 @@ public class SongData : ScriptableObject
     public float PreviewEnd { get => previewEnd; }
     public float LoopPoint { get => loopPoint; }
     public List<GameMode> GameModes { get => gameModes; }
-    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, DefaultAsset midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
+    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, string midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
     {
         this.songName = songName;
         this.artistName = artistName;
@@ -64,7 +64,7 @@ public class SongData : ScriptableObject
         this.loopPoint = loopPoint;
         this.gameModes = gameModes;
     }
-
+#if UNITY_EDITOR
     [MenuItem("Assets/UpdateEditorIcon")]
     public static void SetCustomIconOnGameObject()
     {
@@ -78,6 +78,7 @@ public class SongData : ScriptableObject
             Debug.LogError("Cannot set icon: No SongData selected or AlbumCover is null.");
         }
     }
+#endif
 }
 
 public enum UsageLicense
