@@ -11,8 +11,8 @@ using System.Globalization;
 
 public class SongManager : MonoBehaviour
 {
-    [Header("Game Configuration")]
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
+    [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
     [SerializeField, Tooltip("Refernce to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
@@ -28,7 +28,7 @@ public class SongManager : MonoBehaviour
     [Tooltip("How many seconds a note appears for before it needs to be hit")] public float noteTime;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
     [Header("Song Configuration")]
-    [SerializeField, Tooltip("The song data to use")] private SongData songData;
+    [SerializeField, Tooltip("The default song data to use")] private SongData songData;
     [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
     [HideInInspector, Tooltip("The song to play")] private AudioClip song;
@@ -50,6 +50,10 @@ public class SongManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        {
+            songData = GlobalVariables.Get<SongData>("activeSong");
+        }
         fileLocation = songData.MidiName;
         song = songData.SongAudio;
         songName = songData.SongName;

@@ -721,7 +721,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.6090064, g: 0, b: 1, a: 1}
-  m_Intensity: 200
+  m_Intensity: 150
   m_Range: 9
   m_SpotAngle: 70
   m_InnerSpotAngle: 0
@@ -22907,6 +22907,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6476581313077730306, guid: 9f2d9f2778972674ca00dc440094adb3,
+        type: 3}
+      propertyPath: songData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d3eed37a3942be48bd02cd875c3657e,
+        type: 2}
     - target: {fileID: 6476581313077730306, guid: 9f2d9f2778972674ca00dc440094adb3,
         type: 3}
       propertyPath: winScore

@@ -2801,6 +2801,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6540602231087537854, guid: 67d3ec2285ffc0b4d976c73030a9f17b,
         type: 3}
+      propertyPath: songData
+      value: 
+      objectReference: {fileID: 11400000, guid: 9e25d22637c681b4eac454ad6d89ccf1,
+        type: 2}
+    - target: {fileID: 6540602231087537854, guid: 67d3ec2285ffc0b4d976c73030a9f17b,
+        type: 3}
       propertyPath: winScore
       value: 
       objectReference: {fileID: 1823665374}
