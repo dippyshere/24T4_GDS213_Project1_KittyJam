@@ -1248,6 +1248,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartLoadingSceneMusicStart
       objectReference: {fileID: 0}
+    - target: {fileID: 6529157057436570752, guid: 188b09c0ca916294db27aa60a702f000,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, KittyJam
+      objectReference: {fileID: 0}
     - target: {fileID: 8288304601773604440, guid: 188b09c0ca916294db27aa60a702f000,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1257,6 +1262,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartLoadingSceneMusicStop
+      objectReference: {fileID: 0}
+    - target: {fileID: 8288304601773604440, guid: 188b09c0ca916294db27aa60a702f000,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, KittyJam
       objectReference: {fileID: 0}
     - target: {fileID: 8288304601773604440, guid: 188b09c0ca916294db27aa60a702f000,
         type: 3}
@@ -1706,6 +1716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1524319781039048210, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, KittyJam
+      objectReference: {fileID: 0}
+    - target: {fileID: 1524319781039048210, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: GameType3MarchingGame
       objectReference: {fileID: 0}
@@ -1818,6 +1833,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartLoadingSceneMusicStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3395732918343648338, guid: fc717395e28400e4e81eaa7b396b55da,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuManager, KittyJam
       objectReference: {fileID: 0}
     - target: {fileID: 8852647906561128829, guid: fc717395e28400e4e81eaa7b396b55da,
         type: 3}

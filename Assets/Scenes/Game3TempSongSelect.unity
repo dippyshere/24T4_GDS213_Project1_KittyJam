@@ -401,7 +401,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1462370847}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: MenuManager, KittyJam
         m_MethodName: StartLoadingSceneMusicStop
         m_Mode: 5
         m_Arguments:

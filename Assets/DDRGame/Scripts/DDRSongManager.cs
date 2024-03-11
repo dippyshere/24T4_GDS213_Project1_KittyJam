@@ -30,7 +30,6 @@ public class DDRSongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
-    [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
@@ -53,6 +52,16 @@ public class DDRSongManager : MonoBehaviour
         {
             return noteTapY - (noteSpawnZ - noteTapY);
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
     }
 
     // Start is called before the first frame update
@@ -190,7 +199,11 @@ public class DDRSongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -293,8 +306,7 @@ public class DDRSongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + DDRScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + DDRScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + DDRScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + DDRScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

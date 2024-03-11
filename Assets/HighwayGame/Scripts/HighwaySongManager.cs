@@ -55,6 +55,16 @@ public class HighwaySongManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -188,7 +198,11 @@ public class HighwaySongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -299,8 +313,7 @@ public class HighwaySongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + HighwayScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + HighwayScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + HighwayScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + HighwayScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

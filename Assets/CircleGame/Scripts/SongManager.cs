@@ -22,7 +22,6 @@ public class SongManager : MonoBehaviour
     [SerializeField, Tooltip("Refernece to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
-    [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
@@ -36,6 +35,16 @@ public class SongManager : MonoBehaviour
     [HideInInspector, Tooltip("The name of the song to display")] private string songName;
     [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
     [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
+
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -136,7 +145,11 @@ public class SongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -171,8 +184,7 @@ public class SongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

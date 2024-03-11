@@ -22,7 +22,6 @@ public class MarchingSongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
-    [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
     [SerializeField, Tooltip("Reference to cat animator")] private Animator catAnimator;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
@@ -57,6 +56,16 @@ public class MarchingSongManager : MonoBehaviour
         {
             return noteTapX - (noteSpawnX - noteTapX);
         }
+    }
+
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
     }
 
     // Start is called before the first frame update
@@ -156,7 +165,11 @@ public class MarchingSongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -215,8 +228,7 @@ public class MarchingSongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + MarchingScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + MarchingScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + MarchingScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + MarchingScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }
