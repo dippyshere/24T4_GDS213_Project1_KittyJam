@@ -8,10 +8,12 @@ using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
+using UnityEngine.InputSystem;
 
 public class MarchingSongManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static MarchingSongManager Instance;
+    [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
     [SerializeField, Tooltip("Reference to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
@@ -21,7 +23,6 @@ public class MarchingSongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
-    [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
     [SerializeField, Tooltip("Reference to cat animator")] private Animator catAnimator;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
@@ -32,13 +33,15 @@ public class MarchingSongManager : MonoBehaviour
     [Tooltip("The X coordinate that notes spawn at")] public float noteSpawnX = 10;
     [Tooltip("The X coordinate that notes should be tapped at")] public float noteTapX = 0;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
-    [SerializeField, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
-    [SerializeField, Tooltip("The BPM of the song")] private float bpm;
+    [Header("Song Configuration")]
+    [SerializeField, Tooltip("The default song data to use")] private SongData songData;
+    [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
-    [SerializeField, Tooltip("The song to play")] private AudioClip song;
-    [SerializeField, Tooltip("The name of the song to display")] private string songName;
-    [SerializeField, Tooltip("The name of the artist to display")] private string artistName;
-    [SerializeField, Tooltip("The albumn art to display")] private Sprite albumnArt;
+    [HideInInspector, Tooltip("The BPM of the song")] private float bpm;
+    [HideInInspector, Tooltip("The song to play")] private AudioClip song;
+    [HideInInspector, Tooltip("The name of the song to display")] private string songName;
+    [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
+    [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
     [HideInInspector, Tooltip("The calculated speed for the notes")] public float noteTime;
     [HideInInspector, Tooltip("The calculated speed for the beat notes")] public float beatNoteTime;
     [HideInInspector, Tooltip("The calculated Y coordinate beat notes despawn at")]
@@ -58,10 +61,30 @@ public class MarchingSongManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
         Instance = this;
+        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        {
+            songData = GlobalVariables.Get<SongData>("activeSong");
+        }
+        fileLocation = songData.MidiName;
+        song = songData.SongAudio;
+        songName = songData.SongName;
+        artistName = songData.ArtistName;
+        albumnArt = songData.AlbumCover;
+        bpm = songData.Bpm;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
@@ -146,14 +169,6 @@ public class MarchingSongManager : MonoBehaviour
         Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds - 1f);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-        }
-    }
-
     /// <summary>
     /// Start playing the song
     /// </summary>
@@ -163,7 +178,11 @@ public class MarchingSongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -193,13 +212,36 @@ public class MarchingSongManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Hit the up beat lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane1(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            marchingBeats[0].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the down beat lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            marchingBeats[1].Hit();
+        }
+    }
+
+    /// <summary>
     /// End the song and display the win screen
     /// </summary>
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + MarchingScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + MarchingScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + MarchingScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + MarchingScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

@@ -359,6 +359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 302292097}
+  - component: {fileID: 302292101}
   - component: {fileID: 302292098}
   - component: {fileID: 302292100}
   - component: {fileID: 302292099}
@@ -437,10 +438,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1462370847}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartLoadingSceneMusicStop
-        m_Mode: 5
+      - m_Target: {fileID: 302292101}
+        m_TargetAssemblyTypeName: MenuSongButtonManager, KittyJam.Menu
+        m_MethodName: LoadSong
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -487,6 +488,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302292096}
   m_CullTransparentMesh: 1
+--- !u!114 &302292101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302292096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9751e17e299c4ca4cbc7b63b6aa500eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songData: {fileID: 11400000, guid: 3d3eed37a3942be48bd02cd875c3657e, type: 2}
+  gameType: 0
+  menuManager: {fileID: 1462370847}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 356298265}
+  - component: {fileID: 356298269}
   - component: {fileID: 356298268}
   - component: {fileID: 356298267}
   - component: {fileID: 356298266}
@@ -764,10 +781,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1462370847}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: StartLoadingSceneMusicStop
-        m_Mode: 5
+      - m_Target: {fileID: 356298269}
+        m_TargetAssemblyTypeName: MenuSongButtonManager, KittyJam.Menu
+        m_MethodName: LoadSong
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -776,6 +793,21 @@ MonoBehaviour:
           m_StringArgument: GameType1CircleGame 2
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &356298269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356298264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9751e17e299c4ca4cbc7b63b6aa500eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  songData: {fileID: 11400000, guid: f6305ede37d69784d94b83fb68dc590a, type: 2}
+  gameType: 0
+  menuManager: {fileID: 1462370847}
 --- !u!1 &497762933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,7 +1092,6 @@ GameObject:
   - component: {fileID: 707681383}
   - component: {fileID: 707681382}
   - component: {fileID: 707681381}
-  - component: {fileID: 707681386}
   m_Layer: 5
   m_Name: SelectionUI
   m_TagString: Untagged
@@ -1155,20 +1186,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &707681386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707681380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d98e56368b1d4e04f9ed6fefb638b7f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circleTransitionAnimator: {fileID: 1143890029}
-  logoTransitionAnimator: {fileID: 1143890028}
 --- !u!1 &1041510656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,18 +1390,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bee7a0da26c06c45aad13d4a1cd4272, type: 3}
---- !u!95 &1143890028 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6530040986964341429, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
-    type: 3}
-  m_PrefabInstance: {fileID: 1143890027}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1143890029 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 23328144652267665, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
-    type: 3}
-  m_PrefabInstance: {fileID: 1143890027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144100568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,7 +2428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035362702}
   - component: {fileID: 2035362701}
-  - component: {fileID: 2035362700}
+  - component: {fileID: 2035362703}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -2431,26 +2436,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &2035362700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035362699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &2035362701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2481,6 +2466,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2035362703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2035362699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018,
+    type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

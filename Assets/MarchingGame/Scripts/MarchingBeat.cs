@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MarchingBeat : MonoBehaviour
 {
-    [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<MarchingBeatNote> notes = new List<MarchingBeatNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
@@ -41,21 +40,30 @@ public class MarchingBeat : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(input))
-            {
-                NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject);
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
-            }
             if (timeStamp + MarchingSongManager.Instance.goodRange <= audioTime)
+            {
+                inputIndex++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
+        {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject);
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
             {
                 inputIndex++;
             }

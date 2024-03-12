@@ -1,0 +1,17 @@
+{
+    "name": "KittyJam.Menu",
+    "rootNamespace": "",
+    "references": [
+        "GUID:34a7e201e7dc46d4ab3b4eb98763ecc4",
+        "GUID:298bfe442d997084f96925f87377aea2"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

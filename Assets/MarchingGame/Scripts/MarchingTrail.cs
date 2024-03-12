@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class MarchingTrail : MonoBehaviour
 {
     public TrailRenderer trailRenderer;
-
-    Vector3 worldPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -15,25 +14,26 @@ public class MarchingTrail : MonoBehaviour
         trailRenderer.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartTrail(InputAction.CallbackContext context)
     {
-        trailRenderer.transform.position = worldPosition;
-
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.nearClipPlane;
-        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-
-
-        if (Input.GetMouseButtonDown(0))
+        if (context.started)
         {
             trailRenderer.enabled = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        else if (context.canceled)
         {
             trailRenderer.enabled = false;
             trailRenderer.Clear();
         }
+    }
 
+    public void SetTrailPosition(InputAction.CallbackContext context)
+    {
+        if (trailRenderer.enabled)
+        {
+            Vector3 mousePos = context.ReadValue<Vector2>();
+            mousePos.z = Camera.main.nearClipPlane;
+            trailRenderer.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        }
     }
 }
