@@ -9,16 +9,24 @@ using UnityEngine;
 /// </summary>
 public class NoteManager : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton reference to the score manager")] public static NoteManager Instance;
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
+    [SerializeField, Tooltip("The FollowPoint prefab to spawn")] private GameObject followPointPrefab;
     [SerializeField, Tooltip("Reference to the score manager")] private ScoreManager scoreManager;
     [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
+    [Tooltip("List of previous + current followPoints that have been spawned")] private List<GameObject> followPoints = new List<GameObject>();
     [SerializeField, Tooltip("List of locations to manually place a specific note (Leave at 0,0,0 for random; Ensure Z is always at 4.89)")] private List<Vector3> spawnLocations = new List<Vector3>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
     [SerializeField, Tooltip("Top left position of the random spawn area")] private Vector3 spawnAreaTopLeft;
     [SerializeField, Tooltip("Bottom right position of the random spawn area")] private Vector3 spawnAreaBottomRight;
 
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
+
+    private void Start()
+    {
+        Instance = this;
+    }
 
     /// <summary>
     /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
@@ -46,6 +54,17 @@ public class NoteManager : MonoBehaviour
                 var note = Instantiate(notePrefab, SpawnLocation(), Quaternion.identity);
                 notes.Add(note.GetComponent<CircleGemController>());
                 notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
+                if (spawnIndex > 0 && notes[spawnIndex - 1] != null)
+                {
+                    var followPoint = Instantiate(followPointPrefab, transform);
+                    followPoints.Add(followPoint);
+                    followPoint.GetComponent<LineRenderer>().SetPositions(new[] { notes[spawnIndex].transform.position, notes[spawnIndex - 1].transform.position });
+                    followPoint.transform.Translate(Vector3.back * 4.89f);
+                    followPoint.transform.GetChild(0).rotation = Quaternion.LookRotation(notes[spawnIndex - 1].transform.position - notes[spawnIndex].transform.position, Vector3.up);
+                    followPoint.transform.GetChild(0).Rotate(0, 90, 0, Space.Self);
+                    followPoint.transform.GetChild(0).position = new Vector3((notes[spawnIndex].transform.position.x + notes[spawnIndex - 1].transform.position.x) / 2, (notes[spawnIndex].transform.position.y + notes[spawnIndex - 1].transform.position.y) / 2, 4.89f);
+                    followPoint.transform.GetChild(0).localScale = new Vector3((notes[spawnIndex].transform.position + notes[spawnIndex - 1].transform.position).magnitude * .5f, (notes[spawnIndex].transform.position + notes[spawnIndex - 1].transform.position).magnitude * .5f, (notes[spawnIndex].transform.position + notes[spawnIndex - 1].transform.position).magnitude * .5f);
+                }
                 spawnIndex++;
             }
         }
@@ -105,6 +124,16 @@ public class NoteManager : MonoBehaviour
         else
         {
             return spawnLocations[spawnIndex];
+        }
+    }
+
+    public void DestroyPreviousFollowLine()
+    {
+        if (followPoints.Count > 0)
+        {
+            GameObject lastFollowPoint = followPoints[0];
+            followPoints.RemoveAt(0);
+            Destroy(lastFollowPoint);
         }
     }
 

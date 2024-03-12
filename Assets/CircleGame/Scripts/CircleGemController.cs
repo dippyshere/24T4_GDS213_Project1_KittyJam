@@ -36,6 +36,7 @@ public class CircleGemController : MonoBehaviour
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
         ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
+        NoteManager.Instance.DestroyPreviousFollowLine();
         Destroy(gameObject);
     }
 
@@ -45,6 +46,7 @@ public class CircleGemController : MonoBehaviour
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(transform.position);
+        NoteManager.Instance.DestroyPreviousFollowLine();
         Destroy(gameObject);
     }
 }
