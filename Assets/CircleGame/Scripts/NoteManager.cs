@@ -9,8 +9,10 @@ using UnityEngine;
 /// </summary>
 public class NoteManager : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton reference to the score manager")] public static NoteManager Instance;
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
     [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
+    [SerializeField, Tooltip("The FollowPoint prefab to spawn")] private GameObject followPoint;
     [SerializeField, Tooltip("Reference to the score manager")] private ScoreManager scoreManager;
     [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
     [SerializeField, Tooltip("List of locations to manually place a specific note (Leave at 0,0,0 for random; Ensure Z is always at 4.89)")] private List<Vector3> spawnLocations = new List<Vector3>();
@@ -19,6 +21,12 @@ public class NoteManager : MonoBehaviour
     [SerializeField, Tooltip("Bottom right position of the random spawn area")] private Vector3 spawnAreaBottomRight;
 
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
+
+    private void Start()
+    {
+        Instance = this;
+        followPoint.GetComponent<TrailRenderer>().enabled = false; 
+    }
 
     /// <summary>
     /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
@@ -46,6 +54,11 @@ public class NoteManager : MonoBehaviour
                 var note = Instantiate(notePrefab, SpawnLocation(), Quaternion.identity);
                 notes.Add(note.GetComponent<CircleGemController>());
                 notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
+
+                //if it has been a couple of beats since a new note spawns, reset the trail path
+
+                followPoint.transform.position = notes[spawnIndex].transform.position;
+                followPoint.GetComponent<TrailRenderer>().enabled = true;
                 spawnIndex++;
             }
         }
