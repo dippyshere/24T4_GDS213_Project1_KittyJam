@@ -24,14 +24,13 @@ public class MarchingSongManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
     [SerializeField, Tooltip("Reference to cat animator")] private Animator catAnimator;
+    [SerializeField, Tooltip("Reference to the player controller")] private MarchingPlayer playerController;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
     [Tooltip("The Y coordinate that beat notes spawn at")] public float beatNoteSpawnY = 300f;
     [Tooltip("The Y coordinate that beat notes should be tapped at")] public float beatNoteTapY = 0;
-    [Tooltip("The X coordinate that notes spawn at")] public float noteSpawnX = 10;
-    [Tooltip("The X coordinate that notes should be tapped at")] public float noteTapX = 0;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
     [Header("Song Configuration")]
     [SerializeField, Tooltip("The default song data to use")] private SongData songData;
@@ -50,14 +49,6 @@ public class MarchingSongManager : MonoBehaviour
         get
         {
             return beatNoteTapY - (beatNoteSpawnY - beatNoteTapY);
-        }
-    }
-    [HideInInspector, Tooltip("The calculated X coordinate notes despawn at")]
-    public float noteDespawnX
-    {
-        get
-        {
-            return noteTapX - (noteSpawnX - noteTapX);
         }
     }
 
@@ -102,7 +93,7 @@ public class MarchingSongManager : MonoBehaviour
         beatNoteTime = 60f / bpm * 2 * trackSpeed;
         catAnimator.SetFloat("Speed", bpm / 109.0909090909f);
         yield return new WaitForSecondsRealtime((0.2833333333f * (bpm / 109.0909090909f)) + songDelayInSeconds);
-        catAnimator.SetTrigger("Start");
+        catAnimator.SetTrigger("Marching");
     }
 
     /// <summary>
@@ -233,6 +224,15 @@ public class MarchingSongManager : MonoBehaviour
         {
             marchingBeats[1].Hit();
         }
+    }
+
+    /// <summary>
+    /// Handles the mouse input for the wand movement on the player controller
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void WandMovement(InputAction.CallbackContext context)
+    {
+        playerController.HandleMouseInput(context);
     }
 
     /// <summary>

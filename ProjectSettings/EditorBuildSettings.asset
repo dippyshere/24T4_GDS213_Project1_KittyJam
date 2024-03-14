@@ -39,16 +39,10 @@ EditorBuildSettings:
     path: Assets/Scenes/GameType1CircleGame.unity
     guid: b9a4d74ff15baff4193725543b5a5703
   - enabled: 1
-    path: Assets/Scenes/GameType1CircleGame 2.unity
-    guid: 36b428e65d786894eb778028bd3c66a3
-  - enabled: 1
     path: Assets/Scenes/GameType2HighwayGame.unity
     guid: 1f5bb80de98332047980dd72155f4081
   - enabled: 1
-    path: Assets/Scenes/GameType2HighwayGame 2.unity
-    guid: 842618d05b9ff8c4084804877f2b8f53
-  - enabled: 1
-    path: Assets/Scenes/GameType3MarchingGame.unity
+    path: Assets/Scenes/GameType3MarchingGame1.unity
     guid: 274ee0652f1631e4b8f624baa91b900d
   - enabled: 1
     path: Assets/Scenes/GameType4DDRGame.unity
