@@ -14,7 +14,8 @@ public class CircleGemController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+
         timeInstantiated = SongManager.GetAudioSourceTime();
         // Randomly select a sprite from the list of potential sprites
         int spriteIndex = Random.Range(0, sprites.Length);
@@ -36,7 +37,6 @@ public class CircleGemController : MonoBehaviour
         double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
         ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
-        NoteManager.Instance.DestroyPreviousFollowLine();
         Destroy(gameObject);
     }
 
@@ -46,7 +46,6 @@ public class CircleGemController : MonoBehaviour
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(transform.position);
-        NoteManager.Instance.DestroyPreviousFollowLine();
         Destroy(gameObject);
     }
 }
