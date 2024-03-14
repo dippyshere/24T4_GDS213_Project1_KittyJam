@@ -56,7 +56,7 @@ public class MarchingBeat : MonoBehaviour
         {
             double timeStamp = timeStamps[inputIndex];
             double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
-            NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject);
+            NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject, true);
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {
