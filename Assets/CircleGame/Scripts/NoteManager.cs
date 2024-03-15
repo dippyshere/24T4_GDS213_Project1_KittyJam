@@ -56,6 +56,14 @@ public class NoteManager : MonoBehaviour
                 notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
 
                 //if it has been a couple of beats since a new note spawns, reset the trail path
+                if (spawnIndex > 0)
+                {
+                    if (timeStamps[spawnIndex +1] - timeStamps[spawnIndex] >= 1)
+                    {
+                        followPoint.GetComponent<TrailRenderer>().enabled = false;
+                    }
+                }
+              
 
                 followPoint.transform.position = notes[spawnIndex].transform.position;
                 followPoint.GetComponent<TrailRenderer>().enabled = true;
