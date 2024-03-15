@@ -21,7 +21,7 @@ MonoBehaviour:
   usageLicense: 2
   midiName: kittyjam maybe.mid
   songAudio: {fileID: 8300000, guid: 24354e57b5014f9459ae6c6073c843f3, type: 3}
-  albumCover: {fileID: 21300000, guid: 13c807f3bf0933f43884a0dec3c1df39, type: 3}
+  albumCover: {fileID: 21300000, guid: ceb7dcb21886a3c4ea6c841fa1677f03, type: 3}
   bpm: 110
   previewStart: 0
   previewEnd: 0
