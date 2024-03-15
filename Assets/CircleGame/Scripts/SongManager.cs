@@ -12,6 +12,7 @@ using System.Globalization;
 public class SongManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
+    [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
     [SerializeField, Tooltip("Refernce to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
@@ -21,23 +22,43 @@ public class SongManager : MonoBehaviour
     [SerializeField, Tooltip("Refernece to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
     [SerializeField, Tooltip("Reference to the text object that displays a tally of the various scores")] private TextMeshProUGUI tallyScore;
-    [SerializeField, Tooltip("Reference to the pause menu game object")] private PauseMenu pauseMenu;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
     [Tooltip("The range that a perfect hit can be achieved in")] public float perfectRange;
     [Tooltip("The range that a good hit can be achieved in")] public float goodRange;
     [Tooltip("How many seconds a note appears for before it needs to be hit")] public float noteTime;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
-    [SerializeField, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
+    [Header("Song Configuration")]
+    [SerializeField, Tooltip("The default song data to use")] private SongData songData;
+    [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
-    [SerializeField, Tooltip("The song to play")] private AudioClip song;
-    [SerializeField, Tooltip("The name of the song to display")] private string songName;
-    [SerializeField, Tooltip("The name of the artist to display")] private string artistName;
-    [SerializeField, Tooltip("The albumn art to display")] private Sprite albumnArt;
+    [HideInInspector, Tooltip("The song to play")] private AudioClip song;
+    [HideInInspector, Tooltip("The name of the song to display")] private string songName;
+    [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
+    [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
+
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        {
+            songData = GlobalVariables.Get<SongData>("activeSong");
+        }
+        fileLocation = songData.MidiName;
+        song = songData.SongAudio;
+        songName = songData.SongName;
+        artistName = songData.ArtistName;
+        albumnArt = songData.AlbumCover;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
@@ -97,8 +118,26 @@ public class SongManager : MonoBehaviour
 
         noteManager.SetTimeStamps(array);
 
+        float firstNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f < firstNoteTime)
+            {
+                firstNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
+        float lastNoteTime = 0;
+        foreach (var note in notes)
+        {
+            var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
+            if (metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f > lastNoteTime)
+            {
+                lastNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
+            }
+        }
         Invoke(nameof(StartSong), songDelayInSeconds);
-        Invoke(nameof(EndSong), audioSource.clip.length + songDelayInSeconds);
+        Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
     }
 
     /// <summary>
@@ -110,7 +149,11 @@ public class SongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -145,8 +188,7 @@ public class SongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

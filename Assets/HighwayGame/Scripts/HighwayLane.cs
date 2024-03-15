@@ -10,7 +10,6 @@ using UnityEngine;
 public class HighwayLane : MonoBehaviour
 {
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
-    [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
@@ -52,21 +51,30 @@ public class HighwayLane : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(input))
-            {
-                NoteFeedback result = HighwayScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
-            }
             if (timeStamp + HighwaySongManager.Instance.goodRange <= audioTime)
+            {
+                inputIndex++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
+        {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = HighwayScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
             {
                 inputIndex++;
             }

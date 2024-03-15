@@ -47,6 +47,8 @@ MonoBehaviour:
   noteNumber: 60
   notePrefab: {fileID: 4524773171783734124, guid: 5c315c747aef6944c85ee8d54b40e451,
     type: 3}
+  followPointPrefab: {fileID: 7380040733622903127, guid: 20606a7271eb11b4bb6b9e232c0c9693,
+    type: 3}
   scoreManager: {fileID: 0}
   spawnLocations: []
   spawnAreaTopLeft: {x: -9, y: 4, z: 4.89}

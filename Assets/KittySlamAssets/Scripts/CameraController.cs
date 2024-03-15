@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
     /// Shakes the camera for a given duration with a given intensity
     /// </summary>
     /// <param name="intensity">The intensity of the shake</param>
-    /// <param name="duration">The duration of the shake</param>
     /// <returns>The IEnumerator for the coroutine</returns>
     public IEnumerator ShakeCamera(float intensity, float duration)
     {
@@ -30,8 +29,8 @@ public class CameraController : MonoBehaviour
         {
             float x = originalPosition.x + Random.Range(-intensity, intensity);
             float y = originalPosition.y + Random.Range(-intensity, intensity);
-            float uiX = originalUIPosition.x + Random.Range(-intensity / 8, intensity / 8);
-            float uiY = originalUIPosition.y + Random.Range(-intensity / 8, intensity / 8);
+            float uiX = originalUIPosition.x + Random.Range(-intensity / 12, intensity / 12);
+            float uiY = originalUIPosition.y + Random.Range(-intensity / 12, intensity / 12);
             transform.position = new Vector3(x, y, originalPosition.z);
             topLeftUI.position = new Vector3(uiX, uiY, originalUIPosition.z);
             // Gradually decrease the intensity of the shake over time

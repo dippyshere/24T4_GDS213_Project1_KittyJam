@@ -11,8 +11,6 @@ using UnityEngine;
 public class DDRLane : MonoBehaviour
 {
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
-    [Tooltip("The keybind to activate the lane")] public KeyCode primaryInput;
-    [Tooltip("The secondary keybind to activate the lane")] public KeyCode secondaryInput;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [SerializeField, Tooltip("The cat arm to enable when the lane is active")] private BongoCatArm catArm;
     [SerializeField, Tooltip("Reference to the cat controller")] private BongoCatController catController;
@@ -57,32 +55,49 @@ public class DDRLane : MonoBehaviour
             double timeStamp = timeStamps[inputIndex];
             double audioTime = DDRSongManager.GetAudioSourceTime() - (DDRSongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(primaryInput) || Input.GetKeyDown(secondaryInput))
-            {
-                NoteFeedback result = DDRScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
-            }
             if (timeStamp + DDRSongManager.Instance.goodRange <= audioTime)
             {
                 inputIndex++;
             }
-        }       
-        if (Input.GetKeyDown(primaryInput) || Input.GetKeyDown(secondaryInput))
+        }
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
         {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = DDRSongManager.GetAudioSourceTime() - (DDRSongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = DDRScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
+            {
+                inputIndex++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Makes the cat arm go down
+    /// </summary>
+    public void ArmDown()
+    {
         catController.EnableArm(catArm);
-        }
-        if (Input.GetKeyUp(primaryInput) || Input.GetKeyUp(secondaryInput))
-        {
-            catController.DisableArm(catArm);
-        }
+    }
+
+    /// <summary>
+    /// Makes the cat arm go up
+    /// </summary>
+    public void ArmUp()
+    {
+        catController.DisableArm(catArm);
     }
 }

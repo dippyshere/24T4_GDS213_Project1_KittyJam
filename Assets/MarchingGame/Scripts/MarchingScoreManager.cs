@@ -16,7 +16,9 @@ public class MarchingScoreManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text displaying the current multiplier")] private TextMeshProUGUI multiplierText;
     [SerializeField, Tooltip("Reference to the text displaying the current score")] private TextMeshProUGUI scoreText;
     [SerializeField, Tooltip("Reference to the text displaying the current combo")] private TextMeshProUGUI comboText;
-    [SerializeField, Tooltip("The prefab to spawn for note feedback")] private GameObject noteFeedbackPrefab;
+    [SerializeField, Tooltip("Beat notes canvas group")] private CanvasGroup beatNotesCanvasGroup;
+    [SerializeField, Tooltip("The prefab to spawn for beat note feedback")] private GameObject beatNoteFeedbackPrefab;
+    [SerializeField, Tooltip("The prefab to spawn for wand note feedback")] private GameObject wandNoteFeedbackPrefab;
     [Tooltip("The current combo")] private int comboScore;
     [HideInInspector, Tooltip("The current score")] public long score;
     [Tooltip("The current combo multiplier")] private int multiplier;
@@ -40,6 +42,8 @@ public class MarchingScoreManager : MonoBehaviour
         // Gradually update the displayed score to the actual score at a fixed rate
         displayedScore = (long)Mathf.Ceil(Mathf.Lerp(displayedScore, score, 0.06f));
         UpdateScoreText();
+        // Lerp the alpha of the beat notes canvas group to fade it in and out based on the player's combo (0 combo = 0.75 alpha, 8 combo = 0.25 alpha)
+        beatNotesCanvasGroup.alpha = Mathf.Lerp(0.75f, 0.25f, Mathf.Clamp01(comboScore / 8f));
     }
 
     /// <summary>
@@ -47,30 +51,36 @@ public class MarchingScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="hitTime">The time the note was hit. The closer to 0, the better</param>
     /// <param name="position">The position of the note that was hit, to display feedback at</param>
-    public NoteFeedback Hit(double hitTime, GameObject gameObject)
+    public NoteFeedback Hit(double hitTime, GameObject gameObject, bool isBeatNote)
     {
         // Debug.Log("Hit time: " + hitTime);
+        if (!isBeatNote)
+        {
+            ShowNoteFeedback(NoteFeedback.Perfect, gameObject, isBeatNote);
+            HitPerfect();
+            return NoteFeedback.Perfect;
+        }
         hitTime *= -1;
         if (hitTime >= -MarchingSongManager.Instance.perfectRange && hitTime <= MarchingSongManager.Instance.perfectRange)
         {
-            ShowNoteFeedback(NoteFeedback.Perfect, gameObject);
+            ShowNoteFeedback(NoteFeedback.Perfect, gameObject, isBeatNote);
             HitPerfect();
             return NoteFeedback.Perfect;
         }
         else if (hitTime >= -MarchingSongManager.Instance.goodRange && hitTime <= MarchingSongManager.Instance.goodRange)
         {
-            ShowNoteFeedback(NoteFeedback.Good, gameObject);
+            ShowNoteFeedback(NoteFeedback.Good, gameObject, isBeatNote);
             HitGood();
             return NoteFeedback.Good;
         }
         else if (hitTime > MarchingSongManager.Instance.goodRange)
         {
-            Miss(gameObject, NoteFeedback.TooEarly);
+            Miss(gameObject, NoteFeedback.TooEarly, isBeatNote);
             return NoteFeedback.TooEarly;
         }
         else
         {
-            Miss(gameObject, NoteFeedback.Miss);
+            Miss(gameObject, NoteFeedback.Miss, isBeatNote);
             return NoteFeedback.Miss;
         }
     }
@@ -80,9 +90,9 @@ public class MarchingScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="position">The position of the note that was missed, to display feedback at</param>
     /// <param name="noteFeedback">The type of feedback to display</param>
-    public void Miss(GameObject gameObject, NoteFeedback noteFeedback = NoteFeedback.Miss)
+    public void Miss(GameObject gameObject, NoteFeedback noteFeedback = NoteFeedback.Miss, bool isBeatNote = true)
     {
-        ShowNoteFeedback(noteFeedback, gameObject);
+        ShowNoteFeedback(noteFeedback, gameObject, isBeatNote);
         comboScore = 0;
         multiplier = 1;
         missCount++;
@@ -127,10 +137,52 @@ public class MarchingScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="feedback">The type of feedback to display</param>
     /// <param name="position">The position to display the feedback at</param>
-    public void ShowNoteFeedback(NoteFeedback feedback, GameObject gameObject)
+    public void ShowNoteFeedback(NoteFeedback feedback, GameObject gameObject, bool isBeatNote)
     {
-        GameObject noteFeedbackObject = Instantiate(noteFeedbackPrefab, gameObject.transform);
-        noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+        if (isBeatNote)
+        {
+            switch (feedback)
+            {
+                case NoteFeedback.Perfect:
+                    GameObject noteFeedbackObject = Instantiate(beatNoteFeedbackPrefab, gameObject.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.Good:
+                    noteFeedbackObject = Instantiate(beatNoteFeedbackPrefab, gameObject.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.Miss:
+                    noteFeedbackObject = Instantiate(beatNoteFeedbackPrefab, gameObject.transform.parent.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.TooEarly:
+                    noteFeedbackObject = Instantiate(beatNoteFeedbackPrefab, gameObject.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+            }
+        }
+        else
+        {
+            switch (feedback)
+            {
+                case NoteFeedback.Perfect:
+                    GameObject noteFeedbackObject = Instantiate(wandNoteFeedbackPrefab, gameObject.transform.parent.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.Good:
+                    noteFeedbackObject = Instantiate(wandNoteFeedbackPrefab, gameObject.transform.parent.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.Miss:
+                    noteFeedbackObject = Instantiate(wandNoteFeedbackPrefab, gameObject.transform.parent.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+                case NoteFeedback.TooEarly:
+                    noteFeedbackObject = Instantiate(wandNoteFeedbackPrefab, gameObject.transform.parent.transform);
+                    noteFeedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+                    break;
+            }
+        }
     }
 
     /// <summary>
@@ -139,7 +191,7 @@ public class MarchingScoreManager : MonoBehaviour
     private void UpdateScoreText()
     {
         multiplierText.text = "Multiplier: x" + multiplier.ToString();
-        scoreText.text = "Score: " + displayedScore.ToString("N0", CultureInfo.InvariantCulture);
-        comboText.text = "Combo: " + comboScore.ToString("N0", CultureInfo.InvariantCulture);
+        scoreText.text = "" + displayedScore.ToString("N0", CultureInfo.InvariantCulture);
+        comboText.text = "x" + comboScore.ToString("N0", CultureInfo.InvariantCulture);
     }
 }

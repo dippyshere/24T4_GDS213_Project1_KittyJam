@@ -8,10 +8,12 @@ using UnityEngine.Networking;
 using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
+using UnityEngine.InputSystem;
 
 public class HighwaySongManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static HighwaySongManager Instance;
+    [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
     [SerializeField, Tooltip("Reference to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
@@ -37,13 +39,15 @@ public class HighwaySongManager : MonoBehaviour
     [Tooltip("The Z coordinate that notes spawn at")] public float noteSpawnZ = 10f;
     [Tooltip("The Z coordinate that notes should be tapped at")] public float noteTapZ = -5f;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
-    [SerializeField, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
-    [SerializeField, Tooltip("The BPM of the song")] private float bpm;
+    [Header("Song Configuration")]
+    [SerializeField, Tooltip("The default song data to use")] private SongData songData;
+    [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
-    [SerializeField, Tooltip("The song to play")] private AudioClip song;
-    [SerializeField, Tooltip("The name of the song to display")] private string songName;
-    [SerializeField, Tooltip("The name of the artist to display")] private string artistName;
-    [SerializeField, Tooltip("The albumn art to display")] private Sprite albumnArt;
+    [HideInInspector, Tooltip("The BPM of the song")] private float bpm;
+    [HideInInspector, Tooltip("The song to play")] private AudioClip song;
+    [HideInInspector, Tooltip("The name of the song to display")] private string songName;
+    [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
+    [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
     [HideInInspector, Tooltip("The calculated speed for the notes")] public float noteTime;
     [HideInInspector, Tooltip("The calculated Z coordinate notes despawn at")]
     public float noteDespawnZ
@@ -54,10 +58,30 @@ public class HighwaySongManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        PauseMenu.OnPauseGameplay += PauseGameplay;
+    }
+
+    private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
+        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        {
+            songData = GlobalVariables.Get<SongData>("activeSong");
+        }
+        fileLocation = songData.MidiName;
+        song = songData.SongAudio;
+        songName = songData.SongName;
+        artistName = songData.ArtistName;
+        albumnArt = songData.AlbumCover;
+        bpm = songData.Bpm;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
         if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
         {
@@ -176,11 +200,6 @@ public class HighwaySongManager : MonoBehaviour
                 downBeatIndex++;
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Pause))
-        {
-            pauseMenu.gameObject.SetActive(!pauseMenu.gameObject.activeSelf);
-        }
     }
 
     /// <summary>
@@ -192,7 +211,11 @@ public class HighwaySongManager : MonoBehaviour
         audioSource.Play();
     }
 
-    public void PauseMusic(bool pause)
+    /// <summary>
+    /// Pauses the music
+    /// </summary>
+    /// <param name="pause">Whether to pause or unpause the music</param>
+    public void PauseGameplay(bool pause)
     {
         if (audioSource == null)
         {
@@ -238,13 +261,72 @@ public class HighwaySongManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Hit the first lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane1(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[0].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the second lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane2(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[1].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the third lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane3(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[2].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the fourth lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane4(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            highwayLanes[3].Hit();
+        }
+    }
+
+    /// <summary>
+    /// Hit the optional fifth lane
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void HitLane5(InputAction.CallbackContext context)
+    {
+        if (context.started && highwayLanes.Length > 4)
+        {
+            highwayLanes[4].Hit();
+        }
+    }
+
+    /// <summary>
     /// End the song and display the win screen
     /// </summary>
     public void EndSong()
     {
         winScreen.SetActive(true);
-        pauseMenu.PauseAction(true);
-        PauseMusic(true);
+        PauseMenu.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + HighwayScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + HighwayScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + HighwayScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + HighwayScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }
