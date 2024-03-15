@@ -1968,6 +1968,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f2e00fe162b5a43b9c389b0e88553e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &1261398676 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5828979002318216439, guid: 00940be691ef71e4b961cb30f3ac4a05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1251335517}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1601140008
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,6 +2898,11 @@ PrefabInstance:
       objectReference: {fileID: 1099715706}
     - target: {fileID: 1612883669672836143, guid: f27a3e0cad911fa4488ee10edf2a5cdf,
         type: 3}
+      propertyPath: seconds
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1612883669672836143, guid: f27a3e0cad911fa4488ee10edf2a5cdf,
+        type: 3}
       propertyPath: comboText
       value: 
       objectReference: {fileID: 1236104749}
@@ -2900,6 +2911,11 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1236104751}
+    - target: {fileID: 1612883669672836143, guid: f27a3e0cad911fa4488ee10edf2a5cdf,
+        type: 3}
+      propertyPath: randerObject
+      value: 
+      objectReference: {fileID: 1261398676}
     - target: {fileID: 1612883669672836143, guid: f27a3e0cad911fa4488ee10edf2a5cdf,
         type: 3}
       propertyPath: multiplierText
