@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   shader: {fileID: 4800000, guid: 55d70ca4ea7504a38b66170bbe587b2f, type: 3}
-  renderPassEvent: 450
+  renderPassEvent: 500
   ignorePostProcessingOption: 0
   clearXRColorBuffer: 0
   cameraLayerMask:
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_DepthPrimingMode: 0
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
-  m_IntermediateTextureMode: 1
+  m_IntermediateTextureMode: 0
 --- !u!114 &3902444644724351462
 MonoBehaviour:
   m_ObjectHideFlags: 0
