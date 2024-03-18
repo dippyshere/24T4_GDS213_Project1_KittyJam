@@ -85,3 +85,5 @@ Assets/HighwayGame/Textures/HighwayRT.renderTexture
 !/Assets/Imported/Beautify/**/*.meta
 /Assets/Imported/Gradient Shader Pack/**/*.*
 !/Assets/Imported/Gradient Shader Pack/**/*.meta
+/Assets/Imported/Bad_Raccoon/3D Music Visualizer Vu Meter/**/*.*
+!/Assets/Imported/Bad_Raccoon/3D Music Visualizer Vu Meter/**/*.meta
