@@ -19,8 +19,16 @@ public class MenuManager : MonoBehaviour
         yield return null;
         yield return null;
         yield return new WaitForEndOfFrame();
-        circleTransitionAnimator.SetTrigger("End");
-        logoTransitionAnimator.SetTrigger("End");
+        if (SceneManager.GetActiveScene().name == "SongSelection")
+        {
+            circleTransitionAnimator.SetTrigger("MenuEnd");
+            logoTransitionAnimator.SetTrigger("End");
+        }
+        else
+        {
+            circleTransitionAnimator.SetTrigger("End");
+            logoTransitionAnimator.SetTrigger("End");
+        }
     }
 
     /// <summary>

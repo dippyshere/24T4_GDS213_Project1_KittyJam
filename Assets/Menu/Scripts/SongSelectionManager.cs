@@ -39,6 +39,10 @@ public class SongSelectionManager : MonoBehaviour
         {
             return;
         }
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.StopMusic();
+        }
         foreach (SongTileManager songTile in songTiles)
         {
             songTile.StopBPM();

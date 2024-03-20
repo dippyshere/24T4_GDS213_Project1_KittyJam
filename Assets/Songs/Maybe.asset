@@ -15,17 +15,17 @@ MonoBehaviour:
   songName: Maybe
   artistName: Sakura Girl
   albumName: Maybe
-  genre: 1
-  year: 
+  genre: 35
+  year: 2023
   songLength: 125
   usageLicense: 2
   midiName: kittyjam maybe.mid
   songAudio: {fileID: 8300000, guid: 24354e57b5014f9459ae6c6073c843f3, type: 3}
   albumCover: {fileID: 21300000, guid: ceb7dcb21886a3c4ea6c841fa1677f03, type: 3}
   bpm: 110
-  previewStart: 0
-  previewEnd: 0
-  loopPoint: 0
+  previewStart: 36.646
+  previewEnd: 100.473
+  loopPoint: 39.39
   gameModes:
   - gameType: 0
     supportedInstruments: []
