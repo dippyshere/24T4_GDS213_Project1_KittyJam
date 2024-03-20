@@ -769,12 +769,12 @@ PrefabInstance:
     - target: {fileID: 5065443998195896546, guid: 20606a7271eb11b4bb6b9e232c0c9693,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 5065443998195896546, guid: 20606a7271eb11b4bb6b9e232c0c9693,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5065443998195896546, guid: 20606a7271eb11b4bb6b9e232c0c9693,
         type: 3}
@@ -1518,7 +1518,7 @@ PrefabInstance:
         type: 3}
       propertyPath: songData
       value: 
-      objectReference: {fileID: 11400000, guid: 06f86c2cc59d40540ba8ca80459a41c6,
+      objectReference: {fileID: 11400000, guid: f6305ede37d69784d94b83fb68dc590a,
         type: 2}
     - target: {fileID: 7796905450288564926, guid: 26639e29866b601419676d3e8a1f8457,
         type: 3}
