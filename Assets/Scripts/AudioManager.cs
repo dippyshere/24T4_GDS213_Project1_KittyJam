@@ -44,7 +44,10 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         if (!isFading)
+        {
+            StopCoroutine(FadeOutMusic());
             StartCoroutine(FadeOutMusic());
+        }
     }
 
     /// <summary>
@@ -53,7 +56,10 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic()
     {
         if (!isFading)
+        {
+            StopCoroutine(FadeInMusic());
             StartCoroutine(FadeInMusic());
+        }
     }
 
     /// <summary>
