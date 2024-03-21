@@ -45,7 +45,7 @@ public class DDRScoreManager : MonoBehaviour
     void Update()
     {
 
-        if(comboScore >= 5)
+        if(comboScore >= 50)
         {
             timer += Time.deltaTime / seconds;
 
@@ -85,7 +85,7 @@ public class DDRScoreManager : MonoBehaviour
                 }
             }
         }
-        if (comboScore >= 10)
+        if (comboScore >= 100)
         {
             timer += Time.deltaTime / seconds;
 
@@ -125,7 +125,7 @@ public class DDRScoreManager : MonoBehaviour
                 }
             }
         }
-        if (comboScore <=4)
+        if (comboScore <=49)
         {
             randerObject.material.color = new Color(0.5f, 0.5f, 0.5f);
             randerObject.material.SetColor("_EmissionColor", randerObject.material.color);
