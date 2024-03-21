@@ -8,6 +8,7 @@ public class SongSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the song list shelf")] private GameObject songListShelf;
     [SerializeField, Tooltip("Reference to the selection ui animator")] private Animator selectionUIAnimator;
     [SerializeField, Tooltip("Reference to the game selection manager")] private GameSelectionManager gameSelectionManager;
+    [SerializeField, Tooltip("Reference to the song shelf scroller")] private SongShelfScrolling songShelfScrolling;
     [SerializeField, Tooltip("Reference to the prefab for the song tile")] private GameObject songTilePrefab;
     [SerializeField, Tooltip("A list of all the songs to populate the menu with")] private List<SongData> songs = new List<SongData>();
     [HideInInspector, Tooltip("The currently active song tile")] public SongTileManager activeSongTile;
@@ -22,6 +23,7 @@ public class SongSelectionManager : MonoBehaviour
     {
         instance = this;
         PopulateSongList();
+        songShelfScrolling.UpdatePages();
         selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 
