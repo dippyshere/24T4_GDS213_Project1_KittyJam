@@ -733,7 +733,6 @@ MonoBehaviour:
   postProcessVolume: {fileID: 0}
   defaultPostProcess: {fileID: 11400000, guid: 367e3fae08ba35443be1bc91c9becf8f, type: 2}
   upgradePostProcess: {fileID: 11400000, guid: 065032fff630e43408469446a9c659f1, type: 2}
-  armController: {fileID: 0}
 --- !u!1 &5009732403034180217
 GameObject:
   m_ObjectHideFlags: 0

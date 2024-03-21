@@ -19,6 +19,7 @@
     <assembly fullname="Melanchall.DryWetMidi.Demo" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native32" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native64" preserve="all" />
+    <assembly fullname="MusicVisualiser" preserve="all" />
     <assembly fullname="SongAssembly" preserve="all" />
     <assembly fullname="TextMeshProExamples" preserve="all" />
     <assembly fullname="Unity.2D.Animation.Runtime" preserve="all" />

@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626fbef1e0bc1b44597e82e3e9fb3690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isScrolling: 0
 --- !u!114 &4968314495044986838
 MonoBehaviour:
   m_ObjectHideFlags: 0

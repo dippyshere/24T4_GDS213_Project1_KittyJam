@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: b2d665e17a92dd34ea2aef6f1afea6d2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TempGameSelect.unity
     guid: d21ec05f03be6324a9759ffa1a1e0ac2
   - enabled: 1
@@ -26,16 +26,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameType4Onboarding.unity
     guid: e2a44c9a349e6ed459b786b7c7a58dc6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game1TempSongSelect.unity
     guid: 9979b71c9c8c25d46a591e36090274a7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game2TempSongSelect.unity
     guid: c8dda4d5cab8a394698b2cc1325be219
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game3TempSongSelect.unity
     guid: 6f907cc6214b8af4585cddda3f42ffee
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Game4TempSongSelect.unity
     guid: 9ca55af329aac854b962f88053b34117
   - enabled: 1
