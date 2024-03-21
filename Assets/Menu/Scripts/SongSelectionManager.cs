@@ -6,6 +6,8 @@ public class SongSelectionManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Instance of the SongSelectionManager")] public static SongSelectionManager instance;
     [SerializeField, Tooltip("Reference to the song list shelf")] private GameObject songListShelf;
+    [SerializeField, Tooltip("Reference to the selection ui animator")] private Animator selectionUIAnimator;
+    [SerializeField, Tooltip("Reference to the game selection manager")] private GameSelectionManager gameSelectionManager;
     [SerializeField, Tooltip("Reference to the prefab for the song tile")] private GameObject songTilePrefab;
     [SerializeField, Tooltip("A list of all the songs to populate the menu with")] private List<SongData> songs = new List<SongData>();
     [HideInInspector, Tooltip("The currently active song tile")] public SongTileManager activeSongTile;
@@ -20,6 +22,7 @@ public class SongSelectionManager : MonoBehaviour
     {
         instance = this;
         PopulateSongList();
+        selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 
     private void PopulateSongList()
@@ -85,5 +88,17 @@ public class SongSelectionManager : MonoBehaviour
             nextStartTime += activeSongTile.songData.PreviewEnd - activeSongTile.songData.LoopPoint;
             audioSources[activeAudioSource].SetScheduledEndTime(nextStartTime);
         }
+    }
+
+    public void SelectSong(SongData songData)
+    {
+        GlobalVariables.Set("activeSong", songData);
+        gameSelectionManager.UpdateGameSelectionScreen();
+        selectionUIAnimator.SetBool("ShowGameUI", true);
+    }
+
+    public void ReturnToSongSelection()
+    {
+        selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 }

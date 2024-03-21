@@ -10,6 +10,7 @@ public class SongTileManager : MonoBehaviour
     [SerializeField, Tooltip("The song data that this song tile represents")] public SongData songData;
     [SerializeField, Tooltip("Whether the song is locked or unlocked for the player")] public bool isLocked;
     [SerializeField, Tooltip("Whether the song is new for the player")] public bool isNew;
+    [SerializeField, Tooltip("Whether this script is for a song tile or game selection tile")] public bool isSongTile = true;
     [SerializeField, Tooltip("The animator component for the song tile")] private Animator tileAnimatorController;
     [SerializeField, Tooltip("The Image component that will display the song's album art")] private Image albumArt;
     [SerializeField, Tooltip("The Text component that will display the song's title when hovered")] private TextMeshProUGUI songTitleHover;
@@ -41,7 +42,7 @@ public class SongTileManager : MonoBehaviour
     {
         albumArt.material = new Material(songMaterial);
         songTileButton = GetComponent<Button>();
-        if (songData != null)
+        if (isSongTile && songData != null)
         {
             albumArt.sprite = songData.AlbumCover;
             songTitle.text = songData.SongName;
@@ -51,6 +52,15 @@ public class SongTileManager : MonoBehaviour
             highwayGameIcon.SetActive(false);
             marchingGameIcon.SetActive(false);
             bongoGameIcon.SetActive(false);
+            // temporary for playtesting purposes, will reset on refresh
+            if (GlobalVariables.Get<string>(songData.name + "New") != null)
+            {
+                isNew = false;
+            }
+            else
+            {
+                isNew = true;
+            }
             if (isNew)
             {
                 bangIcon.SetActive(true);
@@ -115,11 +125,25 @@ public class SongTileManager : MonoBehaviour
 
     public void OnHover()
     {
-        if (tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
+        if (isSongTile && tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
         {
             SongSelectionManager.instance.ChangeSong(this);
             tileAnimatorController.SetBool("AnimateWithBPM", true);
             tileAnimatorController.SetFloat("BPMMultiplier", songData.Bpm / 60f);
+        }
+    }
+
+    public void OnClick()
+    {
+        if (isSongTile && songData != null)
+        {
+            GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            tileAnimatorController.SetBool("Clicked", true);
+            albumArt.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+            albumArt.rectTransform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            songTitle.rectTransform.localScale = new Vector3(1f, 1f, 1f);
+            songTitle.rectTransform.localEulerAngles = new Vector3(0f, 0f, 0f);
+            SongSelectionManager.instance.SelectSong(songData);
         }
     }
 
@@ -142,6 +166,19 @@ public class SongTileManager : MonoBehaviour
         {
             tileAnimatorController.SetBool("AnimateWithBPM", false);
             tileAnimatorController.SetBool("ResetBPM", false);
+        }
+    }
+
+    public void UpdateNewBadge(bool enableBadge)
+    {
+        isNew = !enableBadge;
+        if (isNew)
+        {
+            bangIcon.SetActive(true);
+        }
+        else
+        {
+            bangIcon.SetActive(false);
         }
     }
 }
