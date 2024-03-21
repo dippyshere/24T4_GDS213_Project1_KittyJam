@@ -10,6 +10,13 @@
       },
       "hash": "25a9cdb4007f5fc05692576bf27d65063de0b4cd"
     },
+    "com.kuraiandras.linkergenerator": {
+      "version": "2.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.starasgames.tmpro-dynamic-data-cleaner": {
       "version": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
       "depth": 0,
