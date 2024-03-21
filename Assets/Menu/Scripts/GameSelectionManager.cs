@@ -52,6 +52,7 @@ public class GameSelectionManager : MonoBehaviour
 
     public void LoadGameOnboarding(int gameType)
     {
+        SongSelectionManager.instance.StartCoroutine(SongSelectionManager.instance.fadeOutAudioSources());
         SongData songData = GlobalVariables.Get<SongData>("activeSong");
         GlobalVariables.Set(songData.name + "New", "0");
         if (GlobalVariables.Get<string>("GameType" + gameType + songData.name + "played") == null)

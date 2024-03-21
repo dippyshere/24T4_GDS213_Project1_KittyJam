@@ -101,4 +101,21 @@ public class SongSelectionManager : MonoBehaviour
     {
         selectionUIAnimator.SetBool("ShowSongUI", true);
     }
+
+    public IEnumerator fadeOutAudioSources()
+    {
+        isLooping = false;
+        int otherAudioSource = activeAudioSource == 0 ? 1 : 0;
+        float startVolume = audioSources[activeAudioSource].volume;
+        while (audioSources[activeAudioSource].volume > 0)
+        {
+            audioSources[activeAudioSource].volume -= startVolume * Time.deltaTime / 1;
+            audioSources[otherAudioSource].volume -= startVolume * Time.deltaTime / 1;
+            yield return null;
+        }
+        audioSources[activeAudioSource].Stop();
+        audioSources[otherAudioSource].Stop();
+        audioSources[activeAudioSource].volume = startVolume;
+        audioSources[otherAudioSource].volume = startVolume;
+    }
 }
