@@ -56,13 +56,24 @@ public class NoteManager : MonoBehaviour
                 notes[spawnIndex].assignedTime = (float)timeStamps[spawnIndex];
 
                 //if it has been a couple of beats since a new note spawns, reset the trail path
+                if (spawnIndex > 0)
+                {
+                    if (timeStamps[spawnIndex] - timeStamps[spawnIndex - 1] >= 1.2)
+                    {
+                        followPoint.GetComponent<TrailRenderer>().enabled = false;
+                        Debug.Log("Cut Trail");
+                    }
+                }
+              
 
                 followPoint.transform.position = notes[spawnIndex].transform.position;
                 followPoint.GetComponent<TrailRenderer>().enabled = true;
                 spawnIndex++;
             }
         }
-           
+
+   
+
     }
 
     /// <summary>
