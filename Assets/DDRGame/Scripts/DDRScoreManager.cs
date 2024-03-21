@@ -17,7 +17,7 @@ public class DDRScoreManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the text displaying the current score")] private TextMeshProUGUI scoreText;
     [SerializeField, Tooltip("Reference to the text displaying the current combo")] private TextMeshProUGUI comboText;
 
-    [Tooltip("The current combo")] private int comboScore;
+    [Tooltip("The current combo")] public int comboScore;
     [HideInInspector, Tooltip("The current score")] public long score;
     [Tooltip("The current combo multiplier")] private int multiplier;
     [SerializeField, Tooltip("The current perfect hit bonus multipler")] private float perfectBonus = 1;
@@ -26,6 +26,13 @@ public class DDRScoreManager : MonoBehaviour
     [HideInInspector, Tooltip("The count of perfect hits")] public int perfectCount;
     [HideInInspector, Tooltip("The count of missed notes")] public int missCount;
 
+    [SerializeField] Renderer randerObject;
+    [SerializeField] float seconds;
+    float timer = 0.0f;
+    bool blueToGreen = true;
+    bool greenToRed = false;
+    bool redToBlue = false;
+
     void Start()
     {
         // Setup variables
@@ -33,6 +40,98 @@ public class DDRScoreManager : MonoBehaviour
         comboScore = 0;
         score = 0;
         multiplier = 1;
+    }
+
+    void Update()
+    {
+
+        if(comboScore >= 50)
+        {
+            timer += Time.deltaTime / seconds;
+
+            if (blueToGreen == true && greenToRed == false && redToBlue == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.blue, Color.green, timer);
+                
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    blueToGreen = false;
+                    greenToRed = true;
+                }
+            }
+
+            if (greenToRed == true && blueToGreen == false && redToBlue == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.green, Color.red, timer);
+                
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    greenToRed = false;
+                    redToBlue = true;
+                }
+            }
+
+            if (redToBlue == true && greenToRed == false && blueToGreen == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.red, Color.blue, timer);
+                
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    redToBlue = false;
+                    blueToGreen = true;
+                }
+            }
+        }
+        if (comboScore >= 100)
+        {
+            timer += Time.deltaTime / seconds;
+
+            if (blueToGreen == true && greenToRed == false && redToBlue == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.blue, Color.green, timer);
+                randerObject.material.SetColor("_EmissionColor", randerObject.material.color * 1);
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    blueToGreen = false;
+                    greenToRed = true;
+                }
+            }
+
+            if (greenToRed == true && blueToGreen == false && redToBlue == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.green, Color.red, timer);
+                randerObject.material.SetColor("_EmissionColor", randerObject.material.color * 1);
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    greenToRed = false;
+                    redToBlue = true;
+                }
+            }
+
+            if (redToBlue == true && greenToRed == false && blueToGreen == false)
+            {
+                randerObject.material.color = Color.Lerp(Color.red, Color.blue, timer);
+                randerObject.material.SetColor("_EmissionColor", randerObject.material.color * 1);
+                if (timer >= 1.0f)
+                {
+                    timer = 0.0f;
+                    redToBlue = false;
+                    blueToGreen = true;
+                }
+            }
+        }
+        if (comboScore <=49)
+        {
+            randerObject.material.color = new Color(0.5f, 0.5f, 0.5f);
+            randerObject.material.SetColor("_EmissionColor", randerObject.material.color);
+        }
+       
+        
     }
 
     private void FixedUpdate()
