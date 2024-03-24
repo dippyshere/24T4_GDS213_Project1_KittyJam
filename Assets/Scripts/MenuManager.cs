@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 /// <summary>
 /// Manages the transitions between scenes
@@ -109,7 +110,8 @@ public class MenuManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(1.05f);
         }
         Time.timeScale = 1;
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
+        Addressables.LoadSceneAsync("Assets/Scenes/" + sceneToLoad + ".unity");
     }
 
     private IEnumerator LoadAssetBundleFromWeb(string fileLocation)

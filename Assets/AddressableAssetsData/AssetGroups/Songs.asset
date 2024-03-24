@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Songs
+  m_EditorClassIdentifier: 
+  m_GroupName: Songs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f9ff22a8718f0044fa4c901583c426da
+  m_SerializeEntries:
+  - m_GUID: 558f372123a7a1646a2bff748117262c
+    m_Address: Assets/Audio
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8e012404958bbd43b82a6ba8fda51dc
+    m_Address: Assets/Textures/AlbumArt
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e25d22637c681b4eac454ad6d89ccf1
+    m_Address: Assets/Songs/March To Victory.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06f86c2cc59d40540ba8ca80459a41c6
+    m_Address: Assets/Songs/Maybe.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d3eed37a3942be48bd02cd875c3657e
+    m_Address: Assets/Songs/Nothing's Alright.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6305ede37d69784d94b83fb68dc590a
+    m_Address: Assets/Songs/The Spark.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d2b18e5826fac3f4ea5fb445ce320e55, type: 2}
+    - {fileID: 11400000, guid: 033878453f71e9d4c928b72a968b5cd6, type: 2}

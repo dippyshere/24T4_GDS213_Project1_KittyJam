@@ -5,51 +5,38 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu.unity
     guid: b2d665e17a92dd34ea2aef6f1afea6d2
   - enabled: 0
-    path: Assets/Scenes/TempGameSelect.unity
-    guid: d21ec05f03be6324a9759ffa1a1e0ac2
-  - enabled: 1
     path: Assets/Scenes/SongSelection.unity
     guid: 9abdd379084c540429028939a4b736c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType1Onboarding.unity
     guid: 679613c4ee1b60c4bb870ccc6ee9885a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType2Onboarding.unity
     guid: 58e428e018dc3304186ced05c795d06f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType3Onboarding.unity
     guid: c062c22520ce21e458b59b858b86dd26
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType4Onboarding.unity
     guid: e2a44c9a349e6ed459b786b7c7a58dc6
   - enabled: 0
-    path: Assets/Scenes/Game1TempSongSelect.unity
-    guid: 9979b71c9c8c25d46a591e36090274a7
-  - enabled: 0
-    path: Assets/Scenes/Game2TempSongSelect.unity
-    guid: c8dda4d5cab8a394698b2cc1325be219
-  - enabled: 0
-    path: Assets/Scenes/Game3TempSongSelect.unity
-    guid: 6f907cc6214b8af4585cddda3f42ffee
-  - enabled: 0
-    path: Assets/Scenes/Game4TempSongSelect.unity
-    guid: 9ca55af329aac854b962f88053b34117
-  - enabled: 1
     path: Assets/Scenes/GameType1CircleGame.unity
     guid: b9a4d74ff15baff4193725543b5a5703
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType2HighwayGame.unity
     guid: 1f5bb80de98332047980dd72155f4081
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType3MarchingGame.unity
     guid: 510cd27fd5c36a54d97c2c330171b3e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameType4DDRGame.unity
     guid: 62a31071e5ee7f84fad7da0490e7d905
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 37fe64d0179ebda429765f84c2989d0d,
+      type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: ec7bc1356ad192840be17d6aa8a438dd,
       type: 2}

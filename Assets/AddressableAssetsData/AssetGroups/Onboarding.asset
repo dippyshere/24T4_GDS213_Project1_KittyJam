@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Onboarding
+  m_EditorClassIdentifier: 
+  m_GroupName: Onboarding
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7471f45c03747094f82415ee2d2e172f
+  m_SerializeEntries:
+  - m_GUID: e2a44c9a349e6ed459b786b7c7a58dc6
+    m_Address: Assets/Scenes/GameType4Onboarding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c062c22520ce21e458b59b858b86dd26
+    m_Address: Assets/Scenes/GameType3Onboarding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58e428e018dc3304186ced05c795d06f
+    m_Address: Assets/Scenes/GameType2Onboarding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 679613c4ee1b60c4bb870ccc6ee9885a
+    m_Address: Assets/Scenes/GameType1Onboarding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 60b269fce3f69a045b1ff99922307a85, type: 2}
+    - {fileID: 11400000, guid: ba94cda7839a4174589849d20f241553, type: 2}
