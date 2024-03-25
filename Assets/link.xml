@@ -19,7 +19,7 @@
     <assembly fullname="Melanchall.DryWetMidi.Demo" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native32" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native64" preserve="all" />
-    <assembly fullname="MusicVisualiser" preserve="all" />
+    <assembly fullname="SimpleSpectrum" preserve="all" />
     <assembly fullname="SongAssembly" preserve="all" />
     <assembly fullname="TextMeshProExamples" preserve="all" />
     <assembly fullname="Unity.2D.Animation.Runtime" preserve="all" />
@@ -28,6 +28,7 @@
     <assembly fullname="Unity.2D.PixelPerfect" preserve="all" />
     <assembly fullname="Unity.2D.SpriteShape.Runtime" preserve="all" />
     <assembly fullname="Unity.2D.Tilemap.Extras" preserve="all" />
+    <assembly fullname="Unity.Addressables" preserve="all" />
     <assembly fullname="Unity.Burst" preserve="all" />
     <assembly fullname="Unity.Collections" preserve="all" />
     <assembly fullname="Unity.InputSystem" preserve="all" />
@@ -42,6 +43,7 @@
     <assembly fullname="Unity.ProBuilder.KdTree" preserve="all" />
     <assembly fullname="Unity.ProBuilder.Poly2Tri" preserve="all" />
     <assembly fullname="Unity.ProBuilder.Stl" preserve="all" />
+    <assembly fullname="Unity.Profiling.Core" preserve="all" />
     <assembly fullname="Unity.RenderPipeline.Universal.ShaderLibrary" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Core.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Core.ShaderLibrary" preserve="all" />
@@ -49,6 +51,8 @@
     <assembly fullname="Unity.RenderPipelines.Universal.Config.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Universal.Runtime" preserve="all" />
     <assembly fullname="Unity.RenderPipelines.Universal.Shaders" preserve="all" />
+    <assembly fullname="Unity.ResourceManager" preserve="all" />
+    <assembly fullname="Unity.ScriptableBuildPipeline" preserve="all" />
     <assembly fullname="Unity.Splines" preserve="all" />
     <assembly fullname="Unity.TextMeshPro" preserve="all" />
     <assembly fullname="Unity.Timeline" preserve="all" />
