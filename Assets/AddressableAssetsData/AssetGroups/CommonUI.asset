@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CommonUI
+  m_EditorClassIdentifier: 
+  m_GroupName: CommonUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bfc92d2bd97eae345bd9e14324536101
+  m_SerializeEntries:
+  - m_GUID: 2100733540dd8e24b8c5614933b70d9e
+    m_Address: Assets/Textures/Circle.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc79d408e93264d41b81dfc3cf6a569b
+    m_Address: Assets/Textures/kittyjam-cat.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 141db787ecf911241a947eb194d743a5, type: 2}
+    - {fileID: 11400000, guid: 66e921639f1a42e4cadfef3e6f3b8cb5, type: 2}
