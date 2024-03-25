@@ -10,31 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: TextMeshPro
+  m_Name: TextMeshPro Examples
   m_EditorClassIdentifier: 
-  m_GroupName: TextMeshPro
+  m_GroupName: TextMeshPro Examples
   m_Data:
     m_SerializedData: []
-  m_GUID: 5bbd6c7a6e496fc41897924d593f8658
+  m_GUID: 8699f360061d09a4da79e3975e45ae2d
   m_SerializeEntries:
-  - m_GUID: 6ab70aee4d56447429c680537fbf93ed
-    m_Address: Assets/TextMesh Pro/Fonts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - fonts
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 243e06394e614e5d99fab26083b707fa
-    m_Address: Assets/TextMesh Pro/Resources
+  - m_GUID: 5bff2544887143f5807c7d5059d07f79
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9f693669af91aa45ad615fc681ed29f
-    m_Address: Assets/TextMesh Pro/Shaders
+  - m_GUID: d6d3a169ad794942a21da6a552d62f6f
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Resources
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0603b6d5186471b96c778c3949c7ce2
-    m_Address: Assets/TextMesh Pro/Sprites
+  - m_GUID: 701e577af2ba48b689972d42efb95456
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Sprites
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e5c6d5e25574122a7a12dbdbbeed156
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Textures
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -42,5 +41,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9222f7cc85cb21a48b457748410e115d, type: 2}
-    - {fileID: 11400000, guid: 71a214bf3c6b0ac45a4cd6fdb79b6eb3, type: 2}
+    - {fileID: 11400000, guid: 43bfdbb596f5a58468787a49d4eb9327, type: 2}
+    - {fileID: 11400000, guid: 0eb876af3380a6442859a0456ba7a613, type: 2}

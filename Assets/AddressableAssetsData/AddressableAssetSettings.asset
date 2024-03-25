@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: 67bee7cea44f5f39976f2e0c7a222d92
+    Hash: a3e77048c0e71164581e05acbc1d715e
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -58,6 +58,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6c171009cda79154eb25e42bdb7e4b39, type: 2}
   - {fileID: 11400000, guid: c7836d95e901e38428a2e59a065c2490, type: 2}
   - {fileID: 11400000, guid: 758b6083d6b72c044883e53aee4b0798, type: 2}
+  - {fileID: 11400000, guid: 9bab15ac11236274b8f19285674aff85, type: 2}
+  - {fileID: 11400000, guid: e3d9236c6b17dec4385e6975cdb7352e, type: 2}
+  - {fileID: 11400000, guid: 6eb59ac4033e8124681330786b16a192, type: 2}
+  - {fileID: 11400000, guid: 18413b32490a83d4eb5da9157bf43892, type: 2}
+  - {fileID: 11400000, guid: ee00f3456ed10504e8aacfe3d55492b4, type: 2}
+  - {fileID: 11400000, guid: 3e724650ed506434f944dee3227d6552, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -99,6 +105,17 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - fonts
+    - marchtovictory
+    - maybe
+    - nothingsalright
+    - thespark
+    - keyboard
+    - others
+    - ps5
+    - steamdeck
+    - switch
+    - xsx
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

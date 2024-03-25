@@ -10,31 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: TextMeshPro
+  m_Name: KittySlam
   m_EditorClassIdentifier: 
-  m_GroupName: TextMeshPro
+  m_GroupName: KittySlam
   m_Data:
     m_SerializedData: []
-  m_GUID: 5bbd6c7a6e496fc41897924d593f8658
+  m_GUID: 59f2534b37ee7f44585291221391b23f
   m_SerializeEntries:
-  - m_GUID: 6ab70aee4d56447429c680537fbf93ed
-    m_Address: Assets/TextMesh Pro/Fonts
+  - m_GUID: ed922063cb87f6348b354ddb46b79835
+    m_Address: Assets/KittySlamAssets/Animation
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59ad2809b6a7ac344a74e3c75f5a8145
+    m_Address: Assets/KittySlamAssets/Fonts
     m_ReadOnly: 0
     m_SerializedLabels:
     - fonts
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 243e06394e614e5d99fab26083b707fa
-    m_Address: Assets/TextMesh Pro/Resources
+  - m_GUID: bc20acf5f59567f42950a2d05c24b2c5
+    m_Address: Assets/KittySlamAssets/Prefabs
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9f693669af91aa45ad615fc681ed29f
-    m_Address: Assets/TextMesh Pro/Shaders
+  - m_GUID: 85ea4ba15d6675f41945eee7c9e6c9b0
+    m_Address: Assets/KittySlamAssets/Scripts
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0603b6d5186471b96c778c3949c7ce2
-    m_Address: Assets/TextMesh Pro/Sprites
+  - m_GUID: 38502ad4faeee1a47adce7e71e3a50f1
+    m_Address: Assets/KittySlamAssets/Textures
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -42,5 +47,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 9222f7cc85cb21a48b457748410e115d, type: 2}
-    - {fileID: 11400000, guid: 71a214bf3c6b0ac45a4cd6fdb79b6eb3, type: 2}
+    - {fileID: 11400000, guid: 11145d72890e17f42a9a9d3c0f6cb336, type: 2}
+    - {fileID: 11400000, guid: 899e42a7d02390a499613460008c00db, type: 2}

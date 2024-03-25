@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Fonts
+  m_Name: JamStage
   m_EditorClassIdentifier: 
-  m_GroupName: Fonts
+  m_GroupName: JamStage
   m_Data:
     m_SerializedData: []
-  m_GUID: 9876429e7864046469e2c4fecd2c0f92
+  m_GUID: 25b4128436ae0624c98c977332e20936
   m_SerializeEntries:
-  - m_GUID: 2bb0bf01a17739a4e841c2a2ada006c2
-    m_Address: Assets/Menu/Fonts
+  - m_GUID: 2ab43709d357ce144b6434ed2ed895b9
+    m_Address: Assets/Imported/single-stage
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - fonts
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ead1014586ead7f4c9004eb28fec745f, type: 2}
-    - {fileID: 11400000, guid: 33947124978bf9b4b8871bfd91225e64, type: 2}
+    - {fileID: 11400000, guid: 4c67c80d955a00a4aa324c39a8f40a7e, type: 2}
+    - {fileID: 11400000, guid: 2c53e5446935e5b4b8e4e09ba5558d6e, type: 2}

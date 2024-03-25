@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Fonts
+  m_Name: TextMeshPro Extras
   m_EditorClassIdentifier: 
-  m_GroupName: Fonts
+  m_GroupName: TextMeshPro Extras
   m_Data:
     m_SerializedData: []
-  m_GUID: 9876429e7864046469e2c4fecd2c0f92
+  m_GUID: e06cea2ce88b7414cab474f3b91a6d44
   m_SerializeEntries:
-  - m_GUID: 2bb0bf01a17739a4e841c2a2ada006c2
-    m_Address: Assets/Menu/Fonts
+  - m_GUID: b63e0053080646b9819789bf3bf9fa17
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Fonts
     m_ReadOnly: 0
     m_SerializedLabels:
     - fonts
@@ -27,5 +27,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: ead1014586ead7f4c9004eb28fec745f, type: 2}
-    - {fileID: 11400000, guid: 33947124978bf9b4b8871bfd91225e64, type: 2}
+    - {fileID: 11400000, guid: a17ee85ab0666f5429e6a79a87aca90a, type: 2}
+    - {fileID: 11400000, guid: 220eeb5e6bd26b643a61f567958cf3c3, type: 2}
