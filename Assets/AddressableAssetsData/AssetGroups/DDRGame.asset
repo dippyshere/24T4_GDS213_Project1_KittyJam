@@ -20,7 +20,50 @@ MonoBehaviour:
   - m_GUID: 62a31071e5ee7f84fad7da0490e7d905
     m_Address: Assets/Scenes/GameType4DDRGame.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2dc8ff55bc4d5db48a621aeb3c608d3e
+    m_Address: Assets/DDRGame/Animation
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 485c87cc2118223408d85dd1c47d78c3
+    m_Address: Assets/DDRGame/Audio
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c8dda2506b360bc48b8a6c771aaceab3
+    m_Address: Assets/DDRGame/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30a1d34cd05184e48a2901cc2f6ecdd5
+    m_Address: Assets/DDRGame/Models
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c3723b9de00c35f45934d76a68f67ed1
+    m_Address: Assets/DDRGame/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a65e9ebad37c8041b72caae2f616da3
+    m_Address: Assets/DDRGame/Scripts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97553e5f858656745bfcdc9f31a76636
+    m_Address: Assets/DDRGame/Sprites
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

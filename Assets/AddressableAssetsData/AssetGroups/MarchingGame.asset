@@ -20,7 +20,50 @@ MonoBehaviour:
   - m_GUID: 510cd27fd5c36a54d97c2c330171b3e0
     m_Address: Assets/Scenes/GameType3MarchingGame.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3010eb34c7d5f9c4f8f3998cc66f56e7
+    m_Address: Assets/MarchingGame/Animations
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9db036efa1f55147a29ace536e6531a
+    m_Address: Assets/MarchingGame/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e71273e279761024c8d11b9048595620
+    m_Address: Assets/MarchingGame/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f628ff6e7be3f5d4b899c03861979e94
+    m_Address: Assets/MarchingGame/Scripts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06789836462391e4bbfc6d3a8e1c16a1
+    m_Address: Assets/MarchingGame/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 689f55a579dc22f4ead153751b5a2d75
+    m_Address: Assets/Imported/Wand
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ad9d47ad6a3a5143ba0f73fafac1a36
+    m_Address: Assets/Imported/SiuniaevCharacters
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

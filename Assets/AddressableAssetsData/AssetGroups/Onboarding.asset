@@ -20,22 +20,26 @@ MonoBehaviour:
   - m_GUID: e2a44c9a349e6ed459b786b7c7a58dc6
     m_Address: Assets/Scenes/GameType4Onboarding.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - bongogame
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c062c22520ce21e458b59b858b86dd26
     m_Address: Assets/Scenes/GameType3Onboarding.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - marchinggame
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58e428e018dc3304186ced05c795d06f
     m_Address: Assets/Scenes/GameType2Onboarding.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 679613c4ee1b60c4bb870ccc6ee9885a
     m_Address: Assets/Scenes/GameType1Onboarding.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - circlegame
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

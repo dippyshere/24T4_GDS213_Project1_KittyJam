@@ -17,8 +17,44 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 6ab72d12846dc584d84bc7aef98c0cea
   m_SerializeEntries:
-  - m_GUID: 553836504006aac409355f4f7089f975
-    m_Address: Assets/Menu
+  - m_GUID: 9308444cf0db27c4d9e9a1aa760db436
+    m_Address: Assets/Menu/Animations
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2bb0bf01a17739a4e841c2a2ada006c2
+    m_Address: Assets/Menu/Fonts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - fonts
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a816131f4a005ae45a136fdd0825c2ff
+    m_Address: Assets/Menu/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66298db9e59af7f4bae786c703d1b7b9
+    m_Address: Assets/Menu/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f2f7249d9cc69449958bf96356be942
+    m_Address: Assets/Menu/Scripts
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94ae3b412d238cf499f62e9229ebf104
+    m_Address: Assets/Menu/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 400caba73e08b4646b2342d2ef32d2e9
+    m_Address: Assets/Menu/PinkMenuText.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c2edff9fe31b7f941b6e4c207b07243e
+    m_Address: Assets/Menu/PurpleMenuText.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

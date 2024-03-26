@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: a3e77048c0e71164581e05acbc1d715e
+    Hash: 7031bef7d4b27f09cfa969d95ccf30ef
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -64,6 +64,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18413b32490a83d4eb5da9157bf43892, type: 2}
   - {fileID: 11400000, guid: ee00f3456ed10504e8aacfe3d55492b4, type: 2}
   - {fileID: 11400000, guid: 3e724650ed506434f944dee3227d6552, type: 2}
+  - {fileID: 11400000, guid: 26292bad9e40c204d87de26faaa5b96c, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -116,6 +117,10 @@ MonoBehaviour:
     - steamdeck
     - switch
     - xsx
+    - circlegame
+    - highwaygame
+    - marchinggame
+    - bongogame
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

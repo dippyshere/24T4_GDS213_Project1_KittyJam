@@ -20,7 +20,62 @@ MonoBehaviour:
   - m_GUID: 1f5bb80de98332047980dd72155f4081
     m_Address: Assets/Scenes/GameType2HighwayGame.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0f6271ee33c1f714a9f5ada1a31f38e1
+    m_Address: Assets/HighwayGame/Animations
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd0d9c5fb85bccd448b5d0b8a282abec
+    m_Address: Assets/HighwayGame/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 03499d54ab3502f469f8cc9b717df5f3
+    m_Address: Assets/HighwayGame/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b891c84520286024ab89066ce5fa8f61
+    m_Address: Assets/HighwayGame/Scripts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c80a999f29d462d40a41f6a2fa080268
+    m_Address: Assets/HighwayGame/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c03536bece55f4144981fa6cfde689fe
+    m_Address: Assets/Textures/cloth highway.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a0033af4d4825f448b2500de98138ff
+    m_Address: Assets/Textures/cloth highway normal.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77ec3c4e07a36814fb3169ecef41b50a
+    m_Address: Assets/Imported/JMO Assets/Cartoon FX (legacy)/CFX Prefabs/Electric/CFX_ElectricityBall.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ca16f2a31fb6a548ad8954bed1d321f
+    m_Address: Assets/Imported/JMO Assets/Cartoon FX (legacy)/CFX3 Prefabs/Electric/CFX3_Hit_Electric_A_Ground.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

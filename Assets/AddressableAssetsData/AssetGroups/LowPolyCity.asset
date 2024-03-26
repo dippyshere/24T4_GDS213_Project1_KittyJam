@@ -10,20 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Menu
+  m_Name: LowPolyCity
   m_EditorClassIdentifier: 
-  m_GroupName: Menu
+  m_GroupName: LowPolyCity
   m_Data:
     m_SerializedData: []
-  m_GUID: f4daf2a915a97e444a744244a3ddd56b
+  m_GUID: f6e4381f1c185314fab9a4b609bf735c
   m_SerializeEntries:
-  - m_GUID: b2d665e17a92dd34ea2aef6f1afea6d2
-    m_Address: Assets/Scenes/Menu.unity
+  - m_GUID: 7199ffb280fb0c74cb1710aaf4a007fa
+    m_Address: Assets/Imported/SimplePoly City - Low Poly Assets/Better Textures
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a2594d64489f1c547bbc7e87985621b3
-    m_Address: Assets/Imported/Music - FestivalTrain/FestivalTrain - Loop1.wav
+  - m_GUID: f6cb902f7983d69488a371a5d5635d4c
+    m_Address: Assets/Imported/SimplePoly City - Low Poly Assets/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61f39b82f22ba804c80dfeaddd407dca
+    m_Address: Assets/Imported/SimplePoly City - Low Poly Assets/Textures
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -31,5 +36,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 0c8d6dcaa1c18ea47b7e0337df8d0167, type: 2}
-    - {fileID: 11400000, guid: cdd46fed09659b24bac79aab13254673, type: 2}
+    - {fileID: 11400000, guid: fe26112553c591944ae40c94cfc32d10, type: 2}
+    - {fileID: 11400000, guid: 75ca0e2b18efc124186b2678e05488e4, type: 2}

@@ -71,14 +71,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-## Asset bundles
-Assets/StreamingAssets/marchinggame
-Assets/StreamingAssets/marchinggamelighting
-Assets/StreamingAssets/marchinggamescene
-
 ## Highway data
-Assets/HighwayGame/Materials/HighwayRenderMat.mat
-Assets/HighwayGame/Textures/HighwayRT.renderTexture
+/Assets/HighwayGame/Materials/HighwayRenderMat.mat
+/Assets/HighwayGame/Textures/HighwayRT.renderTexture
 
 ## Paid assets contents (keep the meta files to keep the import settings and guids)
 /Assets/Imported/Beautify/**/*.*
