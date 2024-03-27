@@ -1,0 +1,20 @@
+{
+    "name": "CodingJar.MultiScene.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cd86ddae76157d4458c62a5539cb4227",
+        "GUID:73dc9d84439d8d74282a42499a43f5d6",
+        "GUID:8b4e1425ad441bb4ca1bc67bf603a597"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
