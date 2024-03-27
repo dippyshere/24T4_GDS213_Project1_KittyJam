@@ -5,7 +5,7 @@ using UnityEngine;
 
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
-    Icon("Packages/com.unity.visualscripting/Editor/VisualScripting.Core/IconMap/UnityMessageListener@32x.png"),
+    Icon("Assets/Menu/Textures/kittyjam placeholder cover.png"),
     Tooltip("A scriptable object that contains data for a song"),
     HelpURL("https://discord.com/channels/@me/1137585685864402974/1214421770657071145")
 ]
@@ -64,21 +64,6 @@ public class SongData : ScriptableObject
         this.loopPoint = loopPoint;
         this.gameModes = gameModes;
     }
-#if UNITY_EDITOR
-    [MenuItem("Assets/UpdateEditorIcon")]
-    public static void SetCustomIconOnGameObject()
-    {
-        SongData songData = Selection.activeObject as SongData;
-        if (songData != null && songData.AlbumCover != null)
-        {
-            EditorGUIUtility.SetIconForObject(songData, songData.AlbumCover.texture);
-        }
-        else
-        {
-            Debug.LogError("Cannot set icon: No SongData selected or AlbumCover is null.");
-        }
-    }
-#endif
 }
 
 public enum UsageLicense
@@ -132,4 +117,29 @@ public enum Genre
     Comedy,
     SpokenWord,
     Other
+}
+
+
+[
+    CustomEditor(typeof(SongData), true),
+    CanEditMultipleObjects
+]
+public class SongDataEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+    }
+
+    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
+    {
+        SongData songData = (SongData)target;
+        if (songData == null || songData.AlbumCover == null)
+        {
+            return base.RenderStaticPreview(assetPath, subAssets, width, height);
+        }
+        Texture2D texture2D = new Texture2D(width, height);
+        EditorUtility.CopySerialized(songData.AlbumCover.texture, texture2D);
+        return texture2D;
+    }
 }
