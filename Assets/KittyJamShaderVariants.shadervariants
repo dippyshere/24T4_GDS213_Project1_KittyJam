@@ -32,11 +32,6 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
-    second:
-      variants:
-      - keywords: _SUNDISK_SIMPLE
-        passType: 0
   - first: {fileID: 108, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
@@ -45,8 +40,6 @@ ShaderVariantCollection:
   - first: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
     second:
       variants:
-      - keywords: 
-        passType: 0
       - keywords: FOG_EXP2
         passType: 0
   - first: {fileID: 9000, guid: 0000000000000000f000000000000000, type: 0}
@@ -94,11 +87,6 @@ ShaderVariantCollection:
       variants:
       - keywords: 
         passType: 0
-  - first: {fileID: 4800000, guid: d6dae50ee9e1bfa4db75f19f99355220, type: 3}
-    second:
-      variants:
-      - keywords: _OUTPUT_DEPTH
-        passType: 0
   - first: {fileID: 4800000, guid: 65df88701913c224d95fc554db28381a, type: 3}
     second:
       variants:
@@ -107,10 +95,6 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: e7857e9d0c934dc4f83f270f8447b006, type: 3}
     second:
       variants:
-      - keywords: 
-        passType: 0
-      - keywords: _BLOOM_LQ_DIRT _CHROMATIC_ABERRATION
-        passType: 0
       - keywords: _BLOOM_LQ_DIRT _CHROMATIC_ABERRATION _DITHERING
         passType: 0
   - first: {fileID: 4800000, guid: e6e9a19c3678ded42a3bc431ebef7dbd, type: 3}
@@ -171,9 +155,6 @@ ShaderVariantCollection:
           _ADDITIONAL_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _REFLECTION_PROBE_BLENDING
           _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION _SHADOWS_SOFT
         passType: 13
-      - keywords: DIRLIGHTMAP_COMBINED FOG_EXP2 LIGHTMAP_ON SHADOWS_SHADOWMASK _ADDITIONAL_LIGHTS
-          _MAIN_LIGHT_SHADOWS_CASCADE
-        passType: 13
       - keywords: DIRLIGHTMAP_COMBINED FOG_EXP2 LIGHTMAP_ON _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS
           _ALPHAPREMULTIPLY_ON _EMISSION _MAIN_LIGHT_SHADOWS _REFLECTION_PROBE_BLENDING
           _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION _SURFACE_TYPE_TRANSPARENT
@@ -205,8 +186,6 @@ ShaderVariantCollection:
           _MAIN_LIGHT_SHADOWS_CASCADE _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
           _SCREEN_SPACE_OCCLUSION _SHADOWS_SOFT
         passType: 13
-      - keywords: FOG_EXP2 SHADOWS_SHADOWMASK _ADDITIONAL_LIGHTS _MAIN_LIGHT_SHADOWS_CASCADE
-        passType: 13
       - keywords: SHADOWS_SHADOWMASK _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS
           _EMISSION _MAIN_LIGHT_SHADOWS_CASCADE _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION
           _SCREEN_SPACE_OCCLUSION _SHADOWS_SOFT
@@ -216,9 +195,6 @@ ShaderVariantCollection:
           _SCREEN_SPACE_OCCLUSION _SHADOWS_SOFT
         passType: 13
       - keywords: SHADOWS_SHADOWMASK _ADDITIONAL_LIGHTS _MAIN_LIGHT_SHADOWS_CASCADE
-        passType: 13
-      - keywords: _ADDITIONAL_LIGHTS _ADDITIONAL_LIGHT_SHADOWS _EMISSION _MAIN_LIGHT_SHADOWS
-          _REFLECTION_PROBE_BLENDING _REFLECTION_PROBE_BOX_PROJECTION _SCREEN_SPACE_OCCLUSION
         passType: 13
   - first: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
     second:

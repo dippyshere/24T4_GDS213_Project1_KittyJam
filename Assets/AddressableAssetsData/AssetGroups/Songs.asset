@@ -17,18 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f9ff22a8718f0044fa4c901583c426da
   m_SerializeEntries:
-  - m_GUID: 558f372123a7a1646a2bff748117262c
-    m_Address: Assets/Audio
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - nothingsalright
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e8e012404958bbd43b82a6ba8fda51dc
-    m_Address: Assets/Textures/AlbumArt
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - maybe
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e25d22637c681b4eac454ad6d89ccf1
     m_Address: Assets/Songs/March To Victory.asset
     m_ReadOnly: 0
