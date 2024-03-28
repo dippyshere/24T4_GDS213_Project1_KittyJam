@@ -73,21 +73,6 @@ public class MenuManager : MonoBehaviour
     /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator LoadSceneCoroutine(string sceneToLoad, int musicBehaviour)
     {
-        //if (sceneToLoad == "GameType3MarchingGame")
-        //{
-        //    if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
-        //    {
-        //        StartCoroutine(LoadAssetBundleFromWeb("marchinggamescene"));
-        //        StartCoroutine(LoadAssetBundleFromWeb("marchinggame"));
-        //        StartCoroutine(LoadAssetBundleFromWeb("marchinggamelighting"));
-        //    }
-        //    else
-        //    {
-        //        StartCoroutine(LoadAssetBundleFromDisk("marchinggamescene"));
-        //        StartCoroutine(LoadAssetBundleFromDisk("marchinggame"));
-        //        StartCoroutine(LoadAssetBundleFromDisk("marchinggamelighting"));
-        //    }
-        //}
         if (AudioManager.instance != null)
         {
             switch (musicBehaviour)
@@ -112,27 +97,5 @@ public class MenuManager : MonoBehaviour
         Time.timeScale = 1;
         //SceneManager.LoadScene(sceneToLoad);
         Addressables.LoadSceneAsync("Assets/Scenes/" + sceneToLoad + ".unity");
-    }
-
-    private IEnumerator LoadAssetBundleFromWeb(string fileLocation)
-    {
-        using UnityWebRequest www = UnityWebRequest.Get(Application.streamingAssetsPath + "/" + fileLocation);
-        yield return www.SendWebRequest();
-
-        // If there was an error, log it
-        if (UnityWebRequest.Result.ConnectionError.Equals(www.result) || UnityWebRequest.Result.ProtocolError.Equals(www.result))
-        {
-            Debug.LogError(www.error);
-        }
-        else
-        {
-            AssetBundle.LoadFromMemory(www.downloadHandler.data);
-        }
-    }
-
-    private IEnumerator LoadAssetBundleFromDisk(string fileLocation)
-    {
-        AssetBundle.LoadFromFileAsync(Path.Combine(Application.streamingAssetsPath, fileLocation));
-        yield return null;
     }
 }

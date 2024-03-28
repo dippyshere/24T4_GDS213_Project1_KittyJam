@@ -5,6 +5,8 @@
     <assembly fullname="CFXRRuntime" preserve="all" />
     <assembly fullname="Cinemachine" preserve="all" />
     <assembly fullname="CircleGame" preserve="all" />
+    <assembly fullname="CodingJar.Common" preserve="all" />
+    <assembly fullname="CodingJar.MultiScene" preserve="all" />
     <assembly fullname="Coffee.UIParticle" preserve="all" />
     <assembly fullname="DDRGame" preserve="all" />
     <assembly fullname="HighwayGame" preserve="all" />

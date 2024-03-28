@@ -5,7 +5,7 @@ using UnityEngine;
 
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
-    Icon("Assets/Menu/Textures/kittyjam placeholder cover.png"),
+    Icon("Packages/com.unity.visualscripting/Editor/VisualScripting.Core/IconMap/UnityMessageListener@32x.png"),
     Tooltip("A scriptable object that contains data for a song"),
     HelpURL("https://discord.com/channels/@me/1137585685864402974/1214421770657071145")
 ]
@@ -119,7 +119,7 @@ public enum Genre
     Other
 }
 
-
+#if UNITY_EDITOR
 [
     CustomEditor(typeof(SongData), true),
     CanEditMultipleObjects
@@ -143,3 +143,4 @@ public class SongDataEditor : Editor
         return texture2D;
     }
 }
+#endif
