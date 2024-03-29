@@ -16,7 +16,7 @@ PlayerSettings:
   productName: 24T4_GDS213_Project1_KittyJam
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.21568628, g: 0.85882354, b: 1, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.5372549, g: 0.23137255, b: 0.8784314, a: 1}
   m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 0
@@ -137,7 +137,8 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.7.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: ec7bc1356ad192840be17d6aa8a438dd, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
