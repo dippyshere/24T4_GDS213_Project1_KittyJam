@@ -27,17 +27,116 @@ EditorBuildSettings:
     path: Assets/Scenes/GameType4Onboarding.unity
     guid: e2a44c9a349e6ed459b786b7c7a58dc6
   - enabled: 0
-    path: Assets/Scenes/GameType1CircleGame.unity
+    path: Assets/Scenes/Gameplay/GameType1CircleGame.unity
     guid: b9a4d74ff15baff4193725543b5a5703
   - enabled: 0
-    path: Assets/Scenes/GameType2HighwayGame.unity
+    path: Assets/Scenes/Gameplay/GameType2HighwayGame.unity
     guid: 1f5bb80de98332047980dd72155f4081
   - enabled: 0
-    path: Assets/Scenes/GameType3MarchingGame.unity
+    path: Assets/Scenes/Gameplay/GameType3MarchingGame.unity
     guid: 510cd27fd5c36a54d97c2c330171b3e0
   - enabled: 0
-    path: Assets/Scenes/GameType4DDRGame.unity
+    path: Assets/Scenes/Gameplay/GameType4DDRGame.unity
     guid: 62a31071e5ee7f84fad7da0490e7d905
+  - enabled: 0
+    path: Assets/Scenes/Frontend/Downloader.unity
+    guid: 645678e66578c4e40b0fb65fad8c967f
+  - enabled: 0
+    path: Assets/Scenes/Frontend/Foundation.unity
+    guid: fc6b31ce9f36af947a5a19c89ba6fb43
+  - enabled: 0
+    path: Assets/Scenes/Frontend/GameSelection.unity
+    guid: d859ccdc1fac6f64b8391aeaf868a491
+  - enabled: 0
+    path: Assets/Scenes/Frontend/MenuBackground.unity
+    guid: 918d5bc36fa389b48a8f6c886b3fbd82
+  - enabled: 0
+    path: Assets/Scenes/Frontend/Onboarding.unity
+    guid: d3ac6ef1fbbe4fd42ac03b869a4396ad
+  - enabled: 0
+    path: Assets/Scenes/Frontend/OptionsMenu.unity
+    guid: d497fa7d512e46e43ac3b649a91e7b39
+  - enabled: 0
+    path: Assets/Scenes/Frontend/SongShelf.unity
+    guid: b37dfd2d776ab3d499019a712c595d5d
+  - enabled: 0
+    path: Assets/Scenes/Frontend/TitleScreen.unity
+    guid: c45ad539b28143e478356c5cc9735402
+  - enabled: 0
+    path: Assets/Scenes/Frontend/Transition.unity
+    guid: 153c9e2d5f6bd894cbb202e88a6a4cac
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase.unity
+    guid: 5d2ff4759ccdac349b0453725b3206d3
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/BongoGame/BongoGameBackground.unity
+    guid: 75a7652262eb769439ddb5082c6df69c
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/BongoGame/BongoGamePlayer.unity
+    guid: 1be5ea312bbdef740a5edac05405c2c1
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/BongoGame/BongoGameSystems.unity
+    guid: 44d6150a6b68e3546a76dbe455899f27
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase.unity
+    guid: 1ffd85548ed581c4ca87e4667ad09f00
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/CircleGame/CircleGameBackground.unity
+    guid: 6dfca0d884257694e84b6077fc9e7ab1
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/CircleGame/CircleGamePlayer.unity
+    guid: 4728aa8aadb0576478a87e0d6307950d
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/CircleGame/CircleGameSystems.unity
+    guid: 478846b1019ca0542a27f88c86810928
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/Common/GameSystems.unity
+    guid: 8bc8b96ee049b3747b18f83164691ed5
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/Common/GameUI.unity
+    guid: f11e2bcbd5bbc134caa9c0c74a8b8715
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/Common/PauseMenu.unity
+    guid: 36aa99f4cfbb8574194a1c844b0d0f6c
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/Common/WinUI.unity
+    guid: e435b5ce8f1eae049ba9a3b41870aef0
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase.unity
+    guid: 64973192ab9efe346b03c53101c117f9
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/HighwayGameBackground.unity
+    guid: 8d7944481db81be4a98035b1a70b6385
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/HighwayGameCrowd.unity
+    guid: 424351d822c54354b8d9c1fa1b37cf2f
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/HIghwayGameHighway.unity
+    guid: 46448162fb5642945a5059056ef0242a
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/HighwayGameStage.unity
+    guid: 596766cb2b47146468ae0ca32088ac5e
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/HighwayGame/HighwayGameSystems.unity
+    guid: d4a6063d345564747a2e6cb9100dc654
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/_MarchingGameBase.unity
+    guid: a4cc5ed695a6ce54087ddd4b574ec90a
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/MarchingGameCity.unity
+    guid: 0d7fcfc6f483827489b20149971f8b1f
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/MarchingGameCrowd.unity
+    guid: 6dee8c7e9eb9a684ca70e5b8f5f0229f
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/MarchingGameNPC.unity
+    guid: 4a7c0310a189c8a46b59b7c2e669a4ec
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/MarchingGamePlayer.unity
+    guid: 718738891ef6a034eb1bb7d9b06f95a2
+  - enabled: 0
+    path: Assets/Scenes/Gameplay/MarchingGame/MarchingGameSystems.unity
+    guid: d40ff6907f72b1b489915acd628f9329
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 37fe64d0179ebda429765f84c2989d0d,
       type: 2}

@@ -146,7 +146,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &286557623
 MonoBehaviour:
@@ -397,7 +397,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &643503329
 MonoBehaviour:
@@ -448,7 +448,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1123334843
 RectTransform:
@@ -492,8 +492,8 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 937e620152dc09f4cafd3b4ee31872b5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
-    y: 0
+    x: 0.75022036
+    y: 0.75022036
     width: 76.171875
     height: 76.171875
 --- !u!114 &1123334845
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626fbef1e0bc1b44597e82e3e9fb3690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isScrolling: 0
+  isScrolling: 1
 --- !u!222 &1123334846
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -535,7 +535,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!224 &1613425400
 RectTransform:
@@ -578,7 +578,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613425399}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5122ea7486a945b4a88a6fb87214aaaa, type: 2}
   m_CullingMode: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5372549, g: 0.23137255, b: 0.8784314, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
