@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 21c459422df662541826e21c75c6cb86
+guid: 76a2c0e412f770348829cdf58bb5a196
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -22,8 +22,8 @@ TextureImporter:
     normalMapFilter: 0
     flipGreenChannel: 0
   isReadable: 0
-  streamingMipmaps: 1
-  streamingMipmapsPriority: -128
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   vTOnly: 0
   ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 100
     crunchedCompression: 1
     allowsAlphaSplitting: 0
