@@ -53,12 +53,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - bongogame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9a65e9ebad37c8041b72caae2f616da3
-    m_Address: Assets/DDRGame/Scripts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 97553e5f858656745bfcdc9f31a76636
     m_Address: Assets/DDRGame/Sprites
     m_ReadOnly: 0

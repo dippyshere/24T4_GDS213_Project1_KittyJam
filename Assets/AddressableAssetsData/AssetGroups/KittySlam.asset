@@ -33,11 +33,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 85ea4ba15d6675f41945eee7c9e6c9b0
-    m_Address: Assets/KittySlamAssets/Scripts
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 38502ad4faeee1a47adce7e71e3a50f1
     m_Address: Assets/KittySlamAssets/Textures
     m_ReadOnly: 0

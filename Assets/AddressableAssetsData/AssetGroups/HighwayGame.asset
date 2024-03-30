@@ -41,12 +41,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b891c84520286024ab89066ce5fa8f61
-    m_Address: Assets/HighwayGame/Scripts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - highwaygame
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c80a999f29d462d40a41f6a2fa080268
     m_Address: Assets/HighwayGame/Textures
     m_ReadOnly: 0

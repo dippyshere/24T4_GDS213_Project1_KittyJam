@@ -41,12 +41,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchinggame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f628ff6e7be3f5d4b899c03861979e94
-    m_Address: Assets/MarchingGame/Scripts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - marchinggame
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06789836462391e4bbfc6d3a8e1c16a1
     m_Address: Assets/MarchingGame/Textures
     m_ReadOnly: 0

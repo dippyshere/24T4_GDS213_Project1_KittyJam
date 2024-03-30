@@ -152,11 +152,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneSetupMode: 2
-  _sceneSetup: []
+  _sceneSetupMode: 1
+  _sceneSetup:
+  - scene:
+      editorAssetGUID: fc6b31ce9f36af947a5a19c89ba6fb43
+      name: Foundation
+      _path: Assets/Scenes/Frontend/Foundation.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 918d5bc36fa389b48a8f6c886b3fbd82
+      name: MenuBackground
+      _path: Assets/Scenes/Frontend/MenuBackground.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 645678e66578c4e40b0fb65fad8c967f
+      name: Downloader
+      _path: Assets/Scenes/Frontend/Downloader.unity
+    loadInEditor: 1
+    loadMethod: 3
   _isMainScene: 0
   _version: 1
-  _thisScenePath: Assets/Scenes/Frontend/Downloader 1.unity
+  _thisScenePath: Assets/Scenes/Frontend/TitleScreen.unity
 --- !u!4 &595789527
 Transform:
   m_ObjectHideFlags: 0

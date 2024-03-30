@@ -206,9 +206,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 25
+  m_Value: 0.25
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -311,9 +311,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f722944e7e0fa04294f1eedd0196f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downloadText: {fileID: 0}
-  downloadProgress: {fileID: 0}
-  catImage: {fileID: 0}
+  downloadText: {fileID: 1638108717}
+  downloadProgress: {fileID: 113829371}
+  catImage: {fileID: 1090571637}
 --- !u!1 &595789525
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,14 +679,15 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
+  m_fontColorGradientPreset: {fileID: 11400000, guid: c2edff9fe31b7f941b6e4c207b07243e,
+    type: 2}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
