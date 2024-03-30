@@ -6,11 +6,11 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class DownloadManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("The singleton instance for the download manager")] public static DownloadManager Instance;
+    [SerializeField, Tooltip("Scenes to load on startup when the title screen is not yet loaded.")] private SceneAssetReference[] scenesToLoad;
     [SerializeField, Tooltip("Reference to the UI text element containing the download text.")] private TextMeshProUGUI downloadText;
     [SerializeField, Tooltip("Reference to the UI slider element containing the download progress.")] private Slider downloadProgress;
     [SerializeField, Tooltip("Reference to the UI image element containing the cat animation.")] private Image catImage;
@@ -24,7 +24,7 @@ public class DownloadManager : MonoBehaviour
         catImage.gameObject.SetActive(false);
         if (SceneManager.GetSceneByName("TitleScreen").isLoaded == false)
         {
-            StartCoroutine(DownloadDependencies(new List<string> { "initialdownload", "fonts", "Assets/Scenes/Frontend/TitleScreen.unity", "Assets/Scenes/Frontend/Transition.unity" }, true));
+            StartCoroutine(DownloadDependencies(new List<string> { "initialdownload", "fonts" }, true));
         }
     }
 
@@ -82,28 +82,48 @@ public class DownloadManager : MonoBehaviour
             yield return null;
         }
 
+        foreach (var operation in downloadOperations)
+        {
+            Addressables.Release(operation);
+        }
+
         if (isInitialLoad)
         {
-            AsyncOperationHandle titleScreenHandle = Addressables.LoadSceneAsync("Assets/Scenes/Frontend/TitleScreen.unity", LoadSceneMode.Additive);
-            while (!titleScreenHandle.IsDone)
+            List<AsyncOperationHandle> mainSceneDownloadOperations = new List<AsyncOperationHandle>();
+            foreach (SceneAssetReference scene in scenesToLoad)
             {
-                downloadProgress.value = Mathf.Min(downloadProgress.value + titleScreenHandle.PercentComplete * individualProgress, 1f);
+                mainSceneDownloadOperations.Add(Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive));
+            }
+
+            while (true)
+            {
+                float totalProgress = 0f;
+                foreach (var operation in mainSceneDownloadOperations)
+                {
+                    totalProgress += operation.PercentComplete * individualProgress;
+                }
+
+                downloadProgress.value = Mathf.Min(totalProgress, 1f);
+
+                bool allDone = mainSceneDownloadOperations.TrueForAll(operation => operation.IsDone);
+                if (allDone)
+                {
+                    break;
+                }
+
                 yield return null;
             }
 
-            AsyncOperationHandle transitionHandle = Addressables.LoadSceneAsync("Assets/Scenes/Frontend/Transition.unity", LoadSceneMode.Additive);
-            while (!transitionHandle.IsDone)
-            {
-                downloadProgress.value = Mathf.Min(downloadProgress.value + transitionHandle.PercentComplete * individualProgress, 1f);
-                yield return null;
-            }
+            //foreach (var operation in mainSceneDownloadOperations)
+            //{
+            //    Addressables.Release(operation);
+            //}
+
         }
 
         downloadText.gameObject.SetActive(false);
         downloadProgress.gameObject.SetActive(false);
         catImage.gameObject.SetActive(false);
-
-        yield return downloadOperations;
     }
 
     /// <summary>

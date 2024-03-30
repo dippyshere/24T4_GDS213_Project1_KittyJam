@@ -311,6 +311,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f722944e7e0fa04294f1eedd0196f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenesToLoad:
+  - m_AssetGUID: c45ad539b28143e478356c5cc9735402
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 153c9e2d5f6bd894cbb202e88a6a4cac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   downloadText: {fileID: 1638108717}
   downloadProgress: {fileID: 113829371}
   catImage: {fileID: 1090571637}
