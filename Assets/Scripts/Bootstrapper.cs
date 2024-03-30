@@ -22,7 +22,7 @@ public class Bootstrapper : MonoBehaviour
         {
             downloadOperations.Add(Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive));
         }
-        yield return new WaitUntil(() => downloadOperations.TrueForAll(operation => operation.IsDone));
+        yield return new WaitUntil(() => downloadOperations[0].IsDone && downloadOperations[1].IsDone);
 
         SceneInstance sceneInstance = downloadOperations[0].Convert<SceneInstance>().Result;
         if (sceneInstance.Scene.IsValid())
@@ -33,13 +33,13 @@ public class Bootstrapper : MonoBehaviour
         SceneManager.UnloadSceneAsync(gameObject.scene);
     }
 
-    private void OnDestroy()
-    {
-        foreach (var operation in downloadOperations)
-        {
-            Addressables.Release(operation);
-        }
-    }
+    //private void OnDestroy()
+    //{
+    //    foreach (var operation in downloadOperations)
+    //    {
+    //        Addressables.Release(operation);
+    //    }
+    //}
 }
 
 /// <summary>

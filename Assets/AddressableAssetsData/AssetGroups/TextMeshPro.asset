@@ -31,7 +31,8 @@ MonoBehaviour:
   - m_GUID: e9f693669af91aa45ad615fc681ed29f
     m_Address: Assets/TextMesh Pro/Shaders
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - fonts
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d0603b6d5186471b96c778c3949c7ce2
     m_Address: Assets/TextMesh Pro/Sprites

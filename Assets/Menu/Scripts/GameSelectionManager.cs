@@ -12,7 +12,6 @@ public class GameSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("The game selection tile for BongoGame")] private GameObject bongoGameTile;
     [SerializeField, Tooltip("The text component for the song title")] private TextMeshProUGUI songTitle;
     [SerializeField, Tooltip("The text component for the song artist")] private TextMeshProUGUI songArtist;
-    [SerializeField, Tooltip("Reference to the menu magager")] private MenuManager menuManager;
 
     public void UpdateGameSelectionScreen()
     {
@@ -62,23 +61,23 @@ public class GameSelectionManager : MonoBehaviour
         if (GlobalVariables.Get<string>("GameType" + gameType + "Onboarded") == null)
         {
             GlobalVariables.Set("GameType" + gameType + "Onboarded", "1");
-            menuManager.StartLoadingSceneMusicStop("GameType" + gameType + "Onboarding");
+            TransitionManager.Instance.StartLoadingSceneMusicStop("GameType" + gameType + "Onboarding");
         }
         else
         {
             switch (gameType)
             {
                 case 1:
-                    menuManager.StartLoadingSceneMusicStop("GameType1CircleGame");
+                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType1CircleGame");
                     break;
                 case 2:
-                    menuManager.StartLoadingSceneMusicStop("GameType2HighwayGame");
+                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType2HighwayGame");
                     break;
                 case 3:
-                    menuManager.StartLoadingSceneMusicStop("GameType3MarchingGame");
+                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType3MarchingGame");
                     break;
                 case 4:
-                    menuManager.StartLoadingSceneMusicStop("GameType4DDRGame");
+                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType4DDRGame");
                     break;
             }
         }

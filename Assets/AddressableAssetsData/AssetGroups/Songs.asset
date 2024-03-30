@@ -23,6 +23,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchtovictory
     - songdata
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 06f86c2cc59d40540ba8ca80459a41c6
     m_Address: Assets/Songs/Maybe.asset
@@ -30,6 +31,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - maybe
     - songdata
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3d3eed37a3942be48bd02cd875c3657e
     m_Address: Assets/Songs/Nothing's Alright.asset
@@ -37,6 +39,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - nothingsalright
     - songdata
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f6305ede37d69784d94b83fb68dc590a
     m_Address: Assets/Songs/The Spark.asset
@@ -44,6 +47,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - thespark
     - songdata
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94f65ab04a9cc2f4b852872442534207
     m_Address: Assets/Audio/kittyjam nothingsalright.ogg
@@ -51,6 +55,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - nothingsalright
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 24354e57b5014f9459ae6c6073c843f3
     m_Address: Assets/Audio/kittyjam maybe.wav
@@ -58,6 +63,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - maybe
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85f16081e7c47b84fbe037050314c151
     m_Address: Assets/Audio/kittyjam thespark.wav
@@ -65,6 +71,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - thespark
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fcac3fd9f54f67a4cbd446541089129e
     m_Address: Assets/Audio/kittyjam marchtovictory.wav
@@ -72,6 +79,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchtovictory
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ceb7dcb21886a3c4ea6c841fa1677f03
     m_Address: Assets/Textures/AlbumArt/Games.png
@@ -79,6 +87,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - maybe
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 512d8adad054f3544977962dcdcaa6d2
     m_Address: Assets/Textures/AlbumArt/marchtovictory.png
@@ -86,6 +95,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchtovictory
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 22f94b00fa1861d46825cbc866afdaf7
     m_Address: Assets/Textures/AlbumArt/nothingsalright.png
@@ -93,6 +103,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - nothingsalright
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6831c756de247f245a16a13b5c024f23
     m_Address: Assets/Textures/AlbumArt/thespark.png
@@ -100,6 +111,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - thespark
     - songasset
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

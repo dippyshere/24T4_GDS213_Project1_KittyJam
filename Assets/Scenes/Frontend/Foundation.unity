@@ -449,6 +449,12 @@ MonoBehaviour:
       _path: Assets/Scenes/Frontend/MenuBackground.unity
     loadInEditor: 1
     loadMethod: 3
+  - scene:
+      editorAssetGUID: 645678e66578c4e40b0fb65fad8c967f
+      name: Downloader
+      _path: Assets/Scenes/Frontend/Downloader.unity
+    loadInEditor: 1
+    loadMethod: 3
   _isMainScene: 0
   _version: 1
   _thisScenePath: Assets/Scenes/Frontend/Foundation.unity

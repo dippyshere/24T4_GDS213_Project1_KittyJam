@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: 9abdd379084c540429028939a4b736c4
     m_Address: Assets/Scenes/SongSelection.unity
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - titledownload
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

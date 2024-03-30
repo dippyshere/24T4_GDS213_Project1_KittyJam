@@ -1,35 +1,24 @@
-using Melanchall.DryWetMidi.Core;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 /// <summary>
 /// Manages the transitions between scenes
 /// </summary>
-public class MenuManager : MonoBehaviour
+public class TransitionManager : MonoBehaviour
 {
+    [HideInInspector, Tooltip("The singleton instance for the menu manager")] public static TransitionManager Instance;
     [SerializeField, Tooltip("The animator that controls the circle wipe")] private Animator circleTransitionAnimator;
     [SerializeField, Tooltip("The animator that controls the logo")] private Animator logoTransitionAnimator;
+    [Tooltip("Timestamp that the transition began at")] private float transitionStartTime;
 
-    private IEnumerator Start()
+    private void Awake()
     {
-        yield return null;
-        yield return null;
-        yield return new WaitForEndOfFrame();
-        if (SceneManager.GetActiveScene().name == "SongSelection")
-        {
-            circleTransitionAnimator.SetTrigger("MenuEnd");
-            logoTransitionAnimator.SetTrigger("End");
-        }
-        else
-        {
-            circleTransitionAnimator.SetTrigger("End");
-            logoTransitionAnimator.SetTrigger("End");
-        }
+        Instance = this;
     }
 
     /// <summary>
@@ -94,8 +83,34 @@ public class MenuManager : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1.05f);
         }
-        Time.timeScale = 1;
-        //SceneManager.LoadScene(sceneToLoad);
-        Addressables.LoadSceneAsync("Assets/Scenes/" + sceneToLoad + ".unity");
+        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync("Assets/Scenes/" + sceneToLoad + ".unity");
+        while (!handle.IsDone)
+        {
+            yield return null;
+        }
+        SceneManager.SetActiveScene(SceneManager.GetSceneByPath("Assets/Scenes/" + sceneToLoad + ".unity"));
+        circleTransitionAnimator.SetTrigger("End");
+        logoTransitionAnimator.SetTrigger("End");
+    }
+
+    public void StartTransitionAndLoadScenes(List<string> scenesToLoad)
+    {
+        circleTransitionAnimator.SetTrigger("Start");
+        logoTransitionAnimator.SetTrigger("Start");
+
+        StartCoroutine(DownloadAndLoadScenes(scenesToLoad));
+    }
+
+    private IEnumerator DownloadAndLoadScenes(List<string> scenesToLoad)
+    {
+        yield return new WaitForSecondsRealtime(1.05f);
+
+        yield return StartCoroutine(DownloadManager.Instance.DownloadScenes(scenesToLoad, EndTransition));
+    }
+
+    public void EndTransition()
+    {
+        circleTransitionAnimator.SetTrigger("End");
+        logoTransitionAnimator.SetTrigger("End");
     }
 }

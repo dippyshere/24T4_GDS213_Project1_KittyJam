@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: a0e4db6a8f9302e0550aec4330c213a6
+    Hash: c0a1bef4b09121caa9ef7f0dd5e5fbba
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 26292bad9e40c204d87de26faaa5b96c, type: 2}
   - {fileID: 11400000, guid: 85ba347f75371c94c831fd959b3e8469, type: 2}
   - {fileID: 11400000, guid: 3de3e05535c7e834f9b072ac80b95066, type: 2}
+  - {fileID: 11400000, guid: 4e9a4987818e83043b8c89c59d313e3b, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -127,6 +128,7 @@ MonoBehaviour:
     - initialdownload
     - songdata
     - songasset
+    - titledownload
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

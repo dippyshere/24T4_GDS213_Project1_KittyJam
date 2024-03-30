@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 374040943}
   - component: {fileID: 374040942}
   m_Layer: 5
-  m_Name: SelectionUI
+  m_Name: PattternBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &595789526
 MonoBehaviour:
@@ -417,10 +417,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 1.2925718
-    y: 1.2925718
+    x: 10.084929
+    y: 10.084929
     width: 8.125
-    height: 4.5722437
+    height: 4.5703125
 --- !u!114 &1411595697
 MonoBehaviour:
   m_ObjectHideFlags: 0
