@@ -16,13 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: f948581f35a46b24380063b7cfaae52c
-  m_SerializeEntries:
-  - m_GUID: 9abdd379084c540429028939a4b736c4
-    m_Address: Assets/Scenes/SongSelection.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

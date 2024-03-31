@@ -27,9 +27,7 @@ public class TransitionManager : MonoBehaviour
     /// <param name="sceneToLoad">The scene to load</param>
     public void StartLoadingSceneMusicContinue(string sceneToLoad)
     {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 0));
+        StartTransitionAndLoadScenes(new List<string> { "Assets/Scenes/" + sceneToLoad + ".unity" }, true, new List<string> { "Assets/Scenes/Frontend/SongShelf.unity" });
     }
 
     /// <summary>
@@ -38,9 +36,7 @@ public class TransitionManager : MonoBehaviour
     /// <param name="sceneToLoad">The scene to load</param>
     public void StartLoadingSceneMusicStart(string sceneToLoad)
     {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 1));
+        StartTransitionAndLoadScenes(new List<string> { "Assets/Scenes/" + sceneToLoad + ".unity" }, true, new List<string> { "Assets/Scenes/GameType1CircleGame.unity" });
     }
 
     /// <summary>
@@ -49,68 +45,70 @@ public class TransitionManager : MonoBehaviour
     /// <param name="sceneToLoad">The scene to load</param>
     public void StartLoadingSceneMusicStop(string sceneToLoad)
     {
-        circleTransitionAnimator.SetTrigger("Start");
-        logoTransitionAnimator.SetTrigger("Start");
-        StartCoroutine(LoadSceneCoroutine(sceneToLoad, 2));
+        StartTransitionAndLoadScenes(new List<string> { "Assets/Scenes/" + sceneToLoad + ".unity" }, true, new List<string> { "Assets/Scenes/GameType1Onboarding.unity"});
     }
 
-    /// <summary>
-    /// Loads the scene with the desired music behaviour
-    /// </summary>
-    /// <param name="sceneToLoad">The scene to load</param>
-    /// <param name="musicBehaviour">Continue, start, or stop the music</param>
-    /// <returns>The IEnumerator for the coroutine</returns>
-    private IEnumerator LoadSceneCoroutine(string sceneToLoad, int musicBehaviour)
+    public void LoadScenes(List<string> scenesToLoad)
     {
-        if (AudioManager.instance != null)
-        {
-            switch (musicBehaviour)
-            {
-                case 0:
-                    yield return new WaitForSecondsRealtime(1.05f);
-                    break;
-                case 1:
-                    AudioManager.instance.PlayMusic();
-                    yield return new WaitForSecondsRealtime(1.05f);
-                    break;
-                case 2:
-                    yield return new WaitForSecondsRealtime(1.05f);
-                    AudioManager.instance.StopMusic();
-                    break;
-            }
-        }
-        else
-        {
-            yield return new WaitForSecondsRealtime(1.05f);
-        }
-        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync("Assets/Scenes/" + sceneToLoad + ".unity");
-        while (!handle.IsDone)
-        {
-            yield return null;
-        }
-        SceneManager.SetActiveScene(SceneManager.GetSceneByPath("Assets/Scenes/" + sceneToLoad + ".unity"));
-        circleTransitionAnimator.SetTrigger("End");
-        logoTransitionAnimator.SetTrigger("End");
+        StartCoroutine(DownloadAndLoadScenes(scenesToLoad, false));
     }
 
-    public void StartTransitionAndLoadScenes(List<string> scenesToLoad)
+    public void StartTransitionAndLoadScenes(List<string> scenesToLoad, bool isTransitioning = true, List<string> scenesToUnload = null)
     {
         circleTransitionAnimator.SetTrigger("Start");
         logoTransitionAnimator.SetTrigger("Start");
 
-        StartCoroutine(DownloadAndLoadScenes(scenesToLoad));
+        StartCoroutine(DownloadAndLoadScenes(scenesToLoad, isTransitioning, scenesToUnload));
     }
 
-    private IEnumerator DownloadAndLoadScenes(List<string> scenesToLoad)
+    private IEnumerator DownloadAndLoadScenes(List<string> scenesToLoad, bool isTransitioning = true, List<string> scenesToUnload = null)
     {
         yield return new WaitForSecondsRealtime(1.05f);
 
-        yield return StartCoroutine(DownloadManager.Instance.DownloadScenes(scenesToLoad, EndTransition));
+        if (isTransitioning)
+        {
+            yield return StartCoroutine(DownloadManager.Instance.DownloadScenes(scenesToLoad, EndTransition, scenesToUnload));
+        }
+        else
+        {
+            yield return StartCoroutine(DownloadManager.Instance.DownloadScenes(scenesToLoad, null, scenesToUnload));
+        }
     }
 
-    public void EndTransition()
+    public void EndTransition(List<string> scenesToUnload = null)
     {
         circleTransitionAnimator.SetTrigger("End");
         logoTransitionAnimator.SetTrigger("End");
+    }
+
+    public void UnloadScenesAndEndTransition(List<string> scenesToUnload = null)
+    {
+        if (scenesToUnload != null && scenesToUnload.Count > 0)
+        {
+            UnloadScenes(scenesToUnload);
+        }
+        else
+        {
+            EndTransition(null);
+        }
+    }
+
+    private IEnumerator UnloadScenes(List<string> scenesToUnload)
+    {
+        List<AsyncOperation> unloadOperations = new List<AsyncOperation>();
+        foreach (string address in scenesToUnload)
+        {
+            unloadOperations.Add(SceneManager.UnloadSceneAsync(address));
+        }
+        while (true)
+        {
+            bool allDone = unloadOperations.TrueForAll(operation => operation.isDone);
+            if (allDone)
+            {
+                break;
+            }
+            yield return null;
+        }
+        EndTransition(null);
     }
 }

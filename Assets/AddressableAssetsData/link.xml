@@ -31,6 +31,7 @@
     <type fullname="MyUILibrary.RadialProgress/UxmlFactory" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="CodingJar.MultiScene, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="CodingJar.MultiScene.AmsCrossSceneReferences" preserve="all" />
     <type fullname="CodingJar.MultiScene.AmsMultiSceneSetup" preserve="all" />
     <type fullname="AmsSceneReference" preserve="nothing" serialized="true" />
     <type fullname="CodingJar.MultiScene.AmsMultiSceneSetup/LoadMethod" preserve="nothing" serialized="true" />
@@ -62,7 +63,7 @@
     <type fullname="CharacterRotator" preserve="all" />
   </assembly>
   <assembly fullname="KittyJam, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-    <type fullname="AudioManager" preserve="all" />
+    <type fullname="AssignCanvasCamera" preserve="all" />
     <type fullname="CursorController" preserve="all" />
     <type fullname="DownloadManager" preserve="all" />
     <type fullname="NoteFeedbackManager" preserve="all" />
@@ -111,15 +112,20 @@
     <type fullname="UnityEngine.InputSystem.InputActionReference" preserve="all" />
     <type fullname="UnityEngine.InputSystem.PlayerInput" preserve="all" />
     <type fullname="UnityEngine.InputSystem.UI.InputSystemUIInputModule" preserve="all" />
-    <type fullname="UnityEngine.InputSystem.PlayerInput/ActionEvent" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.PlayerInput/ControlsChangedEvent" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceLostEvent" preserve="nothing" serialized="true" />
-    <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceRegainedEvent" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.InputAction" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.InputActionMap" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.InputBinding" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.InputControlScheme" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.InputSystem.InputControlScheme/DeviceRequirement" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.PlayerInput/ActionEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.PlayerInput/ControlsChangedEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceLostEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.InputSystem.PlayerInput/DeviceRegainedEvent" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Localization, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Localization.Locale" preserve="all" />
+    <type fullname="UnityEngine.Localization.LocaleIdentifier" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Localization.Metadata.MetadataCollection" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.RenderPipelines.Core.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.Rendering.Volume" preserve="all" />
@@ -143,11 +149,11 @@
     <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalCameraData" preserve="all" />
     <type fullname="UnityEngine.Rendering.Universal.UniversalAdditionalLightData" preserve="all" />
     <type fullname="UnityEngine.Rendering.Universal.Vignette" preserve="all" />
-    <type fullname="UnityEngine.Rendering.Universal.TemporalAA/Settings" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Rendering.Universal.DepthOfFieldModeParameter" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Rendering.Universal.DownscaleParameter" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Rendering.Universal.MotionBlurModeParameter" preserve="nothing" serialized="true" />
     <type fullname="UnityEngine.Rendering.Universal.MotionBlurQualityParameter" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Rendering.Universal.TemporalAA/Settings" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />

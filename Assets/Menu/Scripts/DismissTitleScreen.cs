@@ -26,7 +26,7 @@ public class DismissTitleScreen : MonoBehaviour
     {
         //var device = button.device;
 
-        TransitionManager.Instance.StartTransitionAndLoadScenes(new List<string> { "Assets/Scenes/SongSelection.unity" });
+        TransitionManager.Instance.StartTransitionAndLoadScenes(new List<string> { "Assets/Scenes/Frontend/SongShelf.unity" });
 
         gameObject.SetActive(false);
     }

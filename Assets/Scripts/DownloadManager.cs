@@ -132,8 +132,9 @@ public class DownloadManager : MonoBehaviour
     /// <param name="scenesToLoad">The list of scenes to load in the format "SceneName".</param>
     /// <param name="callback">The callback to run when the scenes are loaded.</param>
     /// <returns>The coroutine for loading the scenes.</returns>
-    public IEnumerator DownloadScenes(List<string> scenesToLoad, System.Action callback = null)
+    public IEnumerator DownloadScenes(List<string> scenesToLoad, System.Action<List<string>> callback = null, List<string> callbackData = null)
     {
+        float timeStarted = Time.realtimeSinceStartup;
         downloadProgress.gameObject.SetActive(true);
         catImage.gameObject.SetActive(true);
 
@@ -168,5 +169,14 @@ public class DownloadManager : MonoBehaviour
 
         downloadProgress.gameObject.SetActive(false);
         catImage.gameObject.SetActive(false);
+
+        if (callback != null)
+        {
+            while (Time.realtimeSinceStartup - timeStarted < 1)
+            {
+                yield return null;
+            }
+            callback(callbackData);
+        }
     }
 }

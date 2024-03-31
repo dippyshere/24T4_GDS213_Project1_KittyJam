@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap.unity
     guid: ea221ce6ecc3a49458a8df107319490f
   - enabled: 0
-    path: Assets/Scenes/Menu.unity
-    guid: b2d665e17a92dd34ea2aef6f1afea6d2
-  - enabled: 0
-    path: Assets/Scenes/SongSelection.unity
-    guid: 9abdd379084c540429028939a4b736c4
-  - enabled: 0
     path: Assets/Scenes/GameType1Onboarding.unity
     guid: 679613c4ee1b60c4bb870ccc6ee9885a
   - enabled: 0
@@ -141,4 +135,6 @@ EditorBuildSettings:
     com.unity.addressableassets: {fileID: 11400000, guid: 37fe64d0179ebda429765f84c2989d0d,
       type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: ec7bc1356ad192840be17d6aa8a438dd,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 76349850897b0d646b4efdc65874df7f,
       type: 2}

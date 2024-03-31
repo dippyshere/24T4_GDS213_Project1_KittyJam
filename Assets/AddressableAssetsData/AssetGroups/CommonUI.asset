@@ -39,6 +39,66 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85e410018d4f66c45b84acd3a56e64eb
+    m_Address: Assets/Textures/kitty jam logo.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67ee08ea677ad7e4a94ba6bc72e3d9ea
+    m_Address: Assets/Textures/kitty jam logo background.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e07849c902f37ab41aa51bc423377acd
+    m_Address: Assets/Textures/kitty jam logo cat.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6805bbe73a56c4745811908a2347b96e
+    m_Address: Assets/Textures/kitty jam logo text.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21c459422df662541826e21c75c6cb86
+    m_Address: Assets/Textures/kittyjam cover square.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36643ae19fae09d469a9cd7eb5573095
+    m_Address: Assets/Textures/KittyJamBackground.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76a2c0e412f770348829cdf58bb5a196
+    m_Address: Assets/Textures/KittyJamCat.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0689551cdec97f542bbecb17b29dd32f
+    m_Address: Assets/Textures/KittyJamText.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bee7a0da26c06c45aad13d4a1cd4272
+    m_Address: Assets/Prefabs/Transition.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf9a7ab916c0e4145afa9fc040a3f2eb
+    m_Address: Assets/Prefabs/KittyJamLogo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

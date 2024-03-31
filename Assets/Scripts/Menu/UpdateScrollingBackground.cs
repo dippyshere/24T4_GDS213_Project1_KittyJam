@@ -7,7 +7,7 @@ public class UpdateScrollingBackground : MonoBehaviour
 {
     private RectTransform parentTransform;
     private RawImage rawImage;
-    [SerializeField] private bool isScrolling = false;
+    [SerializeField] private BackgroundBehaviour behaviour;
 
 #if UNITY_EDITOR
     void OnValidate()
@@ -40,14 +40,25 @@ public class UpdateScrollingBackground : MonoBehaviour
 
             float scale = 13f / imageScaleFactor;
 
-            if (isScrolling)
+            switch (behaviour)
             {
-                rawImage.uvRect = new Rect((float)(Time.realtimeSinceStartupAsDouble * 0.05), (float)(Time.realtimeSinceStartupAsDouble * 0.05), parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
-            }
-            else
-            {
-                rawImage.uvRect = new Rect(parentTransform.anchoredPosition.x / 157.56f, parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                case BackgroundBehaviour.Scroll:
+                    rawImage.uvRect = new Rect((float)(Time.realtimeSinceStartupAsDouble * 0.05), (float)(Time.realtimeSinceStartupAsDouble * 0.05), parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                    break;
+                case BackgroundBehaviour.Parallax:
+                    rawImage.uvRect = new Rect(parentTransform.anchoredPosition.x / 157.56f, parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                    break;
+                case BackgroundBehaviour.Both:
+                    rawImage.uvRect = new Rect((float)(Time.realtimeSinceStartupAsDouble * 0.05) + parentTransform.anchoredPosition.x / 157.56f, (float)(Time.realtimeSinceStartupAsDouble * 0.05) + parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                    break;
             }
         }
     }
+}
+
+public enum BackgroundBehaviour
+{
+    Scroll,
+    Parallax,
+    Both
 }
