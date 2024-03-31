@@ -80,6 +80,13 @@ MonoBehaviour:
     - frontend
     - initialdownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e5fb00a3a270f641b3b6111c3228787
+    m_Address: Assets/Scenes/Persistent.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

@@ -312,6 +312,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenesToLoad:
+  - m_AssetGUID: 6e5fb00a3a270f641b3b6111c3228787
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   - m_AssetGUID: c45ad539b28143e478356c5cc9735402
     m_SubObjectName: 
     m_SubObjectType: 

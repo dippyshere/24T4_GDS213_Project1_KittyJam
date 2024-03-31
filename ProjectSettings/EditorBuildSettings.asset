@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap.unity
     guid: ea221ce6ecc3a49458a8df107319490f
   - enabled: 0
+    path: Assets/Scenes/Persistent.unity
+    guid: 6e5fb00a3a270f641b3b6111c3228787
+  - enabled: 0
     path: Assets/Scenes/GameType1Onboarding.unity
     guid: 679613c4ee1b60c4bb870ccc6ee9885a
   - enabled: 0
