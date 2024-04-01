@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 11.68943
-    y: 2.8673944
+    x: 9.618151
+    y: 0.79611474
     width: 1.3964844
     height: 9.521484
 --- !u!1 &3129954370567146272
@@ -306,7 +306,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!114 &7648212605508789339
 MonoBehaviour:

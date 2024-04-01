@@ -31,4 +31,4 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   scenesToUnload: []
   markFirstSceneAsActive: 1
-  useTransition: 0
+  useTransition: 1

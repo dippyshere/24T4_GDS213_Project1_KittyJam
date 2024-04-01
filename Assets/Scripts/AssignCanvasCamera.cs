@@ -15,9 +15,12 @@ public class AssignCanvasCamera : MonoBehaviour
     private IEnumerator Start()
     {
         canvas = GetComponent<Canvas>();
-        yield return null;
         canvas.worldCamera = Camera.main;
-        yield return null;
+        for (int i = 0; i < 10; i++)
+        {
+            canvas.worldCamera = Camera.main;
+            yield return null;
+        }
     }
 
     private void OnEnable()

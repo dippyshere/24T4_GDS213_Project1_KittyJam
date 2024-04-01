@@ -188,12 +188,12 @@ PrefabInstance:
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
       propertyPath: m_UVRect.x
-      value: 11.6929245
+      value: 9.6241865
       objectReference: {fileID: 0}
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
       propertyPath: m_UVRect.y
-      value: 2.8708887
+      value: 0.80215
       objectReference: {fileID: 0}
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}

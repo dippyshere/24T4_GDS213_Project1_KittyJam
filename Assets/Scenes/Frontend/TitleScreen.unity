@@ -493,7 +493,6 @@ GameObject:
   - component: {fileID: 1524204888}
   - component: {fileID: 1524204887}
   - component: {fileID: 1524204886}
-  - component: {fileID: 1524204885}
   - component: {fileID: 1524204889}
   m_Layer: 0
   m_Name: TitleScreenUI
@@ -502,23 +501,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!114 &1524204885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524204884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &1524204886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +580,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9d56fe29f564f4f82cb5e450629089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  titlescreenAssetLoadInfo: {fileID: 11400000, guid: 00cdad58f4151884ea941f9d6d395acd,
+    type: 2}
+  titlescreenSceneLoadInfo: {fileID: 11400000, guid: 14dcc204a79f49440bf03eeae4fb5035,
+    type: 2}
+  titleDismissalText: {fileID: 823994237}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

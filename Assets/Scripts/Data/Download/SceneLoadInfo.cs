@@ -17,4 +17,22 @@ public class SceneLoadInfo : ScriptableObject
     [Header("Options")]
     [Tooltip("Whether the first scene in the scenes to load list should be marked as the active scene once it finishes loading.")] public bool markFirstSceneAsActive = true;
     [Tooltip("Whether the transition should be used while loading the scenes.")] public bool useTransition = true;
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        SceneLoadInfo other = (SceneLoadInfo)obj;
+        return scenesToLoad.Count == other.scenesToLoad.Count && scenesToUnload.Count == other.scenesToUnload.Count &&
+            scenesToLoad.TrueForAll(scene => other.scenesToLoad.Contains(scene)) && scenesToUnload.TrueForAll(scene => other.scenesToUnload.Contains(scene)) &&
+            markFirstSceneAsActive == other.markFirstSceneAsActive && useTransition == other.useTransition;
+    }
+
+    public override int GetHashCode()
+    {
+        return scenesToLoad.GetHashCode() ^ scenesToUnload.GetHashCode() ^ markFirstSceneAsActive.GetHashCode() ^ useTransition.GetHashCode();
+    }
 }

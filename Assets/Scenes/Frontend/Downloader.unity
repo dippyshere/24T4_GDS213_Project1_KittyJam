@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 270779446}
   - component: {fileID: 270779445}
   - component: {fileID: 270779448}
+  - component: {fileID: 270779449}
   m_Layer: 5
   m_Name: DownloaderUI
   m_TagString: Untagged
@@ -311,22 +312,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f722944e7e0fa04294f1eedd0196f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenesToLoad:
-  - m_AssetGUID: 6e5fb00a3a270f641b3b6111c3228787
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: c45ad539b28143e478356c5cc9735402
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 153c9e2d5f6bd894cbb202e88a6a4cac
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  startupSceneLoadInfo: {fileID: 11400000, guid: ecb322c3479e08d46b0fd02ad744dafb,
+    type: 2}
+  startupAssetsToLoad: {fileID: 11400000, guid: cbde37bbef6ab7746932ff5894b67ef7,
+    type: 2}
   downloadText: {fileID: 1638108717}
   downloadProgress: {fileID: 113829371}
   catImage: {fileID: 1090571637}
+--- !u!225 &270779449
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270779443}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &595789525
 GameObject:
   m_ObjectHideFlags: 0
