@@ -22,12 +22,22 @@ public class ArmController : MonoBehaviour
     [Tooltip("If a note has already been hit since the last slam")] private bool noteHit = false;
     [Tooltip("The position of the mouse")] private Vector3 mousePosition;
 
+    private void Start()
+    {
+        CursorController.Instance.LockCursor();
+    }
+
     private void OnEnable()
     {
         PauseMenu.OnPauseGameplay += PauseGameplay;
     }
 
     private void OnDisable()
+    {
+        PauseMenu.OnPauseGameplay -= PauseGameplay;
+    }
+
+    private void OnDestroy()
     {
         PauseMenu.OnPauseGameplay -= PauseGameplay;
     }

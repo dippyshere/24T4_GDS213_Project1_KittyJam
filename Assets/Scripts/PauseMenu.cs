@@ -8,7 +8,6 @@ using UnityEngine.Rendering;
 /// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField, Tooltip("Reference to the cursor controller object to control the cursor when pausing/unpausing")] private CursorController cursorController;
     [SerializeField, Tooltip("Reference to the global post processing volume")] private Volume postProcessVolume;
     [SerializeField, Tooltip("The post processing profile to use when unpaused")] private VolumeProfile defaultPostProcess;
     [SerializeField, Tooltip("The post processing profile to use when paused (To enable effects like DOF blur when paused)")] private VolumeProfile upgradePostProcess;
@@ -20,7 +19,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        cursorController.UnlockCursor();
+        CursorController.Instance.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
         OnPauseGameplay?.Invoke(true);
@@ -31,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     private void OnDisable()
     {
-        cursorController.LockCursor();
+        CursorController.Instance.LockCursor();
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;
         OnPauseGameplay?.Invoke(false);

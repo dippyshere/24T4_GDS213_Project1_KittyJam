@@ -82,6 +82,10 @@ public class DownloadManager : MonoBehaviour
         }
 
         float timeStarted = Time.realtimeSinceStartup;
+        if (sceneLoadInfo!= null && sceneLoadInfo.useTransition && TransitionManager.Instance != null)
+        {
+            TransitionManager.Instance.StartTransition();
+        }
         downloadProgress.gameObject.SetActive(true);
         downloadProgress.value = 0;
         catImage.gameObject.SetActive(true);
@@ -116,6 +120,19 @@ public class DownloadManager : MonoBehaviour
         if (sceneLoadInfo != null)
         {
             totalSceneDownloads = sceneLoadInfo.scenesToLoad.Count;
+            if (totalSceneDownloads > 0)
+            {
+                foreach (SceneAssetReference scene in sceneLoadInfo.scenesToLoad)
+                {
+                    foreach (var sceneInstance in sceneInstances)
+                    {
+                        if (sceneInstance.Key.Equals(scene) && sceneInstance.Value.Result.Scene.isLoaded)
+                        {
+                            totalSceneDownloads--;
+                        }
+                    }
+                }
+            }
             if (assetLoadInfo != null && totalAssetDownloads > 0)
             {
                 individualSceneProgress = 0.2f / totalSceneDownloads;
@@ -123,12 +140,6 @@ public class DownloadManager : MonoBehaviour
             else
             {
                 individualSceneProgress = 1f / totalSceneDownloads;
-            }
-
-            if (sceneLoadInfo.useTransition && TransitionManager.Instance != null)
-            {
-                TransitionManager.Instance.StartTransition();
-                timeStarted = Time.realtimeSinceStartup;
             }
         }
 
@@ -237,6 +248,13 @@ public class DownloadManager : MonoBehaviour
 
             foreach (SceneAssetReference scene in sceneLoadInfo.scenesToLoad)
             {
+                foreach (var sceneInstance in sceneInstances)
+                {
+                    if (sceneInstance.Key.Equals(scene) && sceneInstance.Value.Result.Scene.isLoaded)
+                    {
+                        continue;
+                    }
+                }
                 AsyncOperationHandle<SceneInstance> asyncOperationHandle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive, true, -100);
                 downloadSceneOperations.Add(asyncOperationHandle);
                 sceneInstances.Add(scene, asyncOperationHandle);
@@ -284,7 +302,6 @@ public class DownloadManager : MonoBehaviour
                 {
                     if (sceneInstance.Key.Equals(sceneAsset) && sceneInstance.Value.Result.Scene.isLoaded)
                     {
-                        Debug.Log("Unloading scene instance: " + sceneInstance.Key);
                         AsyncOperationHandle<SceneInstance> unloadOperationHandle = Addressables.UnloadSceneAsync(sceneInstance.Value, UnloadSceneOptions.UnloadAllEmbeddedSceneObjects, false);
                         unloadOperationHandles.Add(unloadOperationHandle);
                         unloadOperationHandle.Completed += operation =>
@@ -312,7 +329,6 @@ public class DownloadManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Waiting for scene unloading to complete...");
                     yield return null;
                 }
             }

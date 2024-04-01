@@ -11,21 +11,21 @@ public class MenuSongButtonManager : MonoBehaviour
     public void LoadSong()
     {
         GlobalVariables.Set("activeSong", songData);
-        switch (gameType)
-        {
-            case TempGameType.CircleGame:
-                TransitionManager.Instance.StartLoadingSceneMusicStop("GameType1CircleGame");
-                break;
-            case TempGameType.HighwayGame:
-                TransitionManager.Instance.StartLoadingSceneMusicStop("GameType2HighwayGame");
-                break;
-            case TempGameType.MarchingGame:
-                TransitionManager.Instance.StartLoadingSceneMusicStop("GameType3MarchingGame");
-                break;
-            case TempGameType.BongoGame:
-                TransitionManager.Instance.StartLoadingSceneMusicStop("GameType4DDRGame");
-                break;
-        }
+        //switch (gameType)
+        //{
+        //    case TempGameType.CircleGame:
+        //        TransitionManager.Instance.StartLoadingSceneMusicStop("GameType1CircleGame");
+        //        break;
+        //    case TempGameType.HighwayGame:
+        //        TransitionManager.Instance.StartLoadingSceneMusicStop("GameType2HighwayGame");
+        //        break;
+        //    case TempGameType.MarchingGame:
+        //        TransitionManager.Instance.StartLoadingSceneMusicStop("GameType3MarchingGame");
+        //        break;
+        //    case TempGameType.BongoGame:
+        //        TransitionManager.Instance.StartLoadingSceneMusicStop("GameType4DDRGame");
+        //        break;
+        //}
     }
 
     private enum TempGameType

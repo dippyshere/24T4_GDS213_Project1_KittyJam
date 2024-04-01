@@ -24,6 +24,7 @@ public class TransitionManager : MonoBehaviour
     /// Transitions to a scene, without playing/stopping music
     /// </summary>
     /// <param name="sceneToLoad">The scene to load</param>
+    [System.Obsolete("Replaced by addressable system. Use download manager instance")]
     public void StartLoadingSceneMusicContinue(string sceneToLoad)
     {
         return;
@@ -33,6 +34,7 @@ public class TransitionManager : MonoBehaviour
     /// Transitions to a scene, starting the music
     /// </summary>
     /// <param name="sceneToLoad">The scene to load</param>
+    [System.Obsolete("Replaced by addressable system. Use download manager instance")]
     public void StartLoadingSceneMusicStart(string sceneToLoad)
     {
         return;
@@ -42,6 +44,7 @@ public class TransitionManager : MonoBehaviour
     /// Transitions to a scene, stopping the music
     /// </summary>
     /// <param name="sceneToLoad">The scene to load</param>
+    [System.Obsolete("Replaced by addressable system. Use download manager instance")]
     public void StartLoadingSceneMusicStop(string sceneToLoad)
     {
         return;

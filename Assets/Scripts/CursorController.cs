@@ -7,18 +7,16 @@ using UnityEngine;
 /// </summary>
 public class CursorController : MonoBehaviour
 {
-    [SerializeField] private bool lockCursorOnStart = true;
+    [HideInInspector] public static CursorController Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
-        if (lockCursorOnStart)
-        {
-            LockCursor();
-        }
-        else
-        {
-            UnlockCursor();
-        }
+        UnlockCursor();
     }
 
     /// <summary>
@@ -26,11 +24,8 @@ public class CursorController : MonoBehaviour
     /// </summary>
     public void LockCursor()
     {
-        if (lockCursorOnStart)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     /// <summary>

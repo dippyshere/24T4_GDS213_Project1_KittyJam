@@ -12,6 +12,14 @@ public class GameSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("The game selection tile for BongoGame")] private GameObject bongoGameTile;
     [SerializeField, Tooltip("The text component for the song title")] private TextMeshProUGUI songTitle;
     [SerializeField, Tooltip("The text component for the song artist")] private TextMeshProUGUI songArtist;
+    [SerializeField] private SceneLoadInfo game1;
+    [SerializeField] private SceneLoadInfo game1Onboarding;
+    [SerializeField] private SceneLoadInfo game2;
+    [SerializeField] private SceneLoadInfo game2Onboarding;
+    [SerializeField] private SceneLoadInfo game3;
+    [SerializeField] private SceneLoadInfo game3Onboarding;
+    [SerializeField] private SceneLoadInfo game4;
+    [SerializeField] private SceneLoadInfo game4Onboarding;
 
     public void UpdateGameSelectionScreen()
     {
@@ -61,23 +69,23 @@ public class GameSelectionManager : MonoBehaviour
         if (GlobalVariables.Get<string>("GameType" + gameType + "Onboarded") == null)
         {
             GlobalVariables.Set("GameType" + gameType + "Onboarded", "1");
-            TransitionManager.Instance.StartLoadingSceneMusicStop("GameType" + gameType + "Onboarding");
+            DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: gameType == 1 ? game1Onboarding : gameType == 2 ? game2Onboarding : gameType == 3 ? game3Onboarding : game4Onboarding);
         }
         else
         {
             switch (gameType)
             {
                 case 1:
-                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType1CircleGame");
+                    DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: game1);
                     break;
                 case 2:
-                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType2HighwayGame");
+                    DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: game2);
                     break;
                 case 3:
-                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType3MarchingGame");
+                    DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: game3);
                     break;
                 case 4:
-                    TransitionManager.Instance.StartLoadingSceneMusicStop("GameType4DDRGame");
+                    DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: game4);
                     break;
             }
         }

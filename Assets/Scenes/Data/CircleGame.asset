@@ -46,5 +46,9 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 1
+  - m_AssetGUID: 679613c4ee1b60c4bb870ccc6ee9885a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   markFirstSceneAsActive: 1
   useTransition: 1
