@@ -29,3 +29,7 @@ MonoBehaviour:
   gameModes:
   - gameType: 0
     supportedInstruments: []
+  - gameType: 1
+    supportedInstruments: []
+  - gameType: 3
+    supportedInstruments: []
