@@ -5,7 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PauseMenuManager : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton reference to the pause menu manager")] public static PauseMenuManager Instance;
     [Tooltip("Reference to the pause menu")] private GameObject pauseMenu;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &595789526
 MonoBehaviour:
@@ -156,7 +156,7 @@ MonoBehaviour:
   _sceneSetup: []
   _isMainScene: 0
   _version: 1
-  _thisScenePath: Assets/Scenes/Frontend/Downloader 1.unity
+  _thisScenePath: Assets/Scenes/Gameplay/HighwayGame/HighwayGameSystems.unity
 --- !u!4 &595789527
 Transform:
   m_ObjectHideFlags: 0

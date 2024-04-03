@@ -7,9 +7,9 @@ using UnityEngine;
 /// <summary>
 /// Manages the player's score and combo system
 /// </summary>
-public class ScoreManager : MonoBehaviour
+public class CircleScoreManager : MonoBehaviour
 {
-    [HideInInspector, Tooltip("Singleton reference to the score manager")] public static ScoreManager Instance;
+    [HideInInspector, Tooltip("Singleton reference to the circle score manager")] public static CircleScoreManager Instance;
 
     [SerializeField, Tooltip("The sound to play when successfully hitting a note")] private AudioSource hitSFX;
     [SerializeField, Tooltip("The sound to play when missing a note")] private AudioSource missSFX;
@@ -51,19 +51,19 @@ public class ScoreManager : MonoBehaviour
     {
         // Debug.Log("Hit time: " + hitTime);
         hitTime *= -1;
-        if (hitTime >= -SongManager.Instance.perfectRange && hitTime <= SongManager.Instance.perfectRange)
+        if (hitTime >= -ScoreManager.Instance.perfectRange && hitTime <= ScoreManager.Instance.perfectRange)
         {
             ShowNoteFeedback(NoteFeedback.Perfect, position);
             HitPerfect();
             return;
         }
-        else if (hitTime >= -SongManager.Instance.goodRange && hitTime <= SongManager.Instance.goodRange)
+        else if (hitTime >= -ScoreManager.Instance.goodRange && hitTime <= ScoreManager.Instance.goodRange)
         {
             ShowNoteFeedback(NoteFeedback.Good, position);
             HitGood();
             return;
         }
-        else if (hitTime > SongManager.Instance.goodRange)
+        else if (hitTime > ScoreManager.Instance.goodRange)
         {
             Miss(position, NoteFeedback.TooEarly);
             return;
@@ -131,8 +131,8 @@ public class ScoreManager : MonoBehaviour
     /// <param name="position">The position to display the feedback at</param>
     public void ShowNoteFeedback(NoteFeedback feedback, Vector3 position)
     {
-        GameObject feedbackObject = Instantiate(SongManager.Instance.noteFeedbackPrefab, position, Quaternion.identity);
-        feedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
+        //GameObject feedbackObject = Instantiate(SongManager.Instance.noteFeedbackPrefab, position, Quaternion.identity);
+        //feedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(feedback);
     }
 
     /// <summary>

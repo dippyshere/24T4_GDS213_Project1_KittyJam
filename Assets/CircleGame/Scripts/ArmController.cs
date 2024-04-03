@@ -8,19 +8,25 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class ArmController : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton reference to the arm controller")] public static ArmController Instance;
+    [Header("Configuration")]
     [SerializeField, Tooltip("Adjusts the arm sensitivity multiplier")] private float armSensitivityMultiplier = 1f;
     [SerializeField, Tooltip("The slam speed upgrade level")] private float slamSpeedMultiplier = 1f;
-    [SerializeField, Tooltip("Reference to the camera controller")] private CameraController cameraController;
+    [Header("References")]
     [SerializeField, Tooltip("Reference to the arm animator")] private Animator animator;
     [SerializeField, Tooltip("Game object that is spawned when slamming occurs")] private GameObject slamEffect;
     [SerializeField, Tooltip("Transform that the slam effect occurs at")] private Transform slamPosition;
-    [SerializeField, Tooltip("Reference to the pause menu")] private GameObject pauseMenu;
     [HideInInspector, Tooltip("Whether the player is allowed to slam")] public bool canSlam = true;
     [HideInInspector, Tooltip("Whether the player is allowed to move")] public bool canMove = true;
     [SerializeField, Tooltip("List of trail renderers to enable/disable while slamming")] private List<TrailRenderer> trails = new List<TrailRenderer>();
     [Tooltip("Whether the player is currently slamming")] private bool isSlamming = false;
     [Tooltip("If a note has already been hit since the last slam")] private bool noteHit = false;
     [Tooltip("The position of the mouse")] private Vector3 mousePosition;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -29,17 +35,23 @@ public class ArmController : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenu.OnPauseGameplay += PauseGameplay;
+        StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForPauseMenuInstance()
+    {
+        yield return new WaitUntil(() => PauseMenu.Instance != null);
+        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     private void OnDisable()
     {
-        PauseMenu.OnPauseGameplay -= PauseGameplay;
+        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     private void OnDestroy()
     {
-        PauseMenu.OnPauseGameplay -= PauseGameplay;
+        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     /// <summary>
@@ -95,7 +107,7 @@ public class ArmController : MonoBehaviour
     /// </summary>
     public void OnSlam()
     {
-        cameraController.StartCoroutine(cameraController.ShakeCamera(0.2f, 0.35f));
+        CameraController.Instance.StartCoroutine(CameraController.Instance.ShakeCamera(0.15f, 5f));
         StartCoroutine(SpawnSlamEffect());
     }
 

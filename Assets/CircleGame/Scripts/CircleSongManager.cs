@@ -9,15 +9,14 @@ using TMPro;
 using UnityEngine.UI;
 using System.Globalization;
 
-public class SongManager : MonoBehaviour
+public class CircleSongManager : MonoBehaviour
 {
-    [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
+    [HideInInspector, Tooltip("Singleton reference to the song manager")] public static CircleSongManager Instance;
     [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("Reference to the text object that displays the song name")] private TextMeshProUGUI songNameText;
     [SerializeField, Tooltip("Refernce to the text object that displays the artist name")] private TextMeshProUGUI artistNameText;
     [SerializeField, Tooltip("Reference to the image object that displays the albumn art")] private Image albumnArtImage;
-    [SerializeField, Tooltip("Reference to the note manager")] private NoteManager noteManager;
     [Tooltip("The game object that is used to display note feedback")] public GameObject noteFeedbackPrefab;
     [SerializeField, Tooltip("Refernece to the win screen game object")] private GameObject winScreen;
     [SerializeField, Tooltip("Reference to the text object that displays the final winning score")] private TextMeshProUGUI winScore;
@@ -36,20 +35,30 @@ public class SongManager : MonoBehaviour
     [HideInInspector, Tooltip("The name of the artist to display")] private string artistName;
     [HideInInspector, Tooltip("The albumn art to display")] private Sprite albumnArt;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void OnEnable()
     {
-        PauseMenu.OnPauseGameplay += PauseGameplay;
+        StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForPauseMenuInstance()
+    {
+        yield return new WaitUntil(() => PauseMenu.Instance != null);
+        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     private void OnDisable()
     {
-        PauseMenu.OnPauseGameplay -= PauseGameplay;
+        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Instance = this;
         if (GlobalVariables.Get<SongData>("activeSong") != null)
         {
             songData = GlobalVariables.Get<SongData>("activeSong");
@@ -116,7 +125,7 @@ public class SongManager : MonoBehaviour
         var array = new Note[notes.Count];
         notes.CopyTo(array, 0);
 
-        noteManager.SetTimeStamps(array);
+        CircleNoteManager.Instance.SetTimeStamps(array);
 
         float firstNoteTime = 0;
         foreach (var note in notes)
@@ -188,7 +197,7 @@ public class SongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        PauseMenu.OnPauseGameplay?.Invoke(true);
+        PauseMenu.Instance.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

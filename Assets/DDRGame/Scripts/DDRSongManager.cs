@@ -59,12 +59,18 @@ public class DDRSongManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenu.OnPauseGameplay += PauseGameplay;
+        StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForPauseMenuInstance()
+    {
+        yield return new WaitUntil(() => PauseMenu.Instance != null);
+        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     private void OnDisable()
     {
-        PauseMenu.OnPauseGameplay -= PauseGameplay;
+        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     // Start is called before the first frame update
@@ -319,7 +325,7 @@ public class DDRSongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        PauseMenu.OnPauseGameplay?.Invoke(true);
+        PauseMenu.Instance.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + DDRScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + DDRScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + DDRScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + DDRScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

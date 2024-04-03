@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &595789526
 MonoBehaviour:
@@ -152,11 +152,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneSetupMode: 2
-  _sceneSetup: []
+  _sceneSetupMode: 1
+  _sceneSetup:
+  - scene:
+      editorAssetGUID: 75a7652262eb769439ddb5082c6df69c
+      name: BongoGameBackground
+      _path: Assets/Scenes/Gameplay/BongoGame/BongoGameBackground.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 1be5ea312bbdef740a5edac05405c2c1
+      name: BongoGamePlayer
+      _path: Assets/Scenes/Gameplay/BongoGame/BongoGamePlayer.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 44d6150a6b68e3546a76dbe455899f27
+      name: BongoGameSystems
+      _path: Assets/Scenes/Gameplay/BongoGame/BongoGameSystems.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 8bc8b96ee049b3747b18f83164691ed5
+      name: GameSystems
+      _path: Assets/Scenes/Gameplay/Common/GameSystems.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: f11e2bcbd5bbc134caa9c0c74a8b8715
+      name: GameUI
+      _path: Assets/Scenes/Gameplay/Common/GameUI.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 36aa99f4cfbb8574194a1c844b0d0f6c
+      name: PauseMenu
+      _path: Assets/Scenes/Gameplay/Common/PauseMenu.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: e435b5ce8f1eae049ba9a3b41870aef0
+      name: WinUI
+      _path: Assets/Scenes/Gameplay/Common/WinUI.unity
+    loadInEditor: 1
+    loadMethod: 3
+  - scene:
+      editorAssetGUID: 6e5fb00a3a270f641b3b6111c3228787
+      name: Persistent
+      _path: Assets/Scenes/Persistent.unity
+    loadInEditor: 1
+    loadMethod: 3
   _isMainScene: 0
   _version: 1
-  _thisScenePath: Assets/Scenes/Frontend/Downloader 1.unity
+  _thisScenePath: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase.unity
 --- !u!4 &595789527
 Transform:
   m_ObjectHideFlags: 0

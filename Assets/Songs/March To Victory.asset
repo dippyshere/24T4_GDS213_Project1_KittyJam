@@ -31,3 +31,4 @@ MonoBehaviour:
     supportedInstruments:
     - instrumentType: 0
       difficulty: 2
+    leaderboardID: b0a303d8-87ed-4668-8dd9-e6d8dd57496e

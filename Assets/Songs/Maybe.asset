@@ -29,3 +29,4 @@ MonoBehaviour:
   gameModes:
   - gameType: 0
     supportedInstruments: []
+    leaderboardID: 3ca97b0f-21cf-46fd-9e2c-1f3ee7f1224d

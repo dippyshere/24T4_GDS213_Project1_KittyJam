@@ -60,12 +60,18 @@ public class HighwaySongManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenu.OnPauseGameplay += PauseGameplay;
+        StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForPauseMenuInstance()
+    {
+        yield return new WaitUntil(() => PauseMenu.Instance != null);
+        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     private void OnDisable()
     {
-        PauseMenu.OnPauseGameplay -= PauseGameplay;
+        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     // Start is called before the first frame update
@@ -326,7 +332,7 @@ public class HighwaySongManager : MonoBehaviour
     public void EndSong()
     {
         winScreen.SetActive(true);
-        PauseMenu.OnPauseGameplay?.Invoke(true);
+        PauseMenu.Instance.OnPauseGameplay?.Invoke(true);
         winScore.text = "Final Score: " + HighwayScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         tallyScore.text = "Perfect: " + HighwayScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + HighwayScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + HighwayScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }

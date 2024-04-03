@@ -16,7 +16,7 @@ public class CircleGemController : MonoBehaviour
     void Start()
     { 
 
-        timeInstantiated = SongManager.GetAudioSourceTime();
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         // Randomly select a sprite from the list of potential sprites
         int spriteIndex = Random.Range(0, sprites.Length);
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
@@ -34,7 +34,7 @@ public class CircleGemController : MonoBehaviour
     /// </summary>
     public void OnPickup()
     {
-        double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+        double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
         ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
         Destroy(gameObject);
