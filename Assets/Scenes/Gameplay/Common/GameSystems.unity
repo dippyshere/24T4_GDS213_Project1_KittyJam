@@ -319,8 +319,11 @@ MonoBehaviour:
   songDelayInSeconds: 0
   trackSpeed: 1
   inputDelayInMilliseconds: 16
-  songData: {fileID: 11400000, guid: f6305ede37d69784d94b83fb68dc590a, type: 2}
+  songData: {fileID: 11400000, guid: 3d3eed37a3942be48bd02cd875c3657e, type: 2}
+  bpm: 0
   noteTime: 0
+  firstNoteTime: 3.4028235e+38
+  lastNoteTime: -3.4028235e+38
 --- !u!4 &1288121468611426730
 Transform:
   m_ObjectHideFlags: 0

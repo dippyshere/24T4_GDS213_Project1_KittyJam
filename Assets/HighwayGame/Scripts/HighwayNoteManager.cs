@@ -61,6 +61,8 @@ public class HighwayNoteManager : MonoBehaviour
         Invoke(nameof(HighwayDissolve), SongManager.Instance.songDelayInSeconds + SongManager.Instance.lastNoteTime + 1f);
         yield return new WaitUntil(() => ScoreManager.Instance != null);
         ScoreManager.Instance.noteScoreEvent += ShowNoteFeedback;
+        yield return new WaitUntil(() => CursorController.Instance != null);
+        CursorController.Instance.LockCursor();
     }
 
     private void Update()

@@ -24,18 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameType4Onboarding.unity
     guid: e2a44c9a349e6ed459b786b7c7a58dc6
   - enabled: 0
-    path: Assets/Scenes/Gameplay/GameType1CircleGame.unity
-    guid: b9a4d74ff15baff4193725543b5a5703
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/GameType2HighwayGame.unity
-    guid: 1f5bb80de98332047980dd72155f4081
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/GameType3MarchingGame.unity
-    guid: 510cd27fd5c36a54d97c2c330171b3e0
-  - enabled: 0
-    path: Assets/Scenes/Gameplay/GameType4DDRGame.unity
-    guid: 62a31071e5ee7f84fad7da0490e7d905
-  - enabled: 0
     path: Assets/Scenes/Frontend/Downloader.unity
     guid: 645678e66578c4e40b0fb65fad8c967f
   - enabled: 0
