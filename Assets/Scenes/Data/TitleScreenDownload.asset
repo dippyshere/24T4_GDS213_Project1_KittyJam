@@ -30,5 +30,5 @@ MonoBehaviour:
       m_LabelString: titledownload
     releaseAssetsAfterDownload: 1
   - assetLabel:
-      m_LabelString: songdata
+      m_LabelString: songasset
     releaseAssetsAfterDownload: 1

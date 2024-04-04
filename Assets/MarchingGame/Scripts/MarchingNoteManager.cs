@@ -78,6 +78,10 @@ public class MarchingNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane1(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started)
         {
             marchingBeats[0].Hit();
@@ -90,6 +94,10 @@ public class MarchingNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane2(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started)
         {
             marchingBeats[1].Hit();
@@ -102,6 +110,10 @@ public class MarchingNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void WandMovement(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (MarchingPlayer.Instance != null)
         MarchingPlayer.Instance.HandleMouseInput(context);
     }

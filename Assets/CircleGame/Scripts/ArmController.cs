@@ -42,8 +42,8 @@ public class ArmController : MonoBehaviour
 
     private IEnumerator WaitForPauseMenuInstance()
     {
-        yield return new WaitUntil(() => PauseMenu.Instance != null);
-        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
+        yield return new WaitUntil(() => PauseMenuManager.Instance != null);
+        PauseMenuManager.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     /// <summary>

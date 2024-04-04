@@ -578,10 +578,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 937e620152dc09f4cafd3b4ee31872b5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 1.1398482
-    y: 1.1398482
+    x: 0.4369678
+    y: 0.43696782
     width: 8.125
-    height: 4.5724626
+    height: 4.566832
 --- !u!114 &1564916481
 MonoBehaviour:
   m_ObjectHideFlags: 0

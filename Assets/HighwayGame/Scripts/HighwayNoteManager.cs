@@ -57,7 +57,7 @@ public class HighwayNoteManager : MonoBehaviour
         }
         upBeatTimestamps.RemoveRange(0, 2);
         downBeatTimestamps.RemoveRange(0, 6);
-        Invoke(nameof(HighwayAppear), Mathf.Clamp(SongManager.Instance.songDelayInSeconds + SongManager.Instance.firstNoteTime - 1f, 0, float.MaxValue));
+        Invoke(nameof(HighwayAppear), Mathf.Clamp(SongManager.Instance.songDelayInSeconds + SongManager.Instance.firstNoteTime - 2f, 0, float.MaxValue));
         Invoke(nameof(HighwayDissolve), SongManager.Instance.songDelayInSeconds + SongManager.Instance.lastNoteTime + 1f);
         yield return new WaitUntil(() => ScoreManager.Instance != null);
         ScoreManager.Instance.noteScoreEvent += ShowNoteFeedback;
@@ -104,6 +104,10 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane2(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started)
         {
             highwayLanes[1].Hit();
@@ -116,6 +120,10 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane3(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started)
         {
             highwayLanes[2].Hit();
@@ -128,6 +136,10 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane4(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started)
         {
             highwayLanes[3].Hit();
@@ -140,6 +152,10 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane5(InputAction.CallbackContext context)
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         if (context.started && highwayLanes.Length > 4)
         {
             highwayLanes[4].Hit();

@@ -105,6 +105,7 @@ public class DownloadManager : MonoBehaviour
         int totalSceneDownloads = 0;
         float individualAssetProgress = 1;
         float individualSceneProgress = 1;
+        List<SceneAssetReference> filteredScenesToLoad = new List<SceneAssetReference>();
         if (assetLoadInfo != null)
         {
             totalAssetDownloads = assetLoadInfo.assetsToLoad.Count + assetLoadInfo.assetLabelsToLoad.Count;
@@ -120,6 +121,7 @@ public class DownloadManager : MonoBehaviour
         if (sceneLoadInfo != null)
         {
             totalSceneDownloads = sceneLoadInfo.scenesToLoad.Count;
+            filteredScenesToLoad.AddRange(sceneLoadInfo.scenesToLoad);
             if (totalSceneDownloads > 0)
             {
                 foreach (SceneAssetReference scene in sceneLoadInfo.scenesToLoad)
@@ -129,6 +131,7 @@ public class DownloadManager : MonoBehaviour
                         if (sceneInstance.Key.Equals(scene) && sceneInstance.Value.Result.Scene.isLoaded)
                         {
                             totalSceneDownloads--;
+                            filteredScenesToLoad.Remove(scene);
                         }
                     }
                 }
@@ -246,7 +249,7 @@ public class DownloadManager : MonoBehaviour
                 }
             }
 
-            foreach (SceneAssetReference scene in sceneLoadInfo.scenesToLoad)
+            foreach (SceneAssetReference scene in filteredScenesToLoad)
             {
                 foreach (var sceneInstance in sceneInstances)
                 {
@@ -258,7 +261,7 @@ public class DownloadManager : MonoBehaviour
                 AsyncOperationHandle<SceneInstance> asyncOperationHandle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive, true, -100);
                 downloadSceneOperations.Add(asyncOperationHandle);
                 sceneInstances.Add(scene, asyncOperationHandle);
-                if (sceneLoadInfo.markFirstSceneAsActive && scene.Equals(sceneLoadInfo.scenesToLoad[0]))
+                if (sceneLoadInfo.markFirstSceneAsActive && scene.Equals(filteredScenesToLoad[0]))
                 {
                     asyncOperationHandle.Completed += operation =>
                     {

@@ -337,6 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1563866158}
   - component: {fileID: 1563866157}
+  - component: {fileID: 1563866159}
   m_Layer: 0
   m_Name: PostProcessing
   m_TagString: Untagged
@@ -376,6 +377,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1563866159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563866156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52a368f593458a44b314ea4726f57e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  postProcessVolume: {fileID: 0}
 --- !u!1 &1586572505
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 6.5, y: 5.5, z: -7.5}
+  m_FollowOffset: {x: 0, y: 3, z: -10}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0

@@ -17,38 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f9ff22a8718f0044fa4c901583c426da
   m_SerializeEntries:
-  - m_GUID: 9e25d22637c681b4eac454ad6d89ccf1
-    m_Address: Assets/Songs/March To Victory.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - marchtovictory
-    - songdata
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 06f86c2cc59d40540ba8ca80459a41c6
-    m_Address: Assets/Songs/Maybe.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - maybe
-    - songdata
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3d3eed37a3942be48bd02cd875c3657e
-    m_Address: Assets/Songs/Nothing's Alright.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - nothingsalright
-    - songdata
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f6305ede37d69784d94b83fb68dc590a
-    m_Address: Assets/Songs/The Spark.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - thespark
-    - songdata
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 94f65ab04a9cc2f4b852872442534207
     m_Address: Assets/Audio/kittyjam nothingsalright.ogg
     m_ReadOnly: 0

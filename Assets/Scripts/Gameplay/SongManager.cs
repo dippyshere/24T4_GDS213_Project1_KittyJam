@@ -38,8 +38,8 @@ public class SongManager : MonoBehaviour
 
     private IEnumerator WaitForPauseMenuInstance()
     {
-        yield return new WaitUntil(() => PauseMenu.Instance != null);
-        PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
+        yield return new WaitUntil(() => PauseMenuManager.Instance != null);
+        PauseMenuManager.Instance.OnPauseGameplay += PauseGameplay;
     }
 
     void Awake()
@@ -50,7 +50,11 @@ public class SongManager : MonoBehaviour
     private IEnumerator Start()
     {
         // wait until the song data is loaded
+#if UNITY_EDITOR
         yield return null;
+#else
+        yield return new WaitUntil(() => GlobalVariables.Get<SongData>("activeSong") != null);
+#endif
         if (GlobalVariables.Get<SongData>("activeSong") != null)
         {
             songData = GlobalVariables.Get<SongData>("activeSong");
@@ -177,7 +181,15 @@ public class SongManager : MonoBehaviour
         {
             return 0;
         }
-        return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+        try
+        {
+            return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+        }
+        catch (System.Exception)
+        {
+            return 0;
+        }
+
     }
 
     /// <summary>
@@ -185,6 +197,7 @@ public class SongManager : MonoBehaviour
     /// </summary>
     public void EndSong()
     {
-        PauseMenu.Instance.OnPauseGameplay?.Invoke(true);
+        PauseMenuManager.Instance.OnPauseGameplay -= PauseGameplay;
+        WinMenuManager.Instance.EnableWinMenu();
     }
 }

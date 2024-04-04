@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: 3656720bf36118b879fd64bce289a84e
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 1
@@ -109,7 +109,6 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - default
     - fonts
     - marchtovictory
     - maybe
@@ -127,7 +126,6 @@ MonoBehaviour:
     - bongogame
     - frontend
     - initialdownload
-    - songdata
     - songasset
     - titledownload
     - Locale
