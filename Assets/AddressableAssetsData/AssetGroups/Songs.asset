@@ -81,6 +81,22 @@ MonoBehaviour:
     - songasset
     - titledownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9b40ec8dc095ea4b902958859dd78c5
+    m_Address: Assets/Textures/AlbumArt/BeautifulDay.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - beautifulday
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3439c370ac33c5948a578dac2b322f26
+    m_Address: Assets/Audio/kittyjam_BeautifulDay.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - beautifulday
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

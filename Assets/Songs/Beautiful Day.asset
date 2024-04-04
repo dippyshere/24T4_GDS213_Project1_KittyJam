@@ -23,11 +23,13 @@ MonoBehaviour:
   songAudio: {fileID: 8300000, guid: 3439c370ac33c5948a578dac2b322f26, type: 3}
   albumCover: {fileID: 21300000, guid: a9b40ec8dc095ea4b902958859dd78c5, type: 3}
   bpm: 120
-  previewStart: 0
-  previewEnd: 0
-  loopPoint: 0
+  previewStart: 29.16
+  previewEnd: 90.766
+  loopPoint: 41.686
   gameModes:
   - gameType: 0
     supportedInstruments: []
+    leaderboardID: 
   - gameType: 1
     supportedInstruments: []
+    leaderboardID: 
