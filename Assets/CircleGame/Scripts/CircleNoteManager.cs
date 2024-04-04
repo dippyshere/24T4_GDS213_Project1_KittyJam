@@ -17,6 +17,7 @@ public class CircleNoteManager : MonoBehaviour
     [SerializeField, Tooltip("Bottom right position of the random spawn area")] private Vector3 spawnAreaBottomRight;
     [SerializeField, Tooltip("The radius around notes that new notes can't spawn within"), Range(0, 10)] private float noteRadius = 6f;
     [SerializeField, Tooltip("How fast the follow point moves to the target position"), Range(0, 100)] private float followPointSpeed = 10f;
+    [SerializeField, Tooltip("How long notes will be on screen for before they need to be hit"), Range(0, 10)] public float noteTime = 1f;
     [Header("References")]
     [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
     [SerializeField, Tooltip("The FollowPoint prefab to use")] private GameObject followPoint;
@@ -58,7 +59,7 @@ public class CircleNoteManager : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - noteTime)
             {
                 var note = Instantiate(notePrefab, SpawnLocation(), Quaternion.identity);
                 notes.Add(note.GetComponent<CircleGemController>());

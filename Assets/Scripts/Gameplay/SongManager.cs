@@ -25,7 +25,6 @@ public class SongManager : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(WaitForSongDisplayManagerInstance());
         StartCoroutine(WaitForPauseMenuInstance());
     }
 
@@ -68,6 +67,7 @@ public class SongManager : MonoBehaviour
             ReadFromFile();
         }
         noteTime = 60f / bpm * 4 * trackSpeed;
+        StartCoroutine(WaitForSongDisplayManagerInstance());
     }
 
     /// <summary>

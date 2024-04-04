@@ -98,7 +98,7 @@ namespace UnityEngine.UIElements
                 RebuildPanel();
             m_RadialProgress = UIWidget as RadialProgress;
             timeInstantiated = SongManager.Instance.GetAudioSourceTime();
-            assignedTime = timeInstantiated + SongManager.Instance.noteTime;
+            assignedTime = timeInstantiated + CircleNoteManager.Instance.noteTime;
             StartCoroutine(UpdateSilhouette());
         }
 
@@ -106,7 +106,7 @@ namespace UnityEngine.UIElements
         {
 
             double timeSinceInstantiated = SongManager.Instance.GetAudioSourceTime() - timeInstantiated;
-            float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
+            float t = (float)(timeSinceInstantiated / (CircleNoteManager.Instance.noteTime * 2));
             m_RadialProgress.progress = Mathf.Clamp(t * 200, 0, 100);
             if (t > 0.5)
             {
@@ -122,26 +122,26 @@ namespace UnityEngine.UIElements
             double noteTime = assignedTime - audioTime;
             if (noteTime >= -ScoreManager.Instance.perfectRange && noteTime <= ScoreManager.Instance.perfectRange)
             {
-                float progress = ((SongManager.Instance.noteTime - (float)noteTime) - (SongManager.Instance.noteTime - ScoreManager.Instance.perfectRange)) / ((SongManager.Instance.noteTime + ScoreManager.Instance.perfectRange) - (SongManager.Instance.noteTime - ScoreManager.Instance.perfectRange));
-                //Debug.Log("Perfect: " + progress + "\n" + (SongManager.Instance.noteTime - (float)noteTime) + "/" + ((SongManager.Instance.noteTime + SongManager.Instance.perfectRange) - (SongManager.Instance.noteTime - SongManager.Instance.perfectRange)));
+                float progress = ((CircleNoteManager.Instance.noteTime - (float)noteTime) - (CircleNoteManager.Instance.noteTime - ScoreManager.Instance.perfectRange)) / ((CircleNoteManager.Instance.noteTime + ScoreManager.Instance.perfectRange) - (CircleNoteManager.Instance.noteTime - ScoreManager.Instance.perfectRange));
+                //Debug.Log("Perfect: " + progress + "\n" + (CircleNoteManager.Instance.noteTime - (float)noteTime) + "/" + ((CircleNoteManager.Instance.noteTime + SongManager.Instance.perfectRange) - (CircleNoteManager.Instance.noteTime - SongManager.Instance.perfectRange)));
                 m_RadialProgress.ProgressColor = Color.Lerp(new Color(0.8705882353f, 0.9215686275f, 0.2039215686f), new Color(0.2039215686f, 0.9215686275f, 0.2039215686f), progress);
             }
             else if (noteTime >= -ScoreManager.Instance.goodRange && noteTime <= ScoreManager.Instance.goodRange)
             {
-                float progress = ((SongManager.Instance.noteTime - (float)noteTime) - (SongManager.Instance.noteTime - ScoreManager.Instance.goodRange)) / ((SongManager.Instance.noteTime - ScoreManager.Instance.perfectRange) - (SongManager.Instance.noteTime - ScoreManager.Instance.goodRange));
-                //Debug.Log("Good: " + progress + "\n" + ((SongManager.Instance.noteTime - (float)noteTime) - (SongManager.Instance.noteTime - SongManager.Instance.goodRange)) + "/" + ((SongManager.Instance.noteTime - SongManager.Instance.perfectRange) - (SongManager.Instance.noteTime - SongManager.Instance.goodRange)));
+                float progress = ((CircleNoteManager.Instance.noteTime - (float)noteTime) - (CircleNoteManager.Instance.noteTime - ScoreManager.Instance.goodRange)) / ((CircleNoteManager.Instance.noteTime - ScoreManager.Instance.perfectRange) - (CircleNoteManager.Instance.noteTime - ScoreManager.Instance.goodRange));
+                //Debug.Log("Good: " + progress + "\n" + ((CircleNoteManager.Instance.noteTime - (float)noteTime) - (CircleNoteManager.Instance.noteTime - SongManager.Instance.goodRange)) + "/" + ((CircleNoteManager.Instance.noteTime - SongManager.Instance.perfectRange) - (CircleNoteManager.Instance.noteTime - SongManager.Instance.goodRange)));
                 m_RadialProgress.ProgressColor = Color.Lerp(new Color(0.9215686275f, 0.7411764706f, 0.2039215686f), new Color(0.8705882353f, 0.9215686275f, 0.2039215686f), progress);
             }
             else if (noteTime > ScoreManager.Instance.goodRange)
             {
-                float progress = (SongManager.Instance.noteTime - (float)noteTime) / (SongManager.Instance.noteTime - ScoreManager.Instance.goodRange);
-                //Debug.Log("Early: " + progress + "\n" + (SongManager.Instance.noteTime - (float)noteTime) + "/" + (SongManager.Instance.noteTime - SongManager.Instance.goodRange));
+                float progress = (CircleNoteManager.Instance.noteTime - (float)noteTime) / (CircleNoteManager.Instance.noteTime - ScoreManager.Instance.goodRange);
+                //Debug.Log("Early: " + progress + "\n" + (CircleNoteManager.Instance.noteTime - (float)noteTime) + "/" + (CircleNoteManager.Instance.noteTime - SongManager.Instance.goodRange));
                 m_RadialProgress.ProgressColor = Color.Lerp(new Color(0.9215686275f, 0.5490196078f, 0.2039215686f), new Color(0.9215686275f, 0.7411764706f, 0.2039215686f), progress);
             }
             else
             {
-                float progress = ((SongManager.Instance.noteTime - (float)noteTime) - (SongManager.Instance.noteTime + ScoreManager.Instance.perfectRange)) / ((SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
-                //Debug.Log("Miss: " + progress + "\n" + ((SongManager.Instance.noteTime - (float)noteTime) - (SongManager.Instance.noteTime + SongManager.Instance.perfectRange)) + "/" + ((SongManager.Instance.noteTime + SongManager.Instance.goodRange)));
+                float progress = ((CircleNoteManager.Instance.noteTime - (float)noteTime) - (CircleNoteManager.Instance.noteTime + ScoreManager.Instance.perfectRange)) / ((CircleNoteManager.Instance.noteTime + ScoreManager.Instance.goodRange));
+                //Debug.Log("Miss: " + progress + "\n" + ((CircleNoteManager.Instance.noteTime - (float)noteTime) - (CircleNoteManager.Instance.noteTime + SongManager.Instance.perfectRange)) + "/" + ((CircleNoteManager.Instance.noteTime + SongManager.Instance.goodRange)));
                 m_RadialProgress.ProgressColor = Color.Lerp(new Color(0.2039215686f, 0.9215686275f, 0.2039215686f), new Color(1, 0, 0), progress);
             }
         }

@@ -24,9 +24,9 @@ public class CircleGemController : MonoBehaviour
             spriteRenderer.sprite = sprites[spriteIndex];
         }
         // Set the animation speed to match the song's note time
-        GetComponent<Animator>().speed = 1 / SongManager.Instance.noteTime;
+        GetComponent<Animator>().speed = 1 / CircleNoteManager.Instance.noteTime;
         // Automatically destroy the gem if it's not picked up in time
-        Invoke("OnMiss", (float)(SongManager.Instance.noteTime * 1.15));
+        Invoke("OnMiss", (float)(CircleNoteManager.Instance.noteTime * 1.15));
     }
 
     /// <summary>

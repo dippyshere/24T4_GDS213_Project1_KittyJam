@@ -50,22 +50,6 @@ public class GameUIManager : MonoBehaviour
         ScoreManager.Instance.multiplierEvent += UpdateMultiplierText;
     }
 
-    private void OnDisable()
-    {
-        CameraController.Instance.cameraShakeBeginCallback -= ShakeUI;
-        ScoreManager.Instance.scoreEvent -= UpdateScoreText;
-        ScoreManager.Instance.comboEvent -= UpdateComboText;
-        ScoreManager.Instance.multiplierEvent -= UpdateMultiplierText;
-    }
-
-    private void OnDestroy()
-    {
-        CameraController.Instance.cameraShakeBeginCallback -= ShakeUI;
-        ScoreManager.Instance.scoreEvent -= UpdateScoreText;
-        ScoreManager.Instance.comboEvent -= UpdateComboText;
-        ScoreManager.Instance.multiplierEvent -= UpdateMultiplierText;
-    }
-
     public void SetOriginalPositions()
     {
         originalPositions = new Vector3[uiElements.Count];
