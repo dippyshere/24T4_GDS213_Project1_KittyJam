@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: d7cd4d8891ea3abace2a9dd97d221c66
+    Hash: 6740bca0bfc0e966266354a44b892f25
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 59f4d53630144134e95841261a864c04, type: 2}
   - {fileID: 11400000, guid: 82ab1893b3a5c03499f558a989aa008f, type: 2}
   - {fileID: 11400000, guid: 53872368f8071d947bbeaec1ef1929a1, type: 2}
+  - {fileID: 11400000, guid: 49054574ef660dd4f9d089ae0a4901a7, type: 2}
   - {fileID: 11400000, guid: 4cc0e549127e0cb41b2d1c30fb05a5b1, type: 2}
   - {fileID: 11400000, guid: e41989e4cdc66b246a4e6a7536f41d58, type: 2}
   - {fileID: 11400000, guid: a821167800a81a84e8b927f42d44ba8e, type: 2}
@@ -130,6 +131,7 @@ MonoBehaviour:
     - songasset
     - titledownload
     - Locale
+    - gameplay
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

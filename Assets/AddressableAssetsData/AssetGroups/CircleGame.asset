@@ -17,12 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c69cac935bc769f48a41edb3eea3b58b
   m_SerializeEntries:
-  - m_GUID: b9a4d74ff15baff4193725543b5a5703
-    m_Address: Assets/Scenes/GameType1CircleGame.unity
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - circlegame
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 20a1dced842ac9e42b984e37b14f6b7c
     m_Address: Assets/CircleGame/Animations
     m_ReadOnly: 0
@@ -55,6 +49,36 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 688a6164d34a30740882ab320e46c716
     m_Address: Assets/Textures/white-woven-fabric-normal.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ffd85548ed581c4ca87e4667ad09f00
+    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6dfca0d884257694e84b6077fc9e7ab1
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGameBackground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4728aa8aadb0576478a87e0d6307950d
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGamePlayer.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 478846b1019ca0542a27f88c86810928
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96aaeb026656e2e4ebba8d33081459c2
+    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase/ReflectionProbe-0.exr
     m_ReadOnly: 0
     m_SerializedLabels:
     - circlegame

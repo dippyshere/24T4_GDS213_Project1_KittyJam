@@ -71,6 +71,42 @@ MonoBehaviour:
     m_SerializedLabels:
     - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64973192ab9efe346b03c53101c117f9
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8d7944481db81be4a98035b1a70b6385
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/HighwayGameBackground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 424351d822c54354b8d9c1fa1b37cf2f
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/HighwayGameCrowd.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46448162fb5642945a5059056ef0242a
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/HIghwayGameHighway.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 596766cb2b47146468ae0ca32088ac5e
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/HighwayGameStage.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4a6063d345564747a2e6cb9100dc654
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/HighwayGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

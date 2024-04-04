@@ -161,7 +161,7 @@ public class ScoreManager : MonoBehaviour
 
     private void IncreaseMultiplier()
     {
-        if (comboScore % comboThreshold == 0 && comboScore <= maxMultiplier * comboThreshold)
+        if (comboScore % comboThreshold == 0 && comboScore < maxMultiplier * comboThreshold)
         {
             multiplier += comboMultiplierIncrease;
             multiplierEvent?.Invoke(multiplier);

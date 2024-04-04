@@ -34,7 +34,7 @@ RenderSettings:
   m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
-  m_ReflectionBounces: 1
+  m_ReflectionBounces: 2
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
@@ -97,8 +97,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000016, guid: 39771a77b44d43b458febdfcf7c52e4f,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -182,6 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 749397749}
   - component: {fileID: 749397748}
+  - component: {fileID: 749397750}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -300,6 +303,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &749397750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749397747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f512a4a83ab71c4409b58041e4ed5948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 749397748}
+  songDelayInSeconds: 0
+  trackSpeed: 1
+  inputDelayInMilliseconds: 16
+  songData: {fileID: 11400000, guid: f6305ede37d69784d94b83fb68dc590a, type: 2}
+  noteTime: 0
 --- !u!4 &1288121468611426730
 Transform:
   m_ObjectHideFlags: 0
@@ -443,11 +464,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboThreshold: 3
   comboMultiplierIncrease: 1
-  maxMultiplier: 4
+  maxMultiplier: 8
   goodHitScore: 50
   perfectBonus: 1.5
-  goodRange: 0.1
-  perfectRange: 0.05
+  goodRange: 0.25
+  perfectRange: 0.1
   goodHitSFX: {fileID: 8300000, guid: 76b1d1de4a3850046abf0d7e71dda7bb, type: 3}
   perfectHitSFX: {fileID: 8300000, guid: 76b1d1de4a3850046abf0d7e71dda7bb, type: 3}
   missSFX: {fileID: 8300000, guid: d8023804e086b204d8d0ed35e6eab074, type: 3}

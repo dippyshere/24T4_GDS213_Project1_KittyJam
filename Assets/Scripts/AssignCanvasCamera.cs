@@ -9,6 +9,15 @@ public class AssignCanvasCamera : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponent<Canvas>();
+        StartCoroutine(WaitForCamera());
+    }
+
+    private IEnumerator WaitForCamera()
+    {
+        while (Camera.main == null)
+        {
+            yield return null;
+        }
         canvas.worldCamera = Camera.main;
     }
 
@@ -21,6 +30,7 @@ public class AssignCanvasCamera : MonoBehaviour
             canvas.worldCamera = Camera.main;
             yield return null;
         }
+        canvas.worldCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -54,8 +64,15 @@ public class AssignCanvasCamera : MonoBehaviour
     {
         while (true)
         {
-            canvas.worldCamera = Camera.main;
-            yield return new WaitForSeconds(1.5f);
+            if (Camera.main != null)
+            {
+                canvas.worldCamera = Camera.main;
+                yield return new WaitForSeconds(1.5f);
+            }
+            else
+            {
+                yield return null;
+            }
         }
     }
 }

@@ -25,6 +25,9 @@ public class GameUIManager : MonoBehaviour
         {
             originalPositions[i] = uiElements[i].localPosition;
         }
+        UpdateScoreText(0);
+        UpdateComboText(0);
+        UpdateMultiplierText(1);
     }
 
     private void OnEnable()

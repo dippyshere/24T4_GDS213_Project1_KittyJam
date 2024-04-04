@@ -28,30 +28,22 @@ public class ArmController : MonoBehaviour
         Instance = this;
     }
 
-    private void Start()
-    {
-        CursorController.Instance.LockCursor();
-    }
-
     private void OnEnable()
     {
+        StartCoroutine(WaitForCursorControllerInstance());
         StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForCursorControllerInstance()
+    {
+        yield return new WaitUntil(() => CursorController.Instance != null);
+        CursorController.Instance.LockCursor();
     }
 
     private IEnumerator WaitForPauseMenuInstance()
     {
         yield return new WaitUntil(() => PauseMenu.Instance != null);
         PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
-    }
-
-    private void OnDisable()
-    {
-        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
-    }
-
-    private void OnDestroy()
-    {
-        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
     }
 
     /// <summary>

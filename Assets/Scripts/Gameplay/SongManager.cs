@@ -21,10 +21,18 @@ public class SongManager : MonoBehaviour
     [HideInInspector, Tooltip("The BPM of the song")] private float bpm;
     [HideInInspector, Tooltip("The song to play")] private AudioClip song;
     [HideInInspector, Tooltip("The calculated speed for the notes")] public float noteTime;
+    [HideInInspector, Tooltip("A list of note timestamps")] public Note[] noteTimestamps;
 
     private void OnEnable()
     {
+        StartCoroutine(WaitForSongDisplayManagerInstance());
         StartCoroutine(WaitForPauseMenuInstance());
+    }
+
+    private IEnumerator WaitForSongDisplayManagerInstance()
+    {
+        yield return new WaitUntil(() => SongDisplayManager.Instance != null);
+        SongDisplayManager.Instance.SetSongData(songData.SongName, songData.ArtistName, songData.AlbumCover);
     }
 
     private IEnumerator WaitForPauseMenuInstance()
@@ -33,15 +41,15 @@ public class SongManager : MonoBehaviour
         PauseMenu.Instance.OnPauseGameplay += PauseGameplay;
     }
 
-    private void OnDisable()
-    {
-        PauseMenu.Instance.OnPauseGameplay -= PauseGameplay;
-    }
-
-    // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+    }
+
+    private IEnumerator Start()
+    {
+        // wait until the song data is loaded
+        yield return null;
         if (GlobalVariables.Get<SongData>("activeSong") != null)
         {
             songData = GlobalVariables.Get<SongData>("activeSong");
@@ -82,7 +90,7 @@ public class SongManager : MonoBehaviour
             byte[] results = www.downloadHandler.data;
             using var stream = new MemoryStream(results);
             midiFile = MidiFile.Read(stream);
-            GetDataFromMidi();
+            StartCoroutine(GetDataFromMidi());
         }
     }
 
@@ -92,17 +100,20 @@ public class SongManager : MonoBehaviour
     private void ReadFromFile()
     {
         midiFile = MidiFile.Read(Application.streamingAssetsPath + "/" + fileLocation);
-        GetDataFromMidi();
+        StartCoroutine(GetDataFromMidi());
     }
 
     /// <summary>
-    /// Read the note data from the MIDI file and set the timestamps for the notes to be spawned at
+    /// Read the note data from the MIDI file and return the timestamps for the notes to be spawned at, then start the song & queue the end screen to display
     /// </summary>
-    public void GetDataFromMidi()
+    public IEnumerator GetDataFromMidi()
     {
+        yield return new WaitUntil(() => midiFile != null);
+
         var notes = midiFile.GetNotes();
         var array = new Note[notes.Count];
         notes.CopyTo(array, 0);
+        noteTimestamps = array;
 
         float firstNoteTime = 0;
         foreach (var note in notes)
@@ -122,6 +133,7 @@ public class SongManager : MonoBehaviour
                 lastNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
             }
         }
+
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
     }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: da4dc8bea0329b84e8048fcd3f1c8b36
+guid: 96aaeb026656e2e4ebba8d33081459c2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -22,8 +22,8 @@ TextureImporter:
     normalMapFilter: 0
     flipGreenChannel: 0
   isReadable: 0
-  streamingMipmaps: 1
-  streamingMipmapsPriority: -128
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   vTOnly: 0
   ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
@@ -74,7 +74,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 100
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0

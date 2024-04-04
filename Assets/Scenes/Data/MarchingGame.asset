@@ -13,7 +13,43 @@ MonoBehaviour:
   m_Name: MarchingGame
   m_EditorClassIdentifier: 
   scenesToLoad:
-  - m_AssetGUID: 510cd27fd5c36a54d97c2c330171b3e0
+  - m_AssetGUID: a4cc5ed695a6ce54087ddd4b574ec90a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 0d7fcfc6f483827489b20149971f8b1f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 6dee8c7e9eb9a684ca70e5b8f5f0229f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 4a7c0310a189c8a46b59b7c2e669a4ec
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 718738891ef6a034eb1bb7d9b06f95a2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: d40ff6907f72b1b489915acd628f9329
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 8bc8b96ee049b3747b18f83164691ed5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: f11e2bcbd5bbc134caa9c0c74a8b8715
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 36aa99f4cfbb8574194a1c844b0d0f6c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e435b5ce8f1eae049ba9a3b41870aef0
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

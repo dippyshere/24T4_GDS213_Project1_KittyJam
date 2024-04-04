@@ -59,6 +59,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - bongogame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d2ff4759ccdac349b0453725b3206d3
+    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 75a7652262eb769439ddb5082c6df69c
+    m_Address: Assets/Scenes/Gameplay/BongoGame/BongoGameBackground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1be5ea312bbdef740a5edac05405c2c1
+    m_Address: Assets/Scenes/Gameplay/BongoGame/BongoGamePlayer.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 44d6150a6b68e3546a76dbe455899f27
+    m_Address: Assets/Scenes/Gameplay/BongoGame/BongoGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bongogame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

@@ -10,21 +10,31 @@ using UnityEngine;
 public class CircleNoteManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the circle note manager")] public static CircleNoteManager Instance;
+    [Header("Configuration")]
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
-    [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
-    [SerializeField, Tooltip("The FollowPoint prefab to spawn")] private GameObject followPoint;
-    [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
     [SerializeField, Tooltip("List of locations to manually place a specific note (Leave at 0,0,0 for random; Ensure Z is always at 4.89)")] private List<Vector3> spawnLocations = new List<Vector3>();
-    [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
     [SerializeField, Tooltip("Top left position of the random spawn area")] private Vector3 spawnAreaTopLeft;
     [SerializeField, Tooltip("Bottom right position of the random spawn area")] private Vector3 spawnAreaBottomRight;
-
+    [SerializeField, Tooltip("The radius around notes that new notes can't spawn within"), Range(0, 10)] private float noteRadius = 6f;
+    [SerializeField, Tooltip("How fast the follow point moves to the target position"), Range(0, 100)] private float followPointSpeed = 10f;
+    [Header("References")]
+    [SerializeField, Tooltip("The gem prefab to spawn for notes")] private GameObject notePrefab;
+    [SerializeField, Tooltip("The FollowPoint prefab to use")] private GameObject followPoint;
+    [SerializeField, Tooltip("The note feedback prefab to use")] private GameObject noteFeedbackPrefab;
+    [Tooltip("List of previous + current notes that have been spawned")] private List<CircleGemController> notes = new List<CircleGemController>();
+    [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
+    [Tooltip("The target position of the follow point")] private Vector3 targetPosition;
 
-    private void Start()
+    private IEnumerator Start()
     {
         Instance = this;
         followPoint.GetComponent<TrailRenderer>().enabled = false; 
+        yield return new WaitUntil(() => SongManager.Instance != null);
+        yield return new WaitUntil(() => SongManager.Instance.noteTimestamps != null);
+        SetTimeStamps(SongManager.Instance.noteTimestamps);
+        yield return new WaitUntil(() => ScoreManager.Instance != null);
+        ScoreManager.Instance.noteScoreEvent += ShowNoteFeedback;
     }
 
     /// <summary>
@@ -63,16 +73,18 @@ public class CircleNoteManager : MonoBehaviour
                         Debug.Log("Cut Trail");
                     }
                 }
-              
 
-                followPoint.transform.position = notes[spawnIndex].transform.position;
+                targetPosition = notes[spawnIndex].transform.position;
                 followPoint.GetComponent<TrailRenderer>().enabled = true;
+                
                 spawnIndex++;
             }
         }
 
-   
-
+        if (followPoint.GetComponent<TrailRenderer>().enabled)
+        {
+            followPoint.transform.position = Vector3.Lerp(followPoint.transform.position, targetPosition, Time.deltaTime * followPointSpeed);
+        }
     }
 
     /// <summary>
@@ -104,7 +116,7 @@ public class CircleNoteManager : MonoBehaviour
                 bool tooClose = false;
                 foreach (var location in existingNoteLocations)
                 {
-                    if (Vector3.Distance(location, newLocation) < 6)
+                    if (Vector2.Distance(location, newLocation) < noteRadius)
                     {
                         tooClose = true;
                         break;
@@ -139,6 +151,9 @@ public class CircleNoteManager : MonoBehaviour
         Gizmos.DrawLine(spawnAreaTopLeft, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
         Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaBottomRight.x, spawnAreaTopLeft.y, spawnAreaTopLeft.z));
         Gizmos.DrawLine(spawnAreaBottomRight, new Vector3(spawnAreaTopLeft.x, spawnAreaBottomRight.y, spawnAreaTopLeft.z));
+        Gizmos.DrawWireSphere(Vector3.zero, noteRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(Vector3.zero, noteRadius / 1.65f);
     }
 
     private void OnDrawGizmosSelected()
@@ -152,5 +167,11 @@ public class CircleNoteManager : MonoBehaviour
                 Gizmos.DrawSphere(location, 0.5f);
             }
         }
+    }
+
+    public void ShowNoteFeedback(NoteFeedback noteFeedback, Vector3 position)
+    {
+        GameObject feedbackObject = Instantiate(noteFeedbackPrefab, position, Quaternion.identity);
+        feedbackObject.GetComponent<NoteFeedbackManager>().SetFeedbackType(noteFeedback);
     }
 }
