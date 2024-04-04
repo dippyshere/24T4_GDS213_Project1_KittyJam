@@ -10,16 +10,16 @@ public class HighwayNote : MonoBehaviour
 
     void Start()
     {
-        timeInstantiated = HighwaySongManager.GetAudioSourceTime();
-        transform.localPosition = Vector3.forward * HighwaySongManager.Instance.noteSpawnZ;
-        Invoke(nameof(OnMiss), (float)(HighwaySongManager.Instance.noteTime + HighwaySongManager.Instance.goodRange));
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
+        transform.localPosition = Vector3.forward * HighwayNoteManager.Instance.noteSpawnZ;
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
     }
 
     // Update is called once per frame
     void Update()
     {
-        double timeSinceInstantiated = HighwaySongManager.GetAudioSourceTime() - timeInstantiated;
-        float t = (float)(timeSinceInstantiated / (HighwaySongManager.Instance.noteTime * 2));
+        double timeSinceInstantiated = SongManager.Instance.GetAudioSourceTime() - timeInstantiated;
+        float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
 
         if (t > 1)
         {
@@ -27,13 +27,13 @@ public class HighwayNote : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector3.forward * (HighwaySongManager.Instance.noteDespawnZ - HighwaySongManager.Instance.noteSpawnZ) * Time.deltaTime / (HighwaySongManager.Instance.noteTime * 2));
+            transform.Translate(Vector3.forward * (HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime / (SongManager.Instance.noteTime * 2));
         }
     }
 
     public void OnMiss()
     {
-        HighwayScoreManager.Instance.Miss(transform.position);
+        ScoreManager.Instance.Miss(transform.position);
         visualSprite.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
     }
 }

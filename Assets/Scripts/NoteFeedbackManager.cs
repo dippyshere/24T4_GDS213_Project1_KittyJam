@@ -33,7 +33,7 @@ public class NoteFeedbackManager : MonoBehaviour
                 feedbackText.colorGradientPreset = tMP_ColorGradients[1];
                 break;
             case NoteFeedback.Perfect:
-                feedbackText.text = "Perfect"; // Purrfect
+                feedbackText.text = "Purrfect";
                 feedbackText.colorGradientPreset = tMP_ColorGradients[2];
                 break;
         }

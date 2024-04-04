@@ -9,23 +9,22 @@ public class MarchingNote : MonoBehaviour
 
     void Start()
     {
-        timeInstantiated = MarchingSongManager.GetAudioSourceTime();
-        Invoke(nameof(OnMiss), (float)(MarchingSongManager.Instance.noteTime + MarchingSongManager.Instance.goodRange));
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Star"))
         {
-            double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
-            MarchingScoreManager.Instance.Hit(audioTime - assignedTime, gameObject, false);
+            ScoreManager.Instance.Hit(0, transform.position, true);
             Destroy(gameObject);
         }
     }
 
     public void OnMiss()
     {
-        MarchingScoreManager.Instance.Miss(gameObject, isBeatNote: false);
+        ScoreManager.Instance.Miss(transform.parent.transform.position, isAlternateNote: true);
         Destroy(gameObject);
     }
 }

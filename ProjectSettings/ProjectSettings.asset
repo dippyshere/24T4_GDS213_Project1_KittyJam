@@ -14,9 +14,9 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: 24T4_GDS213_Project1_KittyJam
-  defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.21568628, g: 0.85882354, b: 1, a: 1}
+  defaultCursor: {fileID: 2800000, guid: 144d68c06f14b3f4ba225e6ad36f0bc9, type: 3}
+  cursorHotspot: {x: 22, y: 16}
+  m_SplashScreenBackgroundColor: {r: 0.5372549, g: 0.23137255, b: 0.8784314, a: 1}
   m_ShowUnitySplashScreen: 0
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 0
@@ -54,7 +54,7 @@ PlayerSettings:
   mipStripping: 1
   numberOfMipsStripped: 0
   numberOfMipsStrippedPerMipmapLimitGroup: {}
-  m_StackTraceTypes: 010000000100000001000000010000000100000001000000
+  m_StackTraceTypes: 020000000000000000000000000000000200000001000000
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosUseCustomAppBackgroundBehavior: 0
@@ -136,7 +136,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.5.0
+  bundleVersion: 0.8.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -286,7 +286,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: cc79d408e93264d41b81dfc3cf6a569b, type: 3}
+      m_Icon: {fileID: 2800000, guid: 21c459422df662541826e21c75c6cb86, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -556,7 +556,10 @@ PlayerSettings:
     m_EncodingQuality: 1
   - m_BuildTarget: WebGL
     m_EncodingQuality: 2
-  m_BuildTargetGroupLightmapSettings: []
+  m_BuildTargetGroupLightmapSettings:
+  - m_BuildTarget: WebGL
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: -128
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding:
   - m_BuildTarget: Android
@@ -809,13 +812,13 @@ PlayerSettings:
   webGLTemplate: PROJECT:KittyJamWebGLTemplate
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
-  webGLCompressionFormat: 1
+  webGLCompressionFormat: 0
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
-  webGLDecompressionFallback: 1
+  webGLDecompressionFallback: 0
   webGLInitialMemorySize: 32
-  webGLMaximumMemorySize: 2048
+  webGLMaximumMemorySize: 4096
   webGLMemoryGrowthMode: 2
   webGLMemoryLinearGrowthStep: 16
   webGLMemoryGeometricGrowthStep: 0.2
@@ -830,8 +833,10 @@ PlayerSettings:
     Android: 1
     Server: 1
     Standalone: 1
-  il2cppCompilerConfiguration: {}
-  il2cppCodeGeneration: {}
+  il2cppCompilerConfiguration:
+    WebGL: 1
+  il2cppCodeGeneration:
+    WebGL: 0
   managedStrippingLevel:
     Android: 3
     EmbeddedLinux: 1
@@ -953,4 +958,4 @@ PlayerSettings:
   hmiLoadingImage: {fileID: 0}
   platformRequiresReadableAssets: 0
   virtualTexturingSupportEnabled: 0
-  insecureHttpOption: 2
+  insecureHttpOption: 1

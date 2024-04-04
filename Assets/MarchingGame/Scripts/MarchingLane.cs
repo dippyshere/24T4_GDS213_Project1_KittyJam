@@ -25,7 +25,7 @@ public class MarchingLane : MonoBehaviour
         {
             if (note.NoteNumber == noteNumber)
             {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, MarchingSongManager.midiFile.GetTempoMap());
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
         }
@@ -36,7 +36,7 @@ public class MarchingLane : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (MarchingSongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - MarchingSongManager.Instance.noteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<MarchingNote>());

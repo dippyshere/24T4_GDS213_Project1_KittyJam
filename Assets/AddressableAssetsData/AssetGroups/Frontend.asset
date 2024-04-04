@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Frontend
+  m_EditorClassIdentifier: 
+  m_GroupName: Frontend
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0cc12bda8c10af94a85a07d6a4f6fb2e
+  m_SerializeEntries:
+  - m_GUID: 645678e66578c4e40b0fb65fad8c967f
+    m_Address: Assets/Scenes/Frontend/Downloader.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc6b31ce9f36af947a5a19c89ba6fb43
+    m_Address: Assets/Scenes/Frontend/Foundation.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d859ccdc1fac6f64b8391aeaf868a491
+    m_Address: Assets/Scenes/Frontend/GameSelection.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 918d5bc36fa389b48a8f6c886b3fbd82
+    m_Address: Assets/Scenes/Frontend/MenuBackground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d3ac6ef1fbbe4fd42ac03b869a4396ad
+    m_Address: Assets/Scenes/Frontend/Onboarding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d497fa7d512e46e43ac3b649a91e7b39
+    m_Address: Assets/Scenes/Frontend/OptionsMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b37dfd2d776ab3d499019a712c595d5d
+    m_Address: Assets/Scenes/Frontend/SongShelf.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c45ad539b28143e478356c5cc9735402
+    m_Address: Assets/Scenes/Frontend/TitleScreen.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 153c9e2d5f6bd894cbb202e88a6a4cac
+    m_Address: Assets/Scenes/Frontend/Transition.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e5fb00a3a270f641b3b6111c3228787
+    m_Address: Assets/Scenes/Persistent.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b244753c835e0844b8c99f58ee6dda09, type: 2}
+    - {fileID: 11400000, guid: 91099882a0a5ce64cbdf4548220accc7, type: 2}

@@ -26,7 +26,7 @@ public class MarchingBeat : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (MarchingSongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - MarchingSongManager.Instance.beatNoteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - MarchingNoteManager.Instance.beatNoteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<MarchingBeatNote>());
@@ -38,9 +38,9 @@ public class MarchingBeat : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (timeStamp + MarchingSongManager.Instance.goodRange <= audioTime)
+            if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
                 inputIndex++;
             }
@@ -55,8 +55,8 @@ public class MarchingBeat : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
-            NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject, true);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position);
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {

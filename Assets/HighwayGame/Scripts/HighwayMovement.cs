@@ -13,7 +13,14 @@ public class HighwayMovement : MonoBehaviour
         }
         else
         {
-            transform.position -= new Vector3(0, 0, 16 / HighwaySongManager.Instance.noteTime * Time.deltaTime);
+            if (SongManager.Instance == null || SongManager.Instance.noteTime == 0)
+            {
+                transform.position -= new Vector3(0, 0, 16 * Time.deltaTime);
+            }
+            else
+            {
+                transform.position -= new Vector3(0, 0, 16 / SongManager.Instance.noteTime * Time.deltaTime);
+            }
         }
     }
 }

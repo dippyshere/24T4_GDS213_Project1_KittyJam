@@ -31,11 +31,14 @@ MonoBehaviour:
     supportedInstruments:
     - instrumentType: 2
       difficulty: 2
+    leaderboardID: f2e9bd03-3811-44a9-812e-d0207bf8a126
   - gameType: 1
     supportedInstruments:
     - instrumentType: 2
       difficulty: 3
+    leaderboardID: d712b005-d08f-4dd4-a8bf-6dc4d79e718b
   - gameType: 3
     supportedInstruments:
     - instrumentType: 4
       difficulty: 3
+    leaderboardID: 30397eb3-2eab-46b7-acc0-a11590a1b6b1

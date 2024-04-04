@@ -7,14 +7,12 @@ using UnityEngine;
 /// </summary>
 public class AnimationEvents : MonoBehaviour
 {
-    [SerializeField, Tooltip("Reference to the arm controller")] private ArmController armController;
-
     /// <summary>
     /// Trigger screen shake when the slam occurs
     /// </summary>
     public void triggerSlam()
     {
-        armController.OnSlam();
+        ArmController.Instance.OnSlam();
     }
 
     /// <summary>
@@ -22,6 +20,6 @@ public class AnimationEvents : MonoBehaviour
     /// </summary>
     public void triggerEndSlam()
     {
-        armController.OnSlamEnd();
+        ArmController.Instance.OnSlamEnd();
     }
 }

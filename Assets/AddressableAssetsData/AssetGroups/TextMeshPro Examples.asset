@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: TextMeshPro Examples
+  m_EditorClassIdentifier: 
+  m_GroupName: TextMeshPro Examples
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8699f360061d09a4da79e3975e45ae2d
+  m_SerializeEntries:
+  - m_GUID: 5bff2544887143f5807c7d5059d07f79
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6d3a169ad794942a21da6a552d62f6f
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Resources
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 701e577af2ba48b689972d42efb95456
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Sprites
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e5c6d5e25574122a7a12dbdbbeed156
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 43bfdbb596f5a58468787a49d4eb9327, type: 2}
+    - {fileID: 11400000, guid: 0eb876af3380a6442859a0456ba7a613, type: 2}
