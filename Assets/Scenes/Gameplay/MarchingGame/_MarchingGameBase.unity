@@ -5,11 +5,12 @@ OcclusionCullingSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_OcclusionBakeSettings:
-    smallestOccluder: 5
+    smallestOccluder: 10
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: a4cc5ed695a6ce54087ddd4b574ec90a
+  m_OcclusionCullingData: {fileID: 36300000, guid: c26391c63c98d48488caff03cfc57d67,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -97,7 +98,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000010, guid: d0b0dedc5c854c942a4df5185671164d,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
     type: 2}
 --- !u!196 &4
@@ -488,7 +490,7 @@ Light:
   m_BounceIntensity: 2
   m_ColorTemperature: 16200
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.63e-43, y: 6e-44, z: 1.14e-43, w: 2.5494e-41}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 0, z: 4.4481e-41, w: 1.8458935e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
