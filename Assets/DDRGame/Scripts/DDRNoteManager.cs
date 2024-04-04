@@ -62,6 +62,10 @@ public class DDRNoteManager : MonoBehaviour
 
     private void Update()
     {
+        if (BongoCatController.Instance == null || BongoCatController.Instance.renderObject == null || BongoCatController.Instance.renderObject.material)
+        {
+            return;
+        }
         // bongo cat colour changing
         if (comboScore >= 50)
         {

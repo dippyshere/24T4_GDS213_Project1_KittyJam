@@ -112,7 +112,15 @@ public class ScoreManager : MonoBehaviour
         missCount++;
         multiplierEvent?.Invoke(multiplier);
         comboEvent?.Invoke(comboScore);
-        audioSource.PlayOneShot(missSFX);
+        try
+        {
+            audioSource.PlayOneShot(missSFX);
+        }
+        catch (System.Exception)
+        {
+
+            throw;
+        }
     }
 
     /// <summary>
@@ -132,7 +140,14 @@ public class ScoreManager : MonoBehaviour
         hitCount++;
         comboScore++;
         IncreaseMultiplier();
-        audioSource.PlayOneShot(goodHitSFX);
+        try
+        {
+            audioSource.PlayOneShot(goodHitSFX);
+        }
+        catch (System.Exception)
+        {
+
+        }
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
     }
@@ -154,7 +169,14 @@ public class ScoreManager : MonoBehaviour
         perfectCount++;
         comboScore++;
         IncreaseMultiplier();
-        audioSource.PlayOneShot(perfectHitSFX);
+        try
+        {
+            audioSource.PlayOneShot(perfectHitSFX);
+        }
+        catch (System.Exception)
+        {
+
+        }
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
     }
