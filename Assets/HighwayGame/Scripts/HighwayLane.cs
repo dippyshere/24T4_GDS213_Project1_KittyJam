@@ -26,7 +26,7 @@ public class HighwayLane : MonoBehaviour
         {
             if (note.NoteNumber == noteNumber)
             {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, HighwaySongManager.midiFile.GetTempoMap());
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
         }
@@ -37,7 +37,7 @@ public class HighwayLane : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (HighwaySongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - HighwaySongManager.Instance.noteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<HighwayNote>());
@@ -49,9 +49,9 @@ public class HighwayLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (timeStamp + HighwaySongManager.Instance.goodRange <= audioTime)
+            if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
                 inputIndex++;
             }
@@ -66,8 +66,8 @@ public class HighwayLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
-            NoteFeedback result = HighwayScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {

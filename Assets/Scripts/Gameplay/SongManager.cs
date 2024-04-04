@@ -11,17 +11,19 @@ public class SongManager : MonoBehaviour
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
     [Header("Game Configuration")]
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
-    [SerializeField, Tooltip("A delay to add before the song begins to play")] private float songDelayInSeconds;
+    [SerializeField, Tooltip("A delay to add before the song begins to play")] public float songDelayInSeconds;
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
     [Header("Song Configuration")]
     [SerializeField, Tooltip("The default song data to use")] private SongData songData;
     [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
-    [HideInInspector, Tooltip("The BPM of the song")] private float bpm;
+    [HideInInspector, Tooltip("The BPM of the song")] public float bpm;
     [HideInInspector, Tooltip("The song to play")] private AudioClip song;
     [HideInInspector, Tooltip("The calculated speed for the notes")] public float noteTime;
     [HideInInspector, Tooltip("A list of note timestamps")] public Note[] noteTimestamps;
+    [HideInInspector, Tooltip("The time of the first note")] public float firstNoteTime = float.MaxValue;
+    [HideInInspector, Tooltip("The time of the last note")] public float lastNoteTime = float.MinValue;
 
     private void OnEnable()
     {
@@ -115,7 +117,6 @@ public class SongManager : MonoBehaviour
         notes.CopyTo(array, 0);
         noteTimestamps = array;
 
-        float firstNoteTime = 0;
         foreach (var note in notes)
         {
             var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
@@ -124,7 +125,6 @@ public class SongManager : MonoBehaviour
                 firstNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
             }
         }
-        float lastNoteTime = 0;
         foreach (var note in notes)
         {
             var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, midiFile.GetTempoMap());
