@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: DownloaderUI
+  m_EditorClassIdentifier: 
+  m_GroupName: DownloaderUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: d1bea44a39ab1df4299ece0f07b8274d
+  m_SerializeEntries:
+  - m_GUID: 2ad3cc18f9a18b048a10527d2aa6ae46
+    m_Address: Assets/Imported/Pet Cats pack/Sprites/Cat-1/Cat-1-Run.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d607757e41d44264bb73e32f6f0b4812
+    m_Address: Assets/Menu/Animations/PixelCat.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dfe519a1c9c1c6747aaa6a868f1708ca
+    m_Address: Assets/Menu/Animations/Running.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: eb6cbfb8926bf23468f842b9c7eac5f3, type: 2}
+    - {fileID: 11400000, guid: aa8babd6ba3659f4191a87427f583ee8, type: 2}

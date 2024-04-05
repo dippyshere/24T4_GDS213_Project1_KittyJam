@@ -33,7 +33,7 @@ QualitySettings:
     lodBias: 0.4
     maximumLODLevel: 0
     enableLODCrossFade: 1
-    streamingMipmapsActive: 0
+    streamingMipmapsActive: 1
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
     streamingMipmapsRenderersPerFrame: 512
@@ -84,7 +84,7 @@ QualitySettings:
     lodBias: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
-    streamingMipmapsActive: 0
+    streamingMipmapsActive: 1
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
     streamingMipmapsRenderersPerFrame: 512
@@ -107,6 +107,7 @@ QualitySettings:
     terrainFadeLength: 5
     terrainMaxTrees: 50
     excludedTargetPlatforms:
+    - Server
     - WebGL
   - serializedVersion: 3
     name: High Fidelity
@@ -135,7 +136,7 @@ QualitySettings:
     lodBias: 2
     maximumLODLevel: 0
     enableLODCrossFade: 1
-    streamingMipmapsActive: 0
+    streamingMipmapsActive: 1
     streamingMipmapsAddAllCameras: 1
     streamingMipmapsMemoryBudget: 512
     streamingMipmapsRenderersPerFrame: 512
@@ -157,7 +158,8 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Server
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 1

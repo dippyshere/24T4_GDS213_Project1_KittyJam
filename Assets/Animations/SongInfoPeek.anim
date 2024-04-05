@@ -23,30 +23,30 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.5
-        value: 262
-        inSlope: -4256.7275
-        outSlope: -4256.7275
+        value: 422
+        inSlope: -96475.164
+        outSlope: -96475.164
         tangentMode: 0
         weightedMode: 3
         inWeight: 0.33333334
-        outWeight: 0.0222482
+        outWeight: 0.0020114065
       - serializedVersion: 3
         time: 5.5
-        value: -122
-        inSlope: -4.234231
-        outSlope: -4.234231
+        value: -422
+        inSlope: 0.12634721
+        outSlope: 0.12634721
         tangentMode: 0
         weightedMode: 3
         inWeight: 1
         outWeight: 1
       - serializedVersion: 3
         time: 10.5
-        value: 261.32767
-        inSlope: 4341.3394
-        outSlope: 4341.3394
+        value: 422
+        inSlope: 35985.02
+        outSlope: 35985.02
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.020402718
+        inWeight: 0.0055786134
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -101,30 +101,30 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0.5
-        value: 262
-        inSlope: -4256.7275
-        outSlope: -4256.7275
+        value: 422
+        inSlope: -96475.164
+        outSlope: -96475.164
         tangentMode: 0
         weightedMode: 3
         inWeight: 0.33333334
-        outWeight: 0.0222482
+        outWeight: 0.0020114065
       - serializedVersion: 3
         time: 5.5
-        value: -122
-        inSlope: -4.234231
-        outSlope: -4.234231
+        value: -422
+        inSlope: 0.12634721
+        outSlope: 0.12634721
         tangentMode: 0
         weightedMode: 3
         inWeight: 1
         outWeight: 1
       - serializedVersion: 3
         time: 10.5
-        value: 261.32767
-        inSlope: 4341.3394
-        outSlope: 4341.3394
+        value: 422
+        inSlope: 35985.02
+        outSlope: 35985.02
         tangentMode: 0
         weightedMode: 3
-        inWeight: 0.020402718
+        inWeight: 0.0055786134
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2

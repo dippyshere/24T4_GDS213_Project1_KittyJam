@@ -11,11 +11,8 @@ using UnityEngine;
 public class DDRLane : MonoBehaviour
 {
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
-    [Tooltip("The keybind to activate the lane")] public KeyCode primaryInput;
-    [Tooltip("The secondary keybind to activate the lane")] public KeyCode secondaryInput;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [SerializeField, Tooltip("The cat arm to enable when the lane is active")] private BongoCatArm catArm;
-    [SerializeField, Tooltip("Reference to the cat controller")] private BongoCatController catController;
     [Tooltip("List of previous + current notes that have been spawned")] private List<DDRNote> notes = new List<DDRNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
@@ -32,7 +29,7 @@ public class DDRLane : MonoBehaviour
         {
             if (note.NoteNumber == noteNumber)
             {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, DDRSongManager.midiFile.GetTempoMap());
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
         }
@@ -43,7 +40,7 @@ public class DDRLane : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (DDRSongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - DDRSongManager.Instance.noteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<DDRNote>());
@@ -55,34 +52,53 @@ public class DDRLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = DDRSongManager.GetAudioSourceTime() - (DDRSongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(primaryInput) || Input.GetKeyDown(secondaryInput))
-            {
-                NoteFeedback result = DDRScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
-            }
-            if (timeStamp + DDRSongManager.Instance.goodRange <= audioTime)
+            if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
                 inputIndex++;
             }
-        }       
-        if (Input.GetKeyDown(primaryInput) || Input.GetKeyDown(secondaryInput))
-        {
-        catController.EnableArm(catArm);
         }
-        if (Input.GetKeyUp(primaryInput) || Input.GetKeyUp(secondaryInput))
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
         {
-            catController.DisableArm(catArm);
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
+            {
+                inputIndex++;
+            }
         }
+    }
+
+    /// <summary>
+    /// Makes the cat arm go down
+    /// </summary>
+    public void ArmDown()
+    {
+        if (BongoCatController.Instance != null)
+            BongoCatController.Instance.EnableArm(catArm);
+    }
+
+    /// <summary>
+    /// Makes the cat arm go up
+    /// </summary>
+    public void ArmUp()
+    {
+        if (BongoCatController.Instance != null)
+            BongoCatController.Instance.DisableArm(catArm);
     }
 }

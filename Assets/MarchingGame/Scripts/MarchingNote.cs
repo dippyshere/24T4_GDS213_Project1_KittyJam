@@ -6,33 +6,25 @@ public class MarchingNote : MonoBehaviour
 {
     double timeInstantiated;
     public float assignedTime;
-    private RectTransform rectTransform => GetComponent<RectTransform>();
 
     void Start()
     {
-        timeInstantiated = MarchingSongManager.GetAudioSourceTime();
-        rectTransform.localPosition = Vector3.right * MarchingSongManager.Instance.noteSpawnX;
-        Invoke(nameof(OnMiss), (float)(MarchingSongManager.Instance.noteTime + MarchingSongManager.Instance.goodRange));
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        double timeSinceInstantiated = MarchingSongManager.GetAudioSourceTime() - timeInstantiated;
-        float t = (float)(timeSinceInstantiated / (MarchingSongManager.Instance.noteTime * 2));
-
-        if (t > 1)
+        if (other.CompareTag("Star"))
         {
+            ScoreManager.Instance.Hit(0, transform.position, true);
             Destroy(gameObject);
-        }
-        else
-        {
-            rectTransform.localPosition += Vector3.right * (MarchingSongManager.Instance.noteDespawnX - MarchingSongManager.Instance.noteSpawnX) * Time.deltaTime / (MarchingSongManager.Instance.noteTime * 2);
         }
     }
 
     public void OnMiss()
     {
-        MarchingScoreManager.Instance.Miss(gameObject);
+        ScoreManager.Instance.Miss(transform.parent.transform.position, isAlternateNote: true);
+        Destroy(gameObject);
     }
 }

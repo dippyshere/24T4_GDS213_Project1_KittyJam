@@ -7,14 +7,14 @@ public class HighwayBeatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.localPosition = Vector3.forward * HighwaySongManager.Instance.noteSpawnZ;
-        Invoke(nameof(DeleteBeat), HighwaySongManager.Instance.noteTime);
+        transform.localPosition = Vector3.forward * HighwayNoteManager.Instance.noteSpawnZ;
+        Invoke(nameof(DeleteBeat), SongManager.Instance.noteTime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * (HighwaySongManager.Instance.noteDespawnZ - HighwaySongManager.Instance.noteSpawnZ) * Time.deltaTime / (HighwaySongManager.Instance.noteTime * 2));
+        transform.Translate(Vector3.forward * (HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime / (SongManager.Instance.noteTime * 2));
     }
 
     private void DeleteBeat()

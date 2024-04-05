@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf42daa988b7eb4e9bf72386e8f77b6, type: 3}
+  m_Name: The Spark
+  m_EditorClassIdentifier: 
+  songName: The Spark
+  artistName: Scott Brown, M-Project
+  albumName: Weaponized Soul
+  genre: 6
+  year: 2017
+  songLength: 151
+  usageLicense: 4
+  midiName: kittyjam thespark.mid
+  songAudio: {fileID: 8300000, guid: 85f16081e7c47b84fbe037050314c151, type: 3}
+  albumCover: {fileID: 21300000, guid: 6831c756de247f245a16a13b5c024f23, type: 3}
+  bpm: 175
+  previewStart: 97.176
+  previewEnd: 122.787
+  loopPoint: 45.976
+  gameModes:
+  - gameType: 0
+    supportedInstruments:
+    - instrumentType: 2
+      difficulty: 4
+    leaderboardID: 387bc27d-0805-420c-a624-849d0af73f4e
+  - gameType: 1
+    supportedInstruments:
+    - instrumentType: 3
+      difficulty: 4
+    leaderboardID: 01956b6a-5ca7-4fb5-a3d6-d31c711b26d5

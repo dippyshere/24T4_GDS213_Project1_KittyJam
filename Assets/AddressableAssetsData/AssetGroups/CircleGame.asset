@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CircleGame
+  m_EditorClassIdentifier: 
+  m_GroupName: CircleGame
+  m_Data:
+    m_SerializedData: []
+  m_GUID: c69cac935bc769f48a41edb3eea3b58b
+  m_SerializeEntries:
+  - m_GUID: 20a1dced842ac9e42b984e37b14f6b7c
+    m_Address: Assets/CircleGame/Animations
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81c415ebdf224ee41ac0d69f2d396e73
+    m_Address: Assets/CircleGame/ColourGradients
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bc03923fd49b254fa3c6c5963a91d4b
+    m_Address: Assets/CircleGame/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd827a92401bde448b9757b0a7669ba1
+    m_Address: Assets/CircleGame/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29d17090c004c694791e1bcc6ef5f7c2
+    m_Address: Assets/Textures/white-woven-fabric.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 688a6164d34a30740882ab320e46c716
+    m_Address: Assets/Textures/white-woven-fabric-normal.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1ffd85548ed581c4ca87e4667ad09f00
+    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6dfca0d884257694e84b6077fc9e7ab1
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGameBackground.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4728aa8aadb0576478a87e0d6307950d
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGamePlayer.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 478846b1019ca0542a27f88c86810928
+    m_Address: Assets/Scenes/Gameplay/CircleGame/CircleGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96aaeb026656e2e4ebba8d33081459c2
+    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase/ReflectionProbe-0.exr
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: ee1c4b27de24c404387eef5269a97768, type: 2}
+    - {fileID: 11400000, guid: b72a1277d8abbc44db433cc7b2427693, type: 2}

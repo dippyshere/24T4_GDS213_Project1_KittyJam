@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CommonUI
+  m_EditorClassIdentifier: 
+  m_GroupName: CommonUI
+  m_Data:
+    m_SerializedData: []
+  m_GUID: bfc92d2bd97eae345bd9e14324536101
+  m_SerializeEntries:
+  - m_GUID: 2100733540dd8e24b8c5614933b70d9e
+    m_Address: Assets/Textures/Circle.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cc79d408e93264d41b81dfc3cf6a569b
+    m_Address: Assets/Textures/kittyjam-cat.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f92c1d5bade550748894fef652d8c1fc
+    m_Address: Assets/Textures/kitty catch button2.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c4efad7557452940af38b465933438a
+    m_Address: Assets/Textures/kittyjam cat.svg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85e410018d4f66c45b84acd3a56e64eb
+    m_Address: Assets/Textures/kitty jam logo.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 67ee08ea677ad7e4a94ba6bc72e3d9ea
+    m_Address: Assets/Textures/kitty jam logo background.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e07849c902f37ab41aa51bc423377acd
+    m_Address: Assets/Textures/kitty jam logo cat.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6805bbe73a56c4745811908a2347b96e
+    m_Address: Assets/Textures/kitty jam logo text.svg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 21c459422df662541826e21c75c6cb86
+    m_Address: Assets/Textures/kittyjam cover square.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36643ae19fae09d469a9cd7eb5573095
+    m_Address: Assets/Textures/KittyJamBackground.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76a2c0e412f770348829cdf58bb5a196
+    m_Address: Assets/Textures/KittyJamCat.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0689551cdec97f542bbecb17b29dd32f
+    m_Address: Assets/Textures/KittyJamText.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1bee7a0da26c06c45aad13d4a1cd4272
+    m_Address: Assets/Prefabs/Transition.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf9a7ab916c0e4145afa9fc040a3f2eb
+    m_Address: Assets/Prefabs/KittyJamLogo.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - initialdownload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 141db787ecf911241a947eb194d743a5, type: 2}
+    - {fileID: 11400000, guid: 66e921639f1a42e4cadfef3e6f3b8cb5, type: 2}

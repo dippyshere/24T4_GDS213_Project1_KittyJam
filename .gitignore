@@ -70,3 +70,13 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+## Highway data
+/Assets/HighwayGame/Materials/HighwayRenderMat.mat
+/Assets/HighwayGame/Textures/HighwayRT.renderTexture
+
+## Paid assets contents (keep the meta files to keep the import settings and guids)
+/Assets/Imported/Beautify/**/*.*
+!/Assets/Imported/Beautify/**/*.meta
+/Assets/Imported/Gradient Shader Pack/**/*.*
+!/Assets/Imported/Gradient Shader Pack/**/*.meta

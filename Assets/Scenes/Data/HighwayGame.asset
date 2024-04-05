@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6d308546d532a4b9d52884ad3ab2e8, type: 3}
+  m_Name: HighwayGame
+  m_EditorClassIdentifier: 
+  scenesToLoad:
+  - m_AssetGUID: 64973192ab9efe346b03c53101c117f9
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 8d7944481db81be4a98035b1a70b6385
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 424351d822c54354b8d9c1fa1b37cf2f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 46448162fb5642945a5059056ef0242a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 596766cb2b47146468ae0ca32088ac5e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: d4a6063d345564747a2e6cb9100dc654
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 8bc8b96ee049b3747b18f83164691ed5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: f11e2bcbd5bbc134caa9c0c74a8b8715
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 36aa99f4cfbb8574194a1c844b0d0f6c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: e435b5ce8f1eae049ba9a3b41870aef0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  scenesToUnload:
+  - m_AssetGUID: d859ccdc1fac6f64b8391aeaf868a491
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 918d5bc36fa389b48a8f6c886b3fbd82
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: d3ac6ef1fbbe4fd42ac03b869a4396ad
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: d497fa7d512e46e43ac3b649a91e7b39
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: b37dfd2d776ab3d499019a712c595d5d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: c45ad539b28143e478356c5cc9735402
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: fc6b31ce9f36af947a5a19c89ba6fb43
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 58e428e018dc3304186ced05c795d06f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  markFirstSceneAsActive: 1
+  useTransition: 1

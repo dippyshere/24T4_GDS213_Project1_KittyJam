@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "24T4_GDS213_Project1_KittyJam.sln"
+    "dotnet.defaultSolution": "24T4_GDS213_Project1_KittyJam.sln",
+    "dotnet.preferCSharpExtension": true
 }
