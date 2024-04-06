@@ -47,8 +47,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchinggame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6ad9d47ad6a3a5143ba0f73fafac1a36
-    m_Address: Assets/Imported/SiuniaevCharacters
+  - m_GUID: 29a56fcff03d7cd44be3377a5e069723
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Animators
     m_ReadOnly: 0
     m_SerializedLabels:
     - marchinggame
@@ -85,6 +85,24 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d40ff6907f72b1b489915acd628f9329
     m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17923ac1650736744ac2d0f911f57564
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e9c48e3e701e3c48abb42258ac0805b
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86cefc2ce9fd1b44dadd80c54bbfda68
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Models/FBX
     m_ReadOnly: 0
     m_SerializedLabels:
     - marchinggame
