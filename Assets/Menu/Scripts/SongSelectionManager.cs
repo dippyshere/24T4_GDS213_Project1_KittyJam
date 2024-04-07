@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 /// <summary>
 /// Handles the selection of songs and the transition to the game selection screen
@@ -13,7 +16,6 @@ public class SongSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the game selection manager")] private GameSelectionManager gameSelectionManager;
     [SerializeField, Tooltip("Reference to the song shelf scroller")] private SongShelfScrolling songShelfScrolling;
     [SerializeField, Tooltip("Reference to the prefab for the song tile")] private GameObject songTilePrefab;
-    [SerializeField, Tooltip("A list of all the songs to populate the menu with")] private List<SongData> songs = new List<SongData>();
     [HideInInspector, Tooltip("The currently active song tile")] public SongTileManager activeSongTile;
     [SerializeField, Tooltip("Reference to the audio sources for the song selection menu")] private AudioSource[] audioSources = new AudioSource[2];
     [HideInInspector, Tooltip("References to all the song tiles")] private List<SongTileManager> songTiles = new List<SongTileManager>();
@@ -26,7 +28,6 @@ public class SongSelectionManager : MonoBehaviour
     {
         instance = this;
         PopulateSongList();
-        songShelfScrolling.UpdatePages();
         selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 
@@ -35,13 +36,48 @@ public class SongSelectionManager : MonoBehaviour
     /// </summary>
     private void PopulateSongList()
     {
-        foreach (SongData song in songs)
+        List<IResourceLocation> songPaths = new List<IResourceLocation>();
+        Addressables.LoadResourceLocationsAsync("songdata", typeof(SongData)).Completed += (op) =>
+        {
+            foreach (var location in op.Result)
+            {
+                songPaths.Add(location);
+            }
+
+            StartCoroutine(AddSongTiles(songPaths));
+        };
+    }
+
+    private IEnumerator AddSongTiles(List<IResourceLocation> songPaths)
+    {
+        List<SongData> songData = new List<SongData>();
+        Dictionary<SongData, IResourceLocation> songDataLocations = new Dictionary<SongData, IResourceLocation>();
+        foreach (IResourceLocation song in songPaths)
+        {
+            AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(song);
+            yield return new WaitUntil(() => opHandle.IsDone);
+
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                songData.Add(opHandle.Result);
+                songDataLocations.Add(opHandle.Result, song);
+                Addressables.Release(opHandle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load song data asset reference: " + song);
+            }
+        }
+        songData.Sort((x, y) => x.Priority == y.Priority ? x.SongName.CompareTo(y.SongName) : y.Priority.CompareTo(x.Priority));
+        foreach (SongData song in songData)
         {
             GameObject songTile = Instantiate(songTilePrefab, songListShelf.transform);
             SongTileManager songTileManager = songTile.GetComponent<SongTileManager>();
+            songTileManager.songDataAssetLocation = songDataLocations[song];
             songTileManager.songData = song;
             songTiles.Add(songTileManager);
         }
+        songShelfScrolling.UpdatePages();
     }
 
     /// <summary>
@@ -109,10 +145,10 @@ public class SongSelectionManager : MonoBehaviour
     /// Selects the song and transitions to the game selection screen
     /// </summary>
     /// <param name="songData"></param>
-    public void SelectSong(SongData songData)
+    public void SelectSong(IResourceLocation songDataLocation)
     {
-        GlobalVariables.Set("activeSong", songData);
-        gameSelectionManager.UpdateGameSelectionScreen();
+        PersistentData.Instance.SetSelectedSong(songDataLocation);
+        StartCoroutine(gameSelectionManager.UpdateGameSelectionScreen());
         selectionUIAnimator.SetBool("ShowGameUI", true);
     }
 

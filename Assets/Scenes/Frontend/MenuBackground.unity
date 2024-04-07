@@ -631,10 +631,6 @@ PrefabInstance:
       value: Spectrum
       objectReference: {fileID: 0}
     - target: {fileID: 4386625243646400, guid: 4ca1679f59738414ba176b2992042c80, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4386625243646400, guid: 4ca1679f59738414ba176b2992042c80, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.1
       objectReference: {fileID: 0}
@@ -871,10 +867,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0.47949505
-    y: 0.47949508
-    width: 8.12309
-    height: 4.5713873
+    x: 0.78785914
+    y: 0.78785914
+    width: 8.125
+    height: 4.5703125
 --- !u!114 &1411595697
 MonoBehaviour:
   m_ObjectHideFlags: 0

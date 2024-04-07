@@ -5,6 +5,9 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
 /// <summary>
 /// Handles the song data loading and MIDI file parsing for the game logic
@@ -61,15 +64,26 @@ public class SongManager : MonoBehaviour
     private IEnumerator Start()
     {
         // wait until the song data is loaded
-#if UNITY_EDITOR
-        yield return null;
-#else
-        yield return new WaitUntil(() => GlobalVariables.Get<SongData>("activeSong") != null);
-#endif
-        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        if (PersistentData.Instance.SelectedSongAssetLocation != null)
         {
-            songData = GlobalVariables.Get<SongData>("activeSong");
+            songData = null;
+            IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+            AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+            yield return new WaitUntil(() => opHandle.IsDone);
+
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                songData = opHandle.Result;
+                Debug.Log("Loaded song data: " + songData.SongName);
+                Debug.Log(songDataAssetLocation.PrimaryKey);
+                Addressables.Release(opHandle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+            }
         }
+
         fileLocation = songData.MidiName;
         song = songData.SongAudio;
         bpm = songData.Bpm;

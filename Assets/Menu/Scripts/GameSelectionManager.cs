@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using TMPro;
 
 /// <summary>
@@ -27,11 +30,25 @@ public class GameSelectionManager : MonoBehaviour
     /// <summary>
     /// Handles the update of the game selection screen
     /// </summary>
-    public void UpdateGameSelectionScreen()
+    public IEnumerator UpdateGameSelectionScreen()
     {
-        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        if (PersistentData.Instance.SelectedSongAssetLocation != null)
         {
-            SongData songData = GlobalVariables.Get<SongData>("activeSong");
+            SongData songData = null;
+            IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+            AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+            yield return new WaitUntil(() => opHandle.IsDone);
+
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                songData = opHandle.Result;
+                Addressables.Release(opHandle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+            }
+
             songTitle.text = songData.SongName;
             songArtist.text = songData.ArtistName;
             circleGameTile.SetActive(false);
@@ -69,8 +86,28 @@ public class GameSelectionManager : MonoBehaviour
     /// <param name="gameType">The game type to load</param>
     public void LoadGameOnboarding(int gameType)
     {
+        StartCoroutine(LoadGameScene(gameType));
+    }
+
+    private IEnumerator LoadGameScene(int gameType)
+    {
         SongSelectionManager.instance.StartCoroutine(SongSelectionManager.instance.fadeOutAudioSources());
-        SongData songData = GlobalVariables.Get<SongData>("activeSong");
+
+        SongData songData = null;
+        IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+        AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+        yield return new WaitUntil(() => opHandle.IsDone);
+
+        if (opHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            songData = opHandle.Result;
+            Addressables.Release(opHandle);
+        }
+        else
+        {
+            Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+        }
+
         GlobalVariables.Set(songData.name + "New", "0");
         if (GlobalVariables.Get<string>("GameType" + gameType + songData.name + "played") == null)
         {

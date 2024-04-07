@@ -183,16 +183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4816228682861894172, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: pauseMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816228682861894172, guid: 18c050638c1519145a9579d74cdb8318,
-        type: 3}
-      propertyPath: cameraController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4816228682861894173, guid: 18c050638c1519145a9579d74cdb8318,
         type: 3}
       propertyPath: m_Name

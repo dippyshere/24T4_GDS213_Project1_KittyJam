@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: 250134f6a495678dd43b1a111f1a742e
+    Hash: caf0a10b8cabcd15344c976d14b8ea27
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 1
@@ -131,6 +131,7 @@ MonoBehaviour:
     - Locale
     - gameplay
     - beautifulday
+    - songdata
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

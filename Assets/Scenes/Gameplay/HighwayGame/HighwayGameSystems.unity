@@ -140,18 +140,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
-      propertyPath: input
-      value: 102
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
       propertyPath: noteNumber
       value: 63
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
-      propertyPath: noteRestriction
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
@@ -320,18 +310,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
-      propertyPath: input
-      value: 106
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
       propertyPath: noteNumber
       value: 62
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
-      propertyPath: noteRestriction
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
@@ -451,18 +431,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
-      propertyPath: input
-      value: 107
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
       propertyPath: noteNumber
       value: 61
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
-      propertyPath: noteRestriction
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
@@ -792,16 +762,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
-      propertyPath: input
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
-        type: 3}
-      propertyPath: noteRestriction
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5099567531379797039, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
       propertyPath: m_Name
