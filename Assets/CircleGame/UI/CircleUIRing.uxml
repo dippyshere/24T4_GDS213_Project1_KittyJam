@@ -1,4 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/CircleGame/UI/RadialProgress.uss?fileID=7433441132597879392&amp;guid=5351215d4043e0f409552f32555451e2&amp;type=3#RadialProgress" />
-    <MyUILibrary.RadialProgress name="radial-progress" progress="0" style="width: 123px; height: 123px; position: relative;" />
-</ui:UXML>

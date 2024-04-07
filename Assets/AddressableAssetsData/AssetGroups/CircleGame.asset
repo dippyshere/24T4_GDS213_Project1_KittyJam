@@ -83,6 +83,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - circlegame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ac6774e4319ff04b992fc1da30d1544
+    m_Address: Assets/CircleGame/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - circlegame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CircleGemController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField, Tooltip("List of potential sprites for the gem")] private Sprite[] sprites;
     [SerializeField, Tooltip("The sprite renderers for the gem")] private SpriteRenderer[] spriteRenderers;
     [HideInInspector, Tooltip("Time in the song that the gem was instantiated")] public double timeInstantiated;
@@ -26,7 +27,7 @@ public class CircleGemController : MonoBehaviour
         // Set the animation speed to match the song's note time
         GetComponent<Animator>().speed = 1 / CircleNoteManager.Instance.noteTime;
         // Automatically destroy the gem if it's not picked up in time
-        Invoke("OnMiss", (float)(CircleNoteManager.Instance.noteTime * 1.15));
+        Invoke(nameof(OnMiss), (float)(CircleNoteManager.Instance.noteTime * 1.15));
     }
 
     /// <summary>
