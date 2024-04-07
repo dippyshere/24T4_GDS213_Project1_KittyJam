@@ -3,11 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Unusued class that was used to load a song from the menu
+/// </summary>
 public class MenuSongButtonManager : MonoBehaviour
 {
     [SerializeField, Tooltip("The song data to load the level with")] private SongData songData;
     [SerializeField, Tooltip("The game type to load the level with")] private TempGameType gameType;
 
+    /// <summary>
+    /// Load the song data and start the game
+    /// </summary>
     public void LoadSong()
     {
         GlobalVariables.Set("activeSong", songData);
@@ -28,6 +34,9 @@ public class MenuSongButtonManager : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// Store the game type to load the level with
+    /// </summary>
     private enum TempGameType
     {
         CircleGame,

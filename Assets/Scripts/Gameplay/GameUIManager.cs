@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Globalization;
-using UnityEngine.SocialPlatforms.Impl;
 
+/// <summary>
+/// Handles the UI elements in the game
+/// </summary>
 public class GameUIManager : MonoBehaviour
 {
     [Header("Configuration")]
@@ -36,12 +38,20 @@ public class GameUIManager : MonoBehaviour
         StartCoroutine(WaitForScoreManagerInstance());
     }
 
+    /// <summary>
+    /// Waits for the camera controller instance to be created before subscribing to the camera shake event
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForCameraControllerInstance()
     {
         yield return new WaitUntil(() => CameraController.Instance != null);
         CameraController.Instance.cameraShakeBeginCallback += ShakeUI;
     }
 
+    /// <summary>
+    /// Waits for the score manager instance to be created before subscribing to the score events
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForScoreManagerInstance()
     {
         yield return new WaitUntil(() => ScoreManager.Instance != null);
@@ -50,6 +60,9 @@ public class GameUIManager : MonoBehaviour
         ScoreManager.Instance.multiplierEvent += UpdateMultiplierText;
     }
 
+    /// <summary>
+    /// Sets the original positions of the UI elements
+    /// </summary>
     public void SetOriginalPositions()
     {
         originalPositions = new Vector3[uiElements.Count];
@@ -59,11 +72,22 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shakes the UI elements
+    /// </summary>
+    /// <param name="intensity">The intensity of the shake</param>
+    /// <param name="duration">The duration of the shake</param>
     public void ShakeUI(float intensity, float duration)
     {
         StartCoroutine(ShakeUIRoutine(intensity, duration));
     }
 
+    /// <summary>
+    /// Handles the shaking of the UI elements
+    /// </summary>
+    /// <param name="intensity">The intensity of the shake</param>
+    /// <param name="duration">The duration of the shake</param>
+    /// <returns>The coroutine</returns>
     private IEnumerator ShakeUIRoutine(float intensity, float duration)
     {
         float timer = 0;
@@ -89,16 +113,28 @@ public class GameUIManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handles updating the score text
+    /// </summary>
+    /// <param name="score">The score to update to</param>
     public void UpdateScoreText(long score)
     {
         targetScore = score;
     }
 
+    /// <summary>
+    /// Handles updating the combo text
+    /// </summary>
+    /// <param name="combo">The combo to update to</param>
     public void UpdateComboText(long combo)
     {
         comboText.text = "x" + combo.ToString("N0", CultureInfo.InvariantCulture);
     }
 
+    /// <summary>
+    /// Handles updating the multiplier text
+    /// </summary>
+    /// <param name="multiplier">The multiplier to update to</param>
     public void UpdateMultiplierText(long multiplier)
     {
         multiplierText.text = "Multiplier: x" + multiplier.ToString("N0", CultureInfo.InvariantCulture);

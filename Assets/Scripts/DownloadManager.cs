@@ -9,6 +9,9 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.ResourceManagement.ResourceProviders;
 
+/// <summary>
+/// Callbacks for when downloading begins or completes.
+/// </summary>
 public delegate void DownloadCallback();
 
 public class DownloadManager : MonoBehaviour
@@ -29,10 +32,25 @@ public class DownloadManager : MonoBehaviour
                "Stored as a dictionary with the key being the AssetReference, and the value being the AsyncOperationHandle")] private Dictionary<AssetReferenceLoadInfo, AsyncOperationHandle> assetInstances = new Dictionary<AssetReferenceLoadInfo, AsyncOperationHandle>();
     [Tooltip("List of asset instances that have been downloaded by the download manager.\n" +
                       "Stored as a dictionary with the key being the AssetLabelReference, and the value being the AsyncOperationHandle")] private Dictionary<AssetLabelReferenceLoadInfo, AsyncOperationHandle> assetLabelInstances = new Dictionary<AssetLabelReferenceLoadInfo, AsyncOperationHandle>();
+    /// <summary>
+    /// The callback to invoke when downloading begins.
+    /// </summary>
     [HideInInspector, Tooltip("The callback to invoke when downloading begins.")] public event DownloadCallback OnDownloadBegin;
+    /// <summary>
+    /// The callback to invoke when downloading completes.
+    /// </summary>
     [HideInInspector, Tooltip("The callback to invoke when downloading completes.")] public event DownloadCallback OnDownloadComplete;
+    /// <summary>
+    /// The callback to invoke when scene loading begins.
+    /// </summary>
     [HideInInspector, Tooltip("The callback to invoke when scene loading begins.")] public event DownloadCallback OnSceneLoadBegin;
+    /// <summary>
+    /// The callback to invoke when all loading is complete.
+    /// </summary>
     [HideInInspector, Tooltip("The callback to invoke when all loading is complete.")] public event DownloadCallback OnLoadingComplete;
+    /// <summary>
+    /// The callback to invoke when the transition completes.
+    /// </summary>
     [HideInInspector, Tooltip("The callback to invoke when the transition completes.")] public event DownloadCallback OnTransitionComplete;
     [HideInInspector, Tooltip("Whether the download manager is currently busy")] public bool isBusy = false;
 
@@ -50,6 +68,11 @@ public class DownloadManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts the download process for the provided SceneLoadInfo and AssetLoadInfo objects.
+    /// </summary>
+    /// <param name="assetLoadInfo">The list of asset load info objects to download.</param>
+    /// <param name="sceneLoadInfo">The list of scene load info objects to load.</param>
     public void BeginDownloadAssetsCoroutine(AssetLoadInfo assetLoadInfo = null, SceneLoadInfo sceneLoadInfo = null)
     {
         StartCoroutine(DownloadAssets(assetLoadInfo, sceneLoadInfo));

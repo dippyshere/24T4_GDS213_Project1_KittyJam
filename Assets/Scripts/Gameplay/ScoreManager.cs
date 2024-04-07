@@ -1,6 +1,15 @@
 using UnityEngine;
 
+/// <summary>
+/// Callbacks for when the player hits or misses a note
+/// </summary>
+/// <param name="score">The new score, combo, or multiplier value</param>
 public delegate void ScoreEvent(long score);
+/// <summary>
+/// Callbacks for when the player hits or misses a note
+/// </summary>
+/// <param name="noteFeedback">The type of feedback to display</param>
+/// <param name="position">The position of the note that was hit, to display feedback at</param>
 public delegate void NoteEvent(NoteFeedback noteFeedback, Vector3 position);
 
 /// <summary>
@@ -181,6 +190,9 @@ public class ScoreManager : MonoBehaviour
         comboEvent?.Invoke(comboScore);
     }
 
+    /// <summary>
+    /// Called when the player successfully hits a note to increase the multiplier if the combo threshold is reached
+    /// </summary>
     private void IncreaseMultiplier()
     {
         if (comboScore % comboThreshold == 0 && comboScore < maxMultiplier * comboThreshold)

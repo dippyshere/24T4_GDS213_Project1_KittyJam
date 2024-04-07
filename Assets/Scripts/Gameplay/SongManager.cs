@@ -6,6 +6,9 @@ using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
 
+/// <summary>
+/// Handles the song data loading and MIDI file parsing for the game logic
+/// </summary>
 public class SongManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
@@ -30,12 +33,20 @@ public class SongManager : MonoBehaviour
         StartCoroutine(WaitForPauseMenuInstance());
     }
 
+    /// <summary>
+    /// Wait for the song display manager instance to be created before setting the song data
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForSongDisplayManagerInstance()
     {
         yield return new WaitUntil(() => SongDisplayManager.Instance != null);
         SongDisplayManager.Instance.SetSongData(songData.SongName, songData.ArtistName, songData.AlbumCover);
     }
 
+    /// <summary>
+    /// Wait for the pause menu instance to be created before subscribing to the pause gameplay event
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForPauseMenuInstance()
     {
         yield return new WaitUntil(() => PauseMenuManager.Instance != null);

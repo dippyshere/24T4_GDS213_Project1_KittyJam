@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Melanchall.DryWetMidi.Interaction;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles the spawning and despawning of notes in the DDR game (game type 4/bongo game), as well as game specific behaviours and logic.
+/// </summary>
 public class DDRNoteManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the bongo note manager")] public static DDRNoteManager Instance;
@@ -55,6 +57,10 @@ public class DDRNoteManager : MonoBehaviour
         CursorController.Instance.LockCursor();
     }
 
+    /// <summary>
+    /// Update the combo count
+    /// </summary>
+    /// <param name="score"></param>
     public void UpdateComboCount(long score)
     {
         comboScore = (int)score;

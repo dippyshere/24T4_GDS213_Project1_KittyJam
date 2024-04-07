@@ -1,8 +1,8 @@
-﻿using Melanchall.DryWetMidi.Interaction;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Melanchall.DryWetMidi.Interaction;
 
 /// <summary>
 /// Handles the spawning of marhcing directional arrows for Game Type 3 (MarchingGame)

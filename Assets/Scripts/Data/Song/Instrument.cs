@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The instrument class holds the instrument type and the difficulty rating for the instrument
+/// </summary>
 [System.Serializable]
 public class Instrument
 {
@@ -17,6 +20,9 @@ public class Instrument
     }
 }
 
+/// <summary>
+/// The supported instrument types
+/// </summary>
 public enum InstrumentType
 {
     Guitar,

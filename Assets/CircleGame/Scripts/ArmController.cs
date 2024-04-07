@@ -34,12 +34,20 @@ public class ArmController : MonoBehaviour
         StartCoroutine(WaitForPauseMenuInstance());
     }
 
+    /// <summary>
+    /// Waits for the cursor controller instance to be created before locking the cursor
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator WaitForCursorControllerInstance()
     {
         yield return new WaitUntil(() => CursorController.Instance != null);
         CursorController.Instance.LockCursor();
     }
 
+    /// <summary>
+    /// Waits for the pause menu instance to be created before subscribing to the pause event
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator WaitForPauseMenuInstance()
     {
         yield return new WaitUntil(() => PauseMenuManager.Instance != null);
@@ -57,6 +65,19 @@ public class ArmController : MonoBehaviour
             mousePosition += new Vector3(context.ReadValue<Vector2>().x * 0.5f * 0.1f, context.ReadValue<Vector2>().y * 0.5f * 0.1f, 0) * armSensitivityMultiplier;
             mousePosition.x = Mathf.Clamp(mousePosition.x, -8 * 1.3f, 8 * 1.3f);
             mousePosition.y = Mathf.Clamp(mousePosition.y, -4 * 1.3f, 4 * 1.3f);
+            transform.position = mousePosition;
+        }
+    }
+
+    /// <summary>
+    /// Moves the arm with touch input
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void MoveArmTouch(InputAction.CallbackContext context)
+    {
+        if (canMove && Cursor.lockState == CursorLockMode.Locked)
+        {
+            mousePosition = new Vector3(context.ReadValue<Vector2>().x * 8 * 1.3f, context.ReadValue<Vector2>().y * 4 * 1.3f, 0);
             transform.position = mousePosition;
         }
     }

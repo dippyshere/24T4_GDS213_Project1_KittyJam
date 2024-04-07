@@ -33,6 +33,9 @@ public class DismissTitleScreen : MonoBehaviour
         DownloadManager.Instance.BeginDownloadAssetsCoroutine(titlescreenAssetLoadInfo);
     }
 
+    /// <summary>
+    /// Called when the title screen assets have been loaded
+    /// </summary>
     public void AssetLoadCompleted()
     {
         titleDismissalText.SetActive(true);
@@ -40,6 +43,10 @@ public class DismissTitleScreen : MonoBehaviour
         DownloadManager.Instance.OnTransitionComplete -= AssetLoadCompleted;
     }
 
+    /// <summary>
+    /// Handles the button press event
+    /// </summary>
+    /// <param name="button">The button that was pressed</param>
     void OnButtonPressed(InputControl button)
     {
         //var device = button.device;

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement of the notes on the highway
+/// </summary>
 public class HighwayNote : MonoBehaviour
 {
-    double timeInstantiated;
-    public float assignedTime;
-    [SerializeField] private SpriteRenderer visualSprite;
+    [HideInInspector, Tooltip("The time that the note was instantiated at")] public double timeInstantiated;
+    [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
+    [SerializeField, Tooltip("The sprite renderer of the note, to apply effects when missing the note")] private SpriteRenderer visualSprite;
 
     void Start()
     {
@@ -31,6 +34,9 @@ public class HighwayNote : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the note is missed
+    /// </summary>
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(transform.position);

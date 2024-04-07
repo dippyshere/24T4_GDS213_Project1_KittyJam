@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the cursor texture changes
+/// </summary>
 public class CursorTextureController : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference for the cursor controller.")] public static CursorTextureController instance;
@@ -30,16 +33,25 @@ public class CursorTextureController : MonoBehaviour
         Cursor.SetCursor(defaultCursorTexture, cursorHotspot, CursorMode.Auto);
     }
 
+    /// <summary>
+    /// Sets the cursor to the hover cursor texture
+    /// </summary>
     public void SetCursorHover()
     {
         Cursor.SetCursor(hoverCursorTexture, hoverCursorHotspot, CursorMode.Auto);
     }
 
+    /// <summary>
+    /// Sets the cursor to the default cursor texture
+    /// </summary>
     public void SetCursorDefault()
     {
         Cursor.SetCursor(defaultCursorTexture, cursorHotspot, CursorMode.Auto);
     }
 
+    /// <summary>
+    /// Sets the cursor to the click cursor texture
+    /// </summary>
     public void SetCursorClick()
     {
         Cursor.SetCursor(clickCursorTexture, clickCursorHotspot, CursorMode.Auto);

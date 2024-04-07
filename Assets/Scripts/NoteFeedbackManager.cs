@@ -8,9 +8,9 @@ using UnityEngine;
 /// </summary>
 public class NoteFeedbackManager : MonoBehaviour
 {
-    public TextMeshProUGUI feedbackText; // Text object to display feedback on
-    public TMP_ColorGradient[] tMP_ColorGradients; // List of color gradients for different feedback types
-    public Animator animator; // Animator for the feedback text
+    [SerializeField, Tooltip("Text object to display feedback on")] private TextMeshProUGUI feedbackText;
+    [SerializeField, Tooltip("List of color gradients for different feedback types")] private TMP_ColorGradient[] tMP_ColorGradients;
+    [SerializeField, Tooltip("Animator for the feedback text")] private Animator animator;
 
     /// <summary>
     /// Set the feedback text and color gradient based on the feedback type

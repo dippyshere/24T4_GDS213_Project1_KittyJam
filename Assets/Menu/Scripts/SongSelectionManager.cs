@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the selection of songs and the transition to the game selection screen
+/// </summary>
 public class SongSelectionManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Instance of the SongSelectionManager")] public static SongSelectionManager instance;
@@ -27,6 +30,9 @@ public class SongSelectionManager : MonoBehaviour
         selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 
+    /// <summary>
+    /// Populates the song list with the songs in the songs list
+    /// </summary>
     private void PopulateSongList()
     {
         foreach (SongData song in songs)
@@ -38,6 +44,10 @@ public class SongSelectionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the song to the selected song
+    /// </summary>
+    /// <param name="songTileManager">The song tile manager of the selected song</param>
     public void ChangeSong(SongTileManager songTileManager)
     {
         if (songTileManager == activeSongTile)
@@ -56,6 +66,9 @@ public class SongSelectionManager : MonoBehaviour
         CrossfadeSong();
     }
 
+    /// <summary>
+    /// Crossfades the song to the selected song
+    /// </summary>
     private void CrossfadeSong()
     {
         isLooping = false;
@@ -92,6 +105,10 @@ public class SongSelectionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Selects the song and transitions to the game selection screen
+    /// </summary>
+    /// <param name="songData"></param>
     public void SelectSong(SongData songData)
     {
         GlobalVariables.Set("activeSong", songData);
@@ -99,11 +116,18 @@ public class SongSelectionManager : MonoBehaviour
         selectionUIAnimator.SetBool("ShowGameUI", true);
     }
 
+    /// <summary>
+    /// Returns to the song selection screen
+    /// </summary>
     public void ReturnToSongSelection()
     {
         selectionUIAnimator.SetBool("ShowSongUI", true);
     }
 
+    /// <summary>
+    /// Fades out the audio sources
+    /// </summary>
+    /// <returns>The coroutine</returns>
     public IEnumerator fadeOutAudioSources()
     {
         isLooping = false;

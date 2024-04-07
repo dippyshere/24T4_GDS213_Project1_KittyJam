@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the data and UI of a song tile in the song selection menu
+/// </summary>
 public class SongTileManager : MonoBehaviour
 {
     [Header("Song Tile Data")]
@@ -105,6 +108,9 @@ public class SongTileManager : MonoBehaviour
         UpdateMaterial();
     }
 
+    /// <summary>
+    /// Updates the material properties of the song tile
+    /// </summary>
     private void UpdateMaterial()
     {
         if (albumArt != null)
@@ -123,6 +129,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the mouse hovers over the song tile to animate the BPM of the song, activate the song preview, and display the song title
+    /// </summary>
     public void OnHover()
     {
         if (isSongTile && tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
@@ -133,6 +142,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the mouse clicks on the song tile to select the song and transition to the game selection menu
+    /// </summary>
     public void OnClick()
     {
         if (isSongTile && songData != null)
@@ -147,11 +159,17 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the bpm animation of the song tile to synchronize with the song's bpm
+    /// </summary>
     public void StartBPM()
     {
         tileAnimatorController.SetBool("ResetBPM", true);
     }
 
+    /// <summary>
+    /// Unused
+    /// </summary>
     public void OnExit()
     {
         if (tileAnimatorController != null)
@@ -160,6 +178,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the bpm animation of the song tile
+    /// </summary>
     public void StopBPM()
     {
         if (tileAnimatorController != null)
@@ -169,6 +190,10 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the new badge of the song tile
+    /// </summary>
+    /// <param name="enableBadge">Set to true to enable the new badge, false to disable it</param>
     public void UpdateNewBadge(bool enableBadge)
     {
         isNew = !enableBadge;

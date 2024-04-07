@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CursorController : MonoBehaviour
 {
-    [HideInInspector] public static CursorController Instance;
+    [HideInInspector, Tooltip("Singleton reference to the cursor controller instance")] public static CursorController Instance;
 
     private void Awake()
     {

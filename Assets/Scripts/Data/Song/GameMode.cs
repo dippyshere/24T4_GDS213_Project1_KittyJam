@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-
+/// <summary>
+/// The different types of games that can be played, and the instruments that are supported for each game mode, as well as the leaderboard ID for each game mode and song difficulty
+/// </summary>
 [System.Serializable]
 public class GameMode
 {
@@ -23,6 +25,9 @@ public class GameMode
     public string LeaderboardID { get => leaderboardID; }
 }
 
+/// <summary>
+/// The different types of games that can be played
+/// </summary>
 public enum GameType
 {
     CircleGame,

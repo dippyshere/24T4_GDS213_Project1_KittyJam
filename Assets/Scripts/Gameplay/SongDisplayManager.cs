@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the display of the song name, artist name, and album art for the currently playing song
+/// </summary>
 public class SongDisplayManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song ui manager")] public static SongDisplayManager Instance;
@@ -22,6 +25,12 @@ public class SongDisplayManager : MonoBehaviour
         Instance = null;
     }
 
+    /// <summary>
+    /// Sets the song data to display
+    /// </summary>
+    /// <param name="songName">The name of the song</param>
+    /// <param name="artistName">The name of the artist</param>
+    /// <param name="albumArt">The album art for the song</param>
     public void SetSongData(string songName, string artistName, Sprite albumArt)
     {
         songNameText.text = songName;

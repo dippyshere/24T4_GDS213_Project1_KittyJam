@@ -16,7 +16,6 @@ public class CircleGemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
-
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         // Randomly select a sprite from the list of potential sprites
         int spriteIndex = Random.Range(0, sprites.Length);

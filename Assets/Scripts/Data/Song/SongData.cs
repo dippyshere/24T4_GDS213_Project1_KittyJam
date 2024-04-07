@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Holds the data for a song, including the song's name, artist, album, genre, year, length, usage rights, MIDI file, audio file, album cover, BPM, preview start, preview end, loop point, and supported game modes
+/// </summary>
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
     Icon("Packages/com.unity.visualscripting/Editor/VisualScripting.Core/IconMap/UnityMessageListener@32x.png"),
@@ -66,6 +69,9 @@ public class SongData : ScriptableObject
     }
 }
 
+/// <summary>
+/// The type of license the song is under
+/// </summary>
 public enum UsageLicense
 {
     PublicDomain,
@@ -75,6 +81,9 @@ public enum UsageLicense
     Unlicensed
 }
 
+/// <summary>
+/// The type of genre the song is
+/// </summary>
 public enum Genre
 {
     Rock,
@@ -119,6 +128,9 @@ public enum Genre
     Other
 }
 
+/// <summary>
+/// A custom inspector for the SongData class to display the album cover in the inspector
+/// </summary>
 #if UNITY_EDITOR
 [
     CustomEditor(typeof(SongData), true),

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Handles the game selection screen
+/// </summary>
 public class GameSelectionManager : MonoBehaviour
 {
     [Header("References")]
@@ -12,15 +15,18 @@ public class GameSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("The game selection tile for BongoGame")] private GameObject bongoGameTile;
     [SerializeField, Tooltip("The text component for the song title")] private TextMeshProUGUI songTitle;
     [SerializeField, Tooltip("The text component for the song artist")] private TextMeshProUGUI songArtist;
-    [SerializeField] private SceneLoadInfo game1;
-    [SerializeField] private SceneLoadInfo game1Onboarding;
-    [SerializeField] private SceneLoadInfo game2;
-    [SerializeField] private SceneLoadInfo game2Onboarding;
-    [SerializeField] private SceneLoadInfo game3;
-    [SerializeField] private SceneLoadInfo game3Onboarding;
-    [SerializeField] private SceneLoadInfo game4;
-    [SerializeField] private SceneLoadInfo game4Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 1")] private SceneLoadInfo game1;
+    [SerializeField, Tooltip("The scene load info for game type 1 onboarding")] private SceneLoadInfo game1Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 2")] private SceneLoadInfo game2;
+    [SerializeField, Tooltip("The scene load info for game type 2 onbarding")] private SceneLoadInfo game2Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 3")] private SceneLoadInfo game3;
+    [SerializeField, Tooltip("The scene load info for game type 3 onboarding")] private SceneLoadInfo game3Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 4")] private SceneLoadInfo game4;
+    [SerializeField, Tooltip("The scene load info for game type 4 onboarding")] private SceneLoadInfo game4Onboarding;
 
+    /// <summary>
+    /// Handles the update of the game selection screen
+    /// </summary>
     public void UpdateGameSelectionScreen()
     {
         if (GlobalVariables.Get<SongData>("activeSong") != null)
@@ -57,6 +63,10 @@ public class GameSelectionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the game onboarding scene, or the game scene if the player has already been onboarded
+    /// </summary>
+    /// <param name="gameType">The game type to load</param>
     public void LoadGameOnboarding(int gameType)
     {
         SongSelectionManager.instance.StartCoroutine(SongSelectionManager.instance.fadeOutAudioSources());

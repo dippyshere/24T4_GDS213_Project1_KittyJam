@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Updates the resolution of the highway to match the displayed resolution
+/// </summary>
 public class UpdateHighwayResolution : MonoBehaviour
 {
-    private RawImage highwayRawImage;
-    private int previousScreenHeight;
+    [Tooltip("Reference to the raw image used to display the highway on the canvas")] private RawImage highwayRawImage;
+    [Tooltip("Reference to the previous screen height to detect changes in resolution")] private int previousScreenHeight;
 
     private void Start()
     {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+/// <summary>
+/// Changes the camera follow offset to create a marching effect
+/// </summary>
 public class MarchingCameraChanger : MonoBehaviour
 {
     [SerializeField, Tooltip("Reference to the cinemachine camera")] private CinemachineVirtualCamera _camera;
@@ -12,7 +15,7 @@ public class MarchingCameraChanger : MonoBehaviour
     [Tooltip("The cinemachine transposer reference")] private CinemachineTransposer _transposer;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         _transposer = _camera.GetCinemachineComponent<CinemachineTransposer>();
         yield return new WaitUntil(() => MarchingPlayer.Instance != null);

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement of the beat lines on the highway
+/// </summary>
 public class HighwayBeatController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -14,9 +17,12 @@ public class HighwayBeatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * (HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime / (SongManager.Instance.noteTime * 2));
+        transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
     }
 
+    /// <summary>
+    /// Deletes the beat line when it reaches the end of the highway
+    /// </summary>
     private void DeleteBeat()
     {
         Destroy(gameObject);

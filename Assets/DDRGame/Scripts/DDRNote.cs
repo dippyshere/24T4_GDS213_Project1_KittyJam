@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement and destruction of a single DDR note
+/// </summary>
 public class DDRNote : MonoBehaviour
 {
-    double timeInstantiated;
-    public float assignedTime;
+    [HideInInspector, Tooltip("The time that the note was instantiated at")] public double timeInstantiated;
+    [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
 
     void Start()
     {
@@ -30,6 +33,9 @@ public class DDRNote : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the note is missed
+    /// </summary>
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(gameObject.transform.position);
