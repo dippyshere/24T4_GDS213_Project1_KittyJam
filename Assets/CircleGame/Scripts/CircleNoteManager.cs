@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages the spawning of notes based on the MIDI file for Game Type 1 (CircleGame)
+/// Manages the spawning of notes based on the MIDI file for Game Type 1 (CircleGame), in addition to handling other game specific behaviours and logic
 /// </summary>
 public class CircleNoteManager : MonoBehaviour
 {
@@ -170,6 +170,11 @@ public class CircleNoteManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Show the note feedback at the given position
+    /// </summary>
+    /// <param name="noteFeedback">The type of feedback to show</param>
+    /// <param name="position">The position to show the feedback at</param>
     public void ShowNoteFeedback(NoteFeedback noteFeedback, Vector3 position)
     {
         GameObject feedbackObject = Instantiate(noteFeedbackPrefab, position, Quaternion.identity);

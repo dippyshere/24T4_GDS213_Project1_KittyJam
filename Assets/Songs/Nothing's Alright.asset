@@ -19,6 +19,7 @@ MonoBehaviour:
   year: 2023
   songLength: 183
   usageLicense: 4
+  priority: 999
   midiName: kittyjam nothingsalright.mid
   songAudio: {fileID: 8300000, guid: 94f65ab04a9cc2f4b852872442534207, type: 3}
   albumCover: {fileID: 21300000, guid: 22f94b00fa1861d46825cbc866afdaf7, type: 3}

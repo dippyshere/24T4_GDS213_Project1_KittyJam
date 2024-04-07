@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the beat notes
+/// </summary>
 public class MarchingBeatNote : MonoBehaviour
 {
-    double timeInstantiated;
-    public float assignedTime;
-    private RectTransform rectTransform => GetComponent<RectTransform>();
+    [HideInInspector, Tooltip("The time that the note was instantiated at")] public double timeInstantiated;
+    [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
+    [Tooltip("Reference to the rect transform of the beat note")] private RectTransform rectTransform => GetComponent<RectTransform>();
 
     void Start()
     {
@@ -31,6 +34,9 @@ public class MarchingBeatNote : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the note is missed
+    /// </summary>
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(transform.parent.transform.position);

@@ -1,8 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using TMPro;
 
+/// <summary>
+/// Handles the game selection screen
+/// </summary>
 public class GameSelectionManager : MonoBehaviour
 {
     [Header("References")]
@@ -12,20 +18,37 @@ public class GameSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("The game selection tile for BongoGame")] private GameObject bongoGameTile;
     [SerializeField, Tooltip("The text component for the song title")] private TextMeshProUGUI songTitle;
     [SerializeField, Tooltip("The text component for the song artist")] private TextMeshProUGUI songArtist;
-    [SerializeField] private SceneLoadInfo game1;
-    [SerializeField] private SceneLoadInfo game1Onboarding;
-    [SerializeField] private SceneLoadInfo game2;
-    [SerializeField] private SceneLoadInfo game2Onboarding;
-    [SerializeField] private SceneLoadInfo game3;
-    [SerializeField] private SceneLoadInfo game3Onboarding;
-    [SerializeField] private SceneLoadInfo game4;
-    [SerializeField] private SceneLoadInfo game4Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 1")] private SceneLoadInfo game1;
+    [SerializeField, Tooltip("The scene load info for game type 1 onboarding")] private SceneLoadInfo game1Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 2")] private SceneLoadInfo game2;
+    [SerializeField, Tooltip("The scene load info for game type 2 onbarding")] private SceneLoadInfo game2Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 3")] private SceneLoadInfo game3;
+    [SerializeField, Tooltip("The scene load info for game type 3 onboarding")] private SceneLoadInfo game3Onboarding;
+    [SerializeField, Tooltip("The scene load info for game type 4")] private SceneLoadInfo game4;
+    [SerializeField, Tooltip("The scene load info for game type 4 onboarding")] private SceneLoadInfo game4Onboarding;
 
-    public void UpdateGameSelectionScreen()
+    /// <summary>
+    /// Handles the update of the game selection screen
+    /// </summary>
+    public IEnumerator UpdateGameSelectionScreen()
     {
-        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        if (GlobalVariables.Get<IResourceLocation>("activeSongLocation") != null)
         {
-            SongData songData = GlobalVariables.Get<SongData>("activeSong");
+            SongData songData = null;
+            IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
+            AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+            yield return new WaitUntil(() => opHandle.IsDone);
+
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                songData = opHandle.Result;
+                Addressables.Release(opHandle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+            }
+
             songTitle.text = songData.SongName;
             songArtist.text = songData.ArtistName;
             circleGameTile.SetActive(false);
@@ -57,10 +80,34 @@ public class GameSelectionManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Loads the game onboarding scene, or the game scene if the player has already been onboarded
+    /// </summary>
+    /// <param name="gameType">The game type to load</param>
     public void LoadGameOnboarding(int gameType)
     {
+        StartCoroutine(LoadGameScene(gameType));
+    }
+
+    private IEnumerator LoadGameScene(int gameType)
+    {
         SongSelectionManager.instance.StartCoroutine(SongSelectionManager.instance.fadeOutAudioSources());
-        SongData songData = GlobalVariables.Get<SongData>("activeSong");
+
+        SongData songData = null;
+        IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
+        AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+        yield return new WaitUntil(() => opHandle.IsDone);
+
+        if (opHandle.Status == AsyncOperationStatus.Succeeded)
+        {
+            songData = opHandle.Result;
+            Addressables.Release(opHandle);
+        }
+        else
+        {
+            Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+        }
+
         GlobalVariables.Set(songData.name + "New", "0");
         if (GlobalVariables.Get<string>("GameType" + gameType + songData.name + "played") == null)
         {

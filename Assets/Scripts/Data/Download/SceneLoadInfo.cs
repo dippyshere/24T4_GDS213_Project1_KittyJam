@@ -18,6 +18,11 @@ public class SceneLoadInfo : ScriptableObject
     [Tooltip("Whether the first scene in the scenes to load list should be marked as the active scene once it finishes loading.")] public bool markFirstSceneAsActive = true;
     [Tooltip("Whether the transition should be used while loading the scenes.")] public bool useTransition = true;
 
+    /// <summary>
+    /// Handles the equality comparison between two SceneLoadInfo objects
+    /// </summary>
+    /// <param name="obj">The object to compare against</param>
+    /// <returns>The result of the equality comparison</returns>
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -31,6 +36,10 @@ public class SceneLoadInfo : ScriptableObject
             markFirstSceneAsActive == other.markFirstSceneAsActive && useTransition == other.useTransition;
     }
 
+    /// <summary>
+    /// Handles the hash code generation for the SceneLoadInfo object
+    /// </summary>
+    /// <returns>The hash code for the SceneLoadInfo object</returns>
     public override int GetHashCode()
     {
         return scenesToLoad.GetHashCode() ^ scenesToUnload.GetHashCode() ^ markFirstSceneAsActive.GetHashCode() ^ useTransition.GetHashCode();

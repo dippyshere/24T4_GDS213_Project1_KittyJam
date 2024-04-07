@@ -64,6 +64,10 @@ public class Bootstrapper : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fades out the bootstrap canvas group before unloading the bootstrap scene
+    /// </summary>
+    /// <returns>The IEnumerator for the coroutine</returns>
     private IEnumerator FadeOut()
     {
         bootstrapCanvasGroup.alpha = 1;
@@ -91,16 +95,29 @@ public class SceneAssetReference : AssetReference
     }
 #endif
 
+    /// <summary>
+    /// Returns the GUID of the scene asset reference
+    /// </summary>
+    /// <param name="sceneAssetReference">The scene asset reference to get the GUID of</param>
     public static implicit operator string(SceneAssetReference sceneAssetReference)
     {
         return sceneAssetReference.AssetGUID;
     }
 
+    /// <summary>
+    /// Returns the scene asset reference from a GUID
+    /// </summary>
+    /// <param name="guid">The GUID to get the scene asset reference from</param>
     public static implicit operator SceneAssetReference(string guid)
     {
         return new SceneAssetReference(guid);
     }
 
+    /// <summary>
+    /// Handles the equality comparison between two SceneAssetReference objects
+    /// </summary>
+    /// <param name="obj">The object to compare against</param>
+    /// <returns>The result of the equality comparison</returns>
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -112,6 +129,10 @@ public class SceneAssetReference : AssetReference
         return AssetGUID == other.AssetGUID;
     }
 
+    /// <summary>
+    /// Handles the hash code generation for the SceneAssetReference object
+    /// </summary>
+    /// <returns>The hash code for the SceneAssetReference object</returns>
     public override int GetHashCode()
     {
         return AssetGUID.GetHashCode();

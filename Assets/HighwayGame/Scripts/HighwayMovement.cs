@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement of the highway
+/// </summary>
 public class HighwayMovement : MonoBehaviour
 {
     // Update is called once per frame

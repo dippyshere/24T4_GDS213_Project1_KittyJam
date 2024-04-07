@@ -1,12 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the data and UI of a song tile in the song selection menu
+/// </summary>
 public class SongTileManager : MonoBehaviour
 {
     [Header("Song Tile Data")]
+    [SerializeField, Tooltip("The song data asset reference for this song tile")] public IResourceLocation songDataAssetLocation;
     [SerializeField, Tooltip("The song data that this song tile represents")] public SongData songData;
     [SerializeField, Tooltip("Whether the song is locked or unlocked for the player")] public bool isLocked;
     [SerializeField, Tooltip("Whether the song is new for the player")] public bool isNew;
@@ -28,6 +35,7 @@ public class SongTileManager : MonoBehaviour
     [SerializeField, Tooltip("The power of the outer glow effect"), Range(0, 50f)] public float outerGlowPower = 5f;
     [SerializeField, Tooltip("The power of the outline effect"), Range(0, 50f)] public float outlinePower = 10f;
     [Tooltip("Reference to the button component for the song tile")] private Button songTileButton;
+    [Tooltip("Async operation handle that contains the data for the song tile")] AsyncOperationHandle<SongData> opHandle;
 
 #if UNITY_EDITOR
     void OnValidate()
@@ -38,12 +46,26 @@ public class SongTileManager : MonoBehaviour
     }
 #endif
 
-    private void Start()
+    private IEnumerator Start()
     {
         albumArt.material = new Material(songMaterial);
         songTileButton = GetComponent<Button>();
-        if (isSongTile && songData != null)
+        if (isSongTile && songDataAssetLocation != null)
         {
+            if (songData == null)
+            {
+                opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+                yield return new WaitUntil(() => opHandle.IsDone);
+                if (opHandle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    songData = opHandle.Result;
+                    Addressables.Release(opHandle);
+                }
+                else
+                {
+                    Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+                }
+            }
             albumArt.sprite = songData.AlbumCover;
             songTitle.text = songData.SongName;
             songArtist.text = songData.ArtistName;
@@ -105,6 +127,9 @@ public class SongTileManager : MonoBehaviour
         UpdateMaterial();
     }
 
+    /// <summary>
+    /// Updates the material properties of the song tile
+    /// </summary>
     private void UpdateMaterial()
     {
         if (albumArt != null)
@@ -123,6 +148,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the mouse hovers over the song tile to animate the BPM of the song, activate the song preview, and display the song title
+    /// </summary>
     public void OnHover()
     {
         if (isSongTile && tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
@@ -133,6 +161,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the mouse clicks on the song tile to select the song and transition to the game selection menu
+    /// </summary>
     public void OnClick()
     {
         if (isSongTile && songData != null)
@@ -143,15 +174,21 @@ public class SongTileManager : MonoBehaviour
             albumArt.rectTransform.localEulerAngles = new Vector3(0f, 0f, 0f);
             songTitle.rectTransform.localScale = new Vector3(1f, 1f, 1f);
             songTitle.rectTransform.localEulerAngles = new Vector3(0f, 0f, 0f);
-            SongSelectionManager.instance.SelectSong(songData);
+            SongSelectionManager.instance.SelectSong(songDataAssetLocation);
         }
     }
 
+    /// <summary>
+    /// Resets the bpm animation of the song tile to synchronize with the song's bpm
+    /// </summary>
     public void StartBPM()
     {
         tileAnimatorController.SetBool("ResetBPM", true);
     }
 
+    /// <summary>
+    /// Unused
+    /// </summary>
     public void OnExit()
     {
         if (tileAnimatorController != null)
@@ -160,6 +197,9 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the bpm animation of the song tile
+    /// </summary>
     public void StopBPM()
     {
         if (tileAnimatorController != null)
@@ -169,6 +209,10 @@ public class SongTileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the new badge of the song tile
+    /// </summary>
+    /// <param name="enableBadge">Set to true to enable the new badge, false to disable it</param>
     public void UpdateNewBadge(bool enableBadge)
     {
         isNew = !enableBadge;

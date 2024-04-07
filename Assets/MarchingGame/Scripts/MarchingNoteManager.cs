@@ -1,10 +1,12 @@
-using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles the spawning and management of marching notes, beat notes, and other game specific behaviors and logic
+/// </summary>
 public class MarchingNoteManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the marching note manager")] public static MarchingNoteManager Instance;
@@ -174,6 +176,10 @@ public class MarchingNoteManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update the transparency of the beat notes based on the current combo
+    /// </summary>
+    /// <param name="combo"></param>
     public void UpdateComboTransparency(long combo)
     {
         beatNotesCanvasGroup.alpha = Mathf.Lerp(0.75f, 0.25f, Mathf.Clamp01(combo / 8f));

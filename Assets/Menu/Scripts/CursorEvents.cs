@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Handles the cursor events for the game
+/// </summary>
 public class CursorEvents : EventTrigger
 {
     public override void OnPointerEnter(PointerEventData eventData)

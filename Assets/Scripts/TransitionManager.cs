@@ -50,12 +50,18 @@ public class TransitionManager : MonoBehaviour
         return;
     }
 
+    /// <summary>
+    /// Starts the transition
+    /// </summary>
     public void StartTransition()
     {
         circleTransitionAnimator.SetTrigger("Start");
         logoTransitionAnimator.SetTrigger("Start");
     }
 
+    /// <summary>
+    /// Ends the transition
+    /// </summary>
     public void EndTransition()
     {
         circleTransitionAnimator.SetTrigger("End");

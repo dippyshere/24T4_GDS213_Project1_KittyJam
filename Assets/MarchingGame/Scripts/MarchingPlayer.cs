@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
+/// <summary>
+/// Handles the player cat movement
+/// </summary>
 public class MarchingPlayer : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the marching player")] public static MarchingPlayer Instance;
@@ -21,6 +24,10 @@ public class MarchingPlayer : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Handles the movement of the wand
+    /// </summary>
+    /// <param name="context"></param>
     public void HandleMouseInput(InputAction.CallbackContext context)
     {
         if (canMove && Cursor.lockState == CursorLockMode.Locked)
@@ -41,6 +48,10 @@ public class MarchingPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the speed of the spline movement
+    /// </summary>
+    /// <param name="speed"></param>
     public void SetSplineMovementSpeed(float speed)
     {
         SplineAnimate splineAnimate = GetComponent<SplineAnimate>();

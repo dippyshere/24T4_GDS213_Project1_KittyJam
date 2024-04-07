@@ -1,11 +1,13 @@
-using Melanchall.DryWetMidi.Core;
-using Melanchall.DryWetMidi.Interaction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Melanchall.DryWetMidi.Interaction;
 
+/// <summary>
+/// Handles the spawning of notes based on the MIDI file for Game Type 2 (HighwayGame), in addition to game specific behaviors and logic
+/// </summary>
 public class HighwayNoteManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the highway note manager")] public static HighwayNoteManager Instance;

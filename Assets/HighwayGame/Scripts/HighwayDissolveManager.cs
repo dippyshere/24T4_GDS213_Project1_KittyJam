@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the dissolve effect of the highway
+/// </summary>
 public class HighwayDissolveManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the highway dissolve controller")] public static HighwayDissolveManager Instance;
-    [SerializeField] private float dissolveSpeed = 1;
+    [SerializeField, Tooltip("The speed at which the dissolve effect occurs at")] private float dissolveSpeed = 1;
 
-    private Material _material;
+    [Tooltip("Reference to the material being used to control the dissolve effect")] private Material _material;
 
-    private int _dissolveAmmount = Shader.PropertyToID("_DissolveAmount");
+    [Tooltip("Caches the dissolve ammount property id for faster performance")] private int _dissolveAmmount = Shader.PropertyToID("_DissolveAmount");
 
     private void Awake()
     {

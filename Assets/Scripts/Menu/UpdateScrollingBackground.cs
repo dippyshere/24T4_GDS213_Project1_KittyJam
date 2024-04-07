@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Updates the scrolling background based on the parent RectTransform's position
+/// </summary>
 public class UpdateScrollingBackground : MonoBehaviour
 {
-    private RectTransform parentTransform;
-    private RawImage rawImage;
-    [SerializeField] private BackgroundBehaviour behaviour;
+    [Tooltip("Reference to the parent rect transform component")] private RectTransform parentTransform;
+    [Tooltip("Reference to the raw image component")] private RawImage rawImage;
+    [SerializeField, Tooltip("The selected background scrolling behaviour to use")] private BackgroundBehaviour behaviour;
 
 #if UNITY_EDITOR
     void OnValidate()
@@ -28,6 +31,9 @@ public class UpdateScrollingBackground : MonoBehaviour
         UpdateMaterial();
     }
 
+    /// <summary>
+    /// Updates the material of the raw image based on the parent RectTransform's position
+    /// </summary>
     void UpdateMaterial()
     {
         if (rawImage != null && parentTransform != null && rawImage.texture != null)
@@ -56,6 +62,9 @@ public class UpdateScrollingBackground : MonoBehaviour
     }
 }
 
+/// <summary>
+/// The selected background scrolling behaviour to use
+/// </summary>
 public enum BackgroundBehaviour
 {
     Scroll,

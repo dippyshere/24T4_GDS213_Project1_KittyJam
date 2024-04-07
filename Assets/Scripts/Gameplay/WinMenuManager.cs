@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using System.Globalization;
 
+/// <summary>
+/// Handles the win menu UI
+/// </summary>
 public class WinMenuManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the win menu manager instance")] public static WinMenuManager Instance;
@@ -22,6 +25,9 @@ public class WinMenuManager : MonoBehaviour
         winMenu.SetActive(false);
     }
 
+    /// <summary>
+    /// Enables the win menu
+    /// </summary>
     public void EnableWinMenu()
     {
         CursorController.Instance.UnlockCursor();
@@ -32,6 +38,9 @@ public class WinMenuManager : MonoBehaviour
         scoreTallyDisplay.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
     }
 
+    /// <summary>
+    /// Disables the win menu
+    /// </summary>
     public void DisableWinMenu()
     {
         CursorController.Instance.LockCursor();
@@ -40,6 +49,9 @@ public class WinMenuManager : MonoBehaviour
         PauseMenuManager.Instance.DisablePauseEffect();
     }
 
+    /// <summary>
+    /// Returns to the main menu
+    /// </summary>
     public void ReturnToMenu()
     {
         PauseMenuManager.Instance.ReturnToMenu();

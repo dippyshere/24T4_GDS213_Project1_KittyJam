@@ -1,9 +1,11 @@
-﻿using Melanchall.DryWetMidi.Interaction;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the spawning of beat notes
+/// </summary>
 public class MarchingBeat : MonoBehaviour
 {
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;

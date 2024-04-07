@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Callback for pausing or unpausing the gameplay
+/// </summary>
+/// <param name="pause"></param>
 public delegate void PauseGameplay(bool pause);
 
+/// <summary>
+/// Handles the pause menu and pausing the game
+/// </summary>
 public class PauseMenuManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the pause menu manager")] public static PauseMenuManager Instance;
@@ -28,6 +35,10 @@ public class PauseMenuManager : MonoBehaviour
         postProcessVolume = PostProcessManager.Instance.postProcessVolume;
     }
 
+    /// <summary>
+    /// Toggles the pause state of the game
+    /// </summary>
+    /// <param name="context">The input action context</param>
     public void TogglePauseState(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -43,6 +54,9 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables the pause menu
+    /// </summary>
     public void EnablePause()
     {
         CursorController.Instance.UnlockCursor();
@@ -52,6 +66,9 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
+    /// <summary>
+    /// Disables the pause menu
+    /// </summary>
     public void DisablePause()
     {
         CursorController.Instance.LockCursor();
@@ -61,17 +78,26 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
+    /// <summary>
+    /// Enables the pause effect
+    /// </summary>
     public void EnablePauseEffect()
     {
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
     }
 
+    /// <summary>
+    /// Disables the pause effect
+    /// </summary>
     public void DisablePauseEffect()
     {
         postProcessVolume.profile = defaultPostProcess;
     }
 
+    /// <summary>
+    /// Returns to the main menu
+    /// </summary>
     public void ReturnToMenu()
     {
         Time.timeScale = 1f;

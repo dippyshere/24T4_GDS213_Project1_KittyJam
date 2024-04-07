@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the behavior of the marching notes
+/// </summary>
 public class MarchingNote : MonoBehaviour
 {
-    double timeInstantiated;
-    public float assignedTime;
+    [HideInInspector, Tooltip("The time that the note was instantiated at")] public double timeInstantiated;
+    [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
 
     void Start()
     {
@@ -22,6 +25,9 @@ public class MarchingNote : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the note is missed
+    /// </summary>
     public void OnMiss()
     {
         ScoreManager.Instance.Miss(transform.parent.transform.position, isAlternateNote: true);

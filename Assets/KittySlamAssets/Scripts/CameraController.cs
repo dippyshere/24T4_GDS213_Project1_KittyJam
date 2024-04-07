@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Callback for the camera shake effect
+/// </summary>
+/// <param name="intensity">The intensity of the shake</param>
+/// <param name="duration">The duration of the shake</param>
 public delegate void CameraCallback(float intensity, float duration);
 
 /// <summary>

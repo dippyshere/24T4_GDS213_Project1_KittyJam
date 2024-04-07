@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes entities march to a target position
+/// </summary>
 public class MarchingController : MonoBehaviour
 {
     public List<GameObject> targetPositions = new List<GameObject>();

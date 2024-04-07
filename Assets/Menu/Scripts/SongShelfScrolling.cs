@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the scrolling of the song shelf
+/// </summary>
 public class SongShelfScrolling : MonoBehaviour
 {
     [SerializeField, Tooltip("Reference to the left button")] private GameObject leftButton;
@@ -27,12 +30,18 @@ public class SongShelfScrolling : MonoBehaviour
         rightButton.SetActive(numberOfPages > 1);
     }
 
+    /// <summary>
+    /// Updates the number of pages in the shelf
+    /// </summary>
     public void UpdatePages()
     {
         numberOfPages = Mathf.CeilToInt((float)transform.childCount / 3);
         rightButton.SetActive(numberOfPages > 1);
     }
 
+    /// <summary>
+    /// Scrolls the shelf to the left
+    /// </summary>
     public void ScrollLeft()
     {
         if (currentPage > 0)
@@ -45,6 +54,9 @@ public class SongShelfScrolling : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Scrolls the shelf to the right
+    /// </summary>
     public void ScrollRight()
     {
         if (currentPage < numberOfPages - 1)

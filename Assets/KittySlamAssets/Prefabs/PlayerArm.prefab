@@ -548,12 +548,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armSensitivityMultiplier: 0.15
   slamSpeedMultiplier: 50
-  cameraController: {fileID: 0}
   animator: {fileID: 4816228683994353106}
   slamEffect: {fileID: 5140606806397147552, guid: f679193f225615849b2d612278fc19ac,
     type: 3}
   slamPosition: {fileID: 3044740426778686855}
-  pauseMenu: {fileID: 0}
   canSlam: 1
   canMove: 1
   trails:
@@ -675,6 +673,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 66e97661-9b7c-485b-87bf-eb12e220a5d7
     m_ActionName: MarchingGame/GestureInput[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4816228682861894172}
+        m_TargetAssemblyTypeName: ArmController, CircleGame
+        m_MethodName: MoveArmTouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b07fe71-8fed-4d5d-b289-619dbb09bdb1
+    m_ActionName: CircleGame/MoveTouch[/Device Simulator Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e460f27-5e00-4b08-bf05-d5f321dcd152
+    m_ActionName: MarchingGame/WandInput[/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CircleGame
@@ -1000,7 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8772f0509291b5c499e9cdcf3be112fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armController: {fileID: 4816228682861894172}
 --- !u!1 &4944869703268235453
 GameObject:
   m_ObjectHideFlags: 0

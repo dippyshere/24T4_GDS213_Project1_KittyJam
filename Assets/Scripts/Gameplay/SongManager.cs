@@ -5,7 +5,13 @@ using Melanchall.DryWetMidi.Core;
 using Melanchall.DryWetMidi.Interaction;
 using System.IO;
 using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 
+/// <summary>
+/// Handles the song data loading and MIDI file parsing for the game logic
+/// </summary>
 public class SongManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the song manager")] public static SongManager Instance;
@@ -30,12 +36,20 @@ public class SongManager : MonoBehaviour
         StartCoroutine(WaitForPauseMenuInstance());
     }
 
+    /// <summary>
+    /// Wait for the song display manager instance to be created before setting the song data
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForSongDisplayManagerInstance()
     {
         yield return new WaitUntil(() => SongDisplayManager.Instance != null);
         SongDisplayManager.Instance.SetSongData(songData.SongName, songData.ArtistName, songData.AlbumCover);
     }
 
+    /// <summary>
+    /// Wait for the pause menu instance to be created before subscribing to the pause gameplay event
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator WaitForPauseMenuInstance()
     {
         yield return new WaitUntil(() => PauseMenuManager.Instance != null);
@@ -50,15 +64,25 @@ public class SongManager : MonoBehaviour
     private IEnumerator Start()
     {
         // wait until the song data is loaded
-#if UNITY_EDITOR
-        yield return null;
-#else
-        yield return new WaitUntil(() => GlobalVariables.Get<SongData>("activeSong") != null);
-#endif
-        if (GlobalVariables.Get<SongData>("activeSong") != null)
+        if (GlobalVariables.Get<IResourceLocation>("activeSongLocation") != null)
         {
-            songData = GlobalVariables.Get<SongData>("activeSong");
+            songData = null;
+            IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
+            AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
+            yield return new WaitUntil(() => opHandle.IsDone);
+
+            if (opHandle.Status == AsyncOperationStatus.Succeeded)
+            {
+                songData = opHandle.Result;
+                Debug.Log(songDataAssetLocation.PrimaryKey);
+                Addressables.Release(opHandle);
+            }
+            else
+            {
+                Debug.LogError("Failed to load song data asset reference: " + songDataAssetLocation);
+            }
         }
+
         fileLocation = songData.MidiName;
         song = songData.SongAudio;
         bpm = songData.Bpm;

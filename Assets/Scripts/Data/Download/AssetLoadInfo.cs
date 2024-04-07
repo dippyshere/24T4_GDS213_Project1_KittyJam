@@ -16,6 +16,11 @@ public class AssetLoadInfo : ScriptableObject
     [Tooltip("A list of addressable assets that should be loaded by the download manager")] public List<AssetReferenceLoadInfo> assetsToLoad = new List<AssetReferenceLoadInfo>();
     [Tooltip("A list of addressable asset labels that should be loaded by the download manager")] public List<AssetLabelReferenceLoadInfo> assetLabelsToLoad = new List<AssetLabelReferenceLoadInfo>();
 
+    /// <summary>
+    /// Handles the equality comparison for the asset load info
+    /// </summary>
+    /// <param name="obj">The object to compare to</param>
+    /// <returns>The result of the comparison</returns>
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -28,6 +33,10 @@ public class AssetLoadInfo : ScriptableObject
             assetsToLoad.TrueForAll(asset => other.assetsToLoad.Contains(asset)) && assetLabelsToLoad.TrueForAll(label => other.assetLabelsToLoad.Contains(label));
     }
 
+    /// <summary>
+    /// Handles the hash code generation for the asset load info
+    /// </summary>
+    /// <returns>The hash code for the asset load info</returns>
     public override int GetHashCode()
     {
         return assetsToLoad.GetHashCode() ^ assetLabelsToLoad.GetHashCode();
@@ -43,6 +52,11 @@ public class AssetReferenceLoadInfo
     [Tooltip("The label to load assets from")] public AssetReference assetReference;
     [Tooltip("Whether the asset should be released after downloading.")] public bool releaseAssetsAfterDownload = true;
 
+    /// <summary>
+    /// Handles the equality comparison for the asset reference load info
+    /// </summary>
+    /// <param name="obj">The object to compare to</param>
+    /// <returns>The result of the comparison</returns>
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -54,6 +68,10 @@ public class AssetReferenceLoadInfo
         return assetReference == other.assetReference && releaseAssetsAfterDownload == other.releaseAssetsAfterDownload;
     }
 
+    /// <summary>
+    /// Handles the hash code generation for the asset reference load info
+    /// </summary>
+    /// <returns>The hash code for the asset reference load info</returns>
     public override int GetHashCode()
     {
         return assetReference.GetHashCode() ^ releaseAssetsAfterDownload.GetHashCode();
@@ -70,6 +88,11 @@ public class AssetLabelReferenceLoadInfo
     [Tooltip("The label to load assets from")] public AssetLabelReference assetLabel;
     [Tooltip("Whether the assets should be released after downloading.")] public bool releaseAssetsAfterDownload = true;
 
+    /// <summary>
+    /// Handles the equality comparison for the asset label reference load info
+    /// </summary>
+    /// <param name="obj">The object to compare to</param>
+    /// <returns>The result of the comparison</returns>
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())
@@ -81,6 +104,10 @@ public class AssetLabelReferenceLoadInfo
         return assetLabel == other.assetLabel && releaseAssetsAfterDownload == other.releaseAssetsAfterDownload;
     }
 
+    /// <summary>
+    /// Handles the hash code generation for the asset label reference load info
+    /// </summary>
+    /// <returns>The hash code for the asset label reference load info</returns>
     public override int GetHashCode()
     {
         return assetLabel.GetHashCode() ^ releaseAssetsAfterDownload.GetHashCode();
