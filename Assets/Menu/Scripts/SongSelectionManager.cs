@@ -147,7 +147,7 @@ public class SongSelectionManager : MonoBehaviour
     /// <param name="songData"></param>
     public void SelectSong(IResourceLocation songDataLocation)
     {
-        PersistentData.Instance.SetSelectedSong(songDataLocation);
+        GlobalVariables.Set("activeSongLocation", songDataLocation);
         StartCoroutine(gameSelectionManager.UpdateGameSelectionScreen());
         selectionUIAnimator.SetBool("ShowGameUI", true);
     }

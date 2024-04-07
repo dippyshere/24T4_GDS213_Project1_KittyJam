@@ -64,17 +64,16 @@ public class SongManager : MonoBehaviour
     private IEnumerator Start()
     {
         // wait until the song data is loaded
-        if (PersistentData.Instance.SelectedSongAssetLocation != null)
+        if (GlobalVariables.Get<IResourceLocation>("activeSongLocation") != null)
         {
             songData = null;
-            IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+            IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
             AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
             yield return new WaitUntil(() => opHandle.IsDone);
 
             if (opHandle.Status == AsyncOperationStatus.Succeeded)
             {
                 songData = opHandle.Result;
-                Debug.Log("Loaded song data: " + songData.SongName);
                 Debug.Log(songDataAssetLocation.PrimaryKey);
                 Addressables.Release(opHandle);
             }

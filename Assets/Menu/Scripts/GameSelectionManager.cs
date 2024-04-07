@@ -32,10 +32,10 @@ public class GameSelectionManager : MonoBehaviour
     /// </summary>
     public IEnumerator UpdateGameSelectionScreen()
     {
-        if (PersistentData.Instance.SelectedSongAssetLocation != null)
+        if (GlobalVariables.Get<IResourceLocation>("activeSongLocation") != null)
         {
             SongData songData = null;
-            IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+            IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
             AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
             yield return new WaitUntil(() => opHandle.IsDone);
 
@@ -94,7 +94,7 @@ public class GameSelectionManager : MonoBehaviour
         SongSelectionManager.instance.StartCoroutine(SongSelectionManager.instance.fadeOutAudioSources());
 
         SongData songData = null;
-        IResourceLocation songDataAssetLocation = PersistentData.Instance.SelectedSongAssetLocation;
+        IResourceLocation songDataAssetLocation = GlobalVariables.Get<IResourceLocation>("activeSongLocation");
         AsyncOperationHandle<SongData> opHandle = Addressables.LoadAssetAsync<SongData>(songDataAssetLocation);
         yield return new WaitUntil(() => opHandle.IsDone);
 

@@ -276,7 +276,6 @@ GameObject:
   - component: {fileID: 1596389968}
   - component: {fileID: 1596389971}
   - component: {fileID: 1596389970}
-  - component: {fileID: 1596389972}
   m_Layer: 0
   m_Name: PersistentObjects
   m_TagString: Untagged
@@ -338,20 +337,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596389967}
   m_Enabled: 1
---- !u!114 &1596389972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1596389967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704582e21f848584bafb3cb8555a99af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectedSong: {fileID: 0}
-  SelectedGameType: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
