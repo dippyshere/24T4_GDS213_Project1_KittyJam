@@ -1,12 +1,13 @@
-﻿using Melanchall.DryWetMidi.Interaction;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the spawning of beat notes
+/// </summary>
 public class MarchingBeat : MonoBehaviour
 {
-    [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<MarchingBeatNote> notes = new List<MarchingBeatNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
@@ -27,7 +28,7 @@ public class MarchingBeat : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (MarchingSongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - MarchingSongManager.Instance.beatNoteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - MarchingNoteManager.Instance.beatNoteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<MarchingBeatNote>());
@@ -39,23 +40,32 @@ public class MarchingBeat : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = MarchingSongManager.GetAudioSourceTime() - (MarchingSongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(input))
+            if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
-                NoteFeedback result = MarchingScoreManager.Instance.Hit(audioTime - timeStamp, gameObject);
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
+                inputIndex++;
             }
-            if (timeStamp + MarchingSongManager.Instance.goodRange <= audioTime)
+        }
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
+        {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position);
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
             {
                 inputIndex++;
             }

@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class CircleGemController : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField, Tooltip("List of potential sprites for the gem")] private Sprite[] sprites;
     [SerializeField, Tooltip("The sprite renderers for the gem")] private SpriteRenderer[] spriteRenderers;
     [HideInInspector, Tooltip("Time in the song that the gem was instantiated")] public double timeInstantiated;
@@ -14,8 +15,8 @@ public class CircleGemController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        timeInstantiated = SongManager.GetAudioSourceTime();
+    { 
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         // Randomly select a sprite from the list of potential sprites
         int spriteIndex = Random.Range(0, sprites.Length);
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
@@ -23,9 +24,9 @@ public class CircleGemController : MonoBehaviour
             spriteRenderer.sprite = sprites[spriteIndex];
         }
         // Set the animation speed to match the song's note time
-        GetComponent<Animator>().speed = 1 / SongManager.Instance.noteTime;
+        GetComponent<Animator>().speed = 1 / CircleNoteManager.Instance.noteTime;
         // Automatically destroy the gem if it's not picked up in time
-        Invoke("OnMiss", (float)(SongManager.Instance.noteTime * 1.15));
+        Invoke(nameof(OnMiss), (float)(CircleNoteManager.Instance.noteTime * 1.15));
     }
 
     /// <summary>
@@ -33,7 +34,7 @@ public class CircleGemController : MonoBehaviour
     /// </summary>
     public void OnPickup()
     {
-        double audioTime = SongManager.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+        double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
         ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
         Destroy(gameObject);

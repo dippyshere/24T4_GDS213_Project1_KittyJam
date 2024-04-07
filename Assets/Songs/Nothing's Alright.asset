@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf42daa988b7eb4e9bf72386e8f77b6, type: 3}
+  m_Name: Nothing's Alright
+  m_EditorClassIdentifier: 
+  songName: Nothing's Alright
+  artistName: WitchGang
+  albumName: Nothing's Alright
+  genre: 1
+  year: 2023
+  songLength: 183
+  usageLicense: 4
+  priority: 999
+  midiName: kittyjam nothingsalright.mid
+  songAudio: {fileID: 8300000, guid: 94f65ab04a9cc2f4b852872442534207, type: 3}
+  albumCover: {fileID: 21300000, guid: 22f94b00fa1861d46825cbc866afdaf7, type: 3}
+  bpm: 89
+  previewStart: 51.292
+  previewEnd: 99.22
+  loopPoint: 56.08
+  gameModes:
+  - gameType: 0
+    supportedInstruments:
+    - instrumentType: 2
+      difficulty: 2
+    leaderboardID: f2e9bd03-3811-44a9-812e-d0207bf8a126
+  - gameType: 1
+    supportedInstruments:
+    - instrumentType: 2
+      difficulty: 3
+    leaderboardID: d712b005-d08f-4dd4-a8bf-6dc4d79e718b
+  - gameType: 3
+    supportedInstruments:
+    - instrumentType: 4
+      difficulty: 3
+    leaderboardID: 30397eb3-2eab-46b7-acc0-a11590a1b6b1

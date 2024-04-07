@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MarchingGame
+  m_EditorClassIdentifier: 
+  m_GroupName: MarchingGame
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 986be19fc41ce5e44a3ce63d4b027794
+  m_SerializeEntries:
+  - m_GUID: 3010eb34c7d5f9c4f8f3998cc66f56e7
+    m_Address: Assets/MarchingGame/Animations
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f9db036efa1f55147a29ace536e6531a
+    m_Address: Assets/MarchingGame/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e71273e279761024c8d11b9048595620
+    m_Address: Assets/MarchingGame/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06789836462391e4bbfc6d3a8e1c16a1
+    m_Address: Assets/MarchingGame/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 689f55a579dc22f4ead153751b5a2d75
+    m_Address: Assets/Imported/Wand
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29a56fcff03d7cd44be3377a5e069723
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Animators
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4cc5ed695a6ce54087ddd4b574ec90a
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/_MarchingGameBase.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0d7fcfc6f483827489b20149971f8b1f
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGameCity.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6dee8c7e9eb9a684ca70e5b8f5f0229f
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGameCrowd.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a7c0310a189c8a46b59b7c2e669a4ec
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGameNPC.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 718738891ef6a034eb1bb7d9b06f95a2
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGamePlayer.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d40ff6907f72b1b489915acd628f9329
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/MarchingGameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 17923ac1650736744ac2d0f911f57564
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e9c48e3e701e3c48abb42258ac0805b
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 86cefc2ce9fd1b44dadd80c54bbfda68
+    m_Address: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Models/FBX
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 84eddeb90f86e844f9f674700dde313a, type: 2}
+    - {fileID: 11400000, guid: 054e63f37fb7a284a8f2ec3033b6e2ef, type: 2}

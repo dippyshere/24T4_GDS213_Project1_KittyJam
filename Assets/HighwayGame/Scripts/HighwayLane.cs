@@ -10,7 +10,6 @@ using UnityEngine;
 public class HighwayLane : MonoBehaviour
 {
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn notes"), Range(0, 127)] private int noteNumber;
-    [Tooltip("The keybind to activate the lane")] public KeyCode input;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<double> timeStamps = new List<double>();
@@ -27,7 +26,7 @@ public class HighwayLane : MonoBehaviour
         {
             if (note.NoteNumber == noteNumber)
             {
-                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, HighwaySongManager.midiFile.GetTempoMap());
+                var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
                 timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
             }
         }
@@ -38,7 +37,7 @@ public class HighwayLane : MonoBehaviour
     {
         if (spawnIndex < timeStamps.Count)
         {
-            if (HighwaySongManager.GetAudioSourceTime() >= timeStamps[spawnIndex] - HighwaySongManager.Instance.noteTime)
+            if (SongManager.Instance.GetAudioSourceTime() >= timeStamps[spawnIndex] - SongManager.Instance.noteTime)
             {
                 var note = Instantiate(notePrefab, transform);
                 notes.Add(note.GetComponent<HighwayNote>());
@@ -50,23 +49,32 @@ public class HighwayLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = HighwaySongManager.GetAudioSourceTime() - (HighwaySongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
 
-            if (Input.GetKeyDown(input))
+            if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
-                NoteFeedback result = HighwayScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
-                Debug.Log(result);
-                if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
-                {
-                    Destroy(notes[inputIndex].gameObject);
-                    inputIndex++;
-                }
-                if (result == NoteFeedback.Miss)
-                {
-                    inputIndex++;
-                }
+                inputIndex++;
             }
-            if (timeStamp + HighwaySongManager.Instance.goodRange <= audioTime)
+        }
+    }
+
+    /// <summary>
+    /// Hits the note
+    /// </summary>
+    public void Hit()
+    {
+        if (inputIndex < timeStamps.Count)
+        {
+            double timeStamp = timeStamps[inputIndex];
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
+            Debug.Log(result);
+            if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
+            {
+                Destroy(notes[inputIndex].gameObject);
+                inputIndex++;
+            }
+            if (result == NoteFeedback.Miss)
             {
                 inputIndex++;
             }

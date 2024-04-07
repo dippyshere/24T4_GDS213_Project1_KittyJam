@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Songs
+  m_EditorClassIdentifier: 
+  m_GroupName: Songs
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f9ff22a8718f0044fa4c901583c426da
+  m_SerializeEntries:
+  - m_GUID: 94f65ab04a9cc2f4b852872442534207
+    m_Address: Assets/Audio/kittyjam nothingsalright.ogg
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - nothingsalright
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 24354e57b5014f9459ae6c6073c843f3
+    m_Address: Assets/Audio/kittyjam maybe.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - maybe
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85f16081e7c47b84fbe037050314c151
+    m_Address: Assets/Audio/kittyjam thespark.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - thespark
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fcac3fd9f54f67a4cbd446541089129e
+    m_Address: Assets/Audio/kittyjam marchtovictory.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchtovictory
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ceb7dcb21886a3c4ea6c841fa1677f03
+    m_Address: Assets/Textures/AlbumArt/Games.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - maybe
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 512d8adad054f3544977962dcdcaa6d2
+    m_Address: Assets/Textures/AlbumArt/marchtovictory.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchtovictory
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 22f94b00fa1861d46825cbc866afdaf7
+    m_Address: Assets/Textures/AlbumArt/nothingsalright.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - nothingsalright
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6831c756de247f245a16a13b5c024f23
+    m_Address: Assets/Textures/AlbumArt/thespark.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - thespark
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a9b40ec8dc095ea4b902958859dd78c5
+    m_Address: Assets/Textures/AlbumArt/BeautifulDay.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - beautifulday
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3439c370ac33c5948a578dac2b322f26
+    m_Address: Assets/Audio/kittyjam_BeautifulDay.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - beautifulday
+    - songasset
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d2d8d58eeceb2be4dba02857c0b08c6a
+    m_Address: Assets/Songs/Beautiful Day.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - beautifulday
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e25d22637c681b4eac454ad6d89ccf1
+    m_Address: Assets/Songs/March To Victory.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - marchtovictory
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 06f86c2cc59d40540ba8ca80459a41c6
+    m_Address: Assets/Songs/Maybe.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - maybe
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d3eed37a3942be48bd02cd875c3657e
+    m_Address: Assets/Songs/Nothing's Alright.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - nothingsalright
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6305ede37d69784d94b83fb68dc590a
+    m_Address: Assets/Songs/The Spark.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - thespark
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d2b18e5826fac3f4ea5fb445ce320e55, type: 2}
+    - {fileID: 11400000, guid: 033878453f71e9d4c928b72a968b5cd6, type: 2}

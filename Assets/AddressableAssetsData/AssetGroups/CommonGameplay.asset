@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CommonGameplay
+  m_EditorClassIdentifier: 
+  m_GroupName: CommonGameplay
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 345d8c18060059249b446462304ea79f
+  m_SerializeEntries:
+  - m_GUID: 8bc8b96ee049b3747b18f83164691ed5
+    m_Address: Assets/Scenes/Gameplay/Common/GameSystems.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - gameplay
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f11e2bcbd5bbc134caa9c0c74a8b8715
+    m_Address: Assets/Scenes/Gameplay/Common/GameUI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - gameplay
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36aa99f4cfbb8574194a1c844b0d0f6c
+    m_Address: Assets/Scenes/Gameplay/Common/PauseMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - gameplay
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e435b5ce8f1eae049ba9a3b41870aef0
+    m_Address: Assets/Scenes/Gameplay/Common/WinUI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - gameplay
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4a8eeb30d55e14941bbf6fbf9473b66a, type: 2}
+    - {fileID: 11400000, guid: ba51d533f0a53b347b5dd2b7f9eb8018, type: 2}

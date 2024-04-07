@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// Callback for the camera shake effect
+/// </summary>
+/// <param name="intensity">The intensity of the shake</param>
+/// <param name="duration">The duration of the shake</param>
+public delegate void CameraCallback(float intensity, float duration);
+
+/// <summary>
 /// Controls the camera shake effect
 /// </summary>
 public class CameraController : MonoBehaviour
 {
-    [SerializeField, Tooltip("The transform controlling the top left UI position")] private RectTransform topLeftUI;
+    [HideInInspector, Tooltip("Singleton instance for the camera controller")] public static CameraController Instance;
+    [SerializeField, Tooltip("An additional multiplier to apply to the screen shake effect as an option")] private float shakeMultiplier = 1f;
     [Tooltip("The original position of the camera")] private Vector3 originalPosition;
-    [Tooltip("The original position of the UI")] private Vector3 originalUIPosition;
+    [HideInInspector, Tooltip("The callback to call when camera shake begins")] public CameraCallback cameraShakeBeginCallback;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         originalPosition = transform.position;
-        originalUIPosition = topLeftUI.position;
     }
 
     /// <summary>
@@ -25,33 +37,18 @@ public class CameraController : MonoBehaviour
     /// <returns>The IEnumerator for the coroutine</returns>
     public IEnumerator ShakeCamera(float intensity, float duration)
     {
-        float elapsedTime = 0f;
-        while (elapsedTime < duration)
+        cameraShakeBeginCallback?.Invoke(intensity * shakeMultiplier, duration);
+        float timer = 0;
+        while (timer < duration)
         {
-            float x = originalPosition.x + Random.Range(-intensity, intensity);
-            float y = originalPosition.y + Random.Range(-intensity, intensity);
-            float uiX = originalUIPosition.x + Random.Range(-intensity / 8, intensity / 8);
-            float uiY = originalUIPosition.y + Random.Range(-intensity / 8, intensity / 8);
-            transform.position = new Vector3(x, y, originalPosition.z);
-            topLeftUI.position = new Vector3(uiX, uiY, originalUIPosition.z);
-            // Gradually decrease the intensity of the shake over time
-            float t = Mathf.Clamp01(elapsedTime / duration);
-            intensity = Mathf.Lerp(intensity, 0f, t / 4);
-
-            elapsedTime += Time.deltaTime;
+            intensity = Mathf.Lerp(intensity, 0, timer / duration);
+            transform.position = originalPosition + Random.insideUnitSphere * intensity * shakeMultiplier;
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
+        yield return null;
         transform.position = originalPosition;
-        topLeftUI.position = originalUIPosition;
-        Invoke(nameof(RestorePositions), 0.1f);
-    }
-
-    /// <summary>
-    /// Restores the camera and UI to their original positions
-    /// </summary>
-    private void RestorePositions()
-    {
+        yield return new WaitForSecondsRealtime(0.1f);
         transform.position = originalPosition;
-        topLeftUI.position = originalUIPosition;
     }
 }

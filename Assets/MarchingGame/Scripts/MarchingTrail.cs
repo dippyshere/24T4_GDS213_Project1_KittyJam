@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handled the trail that followed the mouse cursor
+/// </summary>
 public class MarchingTrail : MonoBehaviour
 {
-    public TrailRenderer trailRenderer;
-
-    Vector3 worldPosition;
+    [SerializeField, Tooltip("Reference to the trail renderer")] private TrailRenderer trailRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -15,25 +16,34 @@ public class MarchingTrail : MonoBehaviour
         trailRenderer.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Starts the trail when the mouse button is pressed
+    /// </summary>
+    /// <param name="context">The context of the input action</param>
+    public void StartTrail(InputAction.CallbackContext context)
     {
-        trailRenderer.transform.position = worldPosition;
-
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.nearClipPlane;
-        worldPosition = Camera.main.ScreenToWorldPoint(mousePos);
-
-
-        if (Input.GetMouseButtonDown(0))
+        if (context.started)
         {
             trailRenderer.enabled = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        else if (context.canceled)
         {
             trailRenderer.enabled = false;
             trailRenderer.Clear();
         }
+    }
 
+    /// <summary>
+    /// Handles the position of the trail
+    /// </summary>
+    /// <param name="context">The context of the input action</param>
+    public void SetTrailPosition(InputAction.CallbackContext context)
+    {
+        if (trailRenderer.enabled)
+        {
+            Vector3 mousePos = context.ReadValue<Vector2>();
+            mousePos.z = Camera.main.nearClipPlane;
+            trailRenderer.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+        }
     }
 }

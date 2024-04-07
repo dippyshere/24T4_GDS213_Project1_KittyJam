@@ -40,7 +40,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3005034674185496508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -185,7 +185,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4627091792767342337}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -300,7 +300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4816228681974406683}
   - component: {fileID: 4816228681974406682}
-  - component: {fileID: 1438551650626966215}
+  - component: {fileID: 6477082667421101641}
   - component: {fileID: 4093533550050698556}
   - component: {fileID: 877679432}
   - component: {fileID: 5047102104264276}
@@ -386,7 +386,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1438551650626966215
+--- !u!114 &6477082667421101641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4816228682861894171}
   - component: {fileID: 4816228682861894172}
+  - component: {fileID: 1865562959590738683}
   m_Layer: 0
   m_Name: PlayerArm
   m_TagString: Player
@@ -545,15 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea685701d13a044a9615bdb72f93c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armSpeed: 50
   armSensitivityMultiplier: 0.15
   slamSpeedMultiplier: 50
-  cameraController: {fileID: 0}
   animator: {fileID: 4816228683994353106}
   slamEffect: {fileID: 5140606806397147552, guid: f679193f225615849b2d612278fc19ac,
     type: 3}
   slamPosition: {fileID: 3044740426778686855}
-  pauseMenu: {fileID: 0}
   canSlam: 1
   canMove: 1
   trails:
@@ -561,6 +559,145 @@ MonoBehaviour:
   - {fileID: 820402068418336894}
   - {fileID: 378058356322418795}
   - {fileID: 6586198121171537820}
+--- !u!114 &1865562959590738683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816228682861894173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ac9241a3d03b6d7499104e7845fed597,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4816228682861894172}
+        m_TargetAssemblyTypeName: ArmController, Assembly-CSharp
+        m_MethodName: MoveArm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7f25d8f9-f62e-465d-bae9-0f8988c306e4
+    m_ActionName: CircleGame/Move[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4816228682861894172}
+        m_TargetAssemblyTypeName: ArmController, Assembly-CSharp
+        m_MethodName: SlamArm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b5d9158a-996b-4e21-a80c-044a8e690b08
+    m_ActionName: CircleGame/Slam[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d6ef2e90-2c78-4c69-b421-0d455b13c77f
+    m_ActionName: HighwayGame/Lane1[/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 845025b3-a0be-4738-98ce-58d7f27e1a7b
+    m_ActionName: HighwayGame/Lane2[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d98792d8-c9c5-4e1c-80e4-406d605804b4
+    m_ActionName: HighwayGame/Lane3[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: df3030d3-255d-40d5-9126-fa4246ff3573
+    m_ActionName: HighwayGame/Lane4[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e43b8758-bb62-45eb-9cd4-c7f172165042
+    m_ActionName: HighwayGame/Lane5[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b5e2db3-31be-4590-b70a-9b08a03cf674
+    m_ActionName: MarchingGame/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 894ac557-47c1-4be0-8b2e-7e2e38ea6101
+    m_ActionName: DDRGame/LeftLane1[/Keyboard/leftArrow,/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a447ca56-8b74-4623-ac58-7490ddbfc3df
+    m_ActionName: DDRGame/DownLane2[/Keyboard/downArrow,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0f04df6d-eb22-4c94-b19f-1b2b6faa0576
+    m_ActionName: DDRGame/UpLane3[/Keyboard/upArrow,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 964e1cd7-2696-4b11-9cc2-ae0408f8dd28
+    m_ActionName: DDRGame/RightLane4[/Keyboard/rightArrow,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 083b3f7d-b8d2-475c-b8a3-0d3d75718904
+    m_ActionName: UI/Pause[/Keyboard/p,/Keyboard/escape,/Keyboard/pause,/Keyboard/equals]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e20dbaa0-e4aa-4c43-b590-93589430f35a
+    m_ActionName: MarchingGame/BeatDown[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 52d9a979-b744-4461-9484-f19a5400a30c
+    m_ActionName: MarchingGame/GestureStart[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 66e97661-9b7c-485b-87bf-eb12e220a5d7
+    m_ActionName: MarchingGame/GestureInput[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4816228682861894172}
+        m_TargetAssemblyTypeName: ArmController, CircleGame
+        m_MethodName: MoveArmTouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b07fe71-8fed-4d5d-b289-619dbb09bdb1
+    m_ActionName: CircleGame/MoveTouch[/Device Simulator Touchscreen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3e460f27-5e00-4b08-bf05-d5f321dcd152
+    m_ActionName: MarchingGame/WandInput[/Mouse/delta]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: CircleGame
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &4816228683151687141
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8772f0509291b5c499e9cdcf3be112fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armController: {fileID: 4816228682861894172}
 --- !u!1 &4944869703268235453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1173,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5580876793361621336}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1182,7 +1318,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9200911399417501735}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: KittySlam
+  m_EditorClassIdentifier: 
+  m_GroupName: KittySlam
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 59f2534b37ee7f44585291221391b23f
+  m_SerializeEntries:
+  - m_GUID: ed922063cb87f6348b354ddb46b79835
+    m_Address: Assets/KittySlamAssets/Animation
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59ad2809b6a7ac344a74e3c75f5a8145
+    m_Address: Assets/KittySlamAssets/Fonts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - fonts
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc20acf5f59567f42950a2d05c24b2c5
+    m_Address: Assets/KittySlamAssets/Prefabs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 38502ad4faeee1a47adce7e71e3a50f1
+    m_Address: Assets/KittySlamAssets/Textures
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 11145d72890e17f42a9a9d3c0f6cb336, type: 2}
+    - {fileID: 11400000, guid: 899e42a7d02390a499613460008c00db, type: 2}

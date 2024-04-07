@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement of the notes on the highway
+/// </summary>
 public class HighwayNote : MonoBehaviour
 {
-    double timeInstantiated;
-    public float assignedTime;
-    [SerializeField] private SpriteRenderer visualSprite;
+    [HideInInspector, Tooltip("The time that the note was instantiated at")] public double timeInstantiated;
+    [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
+    [SerializeField, Tooltip("The sprite renderer of the note, to apply effects when missing the note")] private SpriteRenderer visualSprite;
 
     void Start()
     {
-        timeInstantiated = HighwaySongManager.GetAudioSourceTime();
-        transform.localPosition = Vector3.forward * HighwaySongManager.Instance.noteSpawnZ;
-        Invoke(nameof(OnMiss), (float)(HighwaySongManager.Instance.noteTime + HighwaySongManager.Instance.goodRange));
+        timeInstantiated = SongManager.Instance.GetAudioSourceTime();
+        transform.localPosition = Vector3.forward * HighwayNoteManager.Instance.noteSpawnZ;
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
     }
 
     // Update is called once per frame
     void Update()
     {
-        double timeSinceInstantiated = HighwaySongManager.GetAudioSourceTime() - timeInstantiated;
-        float t = (float)(timeSinceInstantiated / (HighwaySongManager.Instance.noteTime * 2));
+        double timeSinceInstantiated = SongManager.Instance.GetAudioSourceTime() - timeInstantiated;
+        float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
 
         if (t > 1)
         {
@@ -27,13 +30,16 @@ public class HighwayNote : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector3.forward * (HighwaySongManager.Instance.noteDespawnZ - HighwaySongManager.Instance.noteSpawnZ) * Time.deltaTime / (HighwaySongManager.Instance.noteTime * 2));
+            transform.Translate(Vector3.forward * (HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime / (SongManager.Instance.noteTime * 2));
         }
     }
 
+    /// <summary>
+    /// Called when the note is missed
+    /// </summary>
     public void OnMiss()
     {
-        HighwayScoreManager.Instance.Miss(transform.position);
+        ScoreManager.Instance.Miss(transform.position);
         visualSprite.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
     }
 }

@@ -1,0 +1,16 @@
+{
+    "name": "CodingJar.MultiScene",
+    "rootNamespace": "",
+    "references": [
+        "GUID:cd86ddae76157d4458c62a5539cb4227"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
