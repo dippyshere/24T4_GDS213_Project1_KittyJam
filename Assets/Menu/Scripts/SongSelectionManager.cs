@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,6 +30,7 @@ public class SongSelectionManager : MonoBehaviour
         instance = this;
         PopulateSongList();
         selectionUIAnimator.SetBool("ShowSongUI", true);
+        DiscordRPCManager.Instance.UpdateActivity(details: "Selecting a song", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "kittyjam_cover", largeImageText: "Kitty Jam");
     }
 
     /// <summary>
