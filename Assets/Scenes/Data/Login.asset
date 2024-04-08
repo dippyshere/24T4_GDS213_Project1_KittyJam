@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc6d308546d532a4b9d52884ad3ab2e8, type: 3}
   m_Name: Login
   m_EditorClassIdentifier: 
-  scenesToLoad: []
-  scenesToUnload:
-  - m_AssetGUID: b37dfd2d776ab3d499019a712c595d5d
+  scenesToLoad:
+  - m_AssetGUID: 
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  scenesToUnload: []
   markFirstSceneAsActive: 1
   useTransition: 0

@@ -46,6 +46,10 @@ public class DiscordRPCManager : MonoBehaviour
     public void UpdateActivity(string state = "", string details = "", Int64 start = 0, Int64 end = 0, string largeImageKey = "", string largeImageText = "", string smallImageKey = "", string smallImageText = "", string partyID = "", Int32 currentPartySize = 1, Int32 maxPartySize = 4, string matchSecret = "", string joinSecret = "", string spectateSecret = "", bool instance = false)
     {
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
+        if (discord == null)
+        {
+            return;
+        }
         Discord.ActivityManager activityManager = discord.GetActivityManager();
         Discord.Activity activity = new Discord.Activity();
         if (state != "")

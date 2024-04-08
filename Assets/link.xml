@@ -1,14 +1,17 @@
 <linker>
 
+    <assembly fullname="AuthenticationSamples" preserve="all" />
     <assembly fullname="BeautifyDemo" preserve="all" />
     <assembly fullname="CFXRDemo" preserve="all" />
     <assembly fullname="CFXRRuntime" preserve="all" />
     <assembly fullname="Cinemachine" preserve="all" />
     <assembly fullname="CircleGame" preserve="all" />
+    <assembly fullname="CloudSaveSample" preserve="all" />
     <assembly fullname="CodingJar.Common" preserve="all" />
     <assembly fullname="CodingJar.MultiScene" preserve="all" />
     <assembly fullname="Coffee.UIParticle" preserve="all" />
     <assembly fullname="DDRGame" preserve="all" />
+    <assembly fullname="discord_game_sdk" preserve="all" />
     <assembly fullname="HighwayGame" preserve="all" />
     <assembly fullname="ImportedAssets" preserve="all" />
     <assembly fullname="InputSystemSamples" preserve="all" />
@@ -17,11 +20,13 @@
     <assembly fullname="KittyJam.Gameplay" preserve="all" />
     <assembly fullname="KittyJam.Menu" preserve="all" />
     <assembly fullname="KittySlam" preserve="all" />
+    <assembly fullname="LeaderboardSample" preserve="all" />
     <assembly fullname="MarchingGame" preserve="all" />
     <assembly fullname="Melanchall.DryWetMidi" preserve="all" />
     <assembly fullname="Melanchall.DryWetMidi.Demo" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native32" preserve="all" />
     <assembly fullname="Melanchall_DryWetMidi_Native64" preserve="all" />
+    <assembly fullname="OnlineGameplaySystems" preserve="all" />
     <assembly fullname="SimpleSpectrum" preserve="all" />
     <assembly fullname="SongAssembly" preserve="all" />
     <assembly fullname="TextMeshProExamples" preserve="all" />

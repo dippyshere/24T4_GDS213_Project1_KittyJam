@@ -174,29 +174,36 @@ public class SongDataEditor : Editor
 
     public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
     {
-        SongData songData = (SongData)target;
-        if (songData == null || songData.AlbumCover == null)
+        try
         {
-            return base.RenderStaticPreview(assetPath, subAssets, width, height);
-        }
-        Texture2D source = songData.AlbumCover.texture;
-        RenderTexture renderTex = RenderTexture.GetTemporary(
-            source.width,
-            source.height,
-            0,
-            RenderTextureFormat.Default,
-            RenderTextureReadWrite.Linear);
+            SongData songData = (SongData)target;
+            if (songData == null || songData.AlbumCover == null)
+            {
+                return null;
+            }
+            Texture2D source = songData.AlbumCover.texture;
+            RenderTexture renderTex = RenderTexture.GetTemporary(
+                source.width,
+                source.height,
+                0,
+                RenderTextureFormat.Default,
+                RenderTextureReadWrite.Linear);
 
-        Graphics.Blit(source, renderTex);
-        RenderTexture previous = RenderTexture.active;
-        RenderTexture.active = renderTex;
-        Texture2D readableText = new Texture2D(source.width, source.height);
-        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
-        readableText.Apply();
-        RenderTexture.active = previous;
-        RenderTexture.ReleaseTemporary(renderTex);
-        EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
-        return readableText;
+            Graphics.Blit(source, renderTex);
+            RenderTexture previous = RenderTexture.active;
+            RenderTexture.active = renderTex;
+            Texture2D readableText = new Texture2D(source.width, source.height);
+            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+            readableText.Apply();
+            RenderTexture.active = previous;
+            RenderTexture.ReleaseTemporary(renderTex);
+            EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
+            return readableText;
+        }
+        catch
+        {
+            return null;
+        }
     }
 }
 #endif
