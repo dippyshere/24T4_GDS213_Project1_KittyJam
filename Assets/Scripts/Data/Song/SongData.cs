@@ -26,6 +26,7 @@ public class SongData : ScriptableObject
     [SerializeField, Tooltip("The length of the song (in seconds)")] private float songLength;
     [SerializeField, Tooltip("The usage rights for the song")] private UsageLicense usageLicense;
     [SerializeField, Tooltip("Songs will be listed by order of priority, then alphabetically. Set the priority higher to move the song to the front of the list")] private int priority;
+    [SerializeField, Tooltip("The key that is used for the song icon in Discord Rich Presence")] private string discordIconKey;
     [Header("Song Data")]
     [SerializeField, Tooltip("The name of the song's MIDI file")] private string midiName;
     [SerializeField, Tooltip("The audio file associated with the song")] private AudioClip songAudio;
@@ -46,6 +47,7 @@ public class SongData : ScriptableObject
     public float SongLength { get => songLength; }
     public UsageLicense UsageLicense { get => usageLicense; }
     public int Priority { get => priority; }
+    public string DiscordIconKey { get => discordIconKey; }
     public string MidiName { get => midiName; }
     public AudioClip SongAudio { get => songAudio; }
     public Sprite AlbumCover { get => albumCover; }
@@ -54,7 +56,7 @@ public class SongData : ScriptableObject
     public float PreviewEnd { get => previewEnd; }
     public float LoopPoint { get => loopPoint; }
     public List<GameMode> GameModes { get => gameModes; }
-    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, UsageLicense usageLicense, int priority, string midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
+    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, UsageLicense usageLicense, int priority, string discordIconKey, string midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
     {
         this.songName = songName;
         this.artistName = artistName;
@@ -64,6 +66,7 @@ public class SongData : ScriptableObject
         this.songLength = songLength;
         this.usageLicense = usageLicense;
         this.priority = priority;
+        this.discordIconKey = discordIconKey;
         this.midiName = midiName;
         this.songAudio = songAudio;
         this.albumCover = albumCover;
@@ -83,6 +86,7 @@ public class SongData : ScriptableObject
         songLength = songData.songLength;
         usageLicense = songData.usageLicense;
         priority = songData.priority;
+        discordIconKey = songData.discordIconKey;
         midiName = songData.midiName;
         songAudio = songData.songAudio;
         albumCover = songData.albumCover;

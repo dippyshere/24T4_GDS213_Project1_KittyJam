@@ -5,6 +5,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using TMPro;
+using System;
 
 /// <summary>
 /// Handles the game selection screen
@@ -112,6 +113,21 @@ public class GameSelectionManager : MonoBehaviour
         if (GlobalVariables.Get<string>("GameType" + gameType + songData.name + "played") == null)
         {
             GlobalVariables.Set("GameType" + gameType + songData.name + "played", "1");
+        }
+        switch (gameType)
+        {
+            case 1:
+                DiscordRPCManager.Instance.UpdateActivity(details: "Paw Percussion", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "circlegame", largeImageText: "Kitty Jam Paw Percussion", smallImageKey: songData.DiscordIconKey, smallImageText: songData.SongName + " - " + songData.ArtistName);
+                break;
+            case 2:
+                DiscordRPCManager.Instance.UpdateActivity(details: "Feline Fretboard", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "highwaygame", largeImageText: "Kitty Jam Feline Fretboard", smallImageKey: songData.DiscordIconKey, smallImageText: songData.SongName + " - " + songData.ArtistName);
+                break;
+            case 3:
+                DiscordRPCManager.Instance.UpdateActivity(details: "Pouncing Parade", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "marchinggame", largeImageText: "Kitty Jam Pouncing Parade", smallImageKey: songData.DiscordIconKey, smallImageText: songData.SongName + " - " + songData.ArtistName);
+                break;
+            case 4:
+                DiscordRPCManager.Instance.UpdateActivity(details: "Bongo Bash", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "bongogame", largeImageText: "Kitty Jam Bongo Bash", smallImageKey: songData.DiscordIconKey, smallImageText: songData.SongName + " - " + songData.ArtistName);
+                break;
         }
         if (GlobalVariables.Get<string>("GameType" + gameType + "Onboarded") == null)
         {

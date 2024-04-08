@@ -20,6 +20,7 @@ MonoBehaviour:
   songLength: 151
   usageLicense: 4
   priority: 500
+  discordIconKey: thespark
   midiName: kittyjam thespark.mid
   songAudio: {fileID: 8300000, guid: 85f16081e7c47b84fbe037050314c151, type: 3}
   albumCover: {fileID: 21300000, guid: 6831c756de247f245a16a13b5c024f23, type: 3}
