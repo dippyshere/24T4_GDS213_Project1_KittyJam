@@ -11,7 +11,15 @@
     <assembly fullname="CodingJar.MultiScene" preserve="all" />
     <assembly fullname="Coffee.UIParticle" preserve="all" />
     <assembly fullname="DDRGame" preserve="all" />
+    <assembly fullname="DemiEditor" preserve="all" />
+    <assembly fullname="DemiLib" preserve="all" />
     <assembly fullname="discord_game_sdk" preserve="all" />
+    <assembly fullname="DOTween" preserve="all" />
+    <assembly fullname="DOTween.Modules" preserve="all" />
+    <assembly fullname="DOTweenEditor" preserve="all" />
+    <assembly fullname="DOTweenPro" preserve="all" />
+    <assembly fullname="DOTweenPro.Scripts" preserve="all" />
+    <assembly fullname="DOTweenProEditor" preserve="all" />
     <assembly fullname="HighwayGame" preserve="all" />
     <assembly fullname="ImportedAssets" preserve="all" />
     <assembly fullname="InputSystemSamples" preserve="all" />

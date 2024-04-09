@@ -657,7 +657,7 @@ MonoBehaviour:
   useLogarithmicFrequency: 1
   multiplyByFrequency: 1
   frequencyLimitLow: 0
-  frequencyLimitHigh: 22050
+  frequencyLimitHigh: 11025
   barAmount: 64
   barYScale: 1.2
   barMinYScale: 0
@@ -773,10 +773,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 5.5386405
-    y: 5.5386405
-    width: 8.128096
-    height: 4.5685716
+    x: 0.44222572
+    y: 0.44222575
+    width: 7.8165574
+    height: 4.7506585
 --- !u!114 &1411595697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   useLogarithmicFrequency: 1
   multiplyByFrequency: 1
   frequencyLimitLow: 0
-  frequencyLimitHigh: 22050
+  frequencyLimitHigh: 11025
   barAmount: 64
   barYScale: 1
   barMinYScale: 0
