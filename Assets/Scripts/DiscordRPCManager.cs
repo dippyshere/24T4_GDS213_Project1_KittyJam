@@ -6,8 +6,10 @@ using UnityEngine;
 public class DiscordRPCManager : MonoBehaviour
 {
     [HideInInspector, Tooltip("Singleton reference to the Discord RPC manager")] public static DiscordRPCManager Instance;
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
     [HideInInspector, Tooltip("The Discord RPC instance")] public Discord.Discord discord;
+#else
+    [HideInInspector, Tooltip("The Discord RPC instance")] public object discord;
 #endif
 
     private void Awake()
@@ -15,7 +17,7 @@ public class DiscordRPCManager : MonoBehaviour
         Instance = this;
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
     private void Start()
     {
         discord = new Discord.Discord(1226127046586142730, (UInt64)Discord.CreateFlags.NoRequireDiscord);
@@ -45,7 +47,7 @@ public class DiscordRPCManager : MonoBehaviour
 
     public void UpdateActivity(string state = "", string details = "", Int64 start = 0, Int64 end = 0, string largeImageKey = "", string largeImageText = "", string smallImageKey = "", string smallImageText = "", string partyID = "", Int32 currentPartySize = 1, Int32 maxPartySize = 4, string matchSecret = "", string joinSecret = "", string spectateSecret = "", bool instance = false)
     {
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
         if (discord == null)
         {
             return;
@@ -119,7 +121,7 @@ public class DiscordRPCManager : MonoBehaviour
 #endif
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
+#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX || UNITY_WSA
     private void OnDestroy()
     {
         discord?.Dispose();

@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titlescreenAssetLoadInfo: {fileID: 11400000, guid: 00cdad58f4151884ea941f9d6d395acd,
     type: 2}
-  titlescreenSceneLoadInfo: {fileID: 11400000, guid: 14dcc204a79f49440bf03eeae4fb5035,
+  titlescreenSceneLoadInfo: {fileID: 11400000, guid: 5ecfeaa2344ab974bbf098339a0da6c8,
     type: 2}
   titleDismissalText: {fileID: 823994237}
 --- !u!1660057539 &9223372036854775807

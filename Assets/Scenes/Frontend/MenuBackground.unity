@@ -629,7 +629,7 @@ GameObject:
   - component: {fileID: 1363629115}
   - component: {fileID: 1363629114}
   m_Layer: 0
-  m_Name: Spectrum (1)
+  m_Name: Spectrum Bass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,10 +773,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0.44222572
-    y: 0.44222575
-    width: 7.8165574
-    height: 4.7506585
+    x: 3.2589476
+    y: 3.2589476
+    width: 8.128096
+    height: 4.5685716
 --- !u!114 &1411595697
 MonoBehaviour:
   m_ObjectHideFlags: 0

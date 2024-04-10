@@ -7,13 +7,16 @@ using Unity.Services.Core;
 using Unity.Services.Authentication;
 using Unity.Services.Core.Environments;
 
+/// <summary>
+/// Handles the account management for Kitty Jam.
+/// </summary>
 public class KittyAccountManager : MonoBehaviour
 {
-    [HideInInspector] public static KittyAccountManager instance;
+    [HideInInspector, Tooltip("Singleton instance to the account manager for Kitty Jam")] public static KittyAccountManager Instance;
 
     async void Awake()
     {
-        instance = this;
+        Instance = this;
 
         try
         {
