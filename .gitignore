@@ -80,6 +80,8 @@ crashlytics-build.properties
 !/Assets/Imported/Beautify/**/*.meta
 /Assets/Imported/Gradient Shader Pack/**/*.*
 !/Assets/Imported/Gradient Shader Pack/**/*.meta
+/Assets/Plugins/Demigiant/DOTweenPro/**/*.*
+!/Assets/Plugins/Demigiant/DOTweenPro/**/*.meta
 
 *.DS_Store
 

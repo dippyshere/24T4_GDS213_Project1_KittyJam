@@ -340,12 +340,6 @@ MonoBehaviour:
     loadInEditor: 1
     loadMethod: 3
   - scene:
-      editorAssetGUID: 645678e66578c4e40b0fb65fad8c967f
-      name: Downloader
-      _path: Assets/Scenes/Frontend/Downloader.unity
-    loadInEditor: 1
-    loadMethod: 3
-  - scene:
       editorAssetGUID: 6e5fb00a3a270f641b3b6111c3228787
       name: Persistent
       _path: Assets/Scenes/Persistent.unity
