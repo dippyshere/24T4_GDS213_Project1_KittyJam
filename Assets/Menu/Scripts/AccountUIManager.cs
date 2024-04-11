@@ -20,7 +20,15 @@ public class AccountUIManager : MonoBehaviour
 		accountNameText.text = "";
         try
         {
-            string playerName = await AuthenticationService.Instance.GetPlayerNameAsync();
+            string playerName = "";
+            if (AuthenticationService.Instance.PlayerName == null)
+            {
+                playerName = await AuthenticationService.Instance.GetPlayerNameAsync();
+            }
+            else
+            {
+                playerName = AuthenticationService.Instance.PlayerName;
+            }
             // if a # is present in the string, remove all characters after the # (including the #), otherwise use the full string
             if (playerName.Contains("#"))
             {

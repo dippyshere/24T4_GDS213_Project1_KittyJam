@@ -151,7 +151,8 @@ public class ScoreManager : MonoBehaviour
         IncreaseMultiplier();
         try
         {
-            audioSource.PlayOneShot(goodHitSFX);
+            audioSource.clip = goodHitSFX;
+            audioSource.Play();
         }
         catch (System.Exception)
         {
@@ -180,7 +181,8 @@ public class ScoreManager : MonoBehaviour
         IncreaseMultiplier();
         try
         {
-            audioSource.PlayOneShot(perfectHitSFX);
+            audioSource.clip = perfectHitSFX;
+            audioSource.Play();
         }
         catch (System.Exception)
         {

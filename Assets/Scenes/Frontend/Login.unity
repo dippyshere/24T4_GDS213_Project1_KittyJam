@@ -8626,7 +8626,6 @@ GameObject:
   - component: {fileID: 1691899578}
   - component: {fileID: 1691899577}
   - component: {fileID: 1691899576}
-  - component: {fileID: 1691899579}
   m_Layer: 5
   m_Name: SkipButton
   m_TagString: Untagged
@@ -8748,39 +8747,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1691899574}
   m_CullTransparentMesh: 1
---- !u!114 &1691899579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1691899574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647d47e610c2b0d4e87b41a74c9334d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &1703284704
 GameObject:
   m_ObjectHideFlags: 0
