@@ -15,8 +15,13 @@ public class AccountUIManager : MonoBehaviour
         try
         {
             string playerName = await AuthenticationService.Instance.GetPlayerNameAsync();
-            accountNameText.text = playerName[..^5];
-		}
+            // if a # is present in the string, remove all characters after the # (including the #), otherwise use the full string
+            if (playerName.Contains("#"))
+            {
+                playerName = playerName[..playerName.IndexOf("#")];
+            }
+            accountNameText.text = playerName;
+        }
 		catch (Exception e)
 		{
 			Debug.LogError("Failed to get player name: " + e.Message);

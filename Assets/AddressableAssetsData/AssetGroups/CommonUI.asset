@@ -99,6 +99,21 @@ MonoBehaviour:
     m_SerializedLabels:
     - initialdownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1167b3a4e33315d4ca9d085f45832a21
+    m_Address: Assets/Textures/kitty jam default profile.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fbb765af3f4f92409429104626c60d4
+    m_Address: Assets/Textures/kitty jam profile frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1b851214b9826dc458580df527d7ea06
+    m_Address: Assets/Textures/kitty jam crown.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:
