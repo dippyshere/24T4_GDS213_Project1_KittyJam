@@ -23,6 +23,7 @@ public class LoginManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the button that logs in the user")] private Button loginButton;
     [SerializeField, Tooltip("Reference to the button that signs up the user")] private Button signupButton;
     [SerializeField, Tooltip("Reference to the text that displays debugging information")] private TextMeshProUGUI debugText;
+    [SerializeField, Tooltip("Reference to the profile icon selection UI")] private GameObject profileIconSelectionUI;
     [Tooltip("The currently visible panel")] private bool isLoginPanelActive;
 
     private void Awake()
@@ -109,7 +110,9 @@ public class LoginManager : MonoBehaviour
             }
             if (DownloadManager.Instance != null)
             {
-                DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: sceneLoadInfo);
+                //DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: sceneLoadInfo);
+                profileIconSelectionUI.SetActive(true);
+                gameObject.SetActive(false);
             }
         }
         else

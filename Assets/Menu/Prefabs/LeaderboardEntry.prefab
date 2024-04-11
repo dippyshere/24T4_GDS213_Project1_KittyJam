@@ -369,6 +369,7 @@ MonoBehaviour:
   scoreText: {fileID: 8377291188101028417}
   rankText: {fileID: 8693033304770126465}
   crownIcon: {fileID: 2409150317760728400}
+  profilePicture: {fileID: 8276826132464496460}
   background: {fileID: 7453273250010017685}
   firstPlaceCrownMaterial: {fileID: 2100000, guid: b53507504d293e14fb761ea1183d3b36,
     type: 2}

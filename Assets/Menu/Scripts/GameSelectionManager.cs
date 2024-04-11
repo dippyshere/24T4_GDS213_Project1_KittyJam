@@ -140,7 +140,6 @@ public class GameSelectionManager : MonoBehaviour
         {
             return;
         }
-        leaderboardTitle.text = "Paw Percussion";
         foreach (GameMode gameMode in cachedSongData.GameModes)
         {
             if (gameMode.GameType == GameType.CircleGame)
@@ -159,6 +158,7 @@ public class GameSelectionManager : MonoBehaviour
                 }
             }
         }
+        leaderboardTitle.text = "Paw Percussion";
     }
 
     /// <summary>
@@ -172,7 +172,6 @@ public class GameSelectionManager : MonoBehaviour
         {
             return;
         }
-        leaderboardTitle.text = "Feline Fretboard";
         foreach (GameMode gameMode in cachedSongData.GameModes)
         {
             if (gameMode.GameType == GameType.HighwayGame)
@@ -191,6 +190,7 @@ public class GameSelectionManager : MonoBehaviour
                 }
             }
         }
+        leaderboardTitle.text = "Feline Fretboard";
     }
 
     /// <summary>
@@ -204,7 +204,6 @@ public class GameSelectionManager : MonoBehaviour
         {
             return;
         }
-        leaderboardTitle.text = "Pouncing Parade";
         foreach (GameMode gameMode in cachedSongData.GameModes)
         {
             if (gameMode.GameType == GameType.MarchingGame)
@@ -223,6 +222,7 @@ public class GameSelectionManager : MonoBehaviour
                 }
             }
         }
+        leaderboardTitle.text = "Pouncing Parade";
     }
 
     /// <summary>
@@ -236,7 +236,6 @@ public class GameSelectionManager : MonoBehaviour
         {
             return;
         }
-        leaderboardTitle.text = "Bongo Bash";
         foreach (GameMode gameMode in cachedSongData.GameModes)
         {
             if (gameMode.GameType == GameType.BongoGame)
@@ -255,6 +254,7 @@ public class GameSelectionManager : MonoBehaviour
                 }
             }
         }
+        leaderboardTitle.text = "Bongo Bash";
     }
 
     /// <summary>

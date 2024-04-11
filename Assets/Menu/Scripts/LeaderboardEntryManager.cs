@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
 using TMPro;
 using Unity.Services.Authentication;
 using Unity.Services.Leaderboards.Models;
+using Unity.Services.CloudSave;
+using Unity.Services.CloudSave.Models.Data.Player;
 
 /// <summary>
 /// Controls the appearance of the leaderboard entry, and handles adding correct stats to the entry.
@@ -17,6 +20,7 @@ public class LeaderboardEntryManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the score text")] private TextMeshProUGUI scoreText;
     [SerializeField, Tooltip("Reference to the rank text")] private TextMeshProUGUI rankText;
     [SerializeField, Tooltip("Reference to the crown icon")] private Image crownIcon;
+    [SerializeField, Tooltip("Reference to the profile picture")] private Image profilePicture;
     [SerializeField, Tooltip("Reference to the background image")] private Image background;
     [SerializeField, Tooltip("The material variant to use for the first place crown")] private Material firstPlaceCrownMaterial;
     [SerializeField, Tooltip("The material variant to use for the second place crown")] private Material secondPlaceCrownMaterial;
@@ -40,7 +44,7 @@ public class LeaderboardEntryManager : MonoBehaviour
         }
     }
 
-    public void SetProperties(LeaderboardEntry leaderboardEntry)
+    public async void SetProperties(LeaderboardEntry leaderboardEntry)
     {
         string playerName = leaderboardEntry.PlayerName;
         if (playerName.Contains("#"))
@@ -84,6 +88,19 @@ public class LeaderboardEntryManager : MonoBehaviour
             else
             {
                 background.color = playerColorOdd;
+            }
+        }
+
+        var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions(leaderboardEntry.PlayerId)));
+        if (playerData.TryGetValue("profileIndex", out var keyName))
+        {
+            if (keyName.Value.GetAs<int>() > 0)
+            {
+                string profileIconPath = "Assets/Textures/ProfilePictures/" + keyName.Value.GetAs<int>() + ".png";
+                Addressables.LoadAssetAsync<Sprite>(profileIconPath).Completed += (op) =>
+                {
+                    profilePicture.sprite = op.Result;
+                };
             }
         }
     }
