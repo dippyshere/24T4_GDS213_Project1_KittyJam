@@ -162,7 +162,7 @@ PlayerSettings:
     Android: com.KittyJamTeam.KittyJam
     Standalone: com.KittyJamTeam.Kitty-Jam
     iPhone: com.KittyJamTeam.Kitty-Jam
-    tvOS: com.DefaultCompany.24T4-GDS213-Project1-KittyJam
+    tvOS: com.KittyJamTeam.Kitty-Jam
   buildNumber:
     Standalone: 0
     VisionOS: 0
@@ -198,8 +198,9 @@ PlayerSettings:
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
-  appleTVSplashScreen: {fileID: 0}
-  appleTVSplashScreen2x: {fileID: 0}
+  appleTVSplashScreen: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f, type: 3}
+  appleTVSplashScreen2x: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f,
+    type: 3}
   tvOSSmallIconLayers: []
   tvOSSmallIconLayers2x: []
   tvOSLargeIconLayers: []
@@ -549,7 +550,9 @@ PlayerSettings:
       m_SubKind: 
   - m_BuildTarget: tvOS
     m_Icons:
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 15d97a9485c15c94e97d7ccb1065259d, type: 3}
+      - {fileID: 2800000, guid: f47283b72792a0d4ea3a881e5725d12b, type: 3}
       m_Width: 1280
       m_Height: 768
       m_Kind: 0
@@ -564,22 +567,26 @@ PlayerSettings:
       m_Height: 240
       m_Kind: 0
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 2800000, guid: 21c459422df662541826e21c75c6cb86, type: 3}
       m_Width: 4640
       m_Height: 1440
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 2320
       m_Height: 720
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 3840
       m_Height: 1440
       m_Kind: 1
       m_SubKind: 
-    - m_Textures: []
+    - m_Textures:
+      - {fileID: 0}
       m_Width: 1920
       m_Height: 720
       m_Kind: 1
@@ -599,6 +606,8 @@ PlayerSettings:
   - m_BuildTarget: iOSSupport
     m_GraphicsJobs: 1
   - m_BuildTarget: AndroidPlayer
+    m_GraphicsJobs: 1
+  - m_BuildTarget: AppleTVSupport
     m_GraphicsJobs: 1
   m_BuildTargetGraphicsJobMode: []
   m_BuildTargetGraphicsAPIs:
@@ -964,7 +973,7 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: 24T4GDS213Project1KittyJam
+  metroPackageName: KittyJam
   metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
@@ -973,22 +982,24 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: 24T4_GDS213_Project1_KittyJam
   wsaImages: {}
-  metroTileShortName: 24T4_GDS213_Project1_KittyJam
+  metroTileShortName: KittyJam
   metroTileShowName: 0
-  metroMediumTileShowName: 0
-  metroLargeTileShowName: 0
-  metroWideTileShowName: 0
+  metroMediumTileShowName: 1
+  metroLargeTileShowName: 1
+  metroWideTileShowName: 1
   metroSupportStreamingInstall: 0
   metroLastRequiredScene: 0
-  metroDefaultTileSize: 1
+  metroDefaultTileSize: 0
   metroTileForegroundText: 2
-  metroTileBackgroundColor: {r: 0.13333334, g: 0.17254902, b: 0.21568628, a: 0}
+  metroTileBackgroundColor: {r: 0.50980395, g: 0.19607845, b: 0.79215693, a: 1}
   metroSplashScreenBackgroundColor: {r: 0.12941177, g: 0.17254902, b: 0.21568628,
     a: 1}
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities: {}
-  metroTargetDeviceFamilies: {}
-  metroFTAName: 
+  metroTargetDeviceFamilies:
+    Desktop: True
+  metroFTAName: Music and Cats collide in this vibrant rhythm adventure! Play your
+    favourite songs in a variety of gameplay styles.
   metroFTAFileTypes: []
   metroProtocolName: 
   vcxProjDefaultLanguage: 
