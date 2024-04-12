@@ -98,6 +98,6 @@
     <assembly fullname="UnityEngine.InputSystem.Samples.UIvsGameInput" preserve="all" />
     <assembly fullname="UnityEngine.TestRunner" preserve="all" />
     <assembly fullname="UnityEngine.UI" preserve="all" />
-    <assembly fullname="Workshop" preserve="all" />
+    <assembly fullname="Workshop.Editor" preserve="all" />
 
 </linker>

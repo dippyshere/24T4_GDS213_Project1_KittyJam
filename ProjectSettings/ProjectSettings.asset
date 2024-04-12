@@ -136,7 +136,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.9.0
+  bundleVersion: 0.9.1
   preloadedAssets:
   - {fileID: 11400000, guid: 76349850897b0d646b4efdc65874df7f, type: 2}
   metroInputSource: 0
@@ -148,7 +148,7 @@ PlayerSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
   enableFrameTimingStats: 0
-  enableOpenGLProfilerGPURecorders: 1
+  enableOpenGLProfilerGPURecorders: 0
   allowHDRDisplaySupport: 1
   useHDRDisplay: 0
   hdrBitDepth: 0
@@ -647,6 +647,15 @@ PlayerSettings:
     m_EncodingQuality: 1
   m_BuildTargetGroupLightmapSettings:
   - m_BuildTarget: WebGL
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: -128
+  - m_BuildTarget: Standalone
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: -128
+  - m_BuildTarget: Android
+    m_TextureStreamingEnabled: 1
+    m_TextureStreamingPriority: -128
+  - m_BuildTarget: iPhone
     m_TextureStreamingEnabled: 1
     m_TextureStreamingPriority: -128
   m_BuildTargetGroupLoadStoreDebugModeSettings: []

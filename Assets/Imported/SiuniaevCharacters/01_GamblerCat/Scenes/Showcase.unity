@@ -2213,10 +2213,6 @@ PrefabInstance:
       value: -174.98178
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400022, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
       propertyPath: m_LocalScale.x
       value: 113.45937
       objectReference: {fileID: 0}
@@ -2640,42 +2636,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 166.94621
       objectReference: {fileID: 0}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animation
-      value: 
-      objectReference: {fileID: 7400014, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[3]
-      value: 
-      objectReference: {fileID: 7400034, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[11]
-      value: 
-      objectReference: {fileID: 7400006, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[12]
-      value: 
-      objectReference: {fileID: 7400022, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[13]
-      value: 
-      objectReference: {fileID: 7400030, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[14]
-      value: 
-      objectReference: {fileID: 7400026, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[15]
-      value: 
-      objectReference: {fileID: 7400028, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[17]
-      value: 
-      objectReference: {fileID: 7400036, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-    - target: {fileID: 11100000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
-      propertyPath: m_Animations.Array.data[18]
-      value: 
-      objectReference: {fileID: 7400024, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
     - target: {fileID: 13700000, guid: 053a4ed4c00048f48a8055551095d11e, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -4025,6 +3985,55 @@ MonoBehaviour:
   _name: Run
   _type: 1
   _value: 1
+--- !u!1 &1302414605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302414607}
+  - component: {fileID: 1302414606}
+  m_Layer: 0
+  m_Name: '! AmsMultiSceneSetup'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1302414606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302414605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085c2289556c08443b40563cfe8016e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneSetupMode: 0
+  _sceneSetup: []
+  _isMainScene: 0
+  _version: 1
+  _thisScenePath: Assets/Imported/SiuniaevCharacters/01_GamblerCat/Scenes/Showcase.unity
+--- !u!4 &1302414607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302414605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1387209051
 GameObject:
   m_ObjectHideFlags: 0
@@ -5388,6 +5397,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1302414607}
   - {fileID: 1215305999}
   - {fileID: 368953603}
   - {fileID: 1463613594}
