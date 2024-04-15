@@ -70,15 +70,16 @@ public class ArmController : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves the arm with touch input
+    /// Moves the arm with touch input to the on-screen location
     /// </summary>
     /// <param name="context">The input context</param>
     public void MoveArmTouch(InputAction.CallbackContext context)
     {
         if (canMove && Cursor.lockState == CursorLockMode.Locked)
         {
-            mousePosition = new Vector3(context.ReadValue<Vector2>().x * 8 * 1.3f, context.ReadValue<Vector2>().y * 4 * 1.3f, 0);
-            transform.position = mousePosition;
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y, 15));
+            touchPosition.z = 0;
+            transform.position = touchPosition;
         }
     }
 
@@ -103,6 +104,37 @@ public class ArmController : MonoBehaviour
             }
             // 2nd condition is a bug workaround
             else if (!isSlamming && !context.performed || animator.GetBool("Slam") && !context.performed && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+            {
+                animator.ResetTrigger("Slam");
+                isSlamming = false;
+                canMove = true;
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].enabled = false;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handles the touch input for slamming the arm
+    /// </summary>
+    /// <param name="context">The input context</param>
+    public void SlamArmTouch(InputAction.CallbackContext context)
+    {
+        if (canSlam)
+        {
+            if (context.phase == InputActionPhase.Started)
+            {
+                animator.SetFloat("SlamSpeedMult", slamSpeedMultiplier);
+                animator.SetTrigger("Slam");
+                isSlamming = true;
+                for (int i = 0; i < trails.Count; i++)
+                {
+                    trails[i].enabled = true;
+                }
+            }
+            else if (context.phase == InputActionPhase.Canceled)
             {
                 animator.ResetTrigger("Slam");
                 isSlamming = false;

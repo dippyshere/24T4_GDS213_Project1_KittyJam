@@ -18,7 +18,7 @@
                     "name": "Slam",
                     "type": "Button",
                     "id": "b5d9158a-996b-4e21-a80c-044a8e690b08",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SlamTouch",
+                    "type": "Button",
+                    "id": "759aa334-0513-4574-b088-8284ee78466c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -80,23 +89,23 @@
                 },
                 {
                     "name": "",
-                    "id": "efdab938-9592-42c6-b8c1-a67f0eef9a26",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Slam",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "cfdf6594-7e1c-482a-8c74-b5975e1809db",
                     "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MoveTouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2a99f2a4-f721-4550-b7a1-6c62a8148f33",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlamTouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -110,7 +119,7 @@
                     "name": "Lane1",
                     "type": "Button",
                     "id": "d6ef2e90-2c78-4c69-b421-0d455b13c77f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -218,7 +227,7 @@
                     "name": "BeatUp",
                     "type": "Button",
                     "id": "0b5e2db3-31be-4590-b70a-9b08a03cf674",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -359,7 +368,7 @@
                     "name": "LeftLane1",
                     "type": "Button",
                     "id": "894ac557-47c1-4be0-8b2e-7e2e38ea6101",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -535,7 +544,7 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "083b3f7d-b8d2-475c-b8a3-0d3d75718904",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false

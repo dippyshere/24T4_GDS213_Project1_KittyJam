@@ -11,7 +11,7 @@ using UnityEditor;
 /// </summary>
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
-    Icon("Packages/com.unity.visualscripting/Editor/VisualScripting.Core/IconMap/UnityMessageListener@32x.png"),
+    Icon("Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_audio.png"),
     Tooltip("A scriptable object that contains data for a song"),
     HelpURL("https://discord.com/channels/@me/1137585685864402974/1214421770657071145")
 ]

@@ -21,6 +21,31 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
+        outSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: {x: 0.5996115, y: 0.59319854, z: 0.5964051}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      - serializedVersion: 3
+        time: 0.083333336
+        value: {x: 1, y: 1, z: 1}
+        inSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
+        outSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: {x: 0.5996115, y: 0.59319854, z: 0.5964051}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: SafeArea/GameSelection
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
         value: {x: 0.9, y: 0.9, z: 0.9}
         inSlope: {x: 0.04031353, y: -0.73301286, z: -0.6900939}
         outSlope: {x: 0.04031353, y: -0.73301286, z: -0.6900939}
@@ -40,32 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: SongShelf
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: {x: 1, y: 1, z: 1}
-        inSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
-        outSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: {x: 0.5996115, y: 0.59319854, z: 0.5964051}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.083333336
-        value: {x: 1, y: 1, z: 1}
-        inSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
-        outSlope: {x: 0.8649525, y: 0.8743034, z: 0.8696027}
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: {x: 0.5996115, y: 0.59319854, z: 0.5964051}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    path: GameSelection
+    path: SafeArea/SongShelf
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -74,15 +74,45 @@ AnimationClip:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 1
+        inSlope: 0.8838587
+        outSlope: 0.8838587
+        tangentMode: 0
         weightedMode: 3
-        inWeight: 0
+        inWeight: 0.58678555
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.083333336
         value: 1
+        inSlope: 0.8838587
+        outSlope: 0.8838587
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.58678555
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Alpha
+    path: SafeArea/GameSelection
+    classID: 225
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 1
+        weightedMode: 3
+        inWeight: 0.33333334
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 0
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 1
@@ -93,7 +123,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: SongShelf
+    path: SafeArea/GameSelection
     classID: 1
     script: {fileID: 0}
     flags: 0
@@ -123,7 +153,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Alpha
-    path: SongShelf
+    path: SafeArea/SongShelf
     classID: 225
     script: {fileID: 0}
     flags: 0
@@ -133,16 +163,16 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 1
         weightedMode: 3
-        inWeight: 0.33333334
-        outWeight: 0
+        inWeight: 0
+        outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.083333336
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 1
@@ -153,38 +183,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: GameSelection
+    path: SafeArea/SongShelf
     classID: 1
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0.8838587
-        outSlope: 0.8838587
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.58678555
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.8838587
-        outSlope: 0.8838587
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.58678555
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Alpha
-    path: GameSelection
-    classID: 225
     script: {fileID: 0}
     flags: 0
   - serializedVersion: 2
@@ -213,7 +213,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: SongShelfLeftButton/Icon
+    path: SafeArea/SongShelfLeftButton/Icon
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 0
@@ -243,7 +243,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: SongShelfRightButton/Icon
+    path: SafeArea/SongShelfRightButton/Icon
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 0
@@ -256,7 +256,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3368112298
+      path: 463095579
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -265,7 +265,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 581861319
+      path: 1102195936
       attribute: 3
       script: {fileID: 0}
       typeID: 4
@@ -274,16 +274,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3368112298
-      attribute: 2086281974
-      script: {fileID: 0}
-      typeID: 1
-      customType: 0
-      isPPtrCurve: 0
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
-    - serializedVersion: 2
-      path: 3368112298
+      path: 463095579
       attribute: 1574349066
       script: {fileID: 0}
       typeID: 225
@@ -292,7 +283,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 581861319
+      path: 463095579
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -301,7 +292,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 581861319
+      path: 1102195936
       attribute: 1574349066
       script: {fileID: 0}
       typeID: 225
@@ -310,7 +301,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 973366272
+      path: 1102195936
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
+      customType: 0
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 2906260792
       attribute: 304273561
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
@@ -319,7 +319,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3607717095
+      path: 4288471576
       attribute: 304273561
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
@@ -355,6 +355,216 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
+        value: 1
+        inSlope: 0.8838587
+        outSlope: 0.8838587
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.58678555
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: 0.8838587
+        outSlope: 0.8838587
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.58678555
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Alpha
+    path: SafeArea/GameSelection
+    classID: 225
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 1
+        weightedMode: 3
+        inWeight: 0.33333334
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 1
+        weightedMode: 3
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: SafeArea/GameSelection
+    classID: 1
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.8649525
+        outSlope: 0.8649525
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.5996115
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: 0.8649525
+        outSlope: 0.8649525
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.5996115
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.x
+    path: SafeArea/GameSelection
+    classID: 224
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.8743034
+        outSlope: 0.8743034
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.59319854
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: 0.8743034
+        outSlope: 0.8743034
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.59319854
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.y
+    path: SafeArea/GameSelection
+    classID: 224
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.8696027
+        outSlope: 0.8696027
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.5964051
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: 0.8696027
+        outSlope: 0.8696027
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.5964051
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalScale.z
+    path: SafeArea/GameSelection
+    classID: 224
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0.37087858
+        outSlope: 0.37087858
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.33333334
+        outWeight: 0.7851659
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: 0.87905496
+        outSlope: 0.87905496
+        tangentMode: 0
+        weightedMode: 3
+        inWeight: 0.5899921
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_Alpha
+    path: SafeArea/SongShelf
+    classID: 225
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 1
+        weightedMode: 3
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.083333336
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 1
+        weightedMode: 3
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: SafeArea/SongShelf
+    classID: 1
+    script: {fileID: 0}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
         value: 0.9
         inSlope: 0.04031353
         outSlope: 0.04031353
@@ -375,7 +585,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: SongShelf
+    path: SafeArea/SongShelf
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -405,7 +615,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: SongShelf
+    path: SafeArea/SongShelf
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -435,218 +645,8 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: SongShelf
+    path: SafeArea/SongShelf
     classID: 224
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 1
-        weightedMode: 3
-        inWeight: 0
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 1
-        weightedMode: 3
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: SongShelf
-    classID: 1
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0.37087858
-        outSlope: 0.37087858
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.33333334
-        outWeight: 0.7851659
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.87905496
-        outSlope: 0.87905496
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.5899921
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Alpha
-    path: SongShelf
-    classID: 225
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 1
-        weightedMode: 3
-        inWeight: 0.33333334
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 1
-        weightedMode: 3
-        inWeight: 0.33333334
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: GameSelection
-    classID: 1
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0.8649525
-        outSlope: 0.8649525
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.5996115
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.8649525
-        outSlope: 0.8649525
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.5996115
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalScale.x
-    path: GameSelection
-    classID: 224
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0.8743034
-        outSlope: 0.8743034
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.59319854
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.8743034
-        outSlope: 0.8743034
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.59319854
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalScale.y
-    path: GameSelection
-    classID: 224
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0.8696027
-        outSlope: 0.8696027
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.5964051
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.8696027
-        outSlope: 0.8696027
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.5964051
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalScale.z
-    path: GameSelection
-    classID: 224
-    script: {fileID: 0}
-    flags: 0
-  - serializedVersion: 2
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0.8838587
-        outSlope: 0.8838587
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.58678555
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.083333336
-        value: 1
-        inSlope: 0.8838587
-        outSlope: 0.8838587
-        tangentMode: 0
-        weightedMode: 3
-        inWeight: 0.58678555
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Alpha
-    path: GameSelection
-    classID: 225
     script: {fileID: 0}
     flags: 0
   - serializedVersion: 2
@@ -675,7 +675,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: SongShelfLeftButton/Icon
+    path: SafeArea/SongShelfLeftButton/Icon
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 0
@@ -705,7 +705,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.a
-    path: SongShelfRightButton/Icon
+    path: SafeArea/SongShelfRightButton/Icon
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 0
