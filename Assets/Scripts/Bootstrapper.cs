@@ -17,6 +17,14 @@ public class Bootstrapper : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (Application.isMobilePlatform)
+        {
+            Application.targetFrameRate = Mathf.CeilToInt((float)Screen.currentResolution.refreshRateRatio.value);
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
+        }
         bootstrapCanvasGroup = GetComponent<CanvasGroup>();
         bootstrapCanvasGroup.alpha = 1;
 
