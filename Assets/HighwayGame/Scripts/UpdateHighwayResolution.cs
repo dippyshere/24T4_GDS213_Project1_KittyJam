@@ -15,6 +15,20 @@ public class UpdateHighwayResolution : MonoBehaviour
     {
         highwayRawImage = GetComponent<RawImage>();
         StartCoroutine(UpdateResolution());
+        StartCoroutine(WaitUntilCanvasCameraExists());
+    }
+
+    private IEnumerator WaitUntilCanvasCameraExists()
+    {
+        while (true)
+        {
+            if (highwayRawImage.canvas.worldCamera != null)
+            {
+                break;
+            }
+            yield return null;
+        }
+        highwayRawImage.enabled = true;
     }
 
     private IEnumerator UpdateResolution()

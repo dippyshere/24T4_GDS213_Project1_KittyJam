@@ -81,7 +81,7 @@ public class Bootstrapper : MonoBehaviour
         bootstrapCanvasGroup.alpha = 1;
         while (bootstrapCanvasGroup.alpha > 0)
         {
-            bootstrapCanvasGroup.alpha -= Time.deltaTime * 2;
+            bootstrapCanvasGroup.alpha -= Time.unscaledDeltaTime * 2;
             yield return null;
         }
         SceneManager.UnloadSceneAsync(gameObject.scene);

@@ -162,6 +162,8 @@ public class SongManager : MonoBehaviour
             }
         }
 
+        yield return new WaitUntil(() => Time.timeScale != 0);
+
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
     }

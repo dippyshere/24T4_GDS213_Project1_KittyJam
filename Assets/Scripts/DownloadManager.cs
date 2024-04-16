@@ -108,6 +108,7 @@ public class DownloadManager : MonoBehaviour
         if (sceneLoadInfo!= null && sceneLoadInfo.useTransition && TransitionManager.Instance != null)
         {
             TransitionManager.Instance.StartTransition();
+            Time.timeScale = 0f;
         }
         downloadProgress.gameObject.SetActive(true);
         downloadProgress.value = 0;
@@ -115,7 +116,7 @@ public class DownloadManager : MonoBehaviour
         canvasGroup.alpha = 0;
         while (canvasGroup.alpha < 1)
         {
-            canvasGroup.alpha += Time.deltaTime * 2;
+            canvasGroup.alpha += Time.unscaledDeltaTime * 2;
             yield return null;
         }
 
@@ -375,6 +376,7 @@ public class DownloadManager : MonoBehaviour
                     yield return null;
                 }
                 TransitionManager.Instance.EndTransition();
+                Time.timeScale = 1;
             }
 
             downloadProgress.value = 1;
@@ -384,7 +386,7 @@ public class DownloadManager : MonoBehaviour
 
         while (canvasGroup.alpha > 0)
         {
-            canvasGroup.alpha -= Time.deltaTime * 2;
+            canvasGroup.alpha -= Time.unscaledDeltaTime * 2;
             yield return null;
         }
 

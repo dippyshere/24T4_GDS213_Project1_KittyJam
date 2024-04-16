@@ -173,8 +173,8 @@ public class SongSelectionManager : MonoBehaviour
         float startVolume = audioSources[activeAudioSource].volume;
         while (audioSources[activeAudioSource].volume > 0)
         {
-            audioSources[activeAudioSource].volume -= startVolume * Time.deltaTime / 1;
-            audioSources[otherAudioSource].volume -= startVolume * Time.deltaTime / 1;
+            audioSources[activeAudioSource].volume -= startVolume * Time.unscaledDeltaTime / 1;
+            audioSources[otherAudioSource].volume -= startVolume * Time.unscaledDeltaTime / 1;
             yield return null;
         }
         audioSources[activeAudioSource].Stop();

@@ -132,6 +132,20 @@ MonoBehaviour:
     - songdata
     - thespark
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be59a896e8fc1db4da851cca7879ea0f
+    m_Address: Assets/Songs/Stuck In My Head.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songdata
+    - stuckinmyhead
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be4710cb5dfa79f4591334a28d03e13d
+    m_Address: Assets/Audio/kittyjam stuckinmyhead.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - songasset
+    - stuckinmyhead
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

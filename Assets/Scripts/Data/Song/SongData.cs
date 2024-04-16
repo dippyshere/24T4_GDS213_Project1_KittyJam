@@ -11,7 +11,7 @@ using UnityEditor;
 /// </summary>
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
-    Icon("Assets/Plugins/Demigiant/DemiLib/Core/Editor/Imgs/project/ico_audio.png"),
+    Icon("Assets/Menu/Textures/kittyjam placeholder cover.png"),
     Tooltip("A scriptable object that contains data for a song"),
     HelpURL("https://discord.com/channels/@me/1137585685864402974/1214421770657071145")
 ]
@@ -157,56 +157,56 @@ public enum Genre
     Other
 }
 
-/// <summary>
-/// A custom inspector for the SongData class to display the album cover in the inspector
-/// </summary>
-#if UNITY_EDITOR
-[
-    CustomEditor(typeof(SongData), true),
-    CanEditMultipleObjects
-]
-public class SongDataEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-    }
+///// <summary>
+///// A custom inspector for the SongData class to display the album cover in the inspector
+///// </summary>
+//#if UNITY_EDITOR
+//[
+//    CustomEditor(typeof(SongData), true),
+//    CanEditMultipleObjects
+//]
+//public class SongDataEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
+//    }
 
-    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
-    {
-        try
-        {
-            SongData songData = (SongData)target;
-            if (songData == null || songData.AlbumCover == null)
-            {
-                return null;
-            }
-            Texture2D source = songData.AlbumCover.texture;
-            RenderTexture renderTex = RenderTexture.GetTemporary(
-                source.width,
-                source.height,
-                0,
-                RenderTextureFormat.Default,
-                RenderTextureReadWrite.Linear);
+//    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
+//    {
+//        try
+//        {
+//            SongData songData = (SongData)target;
+//            if (songData == null || songData.AlbumCover == null)
+//            {
+//                return null;
+//            }
+//            Texture2D source = songData.AlbumCover.texture;
+//            RenderTexture renderTex = RenderTexture.GetTemporary(
+//                source.width,
+//                source.height,
+//                0,
+//                RenderTextureFormat.Default,
+//                RenderTextureReadWrite.Linear);
 
-            Graphics.Blit(source, renderTex);
-            RenderTexture previous = RenderTexture.active;
-            RenderTexture.active = renderTex;
-            Texture2D readableText = new Texture2D(source.width, source.height);
-            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
-            readableText.Apply();
-            RenderTexture.active = previous;
-            RenderTexture.ReleaseTemporary(renderTex);
-            EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
-            return readableText;
-        }
-        catch
-        {
-            return null;
-        }
-    }
-}
-#endif
+//            Graphics.Blit(source, renderTex);
+//            RenderTexture previous = RenderTexture.active;
+//            RenderTexture.active = renderTex;
+//            Texture2D readableText = new Texture2D(source.width, source.height);
+//            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+//            readableText.Apply();
+//            RenderTexture.active = previous;
+//            RenderTexture.ReleaseTemporary(renderTex);
+//            EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
+//            return readableText;
+//        }
+//        catch
+//        {
+//            return null;
+//        }
+//    }
+//}
+//#endif
 
 /// <summary>
 /// This class is used to reference a song data asset in the project.

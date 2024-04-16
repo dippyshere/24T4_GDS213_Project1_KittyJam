@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf42daa988b7eb4e9bf72386e8f77b6, type: 3}
+  m_Name: Stuck In My Head
+  m_EditorClassIdentifier: 
+  songName: Stuck In My Head
+  artistName: Dommyboy
+  albumName: Kitty Jam OST
+  genre: 6
+  year: 2024
+  songLength: 166
+  usageLicense: 3
+  priority: 998
+  discordIconKey: stuckinmyhead
+  midiName: kittyjam stuckinmyhead.mid
+  songAudio: {fileID: 8300000, guid: be4710cb5dfa79f4591334a28d03e13d, type: 3}
+  albumCover: {fileID: 21300000, guid: 240d129290856ce4ea861904788b0162, type: 3}
+  bpm: 170
+  previewStart: 45.274
+  previewEnd: 93.852
+  loopPoint: 20.381
+  gameModes:
+  - gameType: 0
+    supportedInstruments:
+    - instrumentType: 2
+      difficulty: 3
+    leaderboardID: 
+  - gameType: 1
+    supportedInstruments:
+    - instrumentType: 3
+      difficulty: 4
+    leaderboardID: 

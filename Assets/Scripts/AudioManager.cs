@@ -73,7 +73,7 @@ public class AudioManager : MonoBehaviour
 
         while (audioSource.volume > 0)
         {
-            audioSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+            audioSource.volume -= startVolume * Time.unscaledDeltaTime / fadeDuration;
             yield return null;
         }
 
@@ -94,7 +94,7 @@ public class AudioManager : MonoBehaviour
 
         while (audioSource.volume < 1)
         {
-            audioSource.volume += Time.deltaTime / fadeDuration;
+            audioSource.volume += Time.unscaledDeltaTime / fadeDuration;
             yield return null;
         }
 
