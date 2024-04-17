@@ -100,7 +100,6 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ReturnToMenu()
     {
-        Time.timeScale = 1f;
         DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: menuLevelData);
     }
 }
