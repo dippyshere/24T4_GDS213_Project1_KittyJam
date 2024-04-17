@@ -82,7 +82,7 @@ public class GameSelectionManager : MonoBehaviour
                         if (!leaderboardLoaded && gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                         {
                             leaderboardLoaded = true;
-                            LoadGame1Leaderboard();
+                            StartDelayedLeaderboardLoading(1);
                         }
                         break;
                     case GameType.HighwayGame:
@@ -91,7 +91,7 @@ public class GameSelectionManager : MonoBehaviour
                         if (!leaderboardLoaded && gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                         {
                             leaderboardLoaded = true;
-                            LoadGame2Leaderboard();
+                            StartDelayedLeaderboardLoading(2);
                         }
                         break;
                     case GameType.MarchingGame:
@@ -100,7 +100,7 @@ public class GameSelectionManager : MonoBehaviour
                         if (!leaderboardLoaded && gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                         {
                             leaderboardLoaded = true;
-                            LoadGame3Leaderboard();
+                            StartDelayedLeaderboardLoading(3);
                         }
                         break;
                     case GameType.BongoGame:
@@ -109,11 +109,47 @@ public class GameSelectionManager : MonoBehaviour
                         if (!leaderboardLoaded && gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                         {
                             leaderboardLoaded = true;
-                            LoadGame4Leaderboard();
+                            StartDelayedLeaderboardLoading(4);
                         }
                         break;
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Starts the delayed loading of the leaderboard
+    /// </summary>
+    /// <param name="gameTypeIndex">The index of the game type</param>
+    public void StartDelayedLeaderboardLoading(int gameTypeIndex)
+    {
+        StopCoroutine(nameof(DelayedLeaderboardLoading));
+        StartCoroutine(DelayedLeaderboardLoading(gameTypeIndex));
+    }
+
+    /// <summary>
+    /// Delays the loading of the leaderboard to prevent rate limiting and other issues
+    /// </summary>
+    /// <param name="gameTypeIndex">The index of the game type</param>
+    /// <returns>The IEnumerator for the coroutine</returns>
+    private IEnumerator DelayedLeaderboardLoading(int gameTypeIndex)
+    {
+        ClearLeaderboard();
+        yield return new WaitForSeconds(0.35f);
+        switch (gameTypeIndex)
+        {
+            case 1:
+                LoadGame1Leaderboard();
+                break;
+            case 2:
+                LoadGame2Leaderboard();
+                break;
+            case 3:
+                LoadGame3Leaderboard();
+                break;
+            case 4:
+                LoadGame4Leaderboard();
+                break;
         }
     }
 
@@ -146,7 +182,7 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 8 });
+                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
                     if (scoresResponse != null)
                     {
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
@@ -178,7 +214,7 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 8 });
+                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
                     if (scoresResponse != null)
                     {
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
@@ -210,7 +246,7 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 8 });
+                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
                     if (scoresResponse != null)
                     {
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
@@ -242,9 +278,10 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 8 });
+                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
                     if (scoresResponse != null)
                     {
+                        ClearLeaderboard();
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
                         {
                             GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);

@@ -13,16 +13,24 @@ public class MobileOnlyUI : MonoBehaviour
         if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop)
         {
             if (mobileOnlyImage != null)
-            mobileOnlyImage.enabled = true;
+            {
+                mobileOnlyImage.enabled = true;
+            }
             if (mobileOnlySprite != null)
-            mobileOnlySprite.enabled = true;
+                {
+                mobileOnlySprite.enabled = true;
+            }
         }
         else
         {
             if (mobileOnlyImage != null)
-            mobileOnlyImage.enabled = false;
+            {
+                mobileOnlyImage.enabled = false;
+            }
             if (mobileOnlySprite != null)
-            mobileOnlySprite.enabled = false;
+            {
+                mobileOnlySprite.enabled = false;
+            }
         }
     }
 }
