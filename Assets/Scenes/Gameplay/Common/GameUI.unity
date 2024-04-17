@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobileOnlyImage: {fileID: 1242624032}
+  mobileOnlySprite: {fileID: 0}
 --- !u!1 &1480270154
 GameObject:
   m_ObjectHideFlags: 0

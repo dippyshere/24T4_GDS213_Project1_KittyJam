@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3829379119096111655}
   - component: {fileID: 6752054832921833191}
+  - component: {fileID: 105132185221698078}
   m_Layer: 7
   m_Name: Keybind
   m_TagString: Untagged
@@ -168,6 +169,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &105132185221698078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857582761297555615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a044dd3b3bcade44a1059b41a8e481e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileOnlyImage: {fileID: 0}
+  mobileOnlySprite: {fileID: 6752054832921833191}
 --- !u!1 &5099567531379797039
 GameObject:
   m_ObjectHideFlags: 0
