@@ -153,6 +153,11 @@ public class SongTileManager : MonoBehaviour
     /// </summary>
     public void OnHover()
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS_SelectionChanged();
+#else
+        Vibration.VibratePop();
+#endif
         if (isSongTile && tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
         {
             SongSelectionManager.instance.ChangeSong(this);
@@ -166,6 +171,11 @@ public class SongTileManager : MonoBehaviour
     /// </summary>
     public void OnClick()
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+        Vibration.VibratePeek();
+#endif
         if (isSongTile && songData != null)
         {
             GameObject.Find("EventSystem").GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);

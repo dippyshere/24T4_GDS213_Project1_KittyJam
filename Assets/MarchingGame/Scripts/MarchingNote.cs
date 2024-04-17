@@ -20,7 +20,15 @@ public class MarchingNote : MonoBehaviour
     {
         if (other.CompareTag("Star"))
         {
-            ScoreManager.Instance.Hit(0, transform.position, true);
+            NoteFeedback feedbackType = ScoreManager.Instance.Hit(0, transform.position, true);
+            if (feedbackType == NoteFeedback.Perfect || feedbackType == NoteFeedback.Good)
+            {
+#if UNITY_IOS
+                Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+                Vibration.VibratePop();
+#endif
+            }
             Destroy(gameObject);
         }
     }

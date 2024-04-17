@@ -22,11 +22,14 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        originalPosition = transform.position;
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        originalPosition = transform.position;
+        Vibration.Init();
+        yield return new WaitForSeconds(2);
+        gameObject.GetComponent<Animator>().enabled = false;
     }
 
     /// <summary>
@@ -37,12 +40,17 @@ public class CameraController : MonoBehaviour
     /// <returns>The IEnumerator for the coroutine</returns>
     public IEnumerator ShakeCamera(float intensity, float duration)
     {
-        cameraShakeBeginCallback?.Invoke(intensity * shakeMultiplier, duration);
+#if UNITY_IOS
+        Vibration.VibrateIOS(ImpactFeedbackStyle.Soft);
+#else
+        Vibration.VibratePeek();
+#endif
+        cameraShakeBeginCallback?.Invoke(intensity * shakeMultiplier * 0.9f, duration);
         float timer = 0;
         while (timer < duration)
         {
             intensity = Mathf.Lerp(intensity, 0, timer / duration);
-            transform.position = originalPosition + Random.insideUnitSphere * intensity * shakeMultiplier;
+            transform.position = originalPosition + intensity * shakeMultiplier * Random.insideUnitSphere;
             timer += Time.unscaledDeltaTime;
             yield return null;
         }

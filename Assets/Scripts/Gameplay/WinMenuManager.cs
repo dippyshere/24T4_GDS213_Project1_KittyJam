@@ -7,7 +7,7 @@ using Unity.Services.Leaderboards;
 using TMPro;
 using System.Globalization;
 using Unity.Services.Leaderboards.Models;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// Handles the win menu UI
@@ -64,7 +64,7 @@ public class WinMenuManager : MonoBehaviour
         PauseMenuManager.Instance.ReturnToMenu();
     }
 
-    public async Task SubmitLeaderboardScore()
+    public async UniTask SubmitLeaderboardScore()
     {
         leaderboardSubmissionStatus.text = "Submitting...";
         SongData songData = SongManager.Instance.songData;

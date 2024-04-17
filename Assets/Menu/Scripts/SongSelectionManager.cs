@@ -28,6 +28,7 @@ public class SongSelectionManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        Vibration.Init();
         PopulateSongList();
         selectionUIAnimator.SetBool("ShowSongUI", true);
         DiscordRPCManager.Instance.UpdateActivity(details: "Selecting a song", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "kittyjam_cover", largeImageText: "Kitty Jam");

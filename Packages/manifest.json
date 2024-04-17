@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "com.benoitfreslon.vibration": "https://github.com/BenoitFreslon/Vibration.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.kuraiandras.linkergenerator": "2.0.0",
     "com.starasgames.tmpro-dynamic-data-cleaner": "https://github.com/STARasGAMES/tmpro-dynamic-data-cleaner.git#upm",
     "com.unity.2d.aseprite": "1.1.2",

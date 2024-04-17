@@ -1,17 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
-using Unity.Services.Core;
-using Unity.Services.Authentication;
 using Unity.Services.Leaderboards;
-using Newtonsoft.Json;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 using Unity.Services.Leaderboards.Models;
 
 /// <summary>
@@ -39,6 +33,7 @@ public class GameSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("The leaderboard entry parent")] private Transform leaderboardEntryParent;
     [SerializeField, Tooltip("Reference to the text containging the leaderboard title")] private TextMeshProUGUI leaderboardTitle;
     [Tooltip("The cached songData object")] private SongData cachedSongData;
+    [Tooltip("The currently loading leaderboard game type")] private int loadingLeaderboardGameType;
 
     /// <summary>
     /// Handles the update of the game selection screen
@@ -72,6 +67,7 @@ public class GameSelectionManager : MonoBehaviour
             }
             songTitle.text = songData.SongName;
             songArtist.text = songData.ArtistName;
+            yield return new WaitUntil(() => gameObject.activeInHierarchy);
             foreach (GameMode gameMode in songData.GameModes)
             {
                 switch (gameMode.GameType)
@@ -124,6 +120,10 @@ public class GameSelectionManager : MonoBehaviour
     public void StartDelayedLeaderboardLoading(int gameTypeIndex)
     {
         StopCoroutine(nameof(DelayedLeaderboardLoading));
+        StopCoroutine(nameof(LoadGame1Leaderboard));
+        StopCoroutine(nameof(LoadGame2Leaderboard));
+        StopCoroutine(nameof(LoadGame3Leaderboard));
+        StopCoroutine(nameof(LoadGame4Leaderboard));
         StartCoroutine(DelayedLeaderboardLoading(gameTypeIndex));
     }
 
@@ -135,7 +135,8 @@ public class GameSelectionManager : MonoBehaviour
     private IEnumerator DelayedLeaderboardLoading(int gameTypeIndex)
     {
         ClearLeaderboard();
-        yield return new WaitForSeconds(0.35f);
+        loadingLeaderboardGameType = gameTypeIndex;
+        yield return new WaitForSeconds(0.4f);
         switch (gameTypeIndex)
         {
             case 1:
@@ -158,6 +159,11 @@ public class GameSelectionManager : MonoBehaviour
     /// </summary>
     private void ClearLeaderboard()
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS_SelectionChanged();
+#else
+        Vibration.VibratePop();
+#endif
         leaderboardTitle.text = "Loading...";
         foreach (Transform child in leaderboardEntryParent)
         {
@@ -183,8 +189,9 @@ public class GameSelectionManager : MonoBehaviour
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
                     LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null)
+                    if (scoresResponse != null || loadingLeaderboardGameType == 1)
                     {
+                        ClearLeaderboard();
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
                         {
                             GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
@@ -215,8 +222,9 @@ public class GameSelectionManager : MonoBehaviour
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
                     LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null)
+                    if (scoresResponse != null || loadingLeaderboardGameType == 2)
                     {
+                        ClearLeaderboard();
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
                         {
                             GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
@@ -247,8 +255,9 @@ public class GameSelectionManager : MonoBehaviour
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
                     LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null)
+                    if (scoresResponse != null || loadingLeaderboardGameType == 3)
                     {
+                        ClearLeaderboard();
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
                         {
                             GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
@@ -279,7 +288,7 @@ public class GameSelectionManager : MonoBehaviour
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
                     LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null)
+                    if (scoresResponse != null || loadingLeaderboardGameType == 4)
                     {
                         ClearLeaderboard();
                         foreach (LeaderboardEntry entry in scoresResponse.Results)
@@ -300,6 +309,11 @@ public class GameSelectionManager : MonoBehaviour
     /// <param name="gameType">The game type to load</param>
     public void LoadGameOnboarding(int gameType)
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+        Vibration.VibratePeek();
+#endif
         StartCoroutine(LoadGameScene(gameType));
     }
 

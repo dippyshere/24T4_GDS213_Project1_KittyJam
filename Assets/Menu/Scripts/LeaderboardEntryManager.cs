@@ -9,7 +9,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Leaderboards.Models;
 using Unity.Services.CloudSave;
 using Unity.Services.CloudSave.Models.Data.Player;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// Controls the appearance of the leaderboard entry, and handles adding correct stats to the entry.
@@ -92,7 +92,7 @@ public class LeaderboardEntryManager : MonoBehaviour
             }
         }
 
-        await Task.Delay(Random.Range(10, 800));
+        await UniTask.Delay(Random.Range(10, 600));
 
         var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions(leaderboardEntry.PlayerId)));
         if (playerData.TryGetValue("profileIndex", out var keyName))

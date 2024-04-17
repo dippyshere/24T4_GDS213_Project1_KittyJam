@@ -61,6 +61,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        Vibration.Init();
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
         multiplierEvent?.Invoke(multiplier);
@@ -104,6 +105,11 @@ public class ScoreManager : MonoBehaviour
     /// <param name="noteFeedback">The type of feedback to display</param>
     public void Miss(Vector3 position, NoteFeedback noteFeedback = NoteFeedback.Miss, bool isAlternateNote = false)
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+#else
+        Vibration.VibrateNope();
+#endif
         if (isAlternateNote)
         {
             alternateNoteScoreEvent?.Invoke(noteFeedback, position);
@@ -127,8 +133,7 @@ public class ScoreManager : MonoBehaviour
         }
         catch (System.Exception)
         {
-
-            throw;
+            
         }
     }
 

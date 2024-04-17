@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class MobileOnlyUI : MonoBehaviour
 {
     [SerializeField, Tooltip("The image to enable when the game is running on mobile")] private Image mobileOnlyImage;
-    [SerializeField, Tooltip("The sprite to enable when the game is running on mobile")] private SpriteRenderer mobileOnlySprite;
+    [SerializeField, Tooltip("The sprite to disable when the game is running on mobile")] private SpriteRenderer mobileOnlySprite;
 
     void Start()
     {
-        if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop)
+        if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop || Application.isMobilePlatform)
         {
             if (mobileOnlyImage != null)
             {
                 mobileOnlyImage.enabled = true;
             }
             if (mobileOnlySprite != null)
-                {
-                mobileOnlySprite.enabled = true;
+            {
+                mobileOnlySprite.enabled = false;
             }
         }
         else
@@ -29,7 +29,7 @@ public class MobileOnlyUI : MonoBehaviour
             }
             if (mobileOnlySprite != null)
             {
-                mobileOnlySprite.enabled = false;
+                mobileOnlySprite.enabled = true;
             }
         }
     }

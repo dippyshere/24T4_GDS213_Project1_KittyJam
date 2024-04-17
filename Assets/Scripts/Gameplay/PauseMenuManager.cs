@@ -26,6 +26,7 @@ public class PauseMenuManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Vibration.Init();
     }
 
     private IEnumerator Start()
@@ -59,6 +60,11 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void EnablePause()
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+        Vibration.VibratePop();
+#endif
         CursorController.Instance.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
@@ -71,6 +77,11 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void DisablePause()
     {
+#if UNITY_IOS
+        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+        Vibration.VibratePop();
+#endif
         CursorController.Instance.LockCursor();
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;

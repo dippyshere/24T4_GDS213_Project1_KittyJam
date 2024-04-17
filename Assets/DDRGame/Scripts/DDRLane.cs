@@ -74,6 +74,11 @@ public class DDRLane : MonoBehaviour
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {
+#if UNITY_IOS
+                Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+#else
+                Vibration.VibratePop();
+#endif
                 Destroy(notes[inputIndex].gameObject);
                 inputIndex++;
             }
