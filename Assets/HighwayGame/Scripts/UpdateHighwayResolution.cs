@@ -33,15 +33,17 @@ public class UpdateHighwayResolution : MonoBehaviour
 
     private IEnumerator UpdateResolution()
     {
+        yield return new WaitForEndOfFrame();
         while (true)
         {
             if (Screen.height != previousScreenHeight)
             {
                 previousScreenHeight = Screen.height;
+                RectTransform parentRectTransform = highwayRawImage.transform.parent.GetComponent<RectTransform>();
                 RenderTexture currentRT = highwayRawImage.texture as RenderTexture;
                 currentRT.Release();
-                currentRT.height = Screen.height;
-                currentRT.width = Screen.height;
+                currentRT.height = (int)(Screen.height * 0.75f * 1.2f * (parentRectTransform.anchorMax.y - parentRectTransform.anchorMin.y));
+                currentRT.width = (int)(Screen.height * 1.2f * (parentRectTransform.anchorMax.y - parentRectTransform.anchorMin.y));
                 currentRT.Create();
             }
             yield return new WaitForSecondsRealtime(0.5f);

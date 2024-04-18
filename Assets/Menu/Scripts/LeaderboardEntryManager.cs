@@ -9,6 +9,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Leaderboards.Models;
 using Unity.Services.CloudSave;
 using Unity.Services.CloudSave.Models.Data.Player;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// Controls the appearance of the leaderboard entry, and handles adding correct stats to the entry.
@@ -91,6 +92,8 @@ public class LeaderboardEntryManager : MonoBehaviour
             }
         }
 
+        await UniTask.Delay(Random.Range(10, 600));
+
         var playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions(leaderboardEntry.PlayerId)));
         if (playerData.TryGetValue("profileIndex", out var keyName))
         {
@@ -99,7 +102,10 @@ public class LeaderboardEntryManager : MonoBehaviour
                 string profileIconPath = "Assets/Textures/ProfilePictures/" + keyName.Value.GetAs<int>() + ".png";
                 Addressables.LoadAssetAsync<Sprite>(profileIconPath).Completed += (op) =>
                 {
-                    profilePicture.sprite = op.Result;
+                    if (profilePicture != null)
+                    {
+                        profilePicture.sprite = op.Result;
+                    }
                 };
             }
         }
@@ -111,16 +117,12 @@ public class LeaderboardEntryManager : MonoBehaviour
         {
             return "th";
         }
-        switch (rank % 10)
+        return (rank % 10) switch
         {
-            case 1:
-                return "st";
-            case 2:
-                return "nd";
-            case 3:
-                return "rd";
-            default:
-                return "th";
-        }
+            1 => "st",
+            2 => "nd",
+            3 => "rd",
+            _ => "th",
+        };
     }
 }

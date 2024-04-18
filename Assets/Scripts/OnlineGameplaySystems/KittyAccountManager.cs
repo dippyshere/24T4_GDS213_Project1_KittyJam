@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
@@ -17,14 +17,15 @@ public class KittyAccountManager : MonoBehaviour
     async void Awake()
     {
         Instance = this;
-
+#if UNITY_IOS || UNITY_ANDROID
+        Vibration.Init();
+#endif
         try
         {
-#if UNITY_EDITOR
             InitializationOptions options = new();
+#if UNITY_EDITOR
             options.SetEnvironmentName("dev");
 #else
-            InitializationOptions options = new();
             options.SetEnvironmentName("production");
 #endif
             await UnityServices.InitializeAsync(options);
@@ -39,11 +40,23 @@ public class KittyAccountManager : MonoBehaviour
     /// Creates a new account with an anonymous login.
     /// </summary>
     /// <returns>The task of the sign-in process.</returns>
-    public async Task SignInAnonymouslyAsync()
+    public async UniTask SignInAnonymouslyAsync()
     {
         try
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibratePeek();
+#endif
             Debug.Log("Sign in anonymously succeeded!");
 
             // Shows how to get the playerID
@@ -52,12 +65,36 @@ public class KittyAccountManager : MonoBehaviour
         }
         catch (AuthenticationException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
@@ -70,21 +107,57 @@ public class KittyAccountManager : MonoBehaviour
     /// <param name="username">The username to use for the account.</param>
     /// <param name="password">The password to use for the account.</param>
     /// <returns>The task of the sign-up process.</returns>
-    public async Task SignUpWithUsernamePasswordAsync(string username, string password)
+    public async UniTask SignUpWithUsernamePasswordAsync(string username, string password)
     {
         try
         {
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibratePeek();
+#endif
             Debug.Log("SignUp is successful.");
         }
         catch (AuthenticationException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
@@ -97,21 +170,57 @@ public class KittyAccountManager : MonoBehaviour
     /// <param name="username">The username to use for the account.</param>
     /// <param name="password">The password to use for the account.</param>
     /// <returns>The task of the sign-in process.</returns>
-    public async Task SignInWithUsernamePasswordAsync(string username, string password)
+    public async UniTask SignInWithUsernamePasswordAsync(string username, string password)
     {
         try
         {
             await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibratePeek();
+#endif
             Debug.Log("SignIn is successful.");
         }
         catch (AuthenticationException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
@@ -124,21 +233,57 @@ public class KittyAccountManager : MonoBehaviour
     /// <param name="username">The username to use for the account.</param>
     /// <param name="password">The password to use for the account.</param>
     /// <returns>The task of the upgrade process.</returns>
-    public async Task AddUsernamePasswordAsync(string username, string password)
+    public async UniTask AddUsernamePasswordAsync(string username, string password)
     {
         try
         {
             await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibratePeek();
+#endif
             Debug.Log("Username and password added.");
         }
         catch (AuthenticationException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
@@ -151,21 +296,57 @@ public class KittyAccountManager : MonoBehaviour
     /// <param name="currentPassword">The current password of the account.</param>
     /// <param name="newPassword">The new password to use for the account.</param>
     /// <returns>The task of the password update process.</returns>
-    public async Task UpdatePasswordAsync(string currentPassword, string newPassword)
+    public async UniTask UpdatePasswordAsync(string currentPassword, string newPassword)
     {
         try
         {
             await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword, newPassword);
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibratePeek();
+#endif
             Debug.Log("Password updated.");
         }
         catch (AuthenticationException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to AuthenticationErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);
         }
         catch (RequestFailedException ex)
         {
+#if UNITY_IOS
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
+            Vibration.VibrateNope();
+#endif
             // Compare error code to CommonErrorCodes
             // Notify the player with the proper error message
             Debug.LogException(ex);

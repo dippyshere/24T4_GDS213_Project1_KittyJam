@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7379951634262797926
 Transform:
@@ -94,12 +94,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3829379119096111655}
   - component: {fileID: 6752054832921833191}
+  - component: {fileID: 105132185221698078}
   m_Layer: 7
   m_Name: Keybind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3829379119096111655
 Transform:
@@ -168,6 +169,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &105132185221698078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857582761297555615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a044dd3b3bcade44a1059b41a8e481e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileOnlyImage: {fileID: 0}
+  mobileOnlySprite: {fileID: 6752054832921833191}
 --- !u!1 &5099567531379797039
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +198,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 64
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5208183817420050822
 Transform:
@@ -215,6 +230,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNumber: 64
-  input: 0
   notePrefab: {fileID: 1679635116095923819, guid: 13a22231298e1c34db54f39b014dc210,
     type: 3}

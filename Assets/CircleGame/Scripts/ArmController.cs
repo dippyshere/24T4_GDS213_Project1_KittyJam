@@ -152,7 +152,7 @@ public class ArmController : MonoBehaviour
     /// </summary>
     public void OnSlam()
     {
-        CameraController.Instance.StartCoroutine(CameraController.Instance.ShakeCamera(0.15f, 5f));
+        CameraController.Instance.StartCoroutine(CameraController.Instance.ShakeCamera(0.16f, 5f));
         StartCoroutine(SpawnSlamEffect());
     }
 

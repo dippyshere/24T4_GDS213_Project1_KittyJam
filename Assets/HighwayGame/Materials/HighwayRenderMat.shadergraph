@@ -710,7 +710,7 @@
             "m_SerializedMesh": "{\"mesh\":{\"fileID\":10210,\"guid\":\"0000000000000000e000000000000000\",\"type\":0}}",
             "m_Guid": ""
         },
-        "preventRotation": true
+        "preventRotation": false
     },
     "m_Path": "Shader Graphs",
     "m_GraphPrecision": 0,
@@ -907,13 +907,13 @@
             "x": 1.0,
             "y": 1.0,
             "z": 1.0,
-            "w": 0.5100023150444031
+            "w": 0.5400015115737915
         },
         {
             "x": 0.0,
             "y": 0.0,
             "z": 0.0,
-            "w": 0.5300068855285645
+            "w": 0.5649958252906799
         }
     ],
     "m_SerializableAlphaKeys": [
@@ -1403,7 +1403,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0,
-        "y": -0.07999999821186066
+        "y": 0.23999999463558198
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -1592,7 +1592,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Rotation",
     "m_StageCapability": 3,
-    "m_Value": 53.5,
+    "m_Value": 67.55000305175781,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }
@@ -2963,7 +2963,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
-        "y": -0.07999999821186066
+        "y": 0.23999999463558198
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -3919,7 +3919,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Rotation",
     "m_StageCapability": 3,
-    "m_Value": -53.5,
+    "m_Value": -67.5,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }

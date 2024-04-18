@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
+using System;
 
 /// <summary>
 /// Callback for pausing or unpausing the gameplay
@@ -26,6 +27,9 @@ public class PauseMenuManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+#if UNITY_IOS || UNITY_ANDROID
+        Vibration.Init();
+#endif
     }
 
     private IEnumerator Start()
@@ -59,6 +63,18 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void EnablePause()
     {
+#if UNITY_IOS
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
+        Vibration.VibratePop();
+#endif
         CursorController.Instance.UnlockCursor();
         Time.timeScale = 0f;
         postProcessVolume.profile = upgradePostProcess;
@@ -71,6 +87,18 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void DisablePause()
     {
+#if UNITY_IOS
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
+        Vibration.VibratePop();
+#endif
         CursorController.Instance.LockCursor();
         Time.timeScale = 1f;
         postProcessVolume.profile = defaultPostProcess;
@@ -100,7 +128,6 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void ReturnToMenu()
     {
-        Time.timeScale = 1f;
         DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: menuLevelData);
     }
 }

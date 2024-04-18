@@ -77,36 +77,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - bongogame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a9c8318ea5c5f9c439908c36acb6188f
-    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase/Lightmap-0_comp_dir.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a4a5c1fc3b99c114383c5efe536c0760
-    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase/Lightmap-0_comp_light.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 453c377450b9a354fbb302f6ffce6284
-    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase/Lightmap-0_comp_shadowmask.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fbb795ee22d696740a834ab3819564d4
-    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase/ReflectionProbe-0.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 440d8dc643e6af14480e9c410a8e4087
-    m_Address: Assets/Scenes/Gameplay/BongoGame/_BongoGameBase/ReflectionProbe-1.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bongogame
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

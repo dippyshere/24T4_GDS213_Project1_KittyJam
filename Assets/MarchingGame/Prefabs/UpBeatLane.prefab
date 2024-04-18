@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1957580895546103553}
   - component: {fileID: 2252858072350565430}
   - component: {fileID: 5043016865515636607}
+  - component: {fileID: 993365288364419191}
   m_Layer: 0
   m_Name: Keybind
   m_TagString: Untagged
@@ -75,6 +76,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &993365288364419191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636100565593145668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a044dd3b3bcade44a1059b41a8e481e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileOnlyImage: {fileID: 5043016865515636607}
+  mobileOnlySprite: {fileID: 0}
 --- !u!1 &7309926653733146689
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,11 +18,11 @@ public class HighwayMovement : MonoBehaviour
         {
             if (SongManager.Instance == null || SongManager.Instance.noteTime == 0)
             {
-                transform.position -= new Vector3(0, 0, 16 * Time.deltaTime);
+                transform.position -= new Vector3(0, 0, 15 * Time.smoothDeltaTime);
             }
             else
             {
-                transform.position -= new Vector3(0, 0, 16 / SongManager.Instance.noteTime * Time.deltaTime);
+                transform.position -= new Vector3(0, 0, 15 / SongManager.Instance.noteTime * Time.smoothDeltaTime);
             }
         }
     }

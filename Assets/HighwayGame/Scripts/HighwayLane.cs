@@ -71,6 +71,18 @@ public class HighwayLane : MonoBehaviour
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {
+#if UNITY_IOS
+                try
+                {
+                    Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+                }
+                catch (Exception)
+                {
+
+                }
+#elif UNITY_ANDROID
+                Vibration.VibratePop();
+#endif
                 Destroy(notes[inputIndex].gameObject);
                 inputIndex++;
             }
