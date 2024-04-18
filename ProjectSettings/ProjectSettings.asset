@@ -952,6 +952,7 @@ PlayerSettings:
     Server: 1
     Standalone: 1
   il2cppCompilerConfiguration:
+    Standalone: 1
     WebGL: 1
   il2cppCodeGeneration:
     WebGL: 0
