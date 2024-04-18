@@ -72,8 +72,15 @@ public class HighwayLane : MonoBehaviour
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
             {
 #if UNITY_IOS
-                Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+                try
+                {
+                    Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+                }
+                catch (Exception)
+                {
+
+                }
+#elif UNITY_ANDROID
                 Vibration.VibratePop();
 #endif
                 Destroy(notes[inputIndex].gameObject);

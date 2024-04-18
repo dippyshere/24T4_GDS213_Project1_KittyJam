@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.InputSystem;
+using System;
 
 /// <summary>
 /// Callback for pausing or unpausing the gameplay
@@ -26,7 +27,9 @@ public class PauseMenuManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+#if UNITY_IOS || UNITY_ANDROID
         Vibration.Init();
+#endif
     }
 
     private IEnumerator Start()
@@ -61,8 +64,15 @@ public class PauseMenuManager : MonoBehaviour
     public void EnablePause()
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePop();
 #endif
         CursorController.Instance.UnlockCursor();
@@ -78,8 +88,15 @@ public class PauseMenuManager : MonoBehaviour
     public void DisablePause()
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePop();
 #endif
         CursorController.Instance.LockCursor();

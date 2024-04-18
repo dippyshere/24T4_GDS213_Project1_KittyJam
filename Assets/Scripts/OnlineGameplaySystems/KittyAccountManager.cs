@@ -17,14 +17,15 @@ public class KittyAccountManager : MonoBehaviour
     async void Awake()
     {
         Instance = this;
+#if UNITY_IOS || UNITY_ANDROID
         Vibration.Init();
+#endif
         try
         {
-#if UNITY_EDITOR
             InitializationOptions options = new();
+#if UNITY_EDITOR
             options.SetEnvironmentName("dev");
 #else
-            InitializationOptions options = new();
             options.SetEnvironmentName("production");
 #endif
             await UnityServices.InitializeAsync(options);
@@ -45,8 +46,15 @@ public class KittyAccountManager : MonoBehaviour
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibratePeek();
 #endif
             Debug.Log("Sign in anonymously succeeded!");
@@ -58,8 +66,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (AuthenticationException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to AuthenticationErrorCodes
@@ -69,8 +84,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (RequestFailedException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to CommonErrorCodes
@@ -91,8 +113,15 @@ public class KittyAccountManager : MonoBehaviour
         {
             await AuthenticationService.Instance.SignUpWithUsernamePasswordAsync(username, password);
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibratePeek();
 #endif
             Debug.Log("SignUp is successful.");
@@ -100,8 +129,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (AuthenticationException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to AuthenticationErrorCodes
@@ -111,8 +147,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (RequestFailedException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to CommonErrorCodes
@@ -133,8 +176,15 @@ public class KittyAccountManager : MonoBehaviour
         {
             await AuthenticationService.Instance.SignInWithUsernamePasswordAsync(username, password);
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibratePeek();
 #endif
             Debug.Log("SignIn is successful.");
@@ -142,8 +192,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (AuthenticationException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to AuthenticationErrorCodes
@@ -153,8 +210,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (RequestFailedException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to CommonErrorCodes
@@ -175,8 +239,15 @@ public class KittyAccountManager : MonoBehaviour
         {
             await AuthenticationService.Instance.AddUsernamePasswordAsync(username, password);
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibratePeek();
 #endif
             Debug.Log("Username and password added.");
@@ -184,8 +255,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (AuthenticationException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to AuthenticationErrorCodes
@@ -195,8 +273,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (RequestFailedException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to CommonErrorCodes
@@ -217,8 +302,15 @@ public class KittyAccountManager : MonoBehaviour
         {
             await AuthenticationService.Instance.UpdatePasswordAsync(currentPassword, newPassword);
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibratePeek();
 #endif
             Debug.Log("Password updated.");
@@ -226,8 +318,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (AuthenticationException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to AuthenticationErrorCodes
@@ -237,8 +336,15 @@ public class KittyAccountManager : MonoBehaviour
         catch (RequestFailedException ex)
         {
 #if UNITY_IOS
-        Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-#else
+            try
+            {
+                Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+            }
+            catch (Exception)
+            {
+
+            }
+#elif UNITY_ANDROID
             Vibration.VibrateNope();
 #endif
             // Compare error code to CommonErrorCodes

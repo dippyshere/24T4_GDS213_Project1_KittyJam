@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,8 +25,15 @@ public class MarchingNote : MonoBehaviour
             if (feedbackType == NoteFeedback.Perfect || feedbackType == NoteFeedback.Good)
             {
 #if UNITY_IOS
-                Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+                try
+                {
+                    Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+                }
+                catch (Exception)
+                {
+
+                }
+#elif UNITY_ANDROID
                 Vibration.VibratePop();
 #endif
             }

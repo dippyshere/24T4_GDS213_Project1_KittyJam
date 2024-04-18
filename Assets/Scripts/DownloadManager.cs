@@ -107,6 +107,7 @@ public class DownloadManager : MonoBehaviour
         float timeStarted = Time.realtimeSinceStartup;
         if (sceneLoadInfo!= null && sceneLoadInfo.useTransition && TransitionManager.Instance != null)
         {
+            yield return null;
             TransitionManager.Instance.StartTransition();
             Time.timeScale = 0f;
         }

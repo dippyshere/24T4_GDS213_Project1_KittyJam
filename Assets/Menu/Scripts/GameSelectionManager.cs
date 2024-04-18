@@ -160,8 +160,15 @@ public class GameSelectionManager : MonoBehaviour
     private void ClearLeaderboard()
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS_SelectionChanged();
-#else
+        try
+        {
+            Vibration.VibrateIOS_SelectionChanged();
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePop();
 #endif
         leaderboardTitle.text = "Loading...";
@@ -310,8 +317,15 @@ public class GameSelectionManager : MonoBehaviour
     public void LoadGameOnboarding(int gameType)
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePeek();
 #endif
         StartCoroutine(LoadGameScene(gameType));

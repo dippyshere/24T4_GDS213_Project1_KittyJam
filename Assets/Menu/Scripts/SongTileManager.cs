@@ -6,6 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 /// <summary>
 /// Manages the data and UI of a song tile in the song selection menu
@@ -154,8 +155,15 @@ public class SongTileManager : MonoBehaviour
     public void OnHover()
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS_SelectionChanged();
-#else
+        try
+        {
+            Vibration.VibrateIOS_SelectionChanged();
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePop();
 #endif
         if (isSongTile && tileAnimatorController != null && tileAnimatorController.GetBool("AnimateWithBPM") == false && songData.Bpm > 0)
@@ -172,8 +180,15 @@ public class SongTileManager : MonoBehaviour
     public void OnClick()
     {
 #if UNITY_IOS
-        Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
-#else
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
         Vibration.VibratePeek();
 #endif
         if (isSongTile && songData != null)
