@@ -35,3 +35,6 @@ MonoBehaviour:
   - gameType: 1
     supportedInstruments: []
     leaderboardID: 23e93d20-88fd-477e-8e1d-ff42a723f0d5
+  - gameType: 3
+    supportedInstruments: []
+    leaderboardID: a5070e1e-c641-4897-b0fb-fd16d4ce46db
