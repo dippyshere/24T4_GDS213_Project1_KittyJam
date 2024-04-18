@@ -182,12 +182,20 @@ public class DownloadManager : MonoBehaviour
             {
                 AsyncOperationHandle asyncOperationHandle = Addressables.DownloadDependenciesAsync(loadInfo.assetReference);
                 downloadAssetOperations.Add(asyncOperationHandle);
+                if (assetInstances.ContainsKey(loadInfo))
+                {
+                    assetInstances.Remove(loadInfo);
+                }
                 assetInstances.Add(loadInfo, asyncOperationHandle);
             }
             foreach (AssetLabelReferenceLoadInfo loadInfo in assetLoadInfo.assetLabelsToLoad)
             {
                 AsyncOperationHandle asyncOperationHandle = Addressables.DownloadDependenciesAsync(loadInfo.assetLabel);
                 downloadAssetLabelOperations.Add(asyncOperationHandle);
+                if (assetLabelInstances.ContainsKey(loadInfo))
+                {
+                    assetLabelInstances.Remove(loadInfo);
+                }
                 assetLabelInstances.Add(loadInfo, asyncOperationHandle);
             }
 
@@ -285,6 +293,10 @@ public class DownloadManager : MonoBehaviour
                 }
                 AsyncOperationHandle<SceneInstance> asyncOperationHandle = Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive, true, -100);
                 downloadSceneOperations.Add(asyncOperationHandle);
+                if (sceneInstances.ContainsKey(scene))
+                {
+                    sceneInstances.Remove(scene);
+                }
                 sceneInstances.Add(scene, asyncOperationHandle);
                 if (sceneLoadInfo.markFirstSceneAsActive && scene.Equals(filteredScenesToLoad[0]))
                 {
@@ -407,6 +419,10 @@ public class DownloadManager : MonoBehaviour
     {
         foreach (var instance in instances)
         {
+            if (sceneInstances.ContainsKey(instance.Key))
+            {
+                sceneInstances.Remove(instance.Key);
+            }
             sceneInstances.Add(instance.Key, instance.Value);
         }
     }

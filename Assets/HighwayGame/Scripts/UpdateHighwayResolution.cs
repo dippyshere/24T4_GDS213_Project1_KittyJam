@@ -20,6 +20,7 @@ public class UpdateHighwayResolution : MonoBehaviour
 
     private IEnumerator WaitUntilCanvasCameraExists()
     {
+        highwayRawImage.enabled = false;
         while (true)
         {
             if (highwayRawImage.canvas.worldCamera != null)
