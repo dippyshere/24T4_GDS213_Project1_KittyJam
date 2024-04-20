@@ -78,26 +78,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - titledownload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0273da687f85f7e4786ce0df08d4ac3f
-    m_Address: Assets/Menu/Textures/BongoGame.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 88878f3887a65f6458bbd18c6c621288
-    m_Address: Assets/Menu/Textures/CircleGame.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2fc85c0953b9d9541a0c0faf6564ca8a
     m_Address: Assets/Menu/Textures/GlowMask.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a97be76db04ba7d46b11b710ecbd2429
-    m_Address: Assets/Menu/Textures/HighwayGame.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - titledownload
@@ -144,12 +126,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - titledownload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6bc33016ef853e94a89940cb39378ce7
-    m_Address: Assets/Menu/Textures/MarchingGame.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a405cd0b3f3b1f0458b621de2b564f59
     m_Address: Assets/Menu/Textures/new.png
     m_ReadOnly: 0
@@ -158,6 +134,30 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 336dba041cc6736499727602356d11df
     m_Address: Assets/Menu/Textures/Unlocked.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0273da687f85f7e4786ce0df08d4ac3f
+    m_Address: Assets/Menu/Textures/BongoGame.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88878f3887a65f6458bbd18c6c621288
+    m_Address: Assets/Menu/Textures/CircleGame.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a97be76db04ba7d46b11b710ecbd2429
+    m_Address: Assets/Menu/Textures/HighwayGame.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bc33016ef853e94a89940cb39378ce7
+    m_Address: Assets/Menu/Textures/MarchingGame.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - titledownload
