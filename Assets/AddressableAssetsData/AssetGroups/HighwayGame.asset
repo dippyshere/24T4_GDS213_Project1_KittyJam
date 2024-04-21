@@ -101,32 +101,8 @@ MonoBehaviour:
     m_SerializedLabels:
     - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f95ea447d76224d4182847a5a92f76c6
-    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase/Lightmap-0_comp_dir.png
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - highwaygame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5166873c45d4477419455e821571c906
-    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase/Lightmap-0_comp_light.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - highwaygame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ee860c1a206892b458c737e50cd93c31
-    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase/ReflectionProbe-0.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - highwaygame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: db16cb752d9619e4e9db24f635135f83
-    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase/ReflectionProbe-1.exr
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - highwaygame
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6d2cafc546434b941901a94f8bcdbc21
-    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase/ReflectionProbe-2.exr
+  - m_GUID: 10dc9bcb2c25eb345bdcb4ca09b6b2ac
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase
     m_ReadOnly: 0
     m_SerializedLabels:
     - highwaygame

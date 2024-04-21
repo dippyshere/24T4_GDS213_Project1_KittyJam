@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
+  m_LightingDataAsset: {fileID: 112000000, guid: c536816d06241ab43bdd1e646dc20c58,
     type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 363653651}
   - component: {fileID: 363653649}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 2
-  far clip plane: 15
+  far clip plane: 16
   field of view: 60
   orthographic: 0
   orthographic size: 5

@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3bece18bd50564eab7cdb5eb5c894f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraName: GameBaseCamera
 --- !u!114 &145202068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,7 +1609,7 @@ PrefabInstance:
     - target: {fileID: 7893454083573920764, guid: b886df10d84c2994b81fcf9f6096b1e9,
         type: 3}
       propertyPath: m_LightProbeUsage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

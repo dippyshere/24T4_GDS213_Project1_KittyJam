@@ -1141,6 +1141,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1859720979}
     m_Modifications:
+    - target: {fileID: 262850939220773315, guid: f0039cccba0713b49aba9472729c0ed7,
+        type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1729028057131324805, guid: f0039cccba0713b49aba9472729c0ed7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3897737091141119075, guid: f0039cccba0713b49aba9472729c0ed7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1195,6 +1205,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: wand
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838502205225726055, guid: f0039cccba0713b49aba9472729c0ed7,
+        type: 3}
+      propertyPath: m_ReceiveGI
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7202005106646646591, guid: f0039cccba0713b49aba9472729c0ed7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9038003534868112854, guid: f0039cccba0713b49aba9472729c0ed7,
         type: 3}
@@ -1443,6 +1463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: gambler cat marchinggameanimated
+      objectReference: {fileID: 0}
+    - target: {fileID: 2868240752555505251, guid: 9456b77bdb1cb4141af83e2c13f191f6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

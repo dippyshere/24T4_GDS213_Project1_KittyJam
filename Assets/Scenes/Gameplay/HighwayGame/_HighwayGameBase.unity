@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 115698604}
   - component: {fileID: 115698605}
   m_Layer: 0
-  m_Name: MainCamera
+  m_Name: GameBaseCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeMultiplier: 1
+  disableIntroAnimation: 0
 --- !u!114 &115698601
 MonoBehaviour:
   m_ObjectHideFlags: 0
