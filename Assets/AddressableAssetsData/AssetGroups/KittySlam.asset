@@ -22,12 +22,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 59ad2809b6a7ac344a74e3c75f5a8145
-    m_Address: Assets/KittySlamAssets/Fonts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - fonts
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bc20acf5f59567f42950a2d05c24b2c5
     m_Address: Assets/KittySlamAssets/Prefabs
     m_ReadOnly: 0

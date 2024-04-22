@@ -24,13 +24,6 @@ MonoBehaviour:
     - initialdownload
     - titledownload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2bb0bf01a17739a4e841c2a2ada006c2
-    m_Address: Assets/Menu/Fonts
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - fonts
-    - titledownload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a816131f4a005ae45a136fdd0825c2ff
     m_Address: Assets/Menu/Materials
     m_ReadOnly: 0
