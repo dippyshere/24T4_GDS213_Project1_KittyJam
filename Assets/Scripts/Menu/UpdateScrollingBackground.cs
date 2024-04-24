@@ -11,11 +11,14 @@ public class UpdateScrollingBackground : MonoBehaviour
     [Tooltip("Reference to the parent rect transform component")] private RectTransform parentTransform;
     [Tooltip("Reference to the raw image component")] private RawImage rawImage;
     [SerializeField, Tooltip("The selected background scrolling behaviour to use")] private BackgroundBehaviour behaviour;
+    [Tooltip("Stores the previous frame time to smooth time since startup")] private double previousFrameTime;
+    [Tooltip("Stores the current frame time to smooth time since startup")] private double currentFrameTime;
 
 #if UNITY_EDITOR
     void OnValidate()
     {
         Start();
+        previousFrameTime = Time.realtimeSinceStartup;
         UpdateMaterial();
     }
 #endif
@@ -28,6 +31,7 @@ public class UpdateScrollingBackground : MonoBehaviour
 
     void LateUpdate()
     {
+        previousFrameTime = Time.realtimeSinceStartup;
         UpdateMaterial();
     }
 
@@ -46,16 +50,18 @@ public class UpdateScrollingBackground : MonoBehaviour
 
             float scale = 13f / imageScaleFactor;
 
+            currentFrameTime = 0.2f * previousFrameTime + 0.8f * previousFrameTime;
+
             switch (behaviour)
             {
                 case BackgroundBehaviour.Scroll:
-                    rawImage.uvRect = new Rect((float)(Time.realtimeSinceStartupAsDouble * 0.05), (float)(Time.realtimeSinceStartupAsDouble * 0.05), parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                    rawImage.uvRect = new Rect((float)(currentFrameTime * 0.05), (float)(currentFrameTime * 0.05), parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
                     break;
                 case BackgroundBehaviour.Parallax:
                     rawImage.uvRect = new Rect(parentTransform.anchoredPosition.x / 157.56f, parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
                     break;
                 case BackgroundBehaviour.Both:
-                    rawImage.uvRect = new Rect((float)(Time.realtimeSinceStartupAsDouble * 0.05) + parentTransform.anchoredPosition.x / 157.56f, (float)(Time.realtimeSinceStartupAsDouble * 0.05) + parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
+                    rawImage.uvRect = new Rect((float)(currentFrameTime * 0.05) + parentTransform.anchoredPosition.x / 157.56f, (float)(currentFrameTime * 0.05) + parentTransform.anchoredPosition.y / 157.56f, parentTransform.rect.width / rawImage.texture.width * scale, parentTransform.rect.height / rawImage.texture.height * scale);
                     break;
             }
         }
