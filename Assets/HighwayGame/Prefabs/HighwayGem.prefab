@@ -50,6 +50,7 @@ MonoBehaviour:
   timeInstantiated: 0
   assignedTime: 0
   visualSprite: {fileID: 2231683826541623487}
+  lineRenderer: {fileID: 5290209553560852510}
 --- !u!1 &8189038423469241321
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6829327736571023546
 Transform:
   m_ObjectHideFlags: 0
@@ -210,7 +211,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0.01, z: 0}
-  - {x: 0, y: 0.02, z: 5}
+  - {x: 0, y: 0.02, z: 2}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1

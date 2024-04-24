@@ -17,6 +17,7 @@ public class HighwayLane : MonoBehaviour
     [SerializeField, Tooltip("The note prefab to spawn for lift notes")] private GameObject liftNotePrefab;
     [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<Dictionary<double, List<bool>>> timeStamps = new List<Dictionary<double, List<bool>>>();
+    [Tooltip("List of sustain note durations")] private List<MetricTimeSpan> sustainDurations = new List<MetricTimeSpan>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
     [Tooltip("The index of the currently pending input")] private int inputIndex = 0;
 
@@ -31,8 +32,15 @@ public class HighwayLane : MonoBehaviour
             if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
-                //timeStamps.Add((double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f);
-                timeStamps.Add(new Dictionary<double, List<bool>> { { (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f, new List<bool> { false, false, false } } });
+                if (note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()).TotalMicroseconds > 125000)
+                {
+                    timeStamps.Add(new Dictionary<double, List<bool>> { { (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f, new List<bool> { false, true, false } } });
+                    sustainDurations.Add(note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()));
+                }
+                else
+                {
+                    timeStamps.Add(new Dictionary<double, List<bool>> { { (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f, new List<bool> { false, false, false } } });
+                }
             }
             if (note.NoteNumber == liftNoteNumber)
             {
@@ -61,6 +69,11 @@ public class HighwayLane : MonoBehaviour
                     GameObject note = Instantiate(notePrefab, transform);
                     notes.Add(note.GetComponent<HighwayNote>());
                     note.GetComponent<HighwayNote>().assignedTime = (float)timeStamps[spawnIndex].Keys.First();
+                    if (timeStamps[spawnIndex].Values.First()[1])
+                    {
+                        note.GetComponent<HighwayNote>().sustainDuration = sustainDurations[0];
+                        sustainDurations.RemoveAt(0);
+                    }
                     spawnIndex++;
                 }
             }
