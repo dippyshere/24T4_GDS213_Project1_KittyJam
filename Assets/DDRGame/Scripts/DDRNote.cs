@@ -29,7 +29,7 @@ public class DDRNote : MonoBehaviour
         }
         else
         {
-            transform.Translate((DDRNoteManager.Instance.noteDespawnZ - DDRNoteManager.Instance.noteSpawnZ) * Time.deltaTime * Vector3.back / (SongManager.Instance.noteTime * 2));
+            transform.Translate((DDRNoteManager.Instance.noteDespawnZ - DDRNoteManager.Instance.noteSpawnZ) * Time.smoothDeltaTime * Vector3.back / (SongManager.Instance.noteTime * 2));
         }
     }
 

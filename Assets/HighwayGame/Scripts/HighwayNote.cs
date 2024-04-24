@@ -30,7 +30,7 @@ public class HighwayNote : MonoBehaviour
         }
         else
         {
-            transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
+            transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.smoothDeltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
         }
     }
 

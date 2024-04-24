@@ -30,7 +30,7 @@ public class MarchingBeatNote : MonoBehaviour
         }
         else
         {
-            rectTransform.localPosition += (MarchingNoteManager.Instance.beatNoteDespawnY - MarchingNoteManager.Instance.beatNoteSpawnY) * Time.deltaTime * Vector3.up / (MarchingNoteManager.Instance.beatNoteTime * 2);
+            rectTransform.localPosition += (MarchingNoteManager.Instance.beatNoteDespawnY - MarchingNoteManager.Instance.beatNoteSpawnY) * Time.smoothDeltaTime * Vector3.up / (MarchingNoteManager.Instance.beatNoteTime * 2);
         }
     }
 

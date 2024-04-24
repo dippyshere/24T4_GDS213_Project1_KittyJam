@@ -36,7 +36,7 @@ public class HighwayDissolveManager : MonoBehaviour
         float dissolve = 1.1f;
         while (dissolve > 0)
         {
-            dissolve -= Time.deltaTime * dissolveSpeed;
+            dissolve -= Time.smoothDeltaTime * dissolveSpeed;
             _material.SetFloat(_dissolveAmmount, dissolve);
             yield return null;
         }
@@ -51,7 +51,7 @@ public class HighwayDissolveManager : MonoBehaviour
         float dissolve = 0;
         while (dissolve < 1.1)
         {
-            dissolve += Time.deltaTime * dissolveSpeed;
+            dissolve += Time.smoothDeltaTime * dissolveSpeed;
             _material.SetFloat(_dissolveAmmount, dissolve);
             yield return null;
         }
