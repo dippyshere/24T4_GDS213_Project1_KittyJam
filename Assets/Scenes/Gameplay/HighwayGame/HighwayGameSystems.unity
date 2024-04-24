@@ -143,6 +143,11 @@ PrefabInstance:
       propertyPath: noteNumber
       value: 63
       objectReference: {fileID: 0}
+    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
+        type: 3}
+      propertyPath: liftNoteNumber
+      value: 58
+      objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
       propertyPath: m_Layer
@@ -313,6 +318,11 @@ PrefabInstance:
       propertyPath: noteNumber
       value: 62
       objectReference: {fileID: 0}
+    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
+        type: 3}
+      propertyPath: liftNoteNumber
+      value: 57
+      objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
       propertyPath: m_Layer
@@ -433,6 +443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: noteNumber
       value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587038473196695214, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
+        type: 3}
+      propertyPath: liftNoteNumber
+      value: 56
       objectReference: {fileID: 0}
     - target: {fileID: 3626011408547957613, guid: be35e35f29ebc4f44966c9e8d5a9bcdd,
         type: 3}
@@ -709,6 +724,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3e460f27-5e00-4b08-bf05-d5f321dcd152
     m_ActionName: MarchingGame/WandInput[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b07fe71-8fed-4d5d-b289-619dbb09bdb1
+    m_ActionName: CircleGame/MoveTouch
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 759aa334-0513-4574-b088-8284ee78466c
+    m_ActionName: CircleGame/SlamTouch
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: HighwayGame

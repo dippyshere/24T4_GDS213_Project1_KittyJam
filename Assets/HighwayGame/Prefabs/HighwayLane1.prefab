@@ -231,5 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNumber: 64
+  liftNoteNumber: 59
   notePrefab: {fileID: 1679635116095923819, guid: 13a22231298e1c34db54f39b014dc210,
+    type: 3}
+  liftNotePrefab: {fileID: 1679635116095923819, guid: e442366045d78e040a4c01a8f4981aaf,
     type: 3}

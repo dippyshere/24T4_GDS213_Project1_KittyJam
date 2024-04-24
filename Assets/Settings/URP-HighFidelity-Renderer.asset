@@ -96,7 +96,7 @@ MonoBehaviour:
   clearXRColorBuffer: 0
   cameraLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 383
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
