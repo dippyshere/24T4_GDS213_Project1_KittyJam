@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: f11e2bcbd5bbc134caa9c0c74a8b8715
-  m_OcclusionCullingData: {fileID: 36300000, guid: 23e5497dab06fe746bda44bdb317f6b8,
+  m_OcclusionCullingData: {fileID: 36300000, guid: eb823bc8201b3304a9976c45bcbdc3b5,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -279,7 +279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 684.53503, y: 0}
+  m_AnchoredPosition: {x: 685, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879865867

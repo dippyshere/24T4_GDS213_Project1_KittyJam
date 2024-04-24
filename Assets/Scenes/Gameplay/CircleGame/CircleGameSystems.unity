@@ -303,6 +303,7 @@ MonoBehaviour:
   spawnAreaBottomRight: {x: 8, y: -3.75, z: 4.89}
   noteRadius: 6
   followPointSpeed: 10
+  noteTime: 1
   notePrefab: {fileID: 4524773171783734124, guid: 5c315c747aef6944c85ee8d54b40e451,
     type: 3}
   followPoint: {fileID: 2131085817}
