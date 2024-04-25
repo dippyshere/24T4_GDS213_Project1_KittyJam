@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: c0970d2c0e7ff211dc6151079a1c6034
+    Hash: 239cabbc64b2be06cf4a32f1f1392df4
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 1
@@ -115,7 +115,6 @@ MonoBehaviour:
     - nothingsalright
     - thespark
     - keyboard
-    - others
     - ps5
     - steamdeck
     - switch
@@ -128,11 +127,12 @@ MonoBehaviour:
     - initialdownload
     - songasset
     - titledownload
-    - Locale
     - gameplay
     - beautifulday
     - songdata
     - stuckinmyhead
+    - ps4
+    - xbox
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}
