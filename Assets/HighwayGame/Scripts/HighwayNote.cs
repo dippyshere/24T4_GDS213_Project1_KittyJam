@@ -102,13 +102,22 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainActivate()
     {
-        while (true)
+        bool finished = false;
+        while (!finished)
         {
-            if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) >= 7.5f)
+            try
             {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) >= 7.5f)
+                {
+                    break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
                 break;
             }
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
             yield return null;
         }
     }
@@ -119,16 +128,27 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainDeactivate()
     {
-        while (true)
+        bool finished = false;
+        while (!finished)
         {
-            if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) <= 0.5f)
+            try
             {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) <= 0.5f)
+                {
+                    break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
                 break;
             }
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
             yield return null;
         }
     }
+
+
 
     /// <summary>
     /// Called to destroy the note
