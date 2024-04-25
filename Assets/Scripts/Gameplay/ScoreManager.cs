@@ -219,8 +219,12 @@ public class ScoreManager : MonoBehaviour
     /// Used by notes to add their sustained score to the player's score
     /// </summary>
     /// <param name="scoreToAdd"></param>
-    public void AddScore(long scoreToAdd)
+    public void AddScore(long scoreToAdd, bool preMultiplied = false)
     {
+        if (!preMultiplied)
+        {
+            scoreToAdd *= multiplier;
+        }
         score += scoreToAdd;
         scoreEvent?.Invoke(score);
     }

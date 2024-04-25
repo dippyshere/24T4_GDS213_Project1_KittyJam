@@ -133,6 +133,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1722690996}
     m_Modifications:
+    - target: {fileID: 1957580895546103553, guid: f1223a84a03cfd74c9326592476fb673,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5636100565593145668, guid: f1223a84a03cfd74c9326592476fb673,
         type: 3}
       propertyPath: m_Layer
@@ -615,7 +620,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f9a5172627226b248a31d4b734ddf724,
+      objectReference: {fileID: -864326533, guid: b5c1abc09a9f699429c809896b58df72,
         type: 3}
     - target: {fileID: 5636100565593145668, guid: f1223a84a03cfd74c9326592476fb673,
         type: 3}

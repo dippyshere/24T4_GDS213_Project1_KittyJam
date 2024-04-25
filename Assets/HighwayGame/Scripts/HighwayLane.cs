@@ -104,7 +104,6 @@ public class HighwayLane : MonoBehaviour
                 currentSustainNote.DeactivateSustain();
                 currentSustainNote.isSustaining = false;
                 currentSustainNote = null;
-                Debug.Log("Deactivate sustain");
             }
             bool liftHit = false;
             if (context.canceled && timeStamps[inputIndex].Values.First()[0])
