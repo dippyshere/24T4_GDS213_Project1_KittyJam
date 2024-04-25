@@ -1310,6 +1310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197492523}
   - component: {fileID: 1197492525}
+  - component: {fileID: 1197492526}
   - component: {fileID: 1197492524}
   m_Layer: 5
   m_Name: Text (TMP) (2)
@@ -1441,6 +1442,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197492522}
   m_CullTransparentMesh: 1
+--- !u!114 &1197492526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197492522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ae5d1fd23ad264098d8be0d75b05f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 1197492524}
+  mobileText: Tap to hit notes
+  desktopText: 'Use the Left Mouse Button
+
+    To hit notes'
 --- !u!1 &1679084525
 GameObject:
   m_ObjectHideFlags: 0

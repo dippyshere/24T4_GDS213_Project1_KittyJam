@@ -6,8 +6,8 @@ using TMPro;
 public class PlatformSpecificText : MonoBehaviour
 {
     [SerializeField, Tooltip("Reference to the text mesh component containing the text")] private TextMeshProUGUI textMesh;
-    [SerializeField, Tooltip("The text to use when the game is running on mobile")] private string mobileText;
-    [SerializeField, Tooltip("The text to use when the game is running on desktop")] private string desktopText;
+    [SerializeField, Tooltip("The text to use when the game is running on mobile"), TextArea] private string mobileText;
+    [SerializeField, Tooltip("The text to use when the game is running on desktop"), TextArea] private string desktopText;
 
     void Start()
     {
