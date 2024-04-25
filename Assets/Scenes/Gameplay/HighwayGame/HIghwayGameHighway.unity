@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3bece18bd50564eab7cdb5eb5c894f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraName: GameBaseCamera
 --- !u!114 &145202068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,8 +746,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 82.75, y: 100}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 70, y: 100}
+  m_SizeDelta: {x: 140, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934385553
 MonoBehaviour:
@@ -879,8 +880,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 245, y: 100}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: 220, y: 100}
+  m_SizeDelta: {x: 160, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973822280
 MonoBehaviour:
@@ -1078,8 +1079,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -82.75, y: 100}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -70, y: 100}
+  m_SizeDelta: {x: 140, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1501882092
 MonoBehaviour:
@@ -1189,7 +1190,7 @@ GameObject:
   - component: {fileID: 1663292846}
   - component: {fileID: 1663292845}
   - component: {fileID: 1663292844}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HighwayRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,8 +1312,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -245, y: 100}
-  m_SizeDelta: {x: 160, y: 160}
+  m_AnchoredPosition: {x: -220, y: 100}
+  m_SizeDelta: {x: 160, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672569111
 MonoBehaviour:
@@ -1608,7 +1609,7 @@ PrefabInstance:
     - target: {fileID: 7893454083573920764, guid: b886df10d84c2994b81fcf9f6096b1e9,
         type: 3}
       propertyPath: m_LightProbeUsage
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

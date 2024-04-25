@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,10 @@ public class Bootstrapper : MonoBehaviour
         {
             Application.targetFrameRate = -1;
         }
+
+        InputSystem.settings.SetInternalFeatureFlag("USE_OPTIMIZED_CONTROLS", true);
+        InputSystem.settings.SetInternalFeatureFlag("USE_READ_VALUE_CACHING", true);
+
         bootstrapCanvasGroup = GetComponent<CanvasGroup>();
         bootstrapCanvasGroup.alpha = 1;
 

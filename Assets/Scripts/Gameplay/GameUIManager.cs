@@ -98,7 +98,7 @@ public class GameUIManager : MonoBehaviour
             {
                 uiElements[i].localPosition = originalPositions[i] + intensity * intensityMultiplier * Random.insideUnitSphere;
             }
-            timer += Time.unscaledDeltaTime;
+            timer += Time.smoothDeltaTime;
             yield return null;
         }
         yield return null;

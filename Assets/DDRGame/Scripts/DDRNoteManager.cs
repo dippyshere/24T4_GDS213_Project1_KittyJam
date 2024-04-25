@@ -75,7 +75,7 @@ public class DDRNoteManager : MonoBehaviour
         // bongo cat colour changing
         if (comboScore >= 50)
         {
-            timer += Time.deltaTime / seconds;
+            timer += Time.smoothDeltaTime / seconds;
 
             if (blueToGreen == true && greenToRed == false && redToBlue == false)
             {
@@ -115,7 +115,7 @@ public class DDRNoteManager : MonoBehaviour
         }
         if (comboScore >= 100)
         {
-            timer += Time.deltaTime / seconds;
+            timer += Time.smoothDeltaTime / seconds;
 
             if (blueToGreen == true && greenToRed == false && redToBlue == false)
             {

@@ -133,6 +133,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1722690996}
     m_Modifications:
+    - target: {fileID: 1957580895546103553, guid: f1223a84a03cfd74c9326592476fb673,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5636100565593145668, guid: f1223a84a03cfd74c9326592476fb673,
         type: 3}
       propertyPath: m_Layer
@@ -606,11 +611,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1722690996}
     m_Modifications:
+    - target: {fileID: 284041464218791393, guid: f1223a84a03cfd74c9326592476fb673,
+        type: 3}
+      propertyPath: m_ControlPath
+      value: <Keyboard>/f
+      objectReference: {fileID: 0}
     - target: {fileID: 5043016865515636607, guid: f1223a84a03cfd74c9326592476fb673,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f9a5172627226b248a31d4b734ddf724,
+      objectReference: {fileID: -864326533, guid: b5c1abc09a9f699429c809896b58df72,
         type: 3}
     - target: {fileID: 5636100565593145668, guid: f1223a84a03cfd74c9326592476fb673,
         type: 3}
@@ -763,7 +773,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1451449981
 MonoBehaviour:
@@ -843,6 +853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3bece18bd50564eab7cdb5eb5c894f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraName: GameBaseCamera
 --- !u!114 &1451449985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,8 +918,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1722690995}
   m_Enabled: 1
   m_Alpha: 0.75
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

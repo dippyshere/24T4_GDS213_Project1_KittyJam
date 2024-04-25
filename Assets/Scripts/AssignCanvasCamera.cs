@@ -8,6 +8,7 @@ using UnityEngine;
 public class AssignCanvasCamera : MonoBehaviour
 {
     [Tooltip("Reference to the canvas to assign the camera to.")] private Canvas canvas;
+    [SerializeField, Tooltip("Name of the camera that should be expected.")] private string cameraName = "MainCamera";
 
     private void Awake()
     {
@@ -21,20 +22,8 @@ public class AssignCanvasCamera : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitForCamera()
     {
-        while (Camera.main == null)
+        while (Camera.main == null && Camera.main.name != cameraName)
         {
-            yield return null;
-        }
-        canvas.worldCamera = Camera.main;
-    }
-
-    private IEnumerator Start()
-    {
-        canvas = GetComponent<Canvas>();
-        canvas.worldCamera = Camera.main;
-        for (int i = 0; i < 10; i++)
-        {
-            canvas.worldCamera = Camera.main;
             yield return null;
         }
         canvas.worldCamera = Camera.main;
@@ -42,8 +31,6 @@ public class AssignCanvasCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        canvas = GetComponent<Canvas>();
-        canvas.worldCamera = Camera.main;
         StartCoroutine(RefreshCamera());
     }
 
@@ -59,12 +46,18 @@ public class AssignCanvasCamera : MonoBehaviour
 
     private void OnApplicationPause(bool pauseStatus)
     {
-        canvas.worldCamera = Camera.main;
+        if (Camera.main != null && Camera.main.name == cameraName)
+        {
+            canvas.worldCamera = Camera.main;
+        }
     }
 
     private void OnApplicationFocus(bool focusStatus)
     {
-        canvas.worldCamera = Camera.main;
+        if (Camera.main != null && Camera.main.name == cameraName)
+        {
+            canvas.worldCamera = Camera.main;
+        }
     }
 
     /// <summary>
@@ -75,7 +68,7 @@ public class AssignCanvasCamera : MonoBehaviour
     {
         while (true)
         {
-            if (Camera.main != null)
+            if (Camera.main != null && Camera.main.name == cameraName)
             {
                 canvas.worldCamera = Camera.main;
                 yield return new WaitForSeconds(1.5f);

@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: 8bc8b96ee049b3747b18f83164691ed5
-  m_OcclusionCullingData: {fileID: 36300000, guid: c26391c63c98d48488caff03cfc57d67,
+  m_OcclusionCullingData: {fileID: 36300000, guid: eb823bc8201b3304a9976c45bcbdc3b5,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -98,10 +98,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000016, guid: 893284d78cc21f646b86f254d00195a8,
+  m_LightingDataAsset: {fileID: 112000000, guid: 79348571cd7feec4fac8c21299cd0cda,
     type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
-    type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -320,7 +319,7 @@ MonoBehaviour:
   songDelayInSeconds: 0
   trackSpeed: 1
   inputDelayInMilliseconds: 16
-  songData: {fileID: 11400000, guid: 3d3eed37a3942be48bd02cd875c3657e, type: 2}
+  songData: {fileID: 11400000, guid: be59a896e8fc1db4da851cca7879ea0f, type: 2}
   bpm: 0
   noteTime: 0
   firstNoteTime: 3.4028235e+38

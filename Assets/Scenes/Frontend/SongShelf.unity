@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
+  m_LightingDataAsset: {fileID: 112000000, guid: ad4e8d1e64ea1774a80f4cd1cfe445a9,
     type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -355,6 +355,64 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1088, y: -340}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!21 &79236539
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArtGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbumIntensity: 0.256
+    - _AlbumSize: 0.5
+    - _Intensity: 0.3
+    - _OutlinePower: 10
+    - _Power: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.15
+    - _isLocked: 0
+    m_Colors:
+    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &104726236
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,7 +899,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 1934708216}
+      objectReference: {fileID: 974534501}
     - target: {fileID: 8563789146616179544, guid: 0d72c4e72040b0742ab5e7fcc9368816,
         type: 3}
       propertyPath: m_text
@@ -874,7 +932,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 211183906}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &243608734
+--- !u!21 &242584125
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -932,7 +990,7 @@ Material:
     m_Colors:
     - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
   m_BuildTextureStacks: []
---- !u!21 &259975921
+--- !u!21 &294024821
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -1121,8 +1179,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -48, y: 0}
-  m_SizeDelta: {x: 96, y: 420}
+  m_AnchoredPosition: {x: 150, y: 0}
+  m_SizeDelta: {x: 500, y: 520}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315736979
 MonoBehaviour:
@@ -1157,6 +1215,64 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls: []
+--- !u!21 &322756680
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArtGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbumIntensity: 0.256
+    - _AlbumSize: 0.5
+    - _Intensity: 0.3
+    - _OutlinePower: 10
+    - _Power: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.15
+    - _isLocked: 0
+    m_Colors:
+    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &387585638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,6 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3bece18bd50564eab7cdb5eb5c894f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraName: MainCamera
 --- !u!114 &387585640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,6 +1404,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accountNameText: {fileID: 65304882}
   profileIconImage: {fileID: 584898504}
+--- !u!21 &422900741
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArtGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbumIntensity: 0.256
+    - _AlbumSize: 0.5
+    - _Intensity: 0.3
+    - _OutlinePower: 10
+    - _Power: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.15
+    - _isLocked: 0
+    m_Colors:
+    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &426828378
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1508,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &426828380
 CanvasRenderer:
@@ -1359,7 +1534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -135}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -200, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &452023029
@@ -1423,64 +1598,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452023029}
   m_CullTransparentMesh: 1
---- !u!21 &488231545
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ArtGlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbumIntensity: 0.256
-    - _AlbumSize: 0.5
-    - _Intensity: 0.3
-    - _OutlinePower: 10
-    - _Power: 5
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Speed: 0.15
-    - _isLocked: 0
-    m_Colors:
-    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1001 &505590023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1609,7 +1726,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 834693282}
+      objectReference: {fileID: 1682042276}
     - target: {fileID: 8563789146616179544, guid: 0d72c4e72040b0742ab5e7fcc9368816,
         type: 3}
       propertyPath: m_text
@@ -1713,7 +1830,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &584898505
 CanvasRenderer:
@@ -1796,6 +1913,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &635617210
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArtGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbumIntensity: 0.256
+    - _AlbumSize: 0.5
+    - _Intensity: 0.3
+    - _OutlinePower: 10
+    - _Power: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.15
+    - _isLocked: 0
+    m_Colors:
+    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &646989615
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,8 +2102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 48, y: 0}
-  m_SizeDelta: {x: 96, y: 420}
+  m_AnchoredPosition: {x: -150, y: 0}
+  m_SizeDelta: {x: 500, y: 520}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &646989620
 MonoBehaviour:
@@ -1999,6 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af3bece18bd50564eab7cdb5eb5c894f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraName: MainCamera
 --- !u!95 &781122273
 Animator:
   serializedVersion: 5
@@ -2317,122 +2493,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!21 &834693282
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ArtGlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbumIntensity: 0.256
-    - _AlbumSize: 0.5
-    - _Intensity: 0.3
-    - _OutlinePower: 10
-    - _Power: 5
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Speed: 0.15
-    - _isLocked: 0
-    m_Colors:
-    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
-  m_BuildTextureStacks: []
---- !u!21 &838831508
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ArtGlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbumIntensity: 0.256
-    - _AlbumSize: 0.5
-    - _Intensity: 0.3
-    - _OutlinePower: 10
-    - _Power: 5
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Speed: 0.15
-    - _isLocked: 0
-    m_Colors:
-    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &948464749
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,9 +2566,9 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
---- !u!21 &984261773
+--- !u!21 &974534501
 Material:
   serializedVersion: 8
   m_ObjectHideFlags: 0
@@ -2878,7 +2938,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 488231545}
+      objectReference: {fileID: 322756680}
     - target: {fileID: 8563789146616179544, guid: 0d72c4e72040b0742ab5e7fcc9368816,
         type: 3}
       propertyPath: m_text
@@ -2916,64 +2976,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1111228631}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1114129951
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ArtGlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbumIntensity: 0.256
-    - _AlbumSize: 0.5
-    - _Intensity: 0.3
-    - _OutlinePower: 10
-    - _Power: 5
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Speed: 0.15
-    - _isLocked: 0
-    m_Colors:
-    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1384000279
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,7 +3288,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 130, y: 0}
-  m_SizeDelta: {x: 260, y: 100}
+  m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560241530
 MonoBehaviour:
@@ -3665,6 +3667,64 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 2.7}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!21 &1682042276
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ArtGlowMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
+    type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _GlowMask:
+        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlbumIntensity: 0.256
+    - _AlbumSize: 0.5
+    - _Intensity: 0.3
+    - _OutlinePower: 10
+    - _Power: 5
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Speed: 0.15
+    - _isLocked: 0
+    m_Colors:
+    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1724413912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,7 +4054,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 838831508}
+      objectReference: {fileID: 294024821}
     - target: {fileID: 8563789146616179544, guid: 0d72c4e72040b0742ab5e7fcc9368816,
         type: 3}
       propertyPath: m_text
@@ -4069,64 +4129,6 @@ RectTransform:
   m_AnchoredPosition: {x: 296, y: 141}
   m_SizeDelta: {x: 238.80002, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!21 &1934708216
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ArtGlowMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 717d8adcc1f23b245a4316a2737ea2e3,
-    type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _GlowMask:
-        m_Texture: {fileID: 2800000, guid: 2fc85c0953b9d9541a0c0faf6564ca8a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9b0966abbcee8404398db9b7d19a0bbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - _AlbumIntensity: 0.256
-    - _AlbumSize: 0.5
-    - _Intensity: 0.3
-    - _OutlinePower: 10
-    - _Power: 5
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Speed: 0.15
-    - _isLocked: 0
-    m_Colors:
-    - _Color: {r: 1.453243, g: 3.373302, b: 3.516981, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1936340972
 GameObject:
   m_ObjectHideFlags: 0
@@ -4454,7 +4456,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2041364363
 CanvasRenderer:
@@ -4510,7 +4512,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &2131826978
 CanvasRenderer:
@@ -4536,7 +4538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807

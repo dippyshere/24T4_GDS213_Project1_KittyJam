@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
+  m_LightingDataAsset: {fileID: 112000000, guid: 4c8f5318845fd6049958b53b0b08e458,
     type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -630,10 +630,10 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 937e620152dc09f4cafd3b4ee31872b5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 2.3172193
-    y: 2.3172193
-    width: 8.125
-    height: 4.5737987
+    x: 0.00026634
+    y: 0.000266345
+    width: 4.1164556
+    height: 2.3168945
 --- !u!114 &1564916481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!224 &7997454815123833728
 RectTransform:
@@ -1332,7 +1332,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!224 &9143526778858917420
 RectTransform:

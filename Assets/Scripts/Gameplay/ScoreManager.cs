@@ -75,7 +75,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="hitTime">The time the note was hit. The closer to 0, the better</param>
     /// <param name="position">The position of the note that was hit, to display feedback at</param>
-    public NoteFeedback Hit(double hitTime, Vector3 position, bool isAlternateNote = false)
+    public NoteFeedback Hit(double hitTime, Vector3 position, bool isAlternateNote = false, bool isLiftNote = false)
     {
         // Debug.Log("Hit time: " + hitTime);
         hitTime *= -1;
@@ -91,11 +91,19 @@ public class ScoreManager : MonoBehaviour
         }
         else if (hitTime > goodRange)
         {
+            if (isLiftNote)
+            {
+                return NoteFeedback.TooEarly;
+            }
             Miss(position, NoteFeedback.TooEarly);
             return NoteFeedback.TooEarly;
         }
         else
         {
+            if (isLiftNote)
+            {
+                return NoteFeedback.Miss;
+            }
             Miss(position, NoteFeedback.Miss);
             return NoteFeedback.Miss;
         }
@@ -205,6 +213,20 @@ public class ScoreManager : MonoBehaviour
         }
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
+    }
+
+    /// <summary>
+    /// Used by notes to add their sustained score to the player's score
+    /// </summary>
+    /// <param name="scoreToAdd"></param>
+    public void AddScore(long scoreToAdd, bool preMultiplied = false)
+    {
+        if (!preMultiplied)
+        {
+            scoreToAdd *= multiplier;
+        }
+        score += scoreToAdd;
+        scoreEvent?.Invoke(score);
     }
 
     /// <summary>

@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: e435b5ce8f1eae049ba9a3b41870aef0
-  m_OcclusionCullingData: {fileID: 36300000, guid: c26391c63c98d48488caff03cfc57d67,
+  m_OcclusionCullingData: {fileID: 36300000, guid: eb823bc8201b3304a9976c45bcbdc3b5,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -98,10 +98,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000018, guid: 893284d78cc21f646b86f254d00195a8,
+  m_LightingDataAsset: {fileID: 112000000, guid: 2d11975e8dcfe2a4e97047957dd779fe,
     type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
-    type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -544,7 +543,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!224 &4003823330960280358
 RectTransform:
@@ -892,7 +891,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!224 &5690212146387385561
 RectTransform:

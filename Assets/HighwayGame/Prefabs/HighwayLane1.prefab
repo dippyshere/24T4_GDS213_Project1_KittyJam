@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3626011408547957613}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710653, y: -0, z: -0, w: 0.7071071}
-  m_LocalPosition: {x: 0, y: 0.02, z: -5}
+  m_LocalPosition: {x: 0, y: 0.03, z: -5}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: e68d8be5f3e54d84287bdd9fc1f11a5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+  - {fileID: 2100000, guid: e68d8be5f3e54d84287bdd9fc1f11a5a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96346d6fcf8fa1649b923c7861055999, type: 3}
+  m_Sprite: {fileID: -2108932728, guid: b5c1abc09a9f699429c809896b58df72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobileOnlyImage: {fileID: 0}
+  desktopOnlyImage: {fileID: 0}
   mobileOnlySprite: {fileID: 6752054832921833191}
 --- !u!1 &5099567531379797039
 GameObject:
@@ -230,5 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteNumber: 64
+  liftNoteNumber: 59
   notePrefab: {fileID: 1679635116095923819, guid: 13a22231298e1c34db54f39b014dc210,
+    type: 3}
+  liftNotePrefab: {fileID: 1679635116095923819, guid: e442366045d78e040a4c01a8f4981aaf,
     type: 3}

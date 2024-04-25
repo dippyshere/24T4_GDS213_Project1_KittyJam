@@ -84,7 +84,7 @@ public class CircleNoteManager : MonoBehaviour
 
         if (followPoint.GetComponent<TrailRenderer>().enabled)
         {
-            followPoint.transform.position = Vector3.Lerp(followPoint.transform.position, targetPosition, Time.deltaTime * followPointSpeed);
+            followPoint.transform.position = Vector3.Lerp(followPoint.transform.position, targetPosition, Time.smoothDeltaTime * followPointSpeed);
         }
     }
 

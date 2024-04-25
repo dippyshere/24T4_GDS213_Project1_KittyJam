@@ -65,7 +65,7 @@ public class CameraController : MonoBehaviour
         {
             intensity = Mathf.Lerp(intensity, 0, timer / duration);
             transform.position = originalPosition + intensity * shakeMultiplier * UnityEngine.Random.insideUnitSphere;
-            timer += Time.unscaledDeltaTime;
+            timer += Time.smoothDeltaTime;
             yield return null;
         }
         yield return null;
