@@ -17,6 +17,7 @@ public class HighwayNote : MonoBehaviour
     [SerializeField, Tooltip("Reference to the line renderer for displaying sustain notes")] private LineRenderer lineRenderer;
     [HideInInspector, Tooltip("If the sustain is being held")] public bool isSustaining = false;
     [Tooltip("The percentage of the sustain note that has been awarded score")] private double sustainPercentage = 0;
+    [Tooltip("Cached material index of the intensity property")] private int _intensityID = Shader.PropertyToID("_Intensity");
 
     void Start()
     {
@@ -66,7 +67,7 @@ public class HighwayNote : MonoBehaviour
         CancelInvoke(nameof(OnMiss));
         if (lineRenderer != null)
         {
-            lineRenderer.material.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
+            StartCoroutine(SustainActivate());
         }
     }
 
@@ -91,7 +92,34 @@ public class HighwayNote : MonoBehaviour
     {
         if (lineRenderer != null)
         {
-            lineRenderer.material.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
+            StartCoroutine(SustainDeactivate());
+        }
+    }
+
+    /// <summary>
+    /// Fade in the sustain bar
+    /// </summary>
+    /// <returns>The coroutine</returns>
+    private IEnumerator SustainActivate()
+    {
+        while (lineRenderer.material.GetFloat(_intensityID) < 7.5f)
+        {
+            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            yield return null;
+        }
+    }
+
+    /// <summary>
+    /// Fade out the sustain bar
+    /// </summary>
+    /// <returns>The coroutine</returns>
+    private IEnumerator SustainDeactivate()
+    {
+        float intensity = lineRenderer.material.GetFloat(_intensityID);
+        while (lineRenderer.material.GetFloat(_intensityID) > 0.5f)
+        {
+            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            yield return null;
         }
     }
 
