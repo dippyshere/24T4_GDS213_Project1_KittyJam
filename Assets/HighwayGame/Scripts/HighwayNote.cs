@@ -63,6 +63,7 @@ public class HighwayNote : MonoBehaviour
     {
         visualSprite.enabled = false;
         shadowSprite.enabled = false;
+        CancelInvoke(nameof(OnMiss));
         if (lineRenderer != null)
         {
             lineRenderer.material.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
@@ -78,7 +79,7 @@ public class HighwayNote : MonoBehaviour
         double currentSustainPercentage = Math.Clamp((SongManager.Instance.GetAudioSourceTime() - assignedTime) / sustainDuration.TotalSeconds, 0f, 1f);
         double deltaSustainPercentage = currentSustainPercentage - sustainPercentage;
         sustainPercentage = currentSustainPercentage;
-        ScoreManager.Instance.AddScore((long)(deltaSustainPercentage * 500 * sustainDuration.TotalSeconds));
+        ScoreManager.Instance.AddScore((long)(deltaSustainPercentage * 150 * sustainDuration.TotalSeconds));
         if (currentSustainPercentage == 1)
         {
             DeactivateSustain();
