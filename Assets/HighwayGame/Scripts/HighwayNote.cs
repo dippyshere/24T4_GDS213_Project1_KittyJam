@@ -102,9 +102,20 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainActivate()
     {
-        while (lineRenderer.material.GetFloat(_intensityID) < 7.5f)
+        while (true)
         {
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            try
+            {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) < 7.5f)
+                {
+                    yield break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            }
+            catch
+            {
+                yield break;
+            }
             yield return null;
         }
     }
@@ -115,10 +126,20 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainDeactivate()
     {
-        float intensity = lineRenderer.material.GetFloat(_intensityID);
-        while (lineRenderer.material.GetFloat(_intensityID) > 0.5f)
+        while (true)
         {
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            try
+            {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) > 0.5f)
+                {
+                    yield break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            }
+            catch
+            {
+                yield break;
+            }
             yield return null;
         }
     }
@@ -126,8 +147,10 @@ public class HighwayNote : MonoBehaviour
     /// <summary>
     /// Called to destroy the note
     /// </summary>
-    private void DeleteNote()
+    public void DeleteNote()
     {
+        StopAllCoroutines();
+        CancelInvoke();
         Destroy(gameObject);
     }
 }

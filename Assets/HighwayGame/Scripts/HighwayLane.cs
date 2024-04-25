@@ -144,7 +144,7 @@ public class HighwayLane : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(notes[inputIndex].gameObject);
+                    notes[inputIndex].DeleteNote();
                 }
                 inputIndex++;
             }
