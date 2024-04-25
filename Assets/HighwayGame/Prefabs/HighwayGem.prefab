@@ -50,6 +50,7 @@ MonoBehaviour:
   timeInstantiated: 0
   assignedTime: 0
   visualSprite: {fileID: 2231683826541623487}
+  shadowSprite: {fileID: 8314031979908958401}
   lineRenderer: {fileID: 5290209553560852510}
 --- !u!1 &8189038423469241321
 GameObject:

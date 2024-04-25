@@ -216,6 +216,16 @@ public class ScoreManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Used by notes to add their sustained score to the player's score
+    /// </summary>
+    /// <param name="scoreToAdd"></param>
+    public void AddScore(long scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreEvent?.Invoke(score);
+    }
+
+    /// <summary>
     /// Called when the player successfully hits a note to increase the multiplier if the combo threshold is reached
     /// </summary>
     private void IncreaseMultiplier()

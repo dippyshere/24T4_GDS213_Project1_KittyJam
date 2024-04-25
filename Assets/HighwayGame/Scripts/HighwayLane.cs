@@ -20,6 +20,7 @@ public class HighwayLane : MonoBehaviour
     [Tooltip("List of sustain note durations")] private List<MetricTimeSpan> sustainDurations = new List<MetricTimeSpan>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
     [Tooltip("The index of the currently pending input")] private int inputIndex = 0;
+    [Tooltip("Reference to the current sustain note")] private HighwayNote currentSustainNote;
 
     /// <summary>
     /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
@@ -98,6 +99,13 @@ public class HighwayLane : MonoBehaviour
     {
         if (inputIndex < timeStamps.Count)
         {
+            if (context.canceled && currentSustainNote != null)
+            {
+                currentSustainNote.DeactivateSustain();
+                currentSustainNote.isSustaining = false;
+                currentSustainNote = null;
+                Debug.Log("Deactivate sustain");
+            }
             bool liftHit = false;
             if (context.canceled && timeStamps[inputIndex].Values.First()[0])
             {
@@ -129,7 +137,16 @@ public class HighwayLane : MonoBehaviour
 #elif UNITY_ANDROID
                 Vibration.VibratePop();
 #endif
-                Destroy(notes[inputIndex].gameObject);
+                if (timeStamps[inputIndex].Values.First()[1])
+                {
+                    notes[inputIndex].ActivateSustain();
+                    notes[inputIndex].isSustaining = true;
+                    currentSustainNote = notes[inputIndex];
+                }
+                else
+                {
+                    Destroy(notes[inputIndex].gameObject);
+                }
                 inputIndex++;
             }
             if (result == NoteFeedback.Miss)

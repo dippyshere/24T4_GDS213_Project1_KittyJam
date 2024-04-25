@@ -1,4 +1,5 @@
 ﻿using Melanchall.DryWetMidi.Interaction;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,10 @@ public class HighwayNote : MonoBehaviour
     [HideInInspector, Tooltip("The time that the note needs to be hit")] public float assignedTime;
     [HideInInspector, Tooltip("The sustain note duration")] public MetricTimeSpan sustainDuration;
     [SerializeField, Tooltip("The sprite renderer of the note, to apply effects when missing the note")] private SpriteRenderer visualSprite;
+    [SerializeField, Tooltip("The sprite renderer of the shadow")] private SpriteRenderer shadowSprite;
     [SerializeField, Tooltip("Reference to the line renderer for displaying sustain notes")] private LineRenderer lineRenderer;
+    [HideInInspector, Tooltip("If the sustain is being held")] public bool isSustaining = false;
+    [Tooltip("The percentage of the sustain note that has been awarded score")] private double sustainPercentage = 0;
 
     void Start()
     {
@@ -39,6 +43,10 @@ public class HighwayNote : MonoBehaviour
     void Update()
     {
         transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.smoothDeltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
+        if (isSustaining)
+        {
+            UpdateSustain();
+        }
     }
 
     /// <summary>
@@ -53,6 +61,8 @@ public class HighwayNote : MonoBehaviour
 
     public void ActivateSustain()
     {
+        visualSprite.enabled = false;
+        shadowSprite.enabled = false;
         if (lineRenderer != null)
         {
             lineRenderer.material.color = new Color(0.8f, 0.45f, 0.45f, 0.45f);
@@ -63,11 +73,20 @@ public class HighwayNote : MonoBehaviour
     {
         if (lineRenderer != null)
         {
-            lineRenderer.SetPosition(0, new Vector3(0, 0.02f, (float)(SongManager.Instance.GetAudioSourceTime() - timeInstantiated) / (SongManager.Instance.noteTime * 2) * ((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * -1)));
+            lineRenderer.SetPosition(0, new Vector3(0, 0.01f, (-transform.position.z) - (-HighwayNoteManager.Instance.noteTapZ)));
+        }
+        double currentSustainPercentage = Math.Clamp((SongManager.Instance.GetAudioSourceTime() - assignedTime) / sustainDuration.TotalSeconds, 0f, 1f);
+        double deltaSustainPercentage = currentSustainPercentage - sustainPercentage;
+        sustainPercentage = currentSustainPercentage;
+        ScoreManager.Instance.AddScore((long)(deltaSustainPercentage * 500 * sustainDuration.TotalSeconds));
+        if (currentSustainPercentage == 1)
+        {
+            DeactivateSustain();
+            isSustaining = false;
         }
     }
 
-    private void DeactivateSustain()
+    public void DeactivateSustain()
     {
         if (lineRenderer != null)
         {
