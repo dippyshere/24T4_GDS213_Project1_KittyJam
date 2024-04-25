@@ -104,18 +104,11 @@ public class HighwayNote : MonoBehaviour
     {
         while (true)
         {
-            try
+            if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) >= 7.5f)
             {
-                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) < 7.5f)
-                {
-                    yield break;
-                }
-                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+                break;
             }
-            catch
-            {
-                yield break;
-            }
+            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
             yield return null;
         }
     }
@@ -128,18 +121,11 @@ public class HighwayNote : MonoBehaviour
     {
         while (true)
         {
-            try
+            if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) <= 0.5f)
             {
-                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) > 0.5f)
-                {
-                    yield break;
-                }
-                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+                break;
             }
-            catch
-            {
-                yield break;
-            }
+            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
             yield return null;
         }
     }
