@@ -101,6 +101,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - highwaygame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10dc9bcb2c25eb345bdcb4ca09b6b2ac
+    m_Address: Assets/Scenes/Gameplay/HighwayGame/_HighwayGameBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - highwaygame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

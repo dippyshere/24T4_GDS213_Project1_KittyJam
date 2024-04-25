@@ -68,14 +68,14 @@ public class DDRNoteManager : MonoBehaviour
 
     private void Update()
     {
-        if (BongoCatController.Instance == null || BongoCatController.Instance.renderObject == null || BongoCatController.Instance.renderObject.material)
+        if (BongoCatController.Instance == null || BongoCatController.Instance.renderObject == null || BongoCatController.Instance.renderObject.material == null)
         {
             return;
         }
         // bongo cat colour changing
         if (comboScore >= 50)
         {
-            timer += Time.deltaTime / seconds;
+            timer += Time.smoothDeltaTime / seconds;
 
             if (blueToGreen == true && greenToRed == false && redToBlue == false)
             {
@@ -115,7 +115,7 @@ public class DDRNoteManager : MonoBehaviour
         }
         if (comboScore >= 100)
         {
-            timer += Time.deltaTime / seconds;
+            timer += Time.smoothDeltaTime / seconds;
 
             if (blueToGreen == true && greenToRed == false && redToBlue == false)
             {
@@ -155,8 +155,8 @@ public class DDRNoteManager : MonoBehaviour
         }
         if (comboScore <= 49)
         {
-            BongoCatController.Instance.renderObject.material.color = new Color(0.5f, 0.5f, 0.5f);
-            BongoCatController.Instance.renderObject.material.SetColor("_EmissionColor", BongoCatController.Instance.renderObject.material.color);
+            BongoCatController.Instance.renderObject.material.color = new Color(1, 1, 1);
+            BongoCatController.Instance.renderObject.material.SetColor("_EmissionColor", BongoCatController.Instance.renderObject.material.color * 0.5220125f);
         }
     }
 

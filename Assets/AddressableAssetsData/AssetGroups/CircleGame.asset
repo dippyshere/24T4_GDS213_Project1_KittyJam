@@ -77,14 +77,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - circlegame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 96aaeb026656e2e4ebba8d33081459c2
-    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase/ReflectionProbe-0.exr
+  - m_GUID: 7ac6774e4319ff04b992fc1da30d1544
+    m_Address: Assets/CircleGame/Textures
     m_ReadOnly: 0
     m_SerializedLabels:
     - circlegame
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7ac6774e4319ff04b992fc1da30d1544
-    m_Address: Assets/CircleGame/Textures
+  - m_GUID: 83de56529c5098249a1ab359592227d3
+    m_Address: Assets/Scenes/Gameplay/CircleGame/_CircleGameBase
     m_ReadOnly: 0
     m_SerializedLabels:
     - circlegame

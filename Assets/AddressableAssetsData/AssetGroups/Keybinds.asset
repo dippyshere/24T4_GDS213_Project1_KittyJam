@@ -17,38 +17,44 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: c3801e8d644fd26498b480ea324e39f1
   m_SerializeEntries:
-  - m_GUID: cfe0b92118a8799428e93f14ab4655a7
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - keyboard
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a6e6388c4431d854f9e56c85a3c58ced
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Others
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - others
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 428c6819b2ce66d46bf013de64afed5f
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/PS5
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - ps5
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 986b2559b92033043a94046e3194b1d6
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Steam Deck
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - steamdeck
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bced3244f1be12a43a64e80161410594
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Switch
+  - m_GUID: 79c5456d04dfed9459504d9067f5e3d0
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Switch_SpriteSheet.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - switch
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 66b3c00442b502b4cb4fc964054f30ca
-    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/Xbox Series
+  - m_GUID: 22acade346241f745a1e50e54f656ba4
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/SteamDeck_SpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - steamdeck
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e584e6e796e75104d9aebc58c7c2896c
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/PS5_SpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ps5
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84363f10f078f4248a068b47eadf54b0
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/PS4_SpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ps4
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5c1abc09a9f699429c809896b58df72
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/MouseKeyboardDark_SpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - keyboard
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8a8866d39b151e4b9b8e0b937effb09
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/XboxOne_SpriteSheet.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - xbox
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f0300b0215a3074caa2df2f572f6955
+    m_Address: Assets/Imported/Xelu_Free_Controller&Key_Prompts/XboxSeries_SpriteSheet.png
     m_ReadOnly: 0
     m_SerializedLabels:
     - xsx

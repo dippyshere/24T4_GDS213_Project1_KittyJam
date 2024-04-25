@@ -17,11 +17,10 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e06cea2ce88b7414cab474f3b91a6d44
   m_SerializeEntries:
-  - m_GUID: b63e0053080646b9819789bf3bf9fa17
-    m_Address: Assets/TextMesh Pro/Examples & Extras/Fonts
+  - m_GUID: 4beb055f07aaff244873dec698d0363e
+    m_Address: Assets/TextMesh Pro/Examples & Extras/Fonts/Roboto-Bold.ttf
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - fonts
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

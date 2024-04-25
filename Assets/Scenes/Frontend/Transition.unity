@@ -97,9 +97,9 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: f297e7f94d2a76c40a4375c66996028e,
+  m_LightingDataAsset: {fileID: 112000000, guid: 6729a6f0fd6f61040a7539c59c103f40,
     type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -189,17 +189,22 @@ PrefabInstance:
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
       propertyPath: m_UVRect.x
-      value: 9.6241865
+      value: 17.489878
       objectReference: {fileID: 0}
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
       propertyPath: m_UVRect.y
-      value: 0.80215
+      value: 8.667841
       objectReference: {fileID: 0}
     - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
       propertyPath: m_UVRect.width
       value: 9.521484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968314495044986838, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
+        type: 3}
+      propertyPath: m_UVRect.height
+      value: 9.138011
       objectReference: {fileID: 0}
     - target: {fileID: 5966183760884174236, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
         type: 3}
@@ -250,11 +255,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7648212605508789339, guid: 1bee7a0da26c06c45aad13d4a1cd4272,
-        type: 3}
-      propertyPath: m_MatchWidthOrHeight
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

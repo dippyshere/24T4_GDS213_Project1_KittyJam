@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +21,22 @@ public class MarchingNote : MonoBehaviour
     {
         if (other.CompareTag("Star"))
         {
-            ScoreManager.Instance.Hit(0, transform.position, true);
+            NoteFeedback feedbackType = ScoreManager.Instance.Hit(0, transform.position, true);
+            if (feedbackType == NoteFeedback.Perfect || feedbackType == NoteFeedback.Good)
+            {
+#if UNITY_IOS
+                try
+                {
+                    Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+                }
+                catch (Exception)
+                {
+
+                }
+#elif UNITY_ANDROID
+                Vibration.VibratePop();
+#endif
+            }
             Destroy(gameObject);
         }
     }

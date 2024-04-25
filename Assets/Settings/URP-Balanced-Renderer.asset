@@ -141,7 +141,7 @@ MonoBehaviour:
   m_DepthPrimingMode: 0
   m_CopyDepthMode: 0
   m_AccurateGbufferNormals: 0
-  m_IntermediateTextureMode: 1
+  m_IntermediateTextureMode: 0
 --- !u!114 &1538182276230367007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,14 +177,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cbabd8e2cb2e4f8a930752453adf79a, type: 3}
   m_Name: Beautify
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   shader: {fileID: 4800000, guid: 55d70ca4ea7504a38b66170bbe587b2f, type: 3}
   renderPassEvent: 450
   ignorePostProcessingOption: 0
   clearXRColorBuffer: 0
   cameraLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 383
 --- !u!114 &4929179291487481305
 MonoBehaviour:
   m_ObjectHideFlags: 0

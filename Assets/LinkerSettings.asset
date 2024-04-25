@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed0db27f16943b2a49260ae5dabc5bc, type: 3}
   m_Name: LinkerSettings
   m_EditorClassIdentifier: 
-  _assembliesToIgnore: []
-  _assemblyPatternsToIgnore: []
+  _assembliesToIgnore:
+  - Workshop.Editor
+  _assemblyPatternsToIgnore:
+  - .*Sample
+  - .*Demo
   _folderPath: 
   _addDlls: 1
   _addAsmdefs: 1

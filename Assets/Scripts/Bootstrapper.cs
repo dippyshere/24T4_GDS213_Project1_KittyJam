@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,18 @@ public class Bootstrapper : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (Application.isMobilePlatform)
+        {
+            Application.targetFrameRate = Mathf.CeilToInt((float)Screen.currentResolution.refreshRateRatio.value);
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
+        }
+
+        InputSystem.settings.SetInternalFeatureFlag("USE_OPTIMIZED_CONTROLS", true);
+        InputSystem.settings.SetInternalFeatureFlag("USE_READ_VALUE_CACHING", true);
+
         bootstrapCanvasGroup = GetComponent<CanvasGroup>();
         bootstrapCanvasGroup.alpha = 1;
 
@@ -73,7 +86,7 @@ public class Bootstrapper : MonoBehaviour
         bootstrapCanvasGroup.alpha = 1;
         while (bootstrapCanvasGroup.alpha > 0)
         {
-            bootstrapCanvasGroup.alpha -= Time.deltaTime * 2;
+            bootstrapCanvasGroup.alpha -= Time.unscaledDeltaTime * 2;
             yield return null;
         }
         SceneManager.UnloadSceneAsync(gameObject.scene);

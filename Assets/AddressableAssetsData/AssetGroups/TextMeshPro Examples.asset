@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 8699f360061d09a4da79e3975e45ae2d
   m_SerializeEntries:
-  - m_GUID: 5bff2544887143f5807c7d5059d07f79
-    m_Address: Assets/TextMesh Pro/Examples & Extras/Prefabs
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6d3a169ad794942a21da6a552d62f6f
     m_Address: Assets/TextMesh Pro/Examples & Extras/Resources
     m_ReadOnly: 0

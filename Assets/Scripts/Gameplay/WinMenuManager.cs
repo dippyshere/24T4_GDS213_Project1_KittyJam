@@ -1,8 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
+using Unity.Services.Leaderboards;
 using TMPro;
 using System.Globalization;
+using Unity.Services.Leaderboards.Models;
+using Cysharp.Threading.Tasks;
 
 /// <summary>
 /// Handles the win menu UI
@@ -13,6 +18,7 @@ public class WinMenuManager : MonoBehaviour
     [Tooltip("Reference to the win menu")] private GameObject winMenu;
     [SerializeField, Tooltip("Reference to the final score display")] private TextMeshProUGUI finalScoreDisplay;
     [SerializeField, Tooltip("Reference to the score tally display")] private TextMeshProUGUI scoreTallyDisplay;
+    [SerializeField, Tooltip("Reference to the leaderborad score submission status")] private TextMeshProUGUI leaderboardSubmissionStatus;
 
     private void Awake()
     {
@@ -28,7 +34,7 @@ public class WinMenuManager : MonoBehaviour
     /// <summary>
     /// Enables the win menu
     /// </summary>
-    public void EnableWinMenu()
+    public async void EnableWinMenu()
     {
         CursorController.Instance.UnlockCursor();
         winMenu.SetActive(true);
@@ -36,6 +42,7 @@ public class WinMenuManager : MonoBehaviour
         PauseMenuManager.Instance.EnablePauseEffect();
         finalScoreDisplay.text = "Final Score: " + ScoreManager.Instance.score.ToString("N0", CultureInfo.InvariantCulture);
         scoreTallyDisplay.text = "Perfect: " + ScoreManager.Instance.perfectCount.ToString("N0", CultureInfo.InvariantCulture) + "\nGood: " + ScoreManager.Instance.hitCount.ToString("N0", CultureInfo.InvariantCulture) + "\nMiss: " + ScoreManager.Instance.missCount.ToString("N0", CultureInfo.InvariantCulture);
+        await SubmitLeaderboardScore();
     }
 
     /// <summary>
@@ -55,5 +62,102 @@ public class WinMenuManager : MonoBehaviour
     public void ReturnToMenu()
     {
         PauseMenuManager.Instance.ReturnToMenu();
+    }
+
+    public async UniTask SubmitLeaderboardScore()
+    {
+        leaderboardSubmissionStatus.text = "Submitting...";
+        SongData songData = SongManager.Instance.songData;
+        if (songData == null)
+        {
+            leaderboardSubmissionStatus.text = "No song data found";
+            return;
+        }
+        LeaderboardEntry playerEntry = null;
+        try
+        {
+            switch (GlobalVariables.Get<int>("activeGameType"))
+            {
+                case 1:
+                    foreach (GameMode gameMode in songData.GameModes)
+                    {
+                        if (gameMode.GameType == GameType.CircleGame)
+                        {
+                            if (gameMode.LeaderboardID == null || gameMode.LeaderboardID == "")
+                            {
+                                leaderboardSubmissionStatus.text = "No leaderboard ID found";
+                                return;
+                            }
+                            playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync(gameMode.LeaderboardID, ScoreManager.Instance.score);
+                            Debug.Log(JsonConvert.SerializeObject(playerEntry));
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    foreach (GameMode gameMode in songData.GameModes)
+                    {
+                        if (gameMode.GameType == GameType.HighwayGame)
+                        {
+                            if (gameMode.LeaderboardID == null || gameMode.LeaderboardID == "")
+                            {
+                                leaderboardSubmissionStatus.text = "No leaderboard ID found";
+                                return;
+                            }
+                            playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync(gameMode.LeaderboardID, ScoreManager.Instance.score);
+                            Debug.Log(JsonConvert.SerializeObject(playerEntry));
+                            break;
+                        }
+                    }
+                    break;
+                case 3:
+                    foreach (GameMode gameMode in songData.GameModes)
+                    {
+                        if (gameMode.GameType == GameType.MarchingGame)
+                        {
+                            if (gameMode.LeaderboardID == null || gameMode.LeaderboardID == "")
+                            {
+                                leaderboardSubmissionStatus.text = "No leaderboard ID found";
+                                return;
+                            }
+                            playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync(gameMode.LeaderboardID, ScoreManager.Instance.score);
+                            Debug.Log(JsonConvert.SerializeObject(playerEntry));
+                            break;
+                        }
+                    }
+                    break;
+                case 4:
+                    foreach (GameMode gameMode in songData.GameModes)
+                    {
+                        if (gameMode.GameType == GameType.BongoGame)
+                        {
+                            if (gameMode.LeaderboardID == null || gameMode.LeaderboardID == "")
+                            {
+                                leaderboardSubmissionStatus.text = "No leaderboard ID found";
+                                return;
+                            }
+                            playerEntry = await LeaderboardsService.Instance.AddPlayerScoreAsync(gameMode.LeaderboardID, ScoreManager.Instance.score);
+                            Debug.Log(JsonConvert.SerializeObject(playerEntry));
+                            break;
+                        }
+                    }
+                    break;
+                default:
+                    leaderboardSubmissionStatus.text = "No game type found";
+                    return;
+            }
+        }
+        catch (Exception e)
+        {
+            leaderboardSubmissionStatus.text = "Failed to submit score";
+            Debug.LogError(e);
+            return;
+        }
+        if (playerEntry == null)
+        {
+            leaderboardSubmissionStatus.text = "Failed to submit score";
+            return;
+        }
+        leaderboardSubmissionStatus.text = "Score submitted";
     }
 }

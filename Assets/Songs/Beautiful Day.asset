@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   songName: Beautiful Day
   artistName: Ruwin
-  albumName: 
+  albumName: Beautiful Day
   genre: 6
-  year: 
-  songLength: 0
+  year: 2024
+  songLength: 152
   usageLicense: 2
+  priority: 0
+  discordIconKey: beautifulday
   midiName: kittyjam beautiful day.mid
   songAudio: {fileID: 8300000, guid: 3439c370ac33c5948a578dac2b322f26, type: 3}
   albumCover: {fileID: 21300000, guid: a9b40ec8dc095ea4b902958859dd78c5, type: 3}
@@ -29,7 +31,10 @@ MonoBehaviour:
   gameModes:
   - gameType: 0
     supportedInstruments: []
-    leaderboardID: 
+    leaderboardID: d7254f89-54e5-4a15-b42e-93c0e6a6cd5c
   - gameType: 1
     supportedInstruments: []
-    leaderboardID: 
+    leaderboardID: 23e93d20-88fd-477e-8e1d-ff42a723f0d5
+  - gameType: 3
+    supportedInstruments: []
+    leaderboardID: a5070e1e-c641-4897-b0fb-fd16d4ce46db

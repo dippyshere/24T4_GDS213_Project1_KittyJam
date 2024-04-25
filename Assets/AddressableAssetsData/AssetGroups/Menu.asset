@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: f4daf2a915a97e444a744244a3ddd56b
   m_SerializeEntries:
-  - m_GUID: a2594d64489f1c547bbc7e87985621b3
-    m_Address: Assets/Imported/Music - FestivalTrain/FestivalTrain - Loop1.wav
+  - m_GUID: 19be5e42e4991f6478a6d34840ac9505
+    m_Address: Assets/Audio/stuckinmyhead.wav
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

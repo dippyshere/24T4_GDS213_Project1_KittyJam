@@ -96,9 +96,9 @@ public class GameUIManager : MonoBehaviour
             intensity = Mathf.Lerp(intensity, 0, timer / duration);
             for (int i = 0; i < uiElements.Count; i++)
             {
-                uiElements[i].localPosition = originalPositions[i] + Random.insideUnitSphere * intensity * intensityMultiplier;
+                uiElements[i].localPosition = originalPositions[i] + intensity * intensityMultiplier * Random.insideUnitSphere;
             }
-            timer += Time.unscaledDeltaTime;
+            timer += Time.smoothDeltaTime;
             yield return null;
         }
         yield return null;

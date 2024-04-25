@@ -17,7 +17,7 @@ public class HighwayBeatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.deltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
+        transform.Translate((HighwayNoteManager.Instance.noteDespawnZ - HighwayNoteManager.Instance.noteSpawnZ) * Time.smoothDeltaTime * Vector3.forward / (SongManager.Instance.noteTime * 2));
     }
 
     /// <summary>

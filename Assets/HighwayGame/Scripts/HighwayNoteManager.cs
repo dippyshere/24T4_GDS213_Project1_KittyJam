@@ -94,10 +94,11 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane1(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (Time.timeScale == 0)
         {
-            highwayLanes[0].Hit();
+            return;
         }
+        highwayLanes[0].Hit(context);
     }
 
     /// <summary>
@@ -110,10 +111,7 @@ public class HighwayNoteManager : MonoBehaviour
         {
             return;
         }
-        if (context.started)
-        {
-            highwayLanes[1].Hit();
-        }
+        highwayLanes[1].Hit(context);
     }
 
     /// <summary>
@@ -126,10 +124,7 @@ public class HighwayNoteManager : MonoBehaviour
         {
             return;
         }
-        if (context.started)
-        {
-            highwayLanes[2].Hit();
-        }
+        highwayLanes[2].Hit(context);
     }
 
     /// <summary>
@@ -142,10 +137,7 @@ public class HighwayNoteManager : MonoBehaviour
         {
             return;
         }
-        if (context.started)
-        {
-            highwayLanes[3].Hit();
-        }
+        highwayLanes[3].Hit(context);
     }
 
     /// <summary>
@@ -154,14 +146,11 @@ public class HighwayNoteManager : MonoBehaviour
     /// <param name="context">The input context</param>
     public void HitLane5(InputAction.CallbackContext context)
     {
-        if (Time.timeScale == 0)
+        if (Time.timeScale == 0 || highwayLanes.Length < 5)
         {
             return;
         }
-        if (context.started && highwayLanes.Length > 4)
-        {
-            highwayLanes[4].Hit();
-        }
+        highwayLanes[4].Hit(context);
     }
 
 

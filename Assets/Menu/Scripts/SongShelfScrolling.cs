@@ -74,7 +74,7 @@ public class SongShelfScrolling : MonoBehaviour
     {
         if (isScrolling)
         {
-            shelfRectTransform.localPosition = new Vector3(Mathf.Lerp(shelfRectTransform.localPosition.x, targetPosition, Time.deltaTime * scrollSpeed), shelfRectTransform.localPosition.y, shelfRectTransform.localPosition.z);
+            shelfRectTransform.localPosition = new Vector3(Mathf.Lerp(shelfRectTransform.localPosition.x, targetPosition, Time.unscaledDeltaTime * scrollSpeed), shelfRectTransform.localPosition.y, shelfRectTransform.localPosition.z);
             if (Mathf.Abs(shelfRectTransform.localPosition.x - targetPosition) < 1)
             {
                 isScrolling = false;

@@ -21,7 +21,7 @@ public class SongManager : MonoBehaviour
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
     [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
     [Header("Song Configuration")]
-    [SerializeField, Tooltip("The default song data to use")] private SongData songData;
+    [SerializeField, Tooltip("The default song data to use")] public SongData songData;
     [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
     [HideInInspector, Tooltip("Singleton reference to the current MIDI file")] public static MidiFile midiFile;
     [HideInInspector, Tooltip("The BPM of the song")] public float bpm;
@@ -161,6 +161,8 @@ public class SongManager : MonoBehaviour
                 lastNoteTime = metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + metricTimeSpan.Milliseconds / 1000f;
             }
         }
+
+        yield return new WaitUntil(() => Time.timeScale != 0);
 
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);

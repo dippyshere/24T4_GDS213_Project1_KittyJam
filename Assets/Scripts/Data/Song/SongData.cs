@@ -11,7 +11,7 @@ using UnityEditor;
 /// </summary>
 [
     CreateAssetMenu(fileName = "New Song Data", menuName = "Kitty Jam/Song Data"),
-    Icon("Packages/com.unity.visualscripting/Editor/VisualScripting.Core/IconMap/UnityMessageListener@32x.png"),
+    Icon("Assets/Menu/Textures/kittyjam placeholder cover.png"),
     Tooltip("A scriptable object that contains data for a song"),
     HelpURL("https://discord.com/channels/@me/1137585685864402974/1214421770657071145")
 ]
@@ -26,6 +26,7 @@ public class SongData : ScriptableObject
     [SerializeField, Tooltip("The length of the song (in seconds)")] private float songLength;
     [SerializeField, Tooltip("The usage rights for the song")] private UsageLicense usageLicense;
     [SerializeField, Tooltip("Songs will be listed by order of priority, then alphabetically. Set the priority higher to move the song to the front of the list")] private int priority;
+    [SerializeField, Tooltip("The key that is used for the song icon in Discord Rich Presence")] private string discordIconKey;
     [Header("Song Data")]
     [SerializeField, Tooltip("The name of the song's MIDI file")] private string midiName;
     [SerializeField, Tooltip("The audio file associated with the song")] private AudioClip songAudio;
@@ -46,6 +47,7 @@ public class SongData : ScriptableObject
     public float SongLength { get => songLength; }
     public UsageLicense UsageLicense { get => usageLicense; }
     public int Priority { get => priority; }
+    public string DiscordIconKey { get => discordIconKey; }
     public string MidiName { get => midiName; }
     public AudioClip SongAudio { get => songAudio; }
     public Sprite AlbumCover { get => albumCover; }
@@ -54,7 +56,7 @@ public class SongData : ScriptableObject
     public float PreviewEnd { get => previewEnd; }
     public float LoopPoint { get => loopPoint; }
     public List<GameMode> GameModes { get => gameModes; }
-    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, UsageLicense usageLicense, int priority, string midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
+    public SongData(string songName, string artistName, string albumName, Genre genre, string year, float songLength, UsageLicense usageLicense, int priority, string discordIconKey, string midiName, AudioClip songAudio, Sprite albumCover, float bpm, float previewStart, float previewEnd, float loopPoint, List<GameMode> gameModes)
     {
         this.songName = songName;
         this.artistName = artistName;
@@ -64,6 +66,7 @@ public class SongData : ScriptableObject
         this.songLength = songLength;
         this.usageLicense = usageLicense;
         this.priority = priority;
+        this.discordIconKey = discordIconKey;
         this.midiName = midiName;
         this.songAudio = songAudio;
         this.albumCover = albumCover;
@@ -83,6 +86,7 @@ public class SongData : ScriptableObject
         songLength = songData.songLength;
         usageLicense = songData.usageLicense;
         priority = songData.priority;
+        discordIconKey = songData.discordIconKey;
         midiName = songData.midiName;
         songAudio = songData.songAudio;
         albumCover = songData.albumCover;
@@ -153,49 +157,56 @@ public enum Genre
     Other
 }
 
-/// <summary>
-/// A custom inspector for the SongData class to display the album cover in the inspector
-/// </summary>
-#if UNITY_EDITOR
-[
-    CustomEditor(typeof(SongData), true),
-    CanEditMultipleObjects
-]
-public class SongDataEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-    }
+///// <summary>
+///// A custom inspector for the SongData class to display the album cover in the inspector
+///// </summary>
+//#if UNITY_EDITOR
+//[
+//    CustomEditor(typeof(SongData), true),
+//    CanEditMultipleObjects
+//]
+//public class SongDataEditor : Editor
+//{
+//    public override void OnInspectorGUI()
+//    {
+//        base.OnInspectorGUI();
+//    }
 
-    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
-    {
-        SongData songData = (SongData)target;
-        if (songData == null || songData.AlbumCover == null)
-        {
-            return base.RenderStaticPreview(assetPath, subAssets, width, height);
-        }
-        Texture2D source = songData.AlbumCover.texture;
-        RenderTexture renderTex = RenderTexture.GetTemporary(
-            source.width,
-            source.height,
-            0,
-            RenderTextureFormat.Default,
-            RenderTextureReadWrite.Linear);
+//    public override Texture2D RenderStaticPreview(string assetPath, Object[] subAssets, int width, int height)
+//    {
+//        try
+//        {
+//            SongData songData = (SongData)target;
+//            if (songData == null || songData.AlbumCover == null)
+//            {
+//                return null;
+//            }
+//            Texture2D source = songData.AlbumCover.texture;
+//            RenderTexture renderTex = RenderTexture.GetTemporary(
+//                source.width,
+//                source.height,
+//                0,
+//                RenderTextureFormat.Default,
+//                RenderTextureReadWrite.Linear);
 
-        Graphics.Blit(source, renderTex);
-        RenderTexture previous = RenderTexture.active;
-        RenderTexture.active = renderTex;
-        Texture2D readableText = new Texture2D(source.width, source.height);
-        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
-        readableText.Apply();
-        RenderTexture.active = previous;
-        RenderTexture.ReleaseTemporary(renderTex);
-        EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
-        return readableText;
-    }
-}
-#endif
+//            Graphics.Blit(source, renderTex);
+//            RenderTexture previous = RenderTexture.active;
+//            RenderTexture.active = renderTex;
+//            Texture2D readableText = new Texture2D(source.width, source.height);
+//            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+//            readableText.Apply();
+//            RenderTexture.active = previous;
+//            RenderTexture.ReleaseTemporary(renderTex);
+//            EditorUtility.CopySerialized(songData.AlbumCover.texture, readableText);
+//            return readableText;
+//        }
+//        catch
+//        {
+//            return null;
+//        }
+//    }
+//}
+//#endif
 
 /// <summary>
 /// This class is used to reference a song data asset in the project.

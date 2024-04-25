@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,8 +28,12 @@ public class SongSelectionManager : MonoBehaviour
     void Start()
     {
         instance = this;
+#if UNITY_IOS || UNITY_ANDROID
+        Vibration.Init();
+#endif
         PopulateSongList();
         selectionUIAnimator.SetBool("ShowSongUI", true);
+        DiscordRPCManager.Instance.UpdateActivity(details: "Selecting a song", start: DateTimeOffset.Now.ToUnixTimeMilliseconds(), largeImageKey: "kittyjam_cover", largeImageText: "Kitty Jam");
     }
 
     /// <summary>
@@ -86,6 +91,18 @@ public class SongSelectionManager : MonoBehaviour
     /// <param name="songTileManager">The song tile manager of the selected song</param>
     public void ChangeSong(SongTileManager songTileManager)
     {
+#if UNITY_IOS
+        try
+        {
+            Vibration.VibrateIOS_SelectionChanged();
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
+        Vibration.VibratePop();
+#endif
         if (songTileManager == activeSongTile)
         {
             return;
@@ -147,6 +164,18 @@ public class SongSelectionManager : MonoBehaviour
     /// <param name="songData"></param>
     public void SelectSong(IResourceLocation songDataLocation)
     {
+#if UNITY_IOS
+        try
+        {
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
+        Vibration.VibratePop();
+#endif
         GlobalVariables.Set("activeSongLocation", songDataLocation);
         StartCoroutine(gameSelectionManager.UpdateGameSelectionScreen());
         selectionUIAnimator.SetBool("ShowGameUI", true);
@@ -171,8 +200,8 @@ public class SongSelectionManager : MonoBehaviour
         float startVolume = audioSources[activeAudioSource].volume;
         while (audioSources[activeAudioSource].volume > 0)
         {
-            audioSources[activeAudioSource].volume -= startVolume * Time.deltaTime / 1;
-            audioSources[otherAudioSource].volume -= startVolume * Time.deltaTime / 1;
+            audioSources[activeAudioSource].volume -= startVolume * Time.unscaledDeltaTime / 1;
+            audioSources[otherAudioSource].volume -= startVolume * Time.unscaledDeltaTime / 1;
             yield return null;
         }
         audioSources[activeAudioSource].Stop();

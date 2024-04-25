@@ -107,6 +107,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - marchinggame
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e851cf0ed5025554ab045027c07893e9
+    m_Address: Assets/Scenes/Gameplay/MarchingGame/_MarchingGameBase
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - marchinggame
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

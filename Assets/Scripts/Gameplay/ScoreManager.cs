@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -61,6 +62,9 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_IOS || UNITY_ANDROID
+        Vibration.Init();
+#endif
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
         multiplierEvent?.Invoke(multiplier);
@@ -71,7 +75,7 @@ public class ScoreManager : MonoBehaviour
     /// </summary>
     /// <param name="hitTime">The time the note was hit. The closer to 0, the better</param>
     /// <param name="position">The position of the note that was hit, to display feedback at</param>
-    public NoteFeedback Hit(double hitTime, Vector3 position, bool isAlternateNote = false)
+    public NoteFeedback Hit(double hitTime, Vector3 position, bool isAlternateNote = false, bool isLiftNote = false)
     {
         // Debug.Log("Hit time: " + hitTime);
         hitTime *= -1;
@@ -87,11 +91,19 @@ public class ScoreManager : MonoBehaviour
         }
         else if (hitTime > goodRange)
         {
+            if (isLiftNote)
+            {
+                return NoteFeedback.TooEarly;
+            }
             Miss(position, NoteFeedback.TooEarly);
             return NoteFeedback.TooEarly;
         }
         else
         {
+            if (isLiftNote)
+            {
+                return NoteFeedback.Miss;
+            }
             Miss(position, NoteFeedback.Miss);
             return NoteFeedback.Miss;
         }
@@ -104,6 +116,18 @@ public class ScoreManager : MonoBehaviour
     /// <param name="noteFeedback">The type of feedback to display</param>
     public void Miss(Vector3 position, NoteFeedback noteFeedback = NoteFeedback.Miss, bool isAlternateNote = false)
     {
+#if UNITY_IOS
+        try
+        {
+            Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
+        }
+        catch (Exception)
+        {
+
+        }
+#elif UNITY_ANDROID
+        Vibration.VibrateNope();
+#endif
         if (isAlternateNote)
         {
             alternateNoteScoreEvent?.Invoke(noteFeedback, position);
@@ -127,8 +151,7 @@ public class ScoreManager : MonoBehaviour
         }
         catch (System.Exception)
         {
-
-            throw;
+            
         }
     }
 
@@ -151,7 +174,8 @@ public class ScoreManager : MonoBehaviour
         IncreaseMultiplier();
         try
         {
-            audioSource.PlayOneShot(goodHitSFX);
+            audioSource.clip = goodHitSFX;
+            audioSource.Play();
         }
         catch (System.Exception)
         {
@@ -180,7 +204,8 @@ public class ScoreManager : MonoBehaviour
         IncreaseMultiplier();
         try
         {
-            audioSource.PlayOneShot(perfectHitSFX);
+            audioSource.clip = perfectHitSFX;
+            audioSource.Play();
         }
         catch (System.Exception)
         {
@@ -188,6 +213,20 @@ public class ScoreManager : MonoBehaviour
         }
         scoreEvent?.Invoke(score);
         comboEvent?.Invoke(comboScore);
+    }
+
+    /// <summary>
+    /// Used by notes to add their sustained score to the player's score
+    /// </summary>
+    /// <param name="scoreToAdd"></param>
+    public void AddScore(long scoreToAdd, bool preMultiplied = false)
+    {
+        if (!preMultiplied)
+        {
+            scoreToAdd *= multiplier;
+        }
+        score += scoreToAdd;
+        scoreEvent?.Invoke(score);
     }
 
     /// <summary>
