@@ -96,12 +96,13 @@ GameObject:
   - component: {fileID: 5578449370433274469}
   - component: {fileID: 7977193770660167000}
   - component: {fileID: 3432308339547685497}
+  - component: {fileID: 4137368163981050451}
   m_Layer: 3
   m_Name: GemMaster
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5107175654717379027
 Transform:
@@ -191,6 +192,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4137368163981050451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4524773171783734124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c201f51a30b82ee41949b349650878a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 8525106950037783408}
+  - {fileID: 904631023056384229}
 --- !u!1 &5429163403442996694
 GameObject:
   m_ObjectHideFlags: 0

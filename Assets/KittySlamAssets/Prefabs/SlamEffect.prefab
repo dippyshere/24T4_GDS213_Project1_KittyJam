@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7509094641509636792}
   - component: {fileID: 5603074679903921051}
+  - component: {fileID: 1212371007397194518}
   m_Layer: 0
   m_Name: SlamEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7509094641509636792
 Transform:
@@ -45,6 +46,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e69f11b863aa048aea88b70fa724dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1212371007397194518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140606806397147552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c201f51a30b82ee41949b349650878a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 356024750831792386}
 --- !u!1 &6630756888768569531
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +76,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1601285752563604941
 Transform:

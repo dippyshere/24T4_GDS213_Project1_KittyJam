@@ -10,6 +10,8 @@ Material:
   m_Name: cfxr sword trail ice
   m_Shader: {fileID: -6465566751694194690, guid: 1a29b4d27eb8b04479ef89c00dea533d,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHABLEND_ON
   - _CFXR_DISSOLVE
@@ -27,6 +29,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -69,8 +72,6 @@ Material:
     - _Cutoff: 0.1
     - _DirLightScreenAtten: 1
     - _DirectLightingRamp: 1
-    - _DissolveAlongUVY: 0.607
-    - _DissolveOffsetStrength: 0.5
     - _DissolveSmooth: 0.1
     - _Distort: 0.1
     - _DoubleDissolve: 1
@@ -82,8 +83,6 @@ Material:
     - _IndirectLightingMix: 0.5
     - _InvertDissolveTex: 0
     - _LightingWorldPosStrength: 0.2
-    - _OVERLAYBLEND: 0
-    - _OVERLAYTEX: 0
     - _SecondColorSmooth: 0.2
     - _ShadowStrength: 1
     - _SingleChannel: 1
@@ -108,10 +107,8 @@ Material:
     - _UseUVDistortion: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 4.237095, g: 4.237095, b: 4.237095, a: 1}
     - _DissolveScroll: {r: -0.2, g: 0, b: 0, a: 0}
     - _DistortScrolling: {r: 0, g: 0, b: 1, a: 1}
     - _OverlayTex_Scroll: {r: 1, g: 0, b: 0.5, a: 1}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SoftParticlesFadeDistance: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

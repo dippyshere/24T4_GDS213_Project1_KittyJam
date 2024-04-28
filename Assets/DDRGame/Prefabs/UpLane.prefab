@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4327786935466127987
 Transform:
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1872173949428021164}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1, y: -0.000000026081608, z: 0.65242}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4758182617167860232
 Transform:
@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 3437208271064822884}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1, y: -0.000000085681, z: 1.1243}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -178,12 +178,13 @@ GameObject:
   m_Component:
   - component: {fileID: 13345001933795942}
   - component: {fileID: 6710387579624015831}
+  - component: {fileID: 1057254669962445743}
   m_Layer: 0
   m_Name: UpLane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &13345001933795942
 Transform:
@@ -218,3 +219,18 @@ MonoBehaviour:
   notePrefab: {fileID: 5778320482935785967, guid: d7829634b3d618041840a6b77710ab42,
     type: 3}
   catArm: 2
+--- !u!114 &1057254669962445743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5759584213119643358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c201f51a30b82ee41949b349650878a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderers:
+  - {fileID: 6118318708996543966}
+  - {fileID: 815844497795217454}

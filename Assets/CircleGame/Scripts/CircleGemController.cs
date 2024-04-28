@@ -22,6 +22,7 @@ public class CircleGemController : MonoBehaviour
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
             spriteRenderer.sprite = sprites[spriteIndex];
+            spriteRenderer.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
         }
         // Set the animation speed to match the song's note time
         GetComponent<Animator>().speed = 1 / CircleNoteManager.Instance.noteTime;
@@ -34,7 +35,7 @@ public class CircleGemController : MonoBehaviour
     /// </summary>
     public void OnPickup()
     {
-        double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+        double audioTime = SongManager.Instance.GetAudioSourceTime() - SongManager.Instance.inputOffset;
         ScoreManager.Instance.Hit(audioTime - assignedTime, transform.position);
         CancelInvoke();
         Destroy(gameObject);

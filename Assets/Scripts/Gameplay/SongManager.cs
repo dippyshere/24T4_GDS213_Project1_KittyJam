@@ -19,7 +19,8 @@ public class SongManager : MonoBehaviour
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] public float songDelayInSeconds;
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
-    [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
+    [Tooltip("An input delay offset to account for when determining hit accuracy")] public float inputOffset;
+    [Tooltip("A delay to apply elements that rely on song timing")] public float avOffset;
     [Header("Song Configuration")]
     [SerializeField, Tooltip("The default song data to use")] public SongData songData;
     [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
@@ -209,7 +210,7 @@ public class SongManager : MonoBehaviour
         }
         try
         {
-            return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+            return ((double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency) + avOffset;
         }
         catch (System.Exception)
         {

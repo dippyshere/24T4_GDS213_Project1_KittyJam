@@ -14,7 +14,7 @@ public class DDRNote : MonoBehaviour
     {
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         transform.localPosition += Vector3.back * DDRNoteManager.Instance.noteSpawnZ;
-        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset));
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class DDRNote : MonoBehaviour
         double timeSinceInstantiated = SongManager.Instance.GetAudioSourceTime() - timeInstantiated;
         float t = (float)(timeSinceInstantiated / (SongManager.Instance.noteTime * 2));
 
-        if (t > 0.5 + ScoreManager.Instance.goodRange)
+        if (t > 0.5 + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset)
         {
             Destroy(gameObject);
         }

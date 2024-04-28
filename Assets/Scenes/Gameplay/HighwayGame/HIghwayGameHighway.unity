@@ -2513,16 +2513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Highway
       objectReference: {fileID: 0}
-    - target: {fileID: 1352327470035580132, guid: b886df10d84c2994b81fcf9f6096b1e9,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 5419315947422228280, guid: b886df10d84c2994b81fcf9f6096b1e9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 5419315947422228280, guid: b886df10d84c2994b81fcf9f6096b1e9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2575,14 +2565,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7893454083573920764, guid: b886df10d84c2994b81fcf9f6096b1e9,
         type: 3}
-      propertyPath: m_ReceiveGI
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7893454083573920764, guid: b886df10d84c2994b81fcf9f6096b1e9,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_ProbeAnchor
+      value: 
+      objectReference: {fileID: 1439678386}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

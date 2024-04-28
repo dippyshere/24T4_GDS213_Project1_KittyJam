@@ -23,7 +23,9 @@ public class HighwayNote : MonoBehaviour
     {
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         transform.localPosition = Vector3.forward * HighwayNoteManager.Instance.noteSpawnZ;
-        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset));
+        visualSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        shadowSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
         if (sustainDuration != null)
         {
             lineRenderer.enabled = true;

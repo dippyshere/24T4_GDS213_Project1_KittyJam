@@ -14,10 +14,12 @@ public class PlatformSpecificSprite : MonoBehaviour
             if (mobileSprite != null)
             {
                 mobileSprite.enabled = true;
+                mobileSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             }
             if (desktopSprite != null)
             {
                 desktopSprite.enabled = false;
+                desktopSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             }
         }
         else
@@ -25,10 +27,12 @@ public class PlatformSpecificSprite : MonoBehaviour
             if (mobileSprite != null)
             {
                 mobileSprite.enabled = false;
+                mobileSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             }
             if (desktopSprite != null)
             {
                 desktopSprite.enabled = true;
+                desktopSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             }
         }
     }

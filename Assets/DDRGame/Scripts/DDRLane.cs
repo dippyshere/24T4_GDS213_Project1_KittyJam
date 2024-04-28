@@ -52,7 +52,7 @@ public class DDRLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - SongManager.Instance.inputOffset;
 
             if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
@@ -69,7 +69,7 @@ public class DDRLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex];
-            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - SongManager.Instance.inputOffset;
             NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp, transform.position - new Vector3(0, 0, 5));
             Debug.Log(result);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
