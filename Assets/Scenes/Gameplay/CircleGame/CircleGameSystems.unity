@@ -239,8 +239,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7727806015225116785, guid: 20606a7271eb11b4bb6b9e232c0c9693,
         type: 3}
-      propertyPath: m_CastShadows
-      value: 0
+      propertyPath: m_PreviewTimeScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

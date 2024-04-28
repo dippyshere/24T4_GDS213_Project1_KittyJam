@@ -380,6 +380,8 @@ public class DownloadManager : MonoBehaviour
 
             if (sceneLoadInfo.useTransition && TransitionManager.Instance != null)
             {
+                yield return null;
+                GC.Collect();
                 while (Time.realtimeSinceStartup - timeStarted < 1.05f)
                 {
                     yield return null;

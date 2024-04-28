@@ -39,7 +39,7 @@ public class HighwayLane : MonoBehaviour
             if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
-                if (note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()).TotalMicroseconds > 125000)
+                if (note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()).TotalMicroseconds > 175000)
                 {
                     timeStamps.Add(new Dictionary<double, List<bool>> { { (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f, new List<bool> { false, true, false } } });
                     sustainDurations.Add(note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()));
