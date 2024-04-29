@@ -22,7 +22,7 @@ public class AssignCanvasCamera : MonoBehaviour
     /// <returns></returns>
     private IEnumerator WaitForCamera()
     {
-        while (Camera.main == null && Camera.main.name != cameraName)
+        while (Camera.main == null || Camera.main.name != cameraName)
         {
             yield return null;
         }
