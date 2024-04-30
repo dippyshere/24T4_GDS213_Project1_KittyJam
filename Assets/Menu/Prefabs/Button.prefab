@@ -1756,6 +1756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3475940303682511614}
   - component: {fileID: 8578956344242433910}
+  - component: {fileID: 5455329395619492938}
   - component: {fileID: 6550552924749170396}
   - component: {fileID: 4685328983558990443}
   - component: {fileID: 7204177273963724618}
@@ -1797,6 +1798,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3210440401352609406}
   m_CullTransparentMesh: 1
+--- !u!114 &5455329395619492938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3210440401352609406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08d0c2942f976a4083c97c530cbb14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DOTweenAnimation: {fileID: 7204177273963724618}
 --- !u!114 &6550552924749170396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,9 +2086,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 7204177273963724618}
-          m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, DOTweenPro.Scripts
-          m_MethodName: DOPlayBackwards
+        - m_Target: {fileID: 5455329395619492938}
+          m_TargetAssemblyTypeName: TweenMobileButton, KittyJam.Menu
+          m_MethodName: ButtonPointerExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2148,9 +2162,37 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 5455329395619492938}
+          m_TargetAssemblyTypeName: TweenMobileButton, KittyJam.Menu
+          m_MethodName: ButtonPointerDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 7204177273963724618}
           m_TargetAssemblyTypeName: DG.Tweening.DOTweenAnimation, DOTweenPro.Scripts
           m_MethodName: DORestart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5455329395619492938}
+          m_TargetAssemblyTypeName: TweenMobileButton, KittyJam.Menu
+          m_MethodName: ButtonPointerClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
