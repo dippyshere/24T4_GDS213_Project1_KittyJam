@@ -39,7 +39,9 @@ public class HighwayNoteManager : MonoBehaviour
 
     private IEnumerator Start()
     {
+        Debug.Log("Waiting for song manager to load");
         yield return new WaitUntil(() => SongManager.Instance != null);
+        Debug.Log("Waiting for song manager to load note timestamps");
         yield return new WaitUntil(() => SongManager.Instance.noteTimestamps != null);
 
         foreach (HighwayLane lane in highwayLanes) lane.SetTimeStamps(SongManager.Instance.noteTimestamps);
@@ -61,8 +63,10 @@ public class HighwayNoteManager : MonoBehaviour
         downBeatTimestamps.RemoveRange(0, 6);
         Invoke(nameof(HighwayAppear), Mathf.Clamp(SongManager.Instance.songDelayInSeconds + SongManager.Instance.firstNoteTime - 2f, 0, float.MaxValue));
         Invoke(nameof(HighwayDissolve), SongManager.Instance.songDelayInSeconds + SongManager.Instance.lastNoteTime + 1f);
+        Debug.Log("Waiting for score manager to load");
         yield return new WaitUntil(() => ScoreManager.Instance != null);
         ScoreManager.Instance.noteScoreEvent += ShowNoteFeedback;
+        Debug.Log("Waiting for cursor controller to load");
         yield return new WaitUntil(() => CursorController.Instance != null);
         CursorController.Instance.LockCursor();
     }

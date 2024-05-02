@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using Unity.Services.Authentication;
 using Unity.Services.CloudCode;
 using Unity.Services.CloudSave;
@@ -12,7 +11,6 @@ using Unity.Services.CloudSave.Models.Data.Player;
 using SaveOptions = Unity.Services.CloudSave.Models.Data.Player.SaveOptions;
 using TMPro;
 using DG.Tweening;
-using UnityEngine.InputSystem.Utilities;
 
 public class LoginManager : MonoBehaviour
 {
@@ -32,7 +30,6 @@ public class LoginManager : MonoBehaviour
     [SerializeField, Tooltip("Reference to the password number requirement checkbox tweener")] private DOTweenAnimation passwordNumberRequirementTween;
     [SerializeField, Tooltip("Reference to the password symbol requirement checkbox tweener")] private DOTweenAnimation passwordSymbolRequirementTween;
     [SerializeField, Tooltip("Reference to the text that displays debugging information")] private TextMeshProUGUI debugText;
-    private IDisposable m_SubmitListener;
 
     private void Awake()
     {
@@ -72,62 +69,62 @@ public class LoginManager : MonoBehaviour
     public void SubscribeUsernameLogin()
     {
         // when enter is pressed, call onUsernameLoginContinue
-        m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
-        {
-            if (control.name == "Enter")
-            {
-                OnUsernameLoginContinue();
-                m_SubmitListener.Dispose();
-                m_SubmitListener = null;
-            }
-        });
+        //m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
+        //{
+        //    if (control.name == "Enter")
+        //    {
+        //        OnUsernameLoginContinue();
+        //        m_SubmitListener.Dispose();
+        //        m_SubmitListener = null;
+        //    }
+        //});
     }
 
     public void SubscribePasswordLogin()
     {
         // when enter is pressed, call onPasswordLoginContinue
-        m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
-        {
-            if (control.name == "Enter")
-            {
-                OnPasswordLoginContinue();
-                m_SubmitListener.Dispose();
-                m_SubmitListener = null;
-            }
-        });
+        //m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
+        //{
+        //    if (control.name == "Enter")
+        //    {
+        //        OnPasswordLoginContinue();
+        //        m_SubmitListener.Dispose();
+        //        m_SubmitListener = null;
+        //    }
+        //});
     }
 
     public void SubscribeUsernameSignup()
     {
         // when enter is pressed, call onUsernameSignupContinue
-        m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
-        {
-            if (control.name == "Enter")
-            {
-                OnUsernameSignupContinue();
-                m_SubmitListener.Dispose();
-                m_SubmitListener = null;
-            }
-        });
+        //m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
+        //{
+        //    if (control.name == "Enter")
+        //    {
+        //        OnUsernameSignupContinue();
+        //        m_SubmitListener.Dispose();
+        //        m_SubmitListener = null;
+        //    }
+        //});
     }
 
     public void SubscribePasswordSignup()
     {
         // when enter is pressed, call onPasswordSignupContinue
-        m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
-        {
-            if (control.name == "Enter")
-            {
-                OnPasswordSignupContinue();
-                m_SubmitListener.Dispose();
-                m_SubmitListener = null;
-            }
-        });
+        //m_SubmitListener = InputSystem.onAnyButtonPress.Call((control) =>
+        //{
+        //    if (control.name == "Enter")
+        //    {
+        //        OnPasswordSignupContinue();
+        //        m_SubmitListener.Dispose();
+        //        m_SubmitListener = null;
+        //    }
+        //});
     }
 
     public void UnsubscribeSubmit()
     {
-        m_SubmitListener?.Dispose();
+        //m_SubmitListener?.Dispose();
     }
 
     public void OnUsernameTextUpdated(string newText)

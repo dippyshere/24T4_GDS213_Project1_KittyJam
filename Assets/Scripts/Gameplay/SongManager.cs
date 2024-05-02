@@ -139,7 +139,9 @@ public class SongManager : MonoBehaviour
     /// </summary>
     public IEnumerator GetDataFromMidi()
     {
+        Debug.Log("Getting data from MIDI file");
         yield return new WaitUntil(() => midiFile != null);
+        Debug.Log("MIDI file loaded");
 
         var notes = midiFile.GetNotes();
         var array = new Note[notes.Count];
@@ -163,7 +165,9 @@ public class SongManager : MonoBehaviour
             }
         }
 
+        Debug.Log("Waiting for time scale to be unpaused");
         yield return new WaitUntil(() => Time.timeScale != 0);
+        Debug.Log("Starting song");
 
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
