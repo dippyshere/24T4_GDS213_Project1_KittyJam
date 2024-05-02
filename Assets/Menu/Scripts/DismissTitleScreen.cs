@@ -81,6 +81,7 @@ public class DismissTitleScreen : MonoBehaviour
 
                 // Shows how to get the playerID
                 Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
+                DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: songShelfSceneLoadInfo);
             }
             catch (AuthenticationException ex)
             {
@@ -119,7 +120,18 @@ public class DismissTitleScreen : MonoBehaviour
                 Debug.LogError(ex);
             }
 
-            DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: songShelfSceneLoadInfo);
+            try
+            {
+                GlobalVariables.GetAll().Clear();
+                AuthenticationService.Instance.ClearSessionToken();
+                AuthenticationService.Instance.SignOut(true);
+            }
+            catch (Exception)
+            {
+
+            }
+
+            DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: onboardSceneLoadInfo);
         }
     }
 }
