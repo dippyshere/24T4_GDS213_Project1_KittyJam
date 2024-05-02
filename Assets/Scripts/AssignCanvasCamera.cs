@@ -46,7 +46,7 @@ public class AssignCanvasCamera : MonoBehaviour
 
     private void OnApplicationPause(bool pauseStatus)
     {
-        if (Camera.main != null && Camera.main.name == cameraName)
+        if (Camera.main != null && Camera.main.name == cameraName && canvas != null)
         {
             canvas.worldCamera = Camera.main;
         }
@@ -54,7 +54,7 @@ public class AssignCanvasCamera : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus)
     {
-        if (Camera.main != null && Camera.main.name == cameraName)
+        if (Camera.main != null && Camera.main.name == cameraName && canvas != null)
         {
             canvas.worldCamera = Camera.main;
         }

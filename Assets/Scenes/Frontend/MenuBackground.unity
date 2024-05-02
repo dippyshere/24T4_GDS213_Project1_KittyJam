@@ -790,8 +790,8 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 2bff4b54e09ba814bb32292eb4e337c5, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0.27437243
-    y: 0.27437243
+    x: 8.633594
+    y: 8.633594
     width: 8.122879
     height: 4.5715055
 --- !u!114 &1411595697

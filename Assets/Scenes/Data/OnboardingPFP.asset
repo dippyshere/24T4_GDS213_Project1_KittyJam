@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc6d308546d532a4b9d52884ad3ab2e8, type: 3}
-  m_Name: Login
+  m_Name: OnboardingPFP
   m_EditorClassIdentifier: 
   scenesToLoad:
-  - m_AssetGUID: 81154536fafc69c4d86b801d78799698
+  - m_AssetGUID: 1d0317af88a4b9c449a1c8925dc27f54
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -30,5 +30,13 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  - m_AssetGUID: 81154536fafc69c4d86b801d78799698
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 42185bddcca5fe54abbbeadba8c74cd7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
   markFirstSceneAsActive: 1
-  useTransition: 1
+  useTransition: 0

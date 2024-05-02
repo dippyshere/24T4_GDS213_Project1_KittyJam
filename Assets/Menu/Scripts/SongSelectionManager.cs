@@ -83,6 +83,7 @@ public class SongSelectionManager : MonoBehaviour
             songTiles.Add(songTileManager);
         }
         songShelfScrolling.UpdatePages();
+        BeatAnimation.instance.RefreshBeatObjects();
     }
 
     /// <summary>
@@ -117,6 +118,7 @@ public class SongSelectionManager : MonoBehaviour
         }
         activeSongTile = songTileManager;
         CrossfadeSong();
+        BeatAnimation.instance.ChangeBeatDrivingSong(activeSongTile.songData, audioSources[activeAudioSource]);
     }
 
     /// <summary>
@@ -144,6 +146,7 @@ public class SongSelectionManager : MonoBehaviour
         audioSources[activeAudioSource].clip = activeSongTile.songData.SongAudio;
         activeAudioSource = activeAudioSource == 0 ? 1 : 0;
         isLooping = true;
+        BeatAnimation.instance.ChangeBeatDrivingSong(activeSongTile.songData, audioSources[activeAudioSource]);
     }
 
     void Update()
@@ -155,6 +158,7 @@ public class SongSelectionManager : MonoBehaviour
             audioSources[activeAudioSource].PlayScheduled(nextStartTime);
             nextStartTime += activeSongTile.songData.PreviewEnd - activeSongTile.songData.LoopPoint;
             audioSources[activeAudioSource].SetScheduledEndTime(nextStartTime);
+            BeatAnimation.instance.ChangeBeatDrivingSong(activeSongTile.songData, audioSources[activeAudioSource]);
         }
     }
 

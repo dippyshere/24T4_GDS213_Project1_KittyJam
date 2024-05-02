@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 39a8f11cae17c524e9efc4d116b99c0b
   m_currentHash:
     serializedVersion: 2
-    Hash: 239cabbc64b2be06cf4a32f1f1392df4
+    Hash: 97bf4a575cfd4dd6cc83fb1ef125e1ed
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 1
@@ -133,6 +133,7 @@ MonoBehaviour:
     - stuckinmyhead
     - ps4
     - xbox
+    - profilepictures
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 625df87e9137b394ea7f1abb0db7882f, type: 2}

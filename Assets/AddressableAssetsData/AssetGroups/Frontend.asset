@@ -94,6 +94,34 @@ MonoBehaviour:
     - frontend
     - titledownload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d0317af88a4b9c449a1c8925dc27f54
+    m_Address: Assets/Scenes/Frontend/ProfilePictureSelect.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c9a632879b3f6e42a05ca6e1126d6e9
+    m_Address: Assets/Scenes/Frontend/LoginPW.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 42185bddcca5fe54abbbeadba8c74cd7
+    m_Address: Assets/Scenes/Frontend/Signup.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f62b9edaf4bd9a41a3443415d0984e7
+    m_Address: Assets/Scenes/Frontend/SignupPW.unity
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - frontend
+    - titledownload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}
   m_SchemaSet:

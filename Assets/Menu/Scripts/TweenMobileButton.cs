@@ -13,7 +13,7 @@ public class TweenMobileButton : MonoBehaviour
     {
         if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop || Application.isMobilePlatform)
         {
-            if (Time.timeAsDouble - timeSinceClick > 0.2)
+            if (Time.timeAsDouble - timeSinceClick > 0.25)
             {
                 DOTweenAnimation.DOPlayBackwards();
             }
@@ -35,9 +35,10 @@ public class TweenMobileButton : MonoBehaviour
         if (UnityEngine.Device.SystemInfo.deviceType != DeviceType.Desktop || Application.isMobilePlatform)
         {
             DOTweenAnimation.DOComplete();
-            if (Time.timeAsDouble - timeSinceDown > 0.2)
+            if (Time.timeAsDouble - timeSinceDown > 0.25)
             {
                 DOTweenAnimation.DORestart();
+                DOTweenAnimation.DOPlayBackwards();
             }
             else
             {
