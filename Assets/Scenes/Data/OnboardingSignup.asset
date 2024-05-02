@@ -35,4 +35,4 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   markFirstSceneAsActive: 1
-  useTransition: 0
+  useTransition: 1

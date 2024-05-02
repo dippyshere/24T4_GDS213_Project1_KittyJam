@@ -12,9 +12,13 @@ public class ProfileIconSelectionManager : MonoBehaviour
     [SerializeField, Tooltip("Scene load info to use once when skipping onboarding to log back in")] private SceneLoadInfo loginSceneLoadInfo;
     [SerializeField, Tooltip("Reference to the gameobject that contains all the profile icons")] private GameObject profileIconsParent;
     [SerializeField, Tooltip("Prefab to use for profile icon buttons")] private GameObject profileIconButtonPrefab;
-    [SerializeField, Tooltip("reference to the continue button tweener")] private DOTweenAnimation continueButtonTween;
+    [SerializeField, Tooltip("Reference to the continue button tweener")] private DOTweenAnimation continueButtonTween;
+    [SerializeField, Tooltip("Reference to the left button for scrolling")] private GameObject leftButton;
+    [SerializeField, Tooltip("Reference to the right button for scrolling")] private GameObject rightButton;
     [Tooltip("The currently selected profile icon")] private int selectedProfileIcon = 0;
     [Tooltip("If the profile icon has been set")] private bool isSet = false;
+    [Tooltip("Cached number of profile icons")] private int profileIconCount = 0;
+    [Tooltip("Current page index")] private int currentPageIndex = 0;
 
     private void Awake()
     {
@@ -29,18 +33,71 @@ public class ProfileIconSelectionManager : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            int profileIconCount = op.Result.Count;
-            for (int i = 1; i <= profileIconCount && i <= 10; i++)
-            {
-                GameObject profileIconButton = Instantiate(profileIconButtonPrefab, profileIconsParent.transform);
-                profileIconButton.GetComponent<ProfileIconButtonManager>().SetProfileIcon(i);
-            }
-            BeatAnimation.instance.RefreshBeatObjects();
-            if (GlobalVariables.Get<int>("selectedProfileIndex") != 0)
-            {
-                SetActiveProfileIcon(GlobalVariables.Get<int>("selectedProfileIndex"));
-            }
+            profileIconCount = op.Result.Count;
+            UpdatePage();
         };
+    }
+
+    public void UpdatePage()
+    {
+        foreach (Transform child in profileIconsParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        int startIndex = currentPageIndex * 10;
+        for (int i = 1 + startIndex; i <= profileIconCount && i <= 10 + startIndex; i++)
+        {
+            GameObject profileIconButton = Instantiate(profileIconButtonPrefab, profileIconsParent.transform);
+            profileIconButton.GetComponent<ProfileIconButtonManager>().SetProfileIcon(i);
+        }
+        BeatAnimation.instance.RefreshBeatObjects();
+        if (GlobalVariables.Get<int>("selectedProfileIndex") != 0)
+        {
+            SetActiveProfileIcon(GlobalVariables.Get<int>("selectedProfileIndex"));
+        }
+        UpdateButtons();
+    }
+
+    public void ScrollLeft()
+    {
+        if (profileIconCount <= 10) return;
+        if (profileIconsParent.transform.childCount == 0) return;
+        if (profileIconsParent.transform.GetChild(0).GetComponent<ProfileIconButtonManager>().profileIconIndex <= 1) return;
+        currentPageIndex--;
+        UpdatePage();
+    }
+
+    public void ScrollRight()
+    {
+        if (profileIconCount <= 10) return;
+        if (profileIconsParent.transform.childCount == 0) return;
+        if (profileIconsParent.transform.GetChild(profileIconsParent.transform.childCount - 1).GetComponent<ProfileIconButtonManager>().profileIconIndex >= profileIconCount) return;
+        currentPageIndex++;
+        UpdatePage();
+    }
+
+    public void UpdateButtons()
+    {
+        if (profileIconCount <= 10) return;
+        if (profileIconsParent.transform.childCount == 0) return;
+        if (currentPageIndex == 0)
+        {
+            leftButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+            leftButton.SetActive(false);
+        }
+        else
+        {
+            leftButton.SetActive(true);
+        }
+        if (currentPageIndex >= Mathf.CeilToInt((float)profileIconCount / 10) - 1)
+        {
+            rightButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+            rightButton.SetActive(false);
+        }
+        else
+        {
+            rightButton.SetActive(true);
+        }
     }
 
     public void SetActiveProfileIcon(int profileIconIndex)

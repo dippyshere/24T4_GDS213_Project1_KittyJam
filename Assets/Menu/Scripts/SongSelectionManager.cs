@@ -183,6 +183,7 @@ public class SongSelectionManager : MonoBehaviour
         GlobalVariables.Set("activeSongLocation", songDataLocation);
         StartCoroutine(gameSelectionManager.UpdateGameSelectionScreen());
         selectionUIAnimator.SetBool("ShowGameUI", true);
+        SongShelfScrolling.instance.UpdateButtons();
     }
 
     /// <summary>
@@ -191,6 +192,7 @@ public class SongSelectionManager : MonoBehaviour
     public void ReturnToSongSelection()
     {
         selectionUIAnimator.SetBool("ShowSongUI", true);
+        SongShelfScrolling.instance.UpdateButtons();
     }
 
     /// <summary>

@@ -14,8 +14,9 @@ public class AccountUIManager : MonoBehaviour
 {
     [SerializeField, Tooltip("Reference to the text containing the account name")] private TextMeshProUGUI accountNameText;
     [SerializeField, Tooltip("Reference to the UI Image for the profile icon")] private Image profileIconImage;
+    [SerializeField, Tooltip("Scene info to use when opening the options menu")] private SceneLoadInfo optionsSceneInfo;
 
-	private async void Start()
+    private async void Start()
 	{
 		accountNameText.text = "";
         try
@@ -53,5 +54,10 @@ public class AccountUIManager : MonoBehaviour
                 };
             }
         }
+    }
+
+    public void OpenOptions()
+    {
+        DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: optionsSceneInfo);
     }
 }
