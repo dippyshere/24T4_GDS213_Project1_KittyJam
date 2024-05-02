@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SongShelfScrolling : MonoBehaviour
 {
+    [HideInInspector, Tooltip("Singleton instance of the song shelf scrolling script")] public static SongShelfScrolling instance;
     [SerializeField, Tooltip("Reference to the left button")] private GameObject leftButton;
     [SerializeField, Tooltip("Reference to the right button")] private GameObject rightButton;
     [SerializeField, Tooltip("The speed at which the shelf scrolls")] private float scrollSpeed = 1;
@@ -18,6 +19,11 @@ public class SongShelfScrolling : MonoBehaviour
     [Tooltip("The number of pages in the shelf")] private int numberOfPages;
     [Tooltip("The current page of the shelf")] private int currentPage;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +32,7 @@ public class SongShelfScrolling : MonoBehaviour
         currentPage = 0;
         currentPosition = shelfRectTransform.anchoredPosition.x;
         targetPosition = currentPosition;
+        leftButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
         leftButton.SetActive(false);
         rightButton.SetActive(numberOfPages > 1);
     }
@@ -48,6 +55,10 @@ public class SongShelfScrolling : MonoBehaviour
         {
             currentPage--;
             targetPosition = currentPosition + pageDistance;
+            if (currentPage == 0)
+            {
+                leftButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+            }
             leftButton.SetActive(currentPage > 0);
             rightButton.SetActive(true);
             isScrolling = true;
@@ -63,6 +74,10 @@ public class SongShelfScrolling : MonoBehaviour
         {
             currentPage++;
             targetPosition = currentPosition - pageDistance;
+            if (currentPage == numberOfPages - 1)
+            {
+                rightButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+            }
             rightButton.SetActive(currentPage < numberOfPages - 1);
             leftButton.SetActive(true);
             isScrolling = true;
@@ -81,5 +96,19 @@ public class SongShelfScrolling : MonoBehaviour
                 currentPosition = targetPosition;
             }
         }
+    }
+
+    public void UpdateButtons()
+    {
+        if (currentPage == 0)
+        {
+            leftButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+        }
+        leftButton.SetActive(currentPage > 0);
+        if (currentPage == numberOfPages - 1)
+        {
+            rightButton.GetComponent<UnityEngine.EventSystems.EventTrigger>().OnPointerExit(null);
+        }
+        rightButton.SetActive(currentPage < numberOfPages - 1);
     }
 }

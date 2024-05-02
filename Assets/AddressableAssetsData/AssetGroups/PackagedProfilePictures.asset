@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: 89cda1e50d8c7bf4fbf459fa2d89475f
     m_Address: Assets/Textures/ProfilePictures
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - profilepictures
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66eeeb9b7f1599e4bb918bd3781e3f03, type: 2}

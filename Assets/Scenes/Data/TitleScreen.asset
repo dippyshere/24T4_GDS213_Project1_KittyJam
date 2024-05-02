@@ -21,6 +21,18 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 1
-  scenesToUnload: []
+  scenesToUnload:
+  - m_AssetGUID: b37dfd2d776ab3d499019a712c595d5d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: d497fa7d512e46e43ac3b649a91e7b39
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: d859ccdc1fac6f64b8391aeaf868a491
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
   markFirstSceneAsActive: 1
   useTransition: 0

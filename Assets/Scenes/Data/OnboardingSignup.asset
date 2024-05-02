@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6d308546d532a4b9d52884ad3ab2e8, type: 3}
+  m_Name: OnboardingSignup
+  m_EditorClassIdentifier: 
+  scenesToLoad:
+  - m_AssetGUID: 42185bddcca5fe54abbbeadba8c74cd7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: fc6b31ce9f36af947a5a19c89ba6fb43
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 918d5bc36fa389b48a8f6c886b3fbd82
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  scenesToUnload:
+  - m_AssetGUID: 1d0317af88a4b9c449a1c8925dc27f54
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 9f62b9edaf4bd9a41a3443415d0984e7
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  markFirstSceneAsActive: 1
+  useTransition: 1
