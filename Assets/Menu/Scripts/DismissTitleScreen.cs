@@ -47,66 +47,69 @@ public class DismissTitleScreen : MonoBehaviour
     {
         DownloadManager.Instance.OnTransitionComplete -= AssetLoadCompleted;
         GlobalVariables.GetAll().Clear();
-        if (!AuthenticationService.Instance.SessionTokenExists)
+        try
         {
-            showFTUE = true;
+            await AuthenticationService.Instance.SignInAnonymouslyAsync();
         }
-        else
+        catch (Exception e)
         {
-            try
+            Debug.LogError(e);
+        }
+        try
+        {
+            Dictionary<string, Item> playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions()));
+            if (playerData.TryGetValue("profileIndex", out Item keyName))
             {
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
-                Dictionary<string, Item> playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions()));
-                if (playerData.TryGetValue("profileIndex", out Item keyName))
+                if (keyName.Value.GetAs<int>() > 0)
                 {
-                    if (keyName.Value.GetAs<int>() > 0)
-                    {
-                        showFTUE = false;
+                    showFTUE = false;
 #if UNITY_IOS
-                        try
-                        {
-                            Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-#elif UNITY_ANDROID
-                        Vibration.VibratePeek();
-#endif
-                    }
-                    else
+                    try
                     {
-                        showFTUE = true;
+                        Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
                     }
+                    catch (Exception)
+                    {
+
+                    }
+#elif UNITY_ANDROID
+                    Vibration.VibratePeek();
+#endif
                 }
                 else
                 {
+                    Debug.Log("Showing FTUE because profile index is 0");
                     showFTUE = true;
                 }
             }
-            catch (AuthenticationException ex)
+            else
             {
-                Debug.LogError(ex);
+                Debug.Log("Showing FTUE because profile index is not present");
                 showFTUE = true;
             }
-            catch (RequestFailedException ex)
-            {
-                Debug.LogError(ex);
-                showFTUE = true;
-            }
+        }
+        catch (AuthenticationException ex)
+        {
+            Debug.LogError(ex);
+            showFTUE = true;
+        }
+        catch (RequestFailedException ex)
+        {
+            Debug.LogError(ex);
+            showFTUE = true;
         }
         if (showFTUE)
         {
             try
             {
-                GlobalVariables.GetAll().Clear();
-                AuthenticationService.Instance.ClearSessionToken();
-                AuthenticationService.Instance.SignOut(true);
+                if (!AuthenticationService.Instance.IsSignedIn)
+                {
+                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                }
             }
             catch (Exception e)
             {
-                Debug.LogError("Failed to sign out: " + e.Message);
+                Debug.LogError("Failed to sign in: " + e.Message);
             }
         }
         titleDismissalText.SetActive(true);

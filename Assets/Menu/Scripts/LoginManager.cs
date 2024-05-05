@@ -42,10 +42,23 @@ public class LoginManager : MonoBehaviour
         {
             debugText.text = "";
         }
-        if (GlobalVariables.Get<string>("usernameInput") != null && usernameInput != null)
+        if (usernameInput != null)
         {
-            usernameInput.text = GlobalVariables.Get<string>("usernameInput");
-            OnUsernameTextUpdated(GlobalVariables.Get<string>("usernameInput"));
+            if (GlobalVariables.Get<string>("usernameInput") != null)
+            {
+                usernameInput.text = GlobalVariables.Get<string>("usernameInput");
+                OnUsernameTextUpdated(GlobalVariables.Get<string>("usernameInput"));
+            }
+            else
+            {
+                usernameInput.text = "";
+                OnUsernameTextUpdated("");
+            }
+        }
+        if (passwordInput != null)
+        {
+            passwordInput.text = "";
+            OnPasswordTextUpdated("");
         }
     }
 
@@ -208,7 +221,12 @@ public class LoginManager : MonoBehaviour
     {
         if (continueButton.interactable)
         {
+            debugText.text = "";
             DisableAllInput();
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            }
             string cloudCodeRequest = await CloudCodeService.Instance.CallEndpointAsync<string>("check_username_availability", new Dictionary<string, object>() { { "username", usernameInput.text } });
             if (cloudCodeRequest == "1")
             {
@@ -226,7 +244,12 @@ public class LoginManager : MonoBehaviour
     {
         if (continueButton.interactable)
         {
+            debugText.text = "";
             DisableAllInput();
+            if (!AuthenticationService.Instance.IsSignedIn)
+            {
+                await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            }
             string cloudCodeRequest = await CloudCodeService.Instance.CallEndpointAsync<string>("check_username_availability", new Dictionary<string, object>() { { "username", usernameInput.text.ToLowerInvariant() } });
             if (cloudCodeRequest == "0")
             {
@@ -244,9 +267,13 @@ public class LoginManager : MonoBehaviour
     {
         if (continueButton.interactable)
         {
+            debugText.text = "";
             DisableAllInput();
-            AuthenticationService.Instance.SignOut(clearCredentials: true);
-            AuthenticationService.Instance.ClearSessionToken();
+            if (AuthenticationService.Instance.IsSignedIn)
+            {
+                AuthenticationService.Instance.SignOut(true);
+                AuthenticationService.Instance.ClearSessionToken();
+            }
             string result = await KittyAccountManager.Instance.SignInWithUsernamePasswordAsync(GlobalVariables.Get<string>("usernameInput"), passwordInput.text);
             if (AuthenticationService.Instance.IsSignedIn)
             {
@@ -267,8 +294,25 @@ public class LoginManager : MonoBehaviour
     {
         if (continueButton.interactable)
         {
+            debugText.text = "";
             DisableAllInput();
             string result = await KittyAccountManager.Instance.AddUsernamePasswordAsync(GlobalVariables.Get<string>("usernameInput"), passwordInput.text);
+            if (!string.IsNullOrEmpty(result))
+            {
+                try
+                {
+                    AuthenticationService.Instance.SignOut(true);
+                    AuthenticationService.Instance.ClearSessionToken();
+                    result = await KittyAccountManager.Instance.SignInWithUsernamePasswordAsync(GlobalVariables.Get<string>("usernameInput"), passwordInput.text);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
+                    EnableAllInput();
+                    debugText.text = result;
+                    return;
+                }
+            }
             if (AuthenticationService.Instance.IsSignedIn)
             {
                 try

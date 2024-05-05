@@ -156,7 +156,7 @@ public class DownloadManager : MonoBehaviour
                         if (sceneInstance.Key.Equals(scene) && sceneInstance.Value.Result.Scene.isLoaded)
                         {
                             totalSceneDownloads--;
-                            Debug.Log("Filtering scene that is already loaded: " + scene);
+                            //Debug.Log("Filtering scene that is already loaded: " + scene);
                             filteredScenesToLoad.Remove(scene);
                         }
                     }
@@ -289,7 +289,7 @@ public class DownloadManager : MonoBehaviour
                 {
                     if (sceneInstance.Key.Equals(scene) && sceneInstance.Value.Result.Scene.isLoaded)
                     {
-                        Debug.Log("Scene already loaded: " + scene);
+                        //Debug.Log("Scene already loaded: " + scene);
                         continue;
                     }
                 }
@@ -300,7 +300,7 @@ public class DownloadManager : MonoBehaviour
                     sceneInstances.Remove(scene);
                 }
                 sceneInstances.Add(scene, asyncOperationHandle);
-                Debug.Log("Loading scene: " + scene);
+                //Debug.Log("Loading scene: " + scene);
                 if (sceneLoadInfo.markFirstSceneAsActive && scene.Equals(filteredScenesToLoad[0]))
                 {
                     asyncOperationHandle.Completed += operation =>
@@ -352,7 +352,7 @@ public class DownloadManager : MonoBehaviour
                             if (operation.Status == AsyncOperationStatus.Succeeded)
                             {
                                 Addressables.Release(operation);
-                                Debug.Log("Unloaded scene instance: " + sceneInstance.Key);
+                                //Debug.Log("Unloaded scene instance: " + sceneInstance.Key);
                                 pendingSceneReferencesToRemove.Add(sceneAsset);
                             }
                             else
@@ -384,8 +384,8 @@ public class DownloadManager : MonoBehaviour
 
             if (sceneLoadInfo.useTransition && TransitionManager.Instance != null)
             {
-                //yield return null;
-                //GC.Collect();
+                yield return null;
+                GC.Collect();
                 while (Time.realtimeSinceStartup - timeStarted < 1.05f)
                 {
                     yield return null;
