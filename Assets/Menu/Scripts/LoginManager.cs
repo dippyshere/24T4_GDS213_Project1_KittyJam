@@ -36,7 +36,7 @@ public class LoginManager : MonoBehaviour
         Instance = this;
     }
 
-    private async void Start()
+    private void Start()
     {
         if (debugText != null)
         {
@@ -46,17 +46,6 @@ public class LoginManager : MonoBehaviour
         {
             usernameInput.text = GlobalVariables.Get<string>("usernameInput");
             OnUsernameTextUpdated(GlobalVariables.Get<string>("usernameInput"));
-        }
-        if (usernameInput != null)
-        {
-            try
-            {
-                await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            }
-            catch (Exception e)
-            {
-                Debug.LogError(e);
-            }
         }
     }
 
@@ -238,7 +227,7 @@ public class LoginManager : MonoBehaviour
         if (continueButton.interactable)
         {
             DisableAllInput();
-            string cloudCodeRequest = await CloudCodeService.Instance.CallEndpointAsync<string>("check_username_availability", new Dictionary<string, object>() { { "username", usernameInput.text } });
+            string cloudCodeRequest = await CloudCodeService.Instance.CallEndpointAsync<string>("check_username_availability", new Dictionary<string, object>() { { "username", usernameInput.text.ToLowerInvariant() } });
             if (cloudCodeRequest == "0")
             {
                 DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: sceneLoadInfo);
@@ -290,12 +279,12 @@ public class LoginManager : MonoBehaviour
                     }
                     if (GlobalVariables.Get<int>("selectedProfileIndex") != 0 && GlobalVariables.Get<string>("usernameInput") != null && GlobalVariables.Get<string>("usernameInput").Length >= 3)
                     {
-                        Dictionary<string, object> data = new() { { "profileIndex", GlobalVariables.Get<int>("selectedProfileIndex") }, { "username", GlobalVariables.Get<string>("usernameInput") } };
+                        Dictionary<string, object> data = new() { { "profileIndex", GlobalVariables.Get<int>("selectedProfileIndex") }, { "username", GlobalVariables.Get<string>("usernameInput").ToLowerInvariant() } };
                         await CloudSaveService.Instance.Data.Player.SaveAsync(data, new SaveOptions(new PublicWriteAccessClassOptions()));
                     }
                     else if (GlobalVariables.Get<string>("usernameInput") != null && GlobalVariables.Get<string>("usernameInput").Length >= 3)
                     {
-                        Dictionary<string, object> data = new() { { "username", GlobalVariables.Get<string>("usernameInput") } };
+                        Dictionary<string, object> data = new() { { "username", GlobalVariables.Get<string>("usernameInput").ToLowerInvariant() } };
                         await CloudSaveService.Instance.Data.Player.SaveAsync(data, new SaveOptions(new PublicWriteAccessClassOptions()));
                     }
                     else if (GlobalVariables.Get<int>("selectedProfileIndex") != 0)

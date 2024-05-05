@@ -6,6 +6,9 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using Unity.Services.CloudSave;
+using Unity.Services.CloudSave.Models;
+using Unity.Services.CloudSave.Models.Data.Player;
 
 /// <summary>
 /// Dismisses the title screen when any button is pressed or tapped
@@ -19,6 +22,7 @@ public class DismissTitleScreen : MonoBehaviour
     [SerializeField, Tooltip("The scene load configuration to use when dismissing the title screen when not logged in")] private SceneLoadInfo onboardSceneLoadInfo;
     [Header("References")]
     [SerializeField, Tooltip("Reference to the dismissal text prompt")] private GameObject titleDismissalText;
+    [Tooltip("Whether the FTUE will be shown or not")] private bool showFTUE = true;
 
     private IEnumerator Start()
     {
@@ -39,99 +43,93 @@ public class DismissTitleScreen : MonoBehaviour
     /// <summary>
     /// Called when the title screen assets have been loaded
     /// </summary>
-    public void AssetLoadCompleted()
+    public async void AssetLoadCompleted()
     {
-        titleDismissalText.SetActive(true);
-        m_EventListener = InputSystem.onAnyButtonPress.Call(OnButtonPressed);
         DownloadManager.Instance.OnTransitionComplete -= AssetLoadCompleted;
-    }
-
-    /// <summary>
-    /// Handles the button press event
-    /// </summary>
-    /// <param name="button">The button that was pressed</param>
-    async void OnButtonPressed(InputControl button)
-    {
-        //var device = button.device;
-
-        m_EventListener.Dispose();
-
+        GlobalVariables.GetAll().Clear();
         if (!AuthenticationService.Instance.SessionTokenExists)
         {
-            DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: onboardSceneLoadInfo);
+            showFTUE = true;
         }
         else
         {
             try
             {
                 await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                Dictionary<string, Item> playerData = await CloudSaveService.Instance.Data.Player.LoadAsync(new HashSet<string> { "profileIndex" }, new LoadOptions(new PublicReadAccessClassOptions()));
+                if (playerData.TryGetValue("profileIndex", out Item keyName))
+                {
+                    if (keyName.Value.GetAs<int>() > 0)
+                    {
+                        showFTUE = false;
 #if UNITY_IOS
-                try
-                {
-                    Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
-                }
-                catch (Exception)
-                {
+                        try
+                        {
+                            Vibration.VibrateIOS(NotificationFeedbackStyle.Success);
+                        }
+                        catch (Exception)
+                        {
 
-                }
+                        }
 #elif UNITY_ANDROID
-                Vibration.VibratePeek();
+                        Vibration.VibratePeek();
 #endif
-                Debug.Log("Sign in anonymously succeeded!");
-
-                // Shows how to get the playerID
-                Debug.Log($"PlayerID: {AuthenticationService.Instance.PlayerId}");
-                DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: songShelfSceneLoadInfo);
+                    }
+                    else
+                    {
+                        showFTUE = true;
+                    }
+                }
+                else
+                {
+                    showFTUE = true;
+                }
             }
             catch (AuthenticationException ex)
             {
-#if UNITY_IOS
-                try
-                {
-                    Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-                }
-                catch (Exception)
-                {
-
-                }
-#elif UNITY_ANDROID
-                Vibration.VibrateNope();
-#endif
-                // Compare error code to AuthenticationErrorCodes
-                // Notify the player with the proper error message
                 Debug.LogError(ex);
+                showFTUE = true;
             }
             catch (RequestFailedException ex)
             {
-#if UNITY_IOS
-                try
-                {
-                    Vibration.VibrateIOS(NotificationFeedbackStyle.Error);
-                }
-                catch (Exception)
-                {
-
-                }
-#elif UNITY_ANDROID
-                Vibration.VibrateNope();
-#endif
-                // Compare error code to CommonErrorCodes
-                // Notify the player with the proper error message
                 Debug.LogError(ex);
+                showFTUE = true;
             }
-
+        }
+        if (showFTUE)
+        {
             try
             {
                 GlobalVariables.GetAll().Clear();
                 AuthenticationService.Instance.ClearSessionToken();
                 AuthenticationService.Instance.SignOut(true);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
+                Debug.LogError("Failed to sign out: " + e.Message);
             }
+        }
+        titleDismissalText.SetActive(true);
+        m_EventListener = InputSystem.onAnyButtonPress.Call(OnButtonPressed);
+    }
 
+    /// <summary>
+    /// Handles the button press event
+    /// </summary>
+    /// <param name="button">The button that was pressed</param>
+    void OnButtonPressed(InputControl button)
+    {
+        //var device = button.device;
+
+        m_EventListener.Dispose();
+
+        if (showFTUE)
+        {
             DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: onboardSceneLoadInfo);
+        }
+        else
+        {
+            DownloadManager.Instance.BeginDownloadAssetsCoroutine(sceneLoadInfo: songShelfSceneLoadInfo);
         }
     }
 }
