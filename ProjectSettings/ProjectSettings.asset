@@ -265,7 +265,7 @@ PlayerSettings:
   useCustomGradlePropertiesTemplate: 0
   useCustomGradleSettingsTemplate: 0
   useCustomProguardFile: 0
-  AndroidTargetArchitectures: 11
+  AndroidTargetArchitectures: 15
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 2
   androidSplashScreen: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f, type: 3}
@@ -956,6 +956,7 @@ PlayerSettings:
     Server: 1
     Standalone: 1
   il2cppCompilerConfiguration:
+    Android: 2
     Standalone: 1
     WebGL: 1
   il2cppCodeGeneration:

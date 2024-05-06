@@ -88,7 +88,7 @@ public class SongManager : MonoBehaviour
         song = songData.SongAudio;
         bpm = songData.Bpm;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
-        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
+        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://") || Application.streamingAssetsPath.StartsWith("jar:file") || Application.streamingAssetsPath.StartsWith("file://"))
         {
             // If it's a URL, use a coroutine to asynchronously read the MIDI file
             StartCoroutine(ReadFromWebsite());
