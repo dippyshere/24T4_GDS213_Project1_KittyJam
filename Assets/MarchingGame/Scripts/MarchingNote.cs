@@ -14,7 +14,7 @@ public class MarchingNote : MonoBehaviour
     void Start()
     {
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
-        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset));
     }
 
     private void OnTriggerEnter(Collider other)

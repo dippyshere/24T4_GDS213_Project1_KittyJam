@@ -318,7 +318,8 @@ MonoBehaviour:
   audioSource: {fileID: 749397748}
   songDelayInSeconds: 0
   trackSpeed: 1
-  inputDelayInMilliseconds: 16
+  inputOffset: 0.01
+  avOffset: 0.0165
   songData: {fileID: 11400000, guid: be59a896e8fc1db4da851cca7879ea0f, type: 2}
   bpm: 0
   noteTime: 0

@@ -10,6 +10,8 @@ Material:
   m_Name: cfxr proc ring ab
   m_Shader: {fileID: -6465566751694194690, guid: 1581eccce46ba384596a1dce7936ab19,
     type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _FADING_ON
   m_InvalidKeywords:
@@ -20,6 +22,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -53,6 +56,5 @@ Material:
     - _UseRadialUV: 0
     - _UseSP: 1
     - _WorldSpaceRing: 0
-    m_Colors:
-    - _Debug: {r: 0, g: 0, b: 0, a: 0}
+    m_Colors: []
   m_BuildTextureStacks: []

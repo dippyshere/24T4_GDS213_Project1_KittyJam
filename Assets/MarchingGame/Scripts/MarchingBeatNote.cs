@@ -15,7 +15,7 @@ public class MarchingBeatNote : MonoBehaviour
     {
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         rectTransform.localPosition = Vector3.up * MarchingNoteManager.Instance.beatNoteSpawnY;
-        Invoke(nameof(OnMiss), (float)(MarchingNoteManager.Instance.beatNoteTime + ScoreManager.Instance.goodRange));
+        Invoke(nameof(OnMiss), (float)(MarchingNoteManager.Instance.beatNoteTime + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset));
     }
 
     // Update is called once per frame

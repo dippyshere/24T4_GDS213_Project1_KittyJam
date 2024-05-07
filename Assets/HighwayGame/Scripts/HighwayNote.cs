@@ -23,7 +23,9 @@ public class HighwayNote : MonoBehaviour
     {
         timeInstantiated = SongManager.Instance.GetAudioSourceTime();
         transform.localPosition = Vector3.forward * HighwayNoteManager.Instance.noteSpawnZ;
-        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange));
+        Invoke(nameof(OnMiss), (float)(SongManager.Instance.noteTime + ScoreManager.Instance.goodRange + SongManager.Instance.inputOffset));
+        visualSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+        shadowSprite.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
         if (sustainDuration != null)
         {
             lineRenderer.enabled = true;
@@ -102,9 +104,22 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainActivate()
     {
-        while (lineRenderer.material.GetFloat(_intensityID) < 7.5f)
+        bool finished = false;
+        while (!finished)
         {
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            try
+            {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) >= 7.5f)
+                {
+                    break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) + (Time.smoothDeltaTime * 10), 1, 7.5f));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                break;
+            }
             yield return null;
         }
     }
@@ -115,19 +130,35 @@ public class HighwayNote : MonoBehaviour
     /// <returns>The coroutine</returns>
     private IEnumerator SustainDeactivate()
     {
-        float intensity = lineRenderer.material.GetFloat(_intensityID);
-        while (lineRenderer.material.GetFloat(_intensityID) > 0.5f)
+        bool finished = false;
+        while (!finished)
         {
-            lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            try
+            {
+                if (lineRenderer == null || lineRenderer.material.GetFloat(_intensityID) <= 0.5f)
+                {
+                    break;
+                }
+                lineRenderer.material.SetFloat(_intensityID, Mathf.Clamp(lineRenderer.material.GetFloat(_intensityID) - (Time.smoothDeltaTime * 10), 0.5f, 1));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                break;
+            }
             yield return null;
         }
     }
 
+
+
     /// <summary>
     /// Called to destroy the note
     /// </summary>
-    private void DeleteNote()
+    public void DeleteNote()
     {
+        StopAllCoroutines();
+        CancelInvoke();
         Destroy(gameObject);
     }
 }

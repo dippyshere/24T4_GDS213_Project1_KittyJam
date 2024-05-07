@@ -19,7 +19,8 @@ public class SongManager : MonoBehaviour
     [SerializeField, Tooltip("Audio source that is used to play the song")] private AudioSource audioSource;
     [SerializeField, Tooltip("A delay to add before the song begins to play")] public float songDelayInSeconds;
     [Tooltip("The track speed multiplier to change how fast notes move")] public float trackSpeed = 1f;
-    [Tooltip("An input delay offset to account for when determining hit accuracy")] public int inputDelayInMilliseconds;
+    [Tooltip("An input delay offset to account for when determining hit accuracy")] public float inputOffset;
+    [Tooltip("A delay to apply elements that rely on song timing")] public float avOffset;
     [Header("Song Configuration")]
     [SerializeField, Tooltip("The default song data to use")] public SongData songData;
     [HideInInspector, Tooltip("Name of the song MIDI from StreamingAssets")] private string fileLocation;
@@ -87,7 +88,7 @@ public class SongManager : MonoBehaviour
         song = songData.SongAudio;
         bpm = songData.Bpm;
         // Check if the streaming assets path is a URL (WebGL/Android) or a file path (Everything else)
-        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://"))
+        if (Application.streamingAssetsPath.StartsWith("http://") || Application.streamingAssetsPath.StartsWith("https://") || Application.streamingAssetsPath.StartsWith("jar:file") || Application.streamingAssetsPath.StartsWith("file://"))
         {
             // If it's a URL, use a coroutine to asynchronously read the MIDI file
             StartCoroutine(ReadFromWebsite());
@@ -138,7 +139,9 @@ public class SongManager : MonoBehaviour
     /// </summary>
     public IEnumerator GetDataFromMidi()
     {
+        Debug.Log("Getting data from MIDI file");
         yield return new WaitUntil(() => midiFile != null);
+        Debug.Log("MIDI file loaded");
 
         var notes = midiFile.GetNotes();
         var array = new Note[notes.Count];
@@ -162,7 +165,9 @@ public class SongManager : MonoBehaviour
             }
         }
 
+        Debug.Log("Waiting for time scale to be unpaused");
         yield return new WaitUntil(() => Time.timeScale != 0);
+        Debug.Log("Starting song");
 
         Invoke(nameof(StartSong), songDelayInSeconds);
         Invoke(nameof(EndSong), songDelayInSeconds + lastNoteTime + 2.5f);
@@ -209,7 +214,7 @@ public class SongManager : MonoBehaviour
         }
         try
         {
-            return (double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency;
+            return ((double)Instance.audioSource.timeSamples / Instance.audioSource.clip.frequency) + avOffset;
         }
         catch (System.Exception)
         {

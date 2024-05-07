@@ -195,15 +195,22 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null || loadingLeaderboardGameType == 1)
+                    try
                     {
-                        ClearLeaderboard();
-                        foreach (LeaderboardEntry entry in scoresResponse.Results)
+                        LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
+                        if (scoresResponse != null || loadingLeaderboardGameType == 1)
                         {
-                            GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
-                            leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            ClearLeaderboard();
+                            foreach (LeaderboardEntry entry in scoresResponse.Results)
+                            {
+                                GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+                                leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            }
                         }
+                    }
+                    catch (Exception)
+                    {
+                        return;
                     }
                 }
             }
@@ -228,15 +235,22 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null || loadingLeaderboardGameType == 2)
+                    try
                     {
-                        ClearLeaderboard();
-                        foreach (LeaderboardEntry entry in scoresResponse.Results)
+                        LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
+                        if (scoresResponse != null || loadingLeaderboardGameType == 2)
                         {
-                            GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
-                            leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            ClearLeaderboard();
+                            foreach (LeaderboardEntry entry in scoresResponse.Results)
+                            {
+                                GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+                                leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            }
                         }
+                    }
+                    catch (Exception)
+                    {
+                        return;
                     }
                 }
             }
@@ -261,15 +275,22 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null || loadingLeaderboardGameType == 3)
+                    try
                     {
-                        ClearLeaderboard();
-                        foreach (LeaderboardEntry entry in scoresResponse.Results)
+                        LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
+                        if (scoresResponse != null || loadingLeaderboardGameType == 3)
                         {
-                            GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
-                            leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            ClearLeaderboard();
+                            foreach (LeaderboardEntry entry in scoresResponse.Results)
+                            {
+                                GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+                                leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            }
                         }
+                    }
+                    catch (Exception)
+                    {
+                        return;
                     }
                 }
             }
@@ -294,15 +315,22 @@ public class GameSelectionManager : MonoBehaviour
             {
                 if (gameMode.LeaderboardID != null && gameMode.LeaderboardID != "")
                 {
-                    LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
-                    if (scoresResponse != null || loadingLeaderboardGameType == 4)
+                    try
                     {
-                        ClearLeaderboard();
-                        foreach (LeaderboardEntry entry in scoresResponse.Results)
+                        LeaderboardScoresPage scoresResponse = await LeaderboardsService.Instance.GetScoresAsync(gameMode.LeaderboardID, new GetScoresOptions { Offset = 0, Limit = 10 });
+                        if (scoresResponse != null || loadingLeaderboardGameType == 4)
                         {
-                            GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
-                            leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            ClearLeaderboard();
+                            foreach (LeaderboardEntry entry in scoresResponse.Results)
+                            {
+                                GameObject leaderboardEntry = Instantiate(leaderboardEntryPrefab, leaderboardEntryParent);
+                                leaderboardEntry.GetComponent<LeaderboardEntryManager>().SetProperties(entry);
+                            }
                         }
+                    }
+                    catch (Exception)
+                    {
+                        return;
                     }
                 }
             }

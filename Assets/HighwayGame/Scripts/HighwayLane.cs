@@ -15,12 +15,18 @@ public class HighwayLane : MonoBehaviour
     [SerializeField, Tooltip("Note number in the MIDI that will be used to spawn lift notes"), Range(0, 127)] private int liftNoteNumber;
     [SerializeField, Tooltip("The note prefab to spawn")] private GameObject notePrefab;
     [SerializeField, Tooltip("The note prefab to spawn for lift notes")] private GameObject liftNotePrefab;
+    [SerializeField, Tooltip("Reference to the note smasher renderer")] private SpriteRenderer noteSmasher;
     [Tooltip("List of previous + current notes that have been spawned")] private List<HighwayNote> notes = new List<HighwayNote>();
     [Tooltip("List of all timestamps that notes will be spawned at")] private List<Dictionary<double, List<bool>>> timeStamps = new List<Dictionary<double, List<bool>>>();
     [Tooltip("List of sustain note durations")] private List<MetricTimeSpan> sustainDurations = new List<MetricTimeSpan>();
     [Tooltip("The index of the currently spawned note")] private int spawnIndex = 0;
     [Tooltip("The index of the currently pending input")] private int inputIndex = 0;
     [Tooltip("Reference to the current sustain note")] private HighwayNote currentSustainNote;
+
+    private void Start()
+    {
+        noteSmasher.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+    }
 
     /// <summary>
     /// Set the timestamps for the notes to be spawned at based on the MIDI file and the note restriction
@@ -33,7 +39,7 @@ public class HighwayLane : MonoBehaviour
             if (note.NoteNumber == noteNumber)
             {
                 var metricTimeSpan = TimeConverter.ConvertTo<MetricTimeSpan>(note.Time, SongManager.midiFile.GetTempoMap());
-                if (note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()).TotalMicroseconds > 125000)
+                if (note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()).TotalMicroseconds > 175000)
                 {
                     timeStamps.Add(new Dictionary<double, List<bool>> { { (double)metricTimeSpan.Minutes * 60f + metricTimeSpan.Seconds + (double)metricTimeSpan.Milliseconds / 1000f, new List<bool> { false, true, false } } });
                     sustainDurations.Add(note.LengthAs<MetricTimeSpan>(SongManager.midiFile.GetTempoMap()));
@@ -83,7 +89,7 @@ public class HighwayLane : MonoBehaviour
         if (inputIndex < timeStamps.Count)
         {
             double timeStamp = timeStamps[inputIndex].Keys.First();
-            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - SongManager.Instance.inputOffset;
 
             if (timeStamp + ScoreManager.Instance.goodRange <= audioTime)
             {
@@ -119,7 +125,7 @@ public class HighwayLane : MonoBehaviour
                 return;
             }
             double timeStamp = timeStamps[inputIndex].Keys.First();
-            double audioTime = SongManager.Instance.GetAudioSourceTime() - (SongManager.Instance.inputDelayInMilliseconds / 1000.0);
+            double audioTime = SongManager.Instance.GetAudioSourceTime() - SongManager.Instance.inputOffset;
             double inputOffset = Time.realtimeSinceStartupAsDouble - context.startTime;
             NoteFeedback result = ScoreManager.Instance.Hit(audioTime - timeStamp - inputOffset, transform.position - new Vector3(0, 0, 5), isLiftNote: liftHit);
             if (result == NoteFeedback.Good || result == NoteFeedback.Perfect)
@@ -144,7 +150,7 @@ public class HighwayLane : MonoBehaviour
                 }
                 else
                 {
-                    Destroy(notes[inputIndex].gameObject);
+                    notes[inputIndex].DeleteNote();
                 }
                 inputIndex++;
             }

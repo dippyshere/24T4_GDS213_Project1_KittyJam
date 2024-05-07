@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc6d308546d532a4b9d52884ad3ab2e8, type: 3}
-  m_Name: Login
+  m_Name: OnboardingSignupPW
   m_EditorClassIdentifier: 
   scenesToLoad:
-  - m_AssetGUID: 81154536fafc69c4d86b801d78799698
+  - m_AssetGUID: 9f62b9edaf4bd9a41a3443415d0984e7
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 1
   scenesToUnload:
-  - m_AssetGUID: c45ad539b28143e478356c5cc9735402
+  - m_AssetGUID: 42185bddcca5fe54abbbeadba8c74cd7
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
