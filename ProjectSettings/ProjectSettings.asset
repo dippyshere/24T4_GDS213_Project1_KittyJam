@@ -957,8 +957,9 @@ PlayerSettings:
     Standalone: 1
   il2cppCompilerConfiguration:
     Android: 2
-    Standalone: 1
-    WebGL: 1
+    Server: 2
+    Standalone: 2
+    WebGL: 2
   il2cppCodeGeneration:
     WebGL: 0
   managedStrippingLevel:
