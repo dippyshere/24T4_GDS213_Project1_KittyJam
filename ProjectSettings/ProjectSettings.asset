@@ -40,7 +40,8 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos: []
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f,
+    type: 3}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
@@ -52,7 +53,7 @@ PlayerSettings:
   m_SpriteBatchVertexThreshold: 300
   m_MTRendering: 1
   mipStripping: 1
-  numberOfMipsStripped: 1
+  numberOfMipsStripped: 0
   numberOfMipsStrippedPerMipmapLimitGroup: {}
   m_StackTraceTypes: 010000000000000000000000000000000100000001000000
   iosShowActivityIndicatorOnLoading: 2
@@ -211,7 +212,7 @@ PlayerSettings:
   tvOSTopShelfImageLayers2x: []
   tvOSTopShelfImageWideLayers: []
   tvOSTopShelfImageWideLayers2x: []
-  iOSLaunchScreenType: 1
+  iOSLaunchScreenType: 5
   iOSLaunchScreenPortrait: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f,
     type: 3}
   iOSLaunchScreenLandscape: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f,
@@ -222,7 +223,7 @@ PlayerSettings:
   iOSLaunchScreenFillPct: 100
   iOSLaunchScreenSize: 100
   iOSLaunchScreenCustomXibPath: 
-  iOSLaunchScreeniPadType: 1
+  iOSLaunchScreeniPadType: 5
   iOSLaunchScreeniPadImage: {fileID: 2800000, guid: 8d43a442d00b22647ad1aed2ddee4b8f,
     type: 3}
   iOSLaunchScreeniPadBackgroundColor:
@@ -231,8 +232,8 @@ PlayerSettings:
   iOSLaunchScreeniPadFillPct: 100
   iOSLaunchScreeniPadSize: 100
   iOSLaunchScreeniPadCustomXibPath: 
-  iOSLaunchScreenCustomStoryboardPath: 
-  iOSLaunchScreeniPadCustomStoryboardPath: 
+  iOSLaunchScreenCustomStoryboardPath: Assets/Textures/LaunchScreen-iPhone.storyboard
+  iOSLaunchScreeniPadCustomStoryboardPath: Assets/Textures/LaunchScreen-iPad.storyboard
   iOSDeviceRequirements: []
   iOSURLSchemes: []
   macOSURLSchemes: []
