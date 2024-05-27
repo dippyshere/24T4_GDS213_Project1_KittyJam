@@ -15,6 +15,8 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField, Tooltip("The scene loading behaviour for the bootstrapper to use")] private SceneLoadInfo bootstrapSceneLoadInfo;
     [Tooltip("List of async operations for downloading scenes")] private List<AsyncOperationHandle<SceneInstance>> downloadOperations = new List<AsyncOperationHandle<SceneInstance>>();
     [Tooltip("Reference to the canvas group controlling the bootstrap canvas")] private CanvasGroup bootstrapCanvasGroup;
+    [SerializeField, Tooltip("The shader variants collection to warmup when on Desktop")] private ShaderVariantCollection shaderVariantCollectionDesktop;
+    [SerializeField, Tooltip("The shader variants collection to warmup when on Mobile")] private ShaderVariantCollection shaderVariantCollectionMobile;
 
     private IEnumerator Start()
     {
@@ -32,6 +34,15 @@ public class Bootstrapper : MonoBehaviour
 
         bootstrapCanvasGroup = GetComponent<CanvasGroup>();
         bootstrapCanvasGroup.alpha = 1;
+
+        if (QualitySettings.GetQualityLevel() == 2)
+        {
+            shaderVariantCollectionDesktop.WarmUp();
+        }
+        else
+        {
+            shaderVariantCollectionMobile.WarmUp();
+        }
 
         foreach (SceneAssetReference scene in bootstrapSceneLoadInfo.scenesToLoad)
         {
