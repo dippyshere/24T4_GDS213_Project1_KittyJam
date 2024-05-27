@@ -14,10 +14,10 @@ namespace UnityEngine.Rendering.Universal
     public static class ShaderOptions
     {
         /// <summary>Max number of lights supported on mobile with OpenGL 3.0 and below.</summary>
-        public const int k_MaxVisibleLightCountLowEndMobile = 8;
+        public const int k_MaxVisibleLightCountLowEndMobile = 4;
 
         /// <summary>Max number of lights supported on mobile, OpenGL, and WebGPU platforms.</summary>
-        public const int k_MaxVisibleLightCountMobile = 16;
+        public const int k_MaxVisibleLightCountMobile = 8;
 
         /// <summary>Max number of lights supported on desktop platforms.</summary>
         public const int k_MaxVisibleLightCountDesktop = 24;
